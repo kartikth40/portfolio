@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Montserrat:wght@100;400;900&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,7 +7,9 @@
 
 :root {
   --primary: turquoise;
-  font-family: 'Montserrat', sans-serif;
+  --primary-font-family: 'Montserrat', sans-serif;
+  --secondary-font-family: 'Major Mono Display', monospace;
+  font-family: var(--primary-font-family);
   font-size: 20px;
 }
 .no-pointer {

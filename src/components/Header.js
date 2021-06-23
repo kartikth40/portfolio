@@ -4,8 +4,12 @@ import styled from 'styled-components'
 function Header() {
   return (
     <Container>
-      <Logo>{'{kartik.me}'}</Logo>
-      <Nav>nav</Nav>
+      <Logo>{'kArtik.me()'}</Logo>
+      <Nav>
+        <NavItems>.work()</NavItems>
+        <NavItems>.about()</NavItems>
+        <NavItems>.contact()</NavItems>
+      </Nav>
     </Container>
   )
 }
@@ -13,13 +17,22 @@ function Header() {
 export default Header
 
 const Container = styled.div`
+  font-family: var(--secondary-font-family);
+  font-size: 0.7rem;
+  padding: 30px 70px;
   height: 70px;
   width: 100%;
   color: white;
   position: fixed;
   z-index: 10;
+  display: flex;
+  justify-content: space-between;
 `
-const Logo = styled.h2`
-  font-weight: 400;
+const Logo = styled.h2``
+const Nav = styled.nav`
+  display: flex;
+  justify-content: space-between;
 `
-const Nav = styled.nav``
+const NavItems = styled.h3`
+  padding-left: 30px;
+`
