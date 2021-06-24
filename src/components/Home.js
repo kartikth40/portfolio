@@ -9,12 +9,19 @@ function Home() {
     <Container>
       <Hero>
         <h1>Hi, I'm Kartik</h1>
-        <p>A web developer.</p>
+        <p>A Front-end Developer</p>
       </Hero>
       <HeroSecondary className="hero-secondary" aria-hidden="true">
         <h1>Hi, I'm Kartik</h1>
-        <p>A web developer.</p>
+        <p>A Front-end Developer</p>
+
+        <Logo>
+          <img src="/icons/skeleton_logo.svg" />
+        </Logo>
       </HeroSecondary>
+      <Logo>
+        <img src="/icons/blue_logo.svg" />
+      </Logo>
     </Container>
   )
 }
@@ -22,20 +29,21 @@ function Home() {
 export default Home
 
 const Container = styled.main`
-  background-color: #090e17;
+  position: relative;
   font-size: 2rem;
   font-weight: 900;
   position: relative;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  border-bottom: white 2px solid;
 `
 const Hero = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
+  padding-left: 10%;
 
   & h1 {
     -webkit-text-stroke: 1px var(--primary);
@@ -79,4 +87,9 @@ const HeroSecondary = styled(Hero)`
   & p {
     color: rgb(255, 255, 255);
   }
+`
+const Logo = styled.div`
+  position: absolute;
+  left: 36vw;
+  z-index: -1;
 `

@@ -7,11 +7,25 @@
 
 :root {
   --primary: turquoise;
+  --primary-dark: #090e17;
+  --primary-blue: #244c97;
+  --secondary-blue: #000000;
   --primary-font-family: 'Montserrat', sans-serif;
   --secondary-font-family: 'Major Mono Display', monospace;
   font-family: var(--primary-font-family);
+  background-color: var(--primary-dark);
+  color: white;
   font-size: 20px;
 }
-.no-pointer {
-  pointer-events: none;
+
+::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+  background-color: var(--primary-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-blue);
+  border-radius: 10px;
+  box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.2), inset -2px -2px 2px rgba(0, 0, 0, 0.25);
 }
