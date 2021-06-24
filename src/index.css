@@ -4,12 +4,15 @@
   margin: 0;
   padding: 0;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 :root {
   --primary: turquoise;
   --primary-dark: #090e17;
   --primary-blue: #244c97;
-  --secondary-blue: #000000;
+  --secondary-dark: #292f3a60;
   --primary-font-family: 'Montserrat', sans-serif;
   --secondary-font-family: 'Major Mono Display', monospace;
   font-family: var(--primary-font-family);
@@ -25,7 +28,8 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-blue);
-  border-radius: 10px;
-  box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.2), inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+  background: #36393f;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #545964;
 }

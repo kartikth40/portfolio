@@ -1,17 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import { keyframes } from 'styled-components'
 
 function Header() {
   return (
-    <Container>
+    <Container id="header">
       <Logo>
-        <img src="/icons/white_logo.svg" />
+        <img src="/icons/white_logo.svg" alt="header white logo" />
       </Logo>
       <Nav>
-        <NavItems>About</NavItems>
-        <NavItems>Work</NavItems>
-        <NavItems>Contact</NavItems>
+        <NavItems href="#about">About</NavItems>
+        <NavItems href="#work">Work</NavItems>
+        <NavItems href="#">Contact</NavItems>
       </Nav>
     </Container>
   )
@@ -26,6 +25,7 @@ const Container = styled.header`
   width: 100%;
   color: white;
   position: fixed;
+  top: 0;
   z-index: 10;
   display: flex;
   justify-content: space-between;
@@ -48,7 +48,10 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
 `
-const NavItems = styled.h3`
+const NavItems = styled.a`
+  font-size: 1rem;
+  color: white;
+  text-decoration: none;
   cursor: pointer;
   padding-left: 30px;
   height: 100%;

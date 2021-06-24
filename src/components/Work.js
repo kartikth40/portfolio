@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function About() {
+function Work() {
   return (
-    <Container id="about">
-      <h3>About</h3>
+    <Container id="work">
+      <h3>Work</h3>
       <p>
         Hello! I'm Kartik, a 20-year-old Front-end developer. I enjoy creating things that live on the internet. I like
         to resolve design problems, create smart user interface and imagine useful interaction. Currently looking for an
@@ -14,7 +14,7 @@ function About() {
   )
 }
 
-export default About
+export default Work
 
 const Container = styled.section`
   height: 100vh;

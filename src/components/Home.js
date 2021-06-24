@@ -6,7 +6,7 @@ function Home() {
     import('../brain/homePageLogic')
   }, [])
   return (
-    <Container>
+    <Container id="home">
       <Hero>
         <h1>Hi, I'm Kartik</h1>
         <p>A Front-end Developer</p>
@@ -16,11 +16,11 @@ function Home() {
         <p>A Front-end Developer</p>
 
         <Logo>
-          <img src="/icons/skeleton_logo.svg" />
+          <img src="/icons/skeleton_logo.svg" alt="skeleton logo" />
         </Logo>
       </HeroSecondary>
       <Logo>
-        <img src="/icons/blue_logo.svg" />
+        <img src="/icons/blue_logo.svg" alt="main blue logo" />
       </Logo>
     </Container>
   )
