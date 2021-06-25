@@ -13,6 +13,7 @@ html {
   --primary-dark: #090e17;
   --primary-blue: #244c97;
   --secondary-dark: #292f3a60;
+  --secondary-dark2: #121720;
   --primary-font-family: 'Montserrat', sans-serif;
   --secondary-font-family: 'Major Mono Display', monospace;
   font-family: var(--primary-font-family);

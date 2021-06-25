@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import Contact from './Contact'
 
 function Header() {
+  const [showContacts, setShowContacts] = useState(false)
+  const openContacts = () => {
+    setShowContacts(true)
+  }
   return (
-    <Container id="header">
-      <Logo>
-        <img src="/icons/white_logo.svg" alt="header white logo" />
-      </Logo>
-      <Nav>
-        <NavItems href="#about">About</NavItems>
-        <NavItems href="#work">Work</NavItems>
-        <NavItems href="#">Contact</NavItems>
-      </Nav>
-    </Container>
+    <>
+      <Container id="header">
+        <Logo>
+          <img src="/icons/white_logo.svg" alt="header white logo" />
+        </Logo>
+        <Nav>
+          <NavItems href="#about">About</NavItems>
+          <NavItems href="#work">Work</NavItems>
+          <NavItems href="#" onClick={openContacts}>
+            Contact
+          </NavItems>
+        </Nav>
+      </Container>
+      <Contact showContacts={showContacts} setShowContacts={setShowContacts} />
+    </>
   )
 }
 
@@ -39,9 +49,6 @@ const Logo = styled.div`
   & img {
     width: 100%;
     height: 100%;
-  }
-  &:hover {
-    opacity: 0.7;
   }
 `
 const Nav = styled.nav`
