@@ -14,7 +14,6 @@ function Home() {
       <HeroSecondary className="hero-secondary" aria-hidden="true">
         <h1>Hi, I'm Kartik</h1>
         <p>A Front-end Developer</p>
-
         <Logo>
           <img src="/icons/skeleton_logo.svg" alt="skeleton logo" />
         </Logo>
@@ -55,6 +54,7 @@ const Hero = styled.div`
     color: transparent;
   }
 `
+
 const HeroSecondary = styled(Hero)`
   --mask: radial-gradient(
     circle at var(--x, 50%) var(--y, 50%),
