@@ -7,7 +7,7 @@ function Home() {
   }, [])
   return (
     <Container id="home">
-      <Hero>
+      <Hero className="hero">
         <h1>Hi, I'm Kartik</h1>
         <p>A Front-end Developer</p>
       </Hero>
@@ -51,7 +51,7 @@ const Hero = styled.div`
   }
 
   & p {
-    color: transparent;
+    color: white;
   }
 `
 
@@ -85,7 +85,7 @@ const HeroSecondary = styled(Hero)`
   }
 
   & p {
-    color: rgb(255, 255, 255);
+    color: rgba(0, 0, 0, 0.7);
   }
 `
 const Logo = styled.div`

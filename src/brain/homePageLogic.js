@@ -14,15 +14,17 @@ tl.to(hero, {
   ease: 'back.out(2)',
 })
 
-window.addEventListener('mousemove', (e) => {
-  const { clientX, clientY } = e
-  const x = Math.round((clientX / window.innerWidth) * 100)
-  const y = Math.round((clientY / window.innerHeight) * 100)
-
-  gsap.to(hero, {
-    '--x': `${x}%`,
-    '--y': `${y}%`,
-    duration: 0.3,
-    ease: 'sine.out',
+const elementsNeedMouseOver = [document.querySelector('#header'), document.querySelector('#home')]
+elementsNeedMouseOver.forEach((ele) => {
+  ele.addEventListener('mousemove', (e) => {
+    const { clientX, clientY } = e
+    const x = Math.round(clientX)
+    const y = Math.round(clientY)
+    gsap.to(hero, {
+      '--x': `${x}px`,
+      '--y': `${y}px`,
+      duration: 0.3,
+      ease: 'sine.out',
+    })
   })
 })

@@ -38,3 +38,7 @@ html {
 .no-scroll {
   overflow: hidden;
 }
+.hide {
+  transition: 500ms all;
+  opacity: 0;
+}
