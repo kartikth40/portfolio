@@ -14,6 +14,7 @@ html {
   --primary-blue: #244c97;
   --secondary-dark: #292f3a60;
   --secondary-dark2: #121720;
+  --transparent-blue: #0059ff9a;
   --primary-font-family: 'Montserrat', sans-serif;
   --secondary-font-family: 'Major Mono Display', monospace;
   font-family: var(--primary-font-family);
