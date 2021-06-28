@@ -10,7 +10,7 @@ html {
 
 :root {
   --primary: turquoise;
-  --primary-dark: #090e17;
+  --primary-dark: #181A1B;
   --primary-blue: #244c97;
   --secondary-dark: #292f3a60;
   --secondary-dark2: #121720;
@@ -42,4 +42,8 @@ html {
 .hide {
   transition: 500ms all;
   opacity: 0;
+}
+.show {
+  transition: 500ms all;
+  opacity: 1;
 }

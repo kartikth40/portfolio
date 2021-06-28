@@ -14,9 +14,12 @@ tl.to(hero, {
   ease: 'back.out(2)',
 })
 
-const elementsNeedMouseOver = [document.querySelector('#header'), document.querySelector('#home')]
+const header = document.querySelector('#header')
+const home = document.querySelector('#home')
+
+const elementsNeedMouseOver = [header, home]
 elementsNeedMouseOver.forEach((ele) => {
-  ele.addEventListener('mousemove', (e) => {
+  ele.addEventListener('mousemove', e => {
     const { clientX, clientY } = e
     const x = Math.round(clientX)
     const y = Math.round(clientY)
@@ -28,3 +31,28 @@ elementsNeedMouseOver.forEach((ele) => {
     })
   })
 })
+let homeEnter = true
+let headerEnter = true
+home.addEventListener('mouseleave', () => {
+  homeEnter = false
+})
+header.addEventListener('mouseleave', () => {
+  headerEnter = false
+
+})
+home.addEventListener('mouseenter', () => {
+  homeEnter = true
+})
+header.addEventListener('mouseenter', () => {
+  headerEnter = true
+})
+
+setInterval(() => {
+  if(!homeEnter && !headerEnter) {
+    hero.classList.remove('show')
+    hero.classList.add('hide')
+  }else {
+    hero.classList.remove('hide')
+    hero.classList.add('show')
+  }
+}, 100)

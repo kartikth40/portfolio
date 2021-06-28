@@ -1,4 +1,4 @@
 TODO
 
-
+change bg color (refer dark reader)
 Email validations
