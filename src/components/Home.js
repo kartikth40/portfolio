@@ -36,21 +36,24 @@ const Container = styled.main`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border-bottom: white 2px solid;
+  border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
 `
 const Hero = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   padding-left: 10%;
+  text-transform: uppercase;
 
   & h1 {
+    letter-spacing: 0.3rem;
     -webkit-text-stroke: 1px var(--primary);
     filter: drop-shadow(0 0 0.35rem var(--primary));
     color: transparent;
   }
 
   & p {
+    font-weight: 400;
     color: white;
   }
 `
@@ -90,6 +93,6 @@ const HeroSecondary = styled(Hero)`
 `
 const Logo = styled.div`
   position: absolute;
-  left: 36vw;
+  left: 45vw;
   z-index: -1;
 `

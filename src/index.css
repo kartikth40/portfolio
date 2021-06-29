@@ -10,7 +10,7 @@ html {
 
 :root {
   --primary: turquoise;
-  --primary-dark: #181A1B;
+  --primary-dark: #181a1b;
   --primary-blue: #244c97;
   --secondary-dark: #292f3a60;
   --secondary-dark2: #121720;
@@ -26,14 +26,13 @@ html {
 ::-webkit-scrollbar {
   width: 15px;
   height: 15px;
-  background-color: var(--primary-dark);
+  background-color: black;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #36393f;
+  background: #252629;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #545964;
+  background: #40434b;
 }
 
 .no-scroll {
@@ -46,4 +45,21 @@ html {
 .show {
   transition: 500ms all;
   opacity: 1;
+}
+
+.nav-scrolled {
+  animation: NavScrollAnimation 1s forwards;
+}
+
+@keyframes NavScrollAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+    background-color: black;
+  }
 }

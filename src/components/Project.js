@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function Project({projNo, bgImgUrl, title, desc, visitLink, sourceLink }) {
+function Project({ projNo, bgImgUrl, title, desc, visitLink, sourceLink }) {
   return (
     <ProjectContainer>
       <BackgroundImg style={{ background: `url(/img/${bgImgUrl})` }}>
@@ -28,7 +28,7 @@ function Project({projNo, bgImgUrl, title, desc, visitLink, sourceLink }) {
 export default Project
 
 const ProjectContainer = styled.div`
-  margin: 5rem 0;
+  margin: 1.5rem 0 10rem;
   width: 900px;
   height: 400px;
   position: relative;

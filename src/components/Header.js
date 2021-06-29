@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Contact from './Contact'
 
 function Header() {
+  useEffect(() => {
+    import('../brain/headerLogic')
+  }, [])
   const [showContacts, setShowContacts] = useState(false)
   const openContacts = () => {
     setShowContacts(true)
@@ -10,14 +13,14 @@ function Header() {
   return (
     <>
       <Container id="header">
-        <Logo>
+        <Logo href="#home">
           <img src="/icons/white_logo.svg" alt="header white logo" />
         </Logo>
         <Nav>
-          <NavItems href="#about">About</NavItems>
-          <NavItems href="#work">Work</NavItems>
-          <NavItems href="#" onClick={openContacts}>
-            Contact
+          <NavItems href="#about">about</NavItems>
+          <NavItems href="#work">projects</NavItems>
+          <NavItems href="#home" onClick={openContacts}>
+            contact
           </NavItems>
         </Nav>
       </Container>
@@ -36,13 +39,13 @@ const Container = styled.header`
   color: white;
   position: fixed;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `
-const Logo = styled.div`
-  cursor: pointer;
+const Logo = styled.a`
+  text-decoration: none;
   width: 50px;
   height: 50px;
   transition: 250ms;
@@ -63,6 +66,7 @@ const NavItems = styled.a`
   padding-left: 30px;
   height: 100%;
   transition: 250ms;
+
   &:hover {
     opacity: 0.7;
   }

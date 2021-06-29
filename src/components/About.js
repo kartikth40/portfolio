@@ -4,13 +4,13 @@ import styled from 'styled-components'
 function About() {
   return (
     <Container id="about">
-      <h3>About</h3>
       <AboutSection>
         <Picture>
           <source type="image/webp" srcset="/img/kartik_black.webp" />
           <img src="/img/kartik_black.jpg" alt="profile pic" />
         </Picture>
         <p>
+          <h3>About</h3>
           Hello! I'm Kartik, a 20-year-old Front-end developer. I enjoy creating things that live on the internet. I
           like to resolve design problems, create smart user interface and imagine useful interaction. Currently looking
           for an Internship.
@@ -23,6 +23,8 @@ function About() {
 export default About
 
 const Container = styled.section`
+  scroll-margin-top: 50px;
+
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -31,6 +33,7 @@ const Container = styled.section`
   padding: 30px 70px;
 
   & h3 {
+    font-size: 5rem;
     font-family: var(--secondary-font-family);
     margin-bottom: 30px;
   }
