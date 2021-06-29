@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Project from './Project'
 import projectInfo from '../juice/projectInfo'
+
 function Work() {
   return (
     <Container id="work">

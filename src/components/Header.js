@@ -59,15 +59,35 @@ const Nav = styled.nav`
   justify-content: space-between;
 `
 const NavItems = styled.a`
-  font-size: 1rem;
+  font-size: 0.9rem;
+  font-weight: 900;
   color: white;
   text-decoration: none;
   cursor: pointer;
-  padding-left: 30px;
+  margin-left: 30px;
   height: 100%;
-  transition: 250ms;
-
+  position: relative;
   &:hover {
-    opacity: 0.7;
+    transition: 250ms all;
+    color: black;
+  }
+
+  &::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+  &::before {
+    transition: 250ms all;
+    background: white;
+  }
+
+  &:hover&::before {
+    transition: 250ms all;
+    height: calc(100% + 5px);
   }
 `

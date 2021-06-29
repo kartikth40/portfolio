@@ -9,12 +9,12 @@ function About() {
           <source type="image/webp" srcset="/img/kartik_black.webp" />
           <img src="/img/kartik_black.jpg" alt="profile pic" />
         </Picture>
-        <p>
+        <div>
           <h3>About</h3>
           Hello! I'm Kartik, a 20-year-old Front-end developer. I enjoy creating things that live on the internet. I
           like to resolve design problems, create smart user interface and imagine useful interaction. Currently looking
           for an Internship.
-        </p>
+        </div>
       </AboutSection>
     </Container>
   )

@@ -1,9 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 function Project({ projNo, bgImgUrl, title, desc, visitLink, sourceLink }) {
+  useEffect(() => {
+    const projs = document.querySelectorAll('.Project-container')
+    projs.forEach((proj) => {
+      gsap.fromTo(
+        proj,
+        {
+          autoAlpha: 0,
+          x: -100,
+        },
+        {
+          duration: 0.25,
+          x: 0,
+          autoAlpha: 1,
+          ease: 'none',
+          scrollTrigger: {
+            id: 'proj',
+            trigger: proj,
+            start: 'top bottom-=250',
+          },
+        }
+      )
+    })
+  }, [])
   return (
-    <ProjectContainer>
+    <ProjectContainer className="Project-container">
       <BackgroundImg style={{ background: `url(/img/${bgImgUrl})` }}>
         <DullBackground />
         <SliderMask />
