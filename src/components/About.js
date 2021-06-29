@@ -9,12 +9,14 @@ function About() {
           <source type="image/webp" srcset="/img/kartik_black.webp" />
           <img src="/img/kartik_black.jpg" alt="profile pic" />
         </Picture>
-        <div>
+        <MainContect>
           <h3>About</h3>
-          Hello! I'm Kartik, a 20-year-old Front-end developer. I enjoy creating things that live on the internet. I
-          like to resolve design problems, create smart user interface and imagine useful interaction. Currently looking
-          for an Internship.
-        </div>
+          <p>
+            Hello! I'm Kartik, a 20-year-old Front-end developer. I enjoy creating things that live on the internet. I
+            like to resolve design problems, create smart user interface and imagine useful interaction. Currently
+            looking for an Internship.
+          </p>
+        </MainContect>
       </AboutSection>
     </Container>
   )
@@ -46,4 +48,7 @@ const Picture = styled.picture`
   height: 400px;
   margin-right: 5rem;
   clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+`
+const MainContect = styled.div`
+  margin-right: 100px;
 `
