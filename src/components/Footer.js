@@ -1,11 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 function Footer() {
   const currentYear = new Date().getFullYear()
+
+  useEffect(() => {
+    const sidebar = document.querySelector('.social-sidebar')
+    const about = document.querySelector('#about')
+
+    gsap.fromTo(
+      sidebar,
+      {
+        autoAlpha: 0,
+        y: 300,
+      },
+      {
+        duration: 0.5,
+        y: 0,
+        autoAlpha: 1,
+        ease: 'none',
+        scrollTrigger: {
+          id: 'sidebar',
+          trigger: about,
+          toggleActions: 'play none none reverse',
+          start: 'bottom bottom',
+        },
+      }
+    )
+  }, [])
   return (
     <Container>
-      <SocialSidebar>
+      <SocialSidebar className="social-sidebar">
         <Circle>
           <a href="https://www.linkedin.com/in/kartikth40" target="_blank" rel="noreferrer">
             <img src="/icons/linkedin_logo.png" alt="linkedin logo" />
@@ -49,32 +78,32 @@ const SocialSidebar = styled.div`
 `
 
 const Line = styled.div`
-  width: 5px;
+  width: 2px;
   height: 100px;
   background: var(--primary);
 `
 const Circle = styled.div`
-  box-shadow: 0 0 3em var(--primary);
-
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--primary);
   border-radius: 50%;
+  &:hover {
+    background: rgb(149, 255, 244);
+    box-shadow: 0 0 10px rgb(149, 255, 244);
+  }
   & a {
-    width: 40px;
-    height: 40px;
-    &:hover {
-      opacity: 0.7;
-      box-shadow: 0 0 3em red;
-    }
+    width: 25px;
+    height: 25px;
   }
   & a img {
+    border-radius: 50%;
+    background: white;
     width: 100%;
     height: 100%;
     margin: 0;

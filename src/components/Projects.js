@@ -30,6 +30,7 @@ function Work() {
 export default Work
 
 const Container = styled.section`
+  margin-top: 100px;
   scroll-margin-top: 150px;
   display: flex;
 `

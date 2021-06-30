@@ -21,6 +21,7 @@ function Home() {
       <Logo>
         <img src="/icons/blue_logo.svg" alt="main blue logo" />
       </Logo>
+      <ScrollAssist></ScrollAssist>
     </Container>
   )
 }
@@ -95,4 +96,54 @@ const Logo = styled.div`
   position: absolute;
   left: 45vw;
   z-index: -1;
+`
+const ScrollAssist = styled.div`
+  background: transparent;
+  height: 50px;
+  width: 25px;
+  border-radius: 50px;
+  border: 2px solid white;
+  position: absolute;
+  bottom: 10%;
+  left: 25%;
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    height: 5px;
+    width: 3px;
+    border-radius: 5px;
+    background: white;
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translate(-50%, -50%);
+    animation: scrolldownAnime 2s infinite ease-in;
+    opacity: 0;
+  }
+
+  @keyframes scrolldownAnime {
+    0% {
+      opacity: 0;
+      height: 5px;
+      top: 10px;
+    }
+    20% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+      height: 15px;
+      top: 15px;
+    }
+    80% {
+      opacity: 1;
+      height: 5px;
+      top: 23px;
+    }
+    100% {
+      opacity: 0;
+      top: 23px;
+    }
+  }
 `

@@ -33,6 +33,7 @@ const Container = styled.section`
   justify-content: center;
   align-items: flex-start;
   padding: 30px 70px;
+  border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
 
   & h3 {
     font-size: 5rem;
