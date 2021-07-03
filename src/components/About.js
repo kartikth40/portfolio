@@ -27,19 +27,13 @@ export default About
 const Container = styled.section`
   scroll-margin-top: 50px;
 
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   padding: 30px 70px;
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
-
-  & h3 {
-    font-size: 5rem;
-    font-family: var(--secondary-font-family);
-    margin-bottom: 30px;
-  }
 `
 const AboutSection = styled.section`
   display: flex;
@@ -50,9 +44,37 @@ const AboutSection = styled.section`
 `
 const Picture = styled.picture`
   height: 400px;
+  width: 200px;
   margin-right: 5rem;
-  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @media screen and (max-width: 500px) {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 3rem;
+    & img {
+      border-radius: 50%;
+    }
+  }
 `
 const MainContect = styled.div`
   margin-right: 100px;
+  width: 70%;
+  & h3 {
+    font-size: 5rem;
+    font-family: var(--secondary-font-family);
+    margin-bottom: 30px;
+  }
+  @media screen and (max-width: 500px) {
+    & h3 {
+      font-size: 2rem;
+    }
+    & p {
+      font-size: 0.7rem;
+    }
+  }
 `

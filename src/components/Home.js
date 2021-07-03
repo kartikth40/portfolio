@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import useWindowSize from '../brain/useWindowSize'
 
 function Home() {
+  let size = useWindowSize()
   useEffect(() => {
-    import('../brain/homePageLogic')
-  }, [])
+    if (size > 500) {
+      import('../brain/homePageLogic')
+    }
+  }, [size])
   return (
     <Container id="home">
       <Hero className="hero">
@@ -39,6 +43,12 @@ const Container = styled.main`
   justify-content: flex-start;
   align-items: center;
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
+  @media screen and (max-width: 500px) {
+    font-size: 1.5rem;
+    p {
+      font-size: 1rem;
+    }
+  }
 `
 const Hero = styled.div`
   display: flex;
@@ -96,8 +106,13 @@ const HeroSecondary = styled(Hero)`
 const Logo = styled.div`
   pointer-events: none;
   position: absolute;
-  left: 45vw;
+  left: 50vw;
   z-index: -1;
+  @media screen and (max-width: 500px) {
+    & img {
+      width: 200px;
+    }
+  }
 `
 const ScrollAssist = styled.div`
   background: var(--primary-dark);
