@@ -29,6 +29,7 @@ function Home() {
 export default Home
 
 const Container = styled.main`
+  cursor: default;
   position: relative;
   font-size: 2rem;
   font-weight: 900;
@@ -93,19 +94,21 @@ const HeroSecondary = styled(Hero)`
   }
 `
 const Logo = styled.div`
+  pointer-events: none;
   position: absolute;
   left: 45vw;
   z-index: -1;
 `
 const ScrollAssist = styled.div`
-  background: transparent;
+  background: var(--primary-dark);
   height: 50px;
   width: 25px;
   border-radius: 50px;
-  border: 2px solid white;
+  border: 2px solid rgba(255, 255, 255, 0.1);
   position: absolute;
-  bottom: 10%;
-  left: 25%;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
   pointer-events: none;
 
   &::after {
@@ -113,12 +116,12 @@ const ScrollAssist = styled.div`
     height: 5px;
     width: 3px;
     border-radius: 5px;
-    background: white;
+    background: rgba(255, 255, 255, 0.1);
     position: absolute;
     left: 50%;
     top: 10px;
     transform: translate(-50%, -50%);
-    animation: scrolldownAnime 2s infinite ease-in;
+    animation: scrolldownAnime 1.5s infinite ease-in;
     opacity: 0;
   }
 

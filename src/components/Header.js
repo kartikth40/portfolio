@@ -7,8 +7,12 @@ function Header() {
     import('../brain/headerLogic')
   }, [])
   const [showContacts, setShowContacts] = useState(false)
+  const [showNav, setShowNav] = useState(false)
   const openContacts = () => {
     setShowContacts(true)
+  }
+  const hamClick = () => {
+    setShowNav((prev) => !prev)
   }
   return (
     <>
@@ -16,7 +20,10 @@ function Header() {
         <Logo href="#home">
           <img src="/icons/white_logo.svg" alt="header white logo" />
         </Logo>
-        <Nav>
+
+        <HamBurgerMenu onClick={hamClick}>{showNav ? <div>close</div> : <div>menu</div>}</HamBurgerMenu>
+
+        <Nav className={showNav ? 'nav active' : 'nav'}>
           <NavItems href="#about">about</NavItems>
           <NavItems href="#work">projects</NavItems>
           <NavItems href="#home" onClick={openContacts}>
@@ -43,6 +50,9 @@ const Container = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    background: black;
+  }
 `
 const Logo = styled.a`
   text-decoration: none;
@@ -54,9 +64,31 @@ const Logo = styled.a`
     height: 100%;
   }
 `
+const HamBurgerMenu = styled.div`
+  display: none;
+  cursor: pointer;
+  @media screen and (max-width: 500px) {
+    display: block;
+  }
+`
+
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 500px) {
+    background: black;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: -150%;
+    width: 100%;
+    flex-direction: column;
+    transition: 250ms all;
+    &.active {
+      top: 100px;
+    }
+  }
 `
 const NavItems = styled.a`
   font-size: 0.9rem;
@@ -65,6 +97,7 @@ const NavItems = styled.a`
   text-decoration: none;
   cursor: pointer;
   margin-left: 30px;
+  display: flex;
   height: 100%;
   position: relative;
   &:hover {
@@ -88,6 +121,20 @@ const NavItems = styled.a`
 
   &:hover&::before {
     transition: 250ms all;
-    height: calc(100% + 5px);
+    height: calc(100% + 10px);
+  }
+  @media screen and (max-width: 500px) {
+    height: 50px;
+    padding: 10px 20px;
+    margin: 0;
+    z-index: -1;
+    align-items: center;
+    justify-content: center;
+    &::before {
+      display: none;
+    }
+    &:hover {
+      background: white;
+    }
   }
 `

@@ -44,6 +44,9 @@ const Container = styled.section`
 const AboutSection = styled.section`
   display: flex;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+  }
 `
 const Picture = styled.picture`
   height: 400px;

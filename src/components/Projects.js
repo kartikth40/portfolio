@@ -43,6 +43,9 @@ const SidewaysTitle = styled.div`
   font-size: 10rem;
   position: relative;
   pointer-events: none;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `
 const InnerTitle = styled.div`
   width: 6.1em;
@@ -64,4 +67,8 @@ const ProjectsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    width: 400px;
+    margin-left: 1rem;
+  }
 `

@@ -33,7 +33,7 @@ function Footer() {
     )
   }, [])
   return (
-    <Container>
+    <Container id="footer">
       <SocialSidebar className="social-sidebar">
         <Circle>
           <a href="https://www.linkedin.com/in/kartikth40" target="_blank" rel="noreferrer">

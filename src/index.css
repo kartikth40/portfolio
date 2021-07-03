@@ -11,7 +11,7 @@ html {
 :root {
   --primary: turquoise;
   --primary-dark: #181a1b;
-  --primary-blue: #244c97;
+  --primary-blue: #2776ff;
   --secondary-dark: #292f3a60;
   --secondary-dark2: #121720;
   --transparent-blue: #0059ff9a;
@@ -33,6 +33,11 @@ html {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #40434b;
+}
+
+::selection {
+  color: black;
+  background: white;
 }
 
 .no-scroll {

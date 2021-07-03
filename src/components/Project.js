@@ -59,12 +59,17 @@ const ProjectContainer = styled.div`
   width: 900px;
   height: 400px;
   position: relative;
+  @media screen and (max-width: 500px) {
+    width: 300px;
+    height: 200px;
+  }
 `
 const BackgroundImg = styled.div`
   box-shadow: 5px 5px 30px black;
   width: 100%;
   height: 100%;
   background-size: cover;
+  background-position: right bottom;
   position: relative;
   overflow: hidden;
 `
