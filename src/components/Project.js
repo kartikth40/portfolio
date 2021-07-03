@@ -2,10 +2,12 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import useWindowSize from '../brain/useWindowSize'
 
 gsap.registerPlugin(ScrollTrigger)
 
 function Project({ projNo, bgImgUrl, title, desc, visitLink, sourceLink }) {
+  let size = useWindowSize()
   useEffect(() => {
     const projs = document.querySelectorAll('.Project-container')
     projs.forEach((proj) => {
@@ -31,11 +33,11 @@ function Project({ projNo, bgImgUrl, title, desc, visitLink, sourceLink }) {
   }, [])
   return (
     <ProjectContainer className="Project-container">
-      <BackgroundImg style={{ background: `url(/img/${bgImgUrl})` }}>
+      <BackgroundImg style={{ backgroundImage: `url(/img/${bgImgUrl})` }}>
         <DullBackground />
         <SliderMask />
       </BackgroundImg>
-      <ProjectNo>{projNo}</ProjectNo>
+      {size > 500 && <ProjectNo>{projNo}</ProjectNo>}
       <ProjectInfo>
         <h2>{title}</h2>
         <h5>{desc}</h5>
@@ -57,7 +59,7 @@ export default Project
 const ProjectContainer = styled.div`
   margin: 1.5rem 0 10rem;
   width: 900px;
-  height: 400px;
+  aspect-ratio: 9 / 4;
   position: relative;
   @media screen and (max-width: 500px) {
     width: 300px;
@@ -68,10 +70,14 @@ const BackgroundImg = styled.div`
   box-shadow: 5px 5px 30px black;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: right bottom;
+  background-repeat: no-repeat;
+  border-radius: 20px;
   position: relative;
   overflow: hidden;
+
+  @media screen and (max-width: 500px) {
+    background-size: cover;
+  }
 `
 const AbsoluteContainer = styled.div`
   position: absolute;
@@ -128,12 +134,12 @@ const ProjectInfo = styled(AbsoluteContainer)`
     font-weight: 400;
   }
   a {
+    display: inline-block;
     text-decoration: none;
     cursor: pointer;
     font-size: 15px;
     opacity: 0;
     visibility: hidden;
-    width: 100px;
     letter-spacing: 2px;
     padding: 0.5em 0.8em;
     margin-right: 1em;
@@ -152,9 +158,35 @@ const ProjectInfo = styled(AbsoluteContainer)`
       visibility: visible;
     }
   }
+  @media screen and (max-width: 500px) {
+    padding: 0 0 0 1rem;
+    h2 {
+      pointer-events: none;
+      font-size: 20px;
+    }
+    h5 {
+      pointer-events: none;
+      font-size: 15px;
+    }
+    a {
+      margin-bottom: 1em;
+    }
+  }
   transition: 250ms all;
   ${ProjectContainer}:hover & {
     transform: scale(1.1) translateY(-10%);
   }
 `
-const CTAbuttons = styled.div``
+const CTAbuttons = styled.div`
+  @media screen and (max-width: 500px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    a {
+      width: 100%;
+      text-align: center;
+    }
+    top: 250px;
+    height: max-content;
+  }
+`
