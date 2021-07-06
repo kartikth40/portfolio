@@ -65,10 +65,7 @@ const InnerTitle = styled.div`
 `
 const ProjectsContainer = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: center;
-  @media screen and (max-width: 500px) {
-    width: 400px;
-    margin-left: 1rem;
-  }
 `

@@ -2,13 +2,15 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import useWindowSize from '../brain/useWindowSize'
 
 gsap.registerPlugin(ScrollTrigger)
 
 function Footer() {
+  let size = useWindowSize()
   const currentYear = new Date().getFullYear()
 
-  useEffect(() => {
+  const addFooterLinkGsap = () => {
     const sidebar = document.querySelector('.social-sidebar')
     const about = document.querySelector('#about')
 
@@ -31,6 +33,10 @@ function Footer() {
         },
       }
     )
+  }
+
+  useEffect(() => {
+    if (size > 500) addFooterLinkGsap()
   }, [])
   return (
     <Container id="footer">
@@ -51,14 +57,16 @@ function Footer() {
       <Logo href="#home">
         <img src="/icons/white_logo.svg" alt="footer white logo" />
       </Logo>
-      <FooterLinks>
-        <a href="https://www.linkedin.com/in/kartikth40" target="_blank" rel="noreferrer">
-          <img src="/icons/linkedin_icon.png" alt="linkedin logo" />
-        </a>
-        <a href="https://github.com/kartikth40" target="_blank" rel="noreferrer">
-          <img src="/icons/github_icon.png" alt="github logo" />
-        </a>
-      </FooterLinks>
+      {
+        <FooterLinks>
+          <a href="https://www.linkedin.com/in/kartikth40" target="_blank" rel="noreferrer">
+            <img src="/icons/linkedin_icon.png" alt="linkedin logo" />
+          </a>
+          <a href="https://github.com/kartikth40" target="_blank" rel="noreferrer">
+            <img src="/icons/github_icon.png" alt="github logo" />
+          </a>
+        </FooterLinks>
+      }
       <Copyrights>© {currentYear} Kartik Thakur - IN 8178795167 - Contact</Copyrights>
     </Container>
   )

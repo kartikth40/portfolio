@@ -56,6 +56,7 @@ const Picture = styled.picture`
     width: 200px;
     height: 200px;
     margin-bottom: 3rem;
+    margin-right: 0;
     & img {
       border-radius: 50%;
     }

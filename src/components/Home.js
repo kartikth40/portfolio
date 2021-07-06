@@ -44,6 +44,7 @@ const Container = styled.main`
   align-items: center;
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
   @media screen and (max-width: 500px) {
+    overflow: hidden;
     font-size: 1.5rem;
     p {
       font-size: 1rem;
@@ -125,7 +126,6 @@ const ScrollAssist = styled.div`
   left: 50%;
   transform: translateX(-50%);
   pointer-events: none;
-
   &::after {
     content: '';
     height: 5px;
@@ -162,6 +162,15 @@ const ScrollAssist = styled.div`
     100% {
       opacity: 0;
       top: 23px;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    bottom: 100px;
+
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    &::after {
+      background: rgba(255, 255, 255, 0.5);
     }
   }
 `

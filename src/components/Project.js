@@ -120,6 +120,7 @@ const ProjectNo = styled(AbsoluteContainer)`
 const ProjectInfo = styled(AbsoluteContainer)`
   z-index: 20;
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: flex-end;
   padding: 2rem 5rem;
@@ -142,7 +143,6 @@ const ProjectInfo = styled(AbsoluteContainer)`
     visibility: hidden;
     letter-spacing: 2px;
     padding: 0.5em 0.8em;
-    margin-right: 1em;
     outline: 0;
     border: white 2px solid;
     border-radius: 1rem;
@@ -180,13 +180,13 @@ const ProjectInfo = styled(AbsoluteContainer)`
 const CTAbuttons = styled.div`
   @media screen and (max-width: 500px) {
     position: absolute;
-    top: 0;
+    top: 250px;
     left: 0;
+    width: 100%;
     a {
       width: 100%;
       text-align: center;
     }
-    top: 250px;
     height: max-content;
   }
 `
