@@ -107,11 +107,19 @@ const Container = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: var(--secondary-dark2);
   width: 50vw;
   height: 75vh;
   z-index: 1000;
   overflow: hidden;
+  @media screen and (max-width: 500px) {
+    width: 100vw;
+    height: 100vh;
+    border-radius: none;
+  }
 `
 const TopHeading = styled.div`
   & h1 {
@@ -146,6 +154,7 @@ const Contactform = styled.form`
     font-weight: 900;
     font-size: 0.8em;
     margin-top: 1em;
+    margin-bottom: 3em;
     padding: 1em;
     width: max-content;
     color: white;
@@ -158,6 +167,14 @@ const Contactform = styled.form`
   }
   & button:active {
     transform: scale(0.95);
+  }
+  @media screen and (max-width: 500px) {
+    & label {
+      font-size: 1rem;
+    }
+    & textarea {
+      height: 100px;
+    }
   }
 `
 const Field = styled.div`
