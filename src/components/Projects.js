@@ -2,14 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 import Project from './Project'
 import projectInfo from '../juice/projectInfo'
+import useWindowSize from '../brain/useWindowSize'
 
 function Work() {
+  let size = useWindowSize()
   return (
     <Container id="work">
       <SidewaysTitle>
         <h3>Projects</h3>
         <InnerTitle>projects</InnerTitle>
       </SidewaysTitle>
+      <SimpleHeading>{size <= 500 ? 'Projects' : null}</SimpleHeading>
       <ProjectsContainer>
         {projectInfo.map((project) => (
           <Project
@@ -31,8 +34,11 @@ export default Work
 
 const Container = styled.section`
   margin-top: 100px;
-  scroll-margin-top: 150px;
+  scroll-margin-top: 200px;
   display: flex;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+  }
 `
 const SidewaysTitle = styled.div`
   writing-mode: vertical-lr;
@@ -62,6 +68,13 @@ const InnerTitle = styled.div`
   font-weight: 100;
   font-size: 0.14em;
   pointer-events: auto;
+`
+const SimpleHeading = styled.div`
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  font-family: var(--secondary-font-family);
+  margin-bottom: 2rem;
 `
 const ProjectsContainer = styled.div`
   display: flex;

@@ -66,6 +66,7 @@ const Logo = styled.a`
 `
 const HamBurgerMenu = styled.div`
   display: none;
+  height: 100%;
   cursor: pointer;
   @media screen and (max-width: 500px) {
     display: block;

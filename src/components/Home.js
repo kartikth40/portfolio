@@ -164,13 +164,33 @@ const ScrollAssist = styled.div`
       top: 23px;
     }
   }
+  @keyframes swipeUpAnime {
+    0% {
+      opacity: 0;
+      height: 50px;
+      bottom: 10px;
+    }
+    50% {
+      opacity: 1;
+      height: 80px;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      height: 50px;
+      bottom: 100px;
+    }
+  }
 
   @media screen and (max-width: 500px) {
     bottom: 100px;
+    animation: swipeUpAnime 1.5s infinite ease-in-out;
 
     border: 2px solid rgba(255, 255, 255, 0.5);
     &::after {
-      background: rgba(255, 255, 255, 0.5);
+      display: none;
     }
   }
 `

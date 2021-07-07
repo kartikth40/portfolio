@@ -144,6 +144,7 @@ const ProjectInfo = styled(AbsoluteContainer)`
     letter-spacing: 2px;
     padding: 0.5em 0.8em;
     outline: 0;
+    margin-right: 1em;
     border: white 2px solid;
     border-radius: 1rem;
     color: white;
