@@ -1,4 +1,4 @@
 TODO
-add scroll hint
-change bg color (refer dark reader)
+
+
 Email validations

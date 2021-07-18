@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import useWindowSize from '../brain/useWindowSize'
+import device, { size as devSize } from '../juice/mediaQueries'
 
 gsap.registerPlugin(ScrollTrigger)
 
 function Project({ projNo, bgImgUrl, title, desc, visitLink, sourceLink }) {
-  let size = useWindowSize()
+  let windowSize = useWindowSize()
   useEffect(() => {
     const projs = document.querySelectorAll('.Project-container')
     projs.forEach((proj) => {
@@ -37,7 +38,7 @@ function Project({ projNo, bgImgUrl, title, desc, visitLink, sourceLink }) {
         <DullBackground />
         <SliderMask />
       </BackgroundImg>
-      {size > 500 && <ProjectNo>{projNo}</ProjectNo>}
+      {windowSize > devSize.mobile && <ProjectNo>{projNo}</ProjectNo>}
       <ProjectInfo>
         <h2>{title}</h2>
         <h5>{desc}</h5>
@@ -61,7 +62,15 @@ const ProjectContainer = styled.div`
   width: 900px;
   aspect-ratio: 9 / 4;
   position: relative;
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.laptopS} {
+    width: 650px;
+    height: 300px;
+  }
+  @media screen and ${device.tablet} {
+    width: 450px;
+    height: 250px;
+  }
+  @media screen and ${device.mobile} {
     width: 300px;
     height: 200px;
   }
@@ -74,8 +83,13 @@ const BackgroundImg = styled.div`
   border-radius: 20px;
   position: relative;
   overflow: hidden;
-
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.laptopS} {
+    background-size: cover;
+  }
+  @media screen and ${device.tablet} {
+    background-size: cover;
+  }
+  @media screen and ${device.mobile} {
     background-size: cover;
   }
 `
@@ -92,7 +106,11 @@ const DullBackground = styled(AbsoluteContainer)`
 `
 const SliderMask = styled(AbsoluteContainer)`
   z-index: 2;
-  background: linear-gradient(to right, var(--primary-blue), var(--transparent-blue));
+  background: linear-gradient(
+    to right,
+    var(--primary-blue),
+    var(--transparent-blue)
+  );
   left: -100%;
   pointer-events: none;
   transition: 250ms all cubic-bezier(1, 0.01, 0.2, 0.98);
@@ -115,6 +133,15 @@ const ProjectNo = styled(AbsoluteContainer)`
   ${ProjectContainer}:hover & {
     top: -20%;
     opacity: 1;
+  }
+  @media screen and ${device.tablet} {
+    font-size: 100px;
+  }
+  @media screen and ${device.laptopS} {
+    ${ProjectContainer}:hover & {
+      top: -30%;
+      opacity: 1;
+    }
   }
 `
 const ProjectInfo = styled(AbsoluteContainer)`
@@ -159,7 +186,22 @@ const ProjectInfo = styled(AbsoluteContainer)`
       visibility: visible;
     }
   }
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.tablet} {
+    padding: 0 0 0 2rem;
+    h2 {
+      pointer-events: none;
+      font-size: 30px;
+    }
+    h5 {
+      pointer-events: none;
+      font-size: 18px;
+      width: 80%;
+    }
+    a {
+      margin-bottom: 1em;
+    }
+  }
+  @media screen and ${device.mobile} {
     padding: 0 0 0 1rem;
     h2 {
       pointer-events: none;
@@ -171,6 +213,7 @@ const ProjectInfo = styled(AbsoluteContainer)`
     }
     a {
       margin-bottom: 1em;
+      margin-right: 0;
     }
   }
   transition: 250ms all;
@@ -179,7 +222,7 @@ const ProjectInfo = styled(AbsoluteContainer)`
   }
 `
 const CTAbuttons = styled.div`
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
     position: absolute;
     top: 250px;
     left: 0;

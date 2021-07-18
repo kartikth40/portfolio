@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import useWindowSize from '../brain/useWindowSize'
+import device from '../juice/mediaQueries'
 
 function Home() {
   let size = useWindowSize()
@@ -43,7 +44,7 @@ const Container = styled.main`
   justify-content: flex-start;
   align-items: center;
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
     overflow: hidden;
     font-size: 1.5rem;
     p {
@@ -92,7 +93,11 @@ const HeroSecondary = styled(Hero)`
     -webkit-text-stroke: 1px var(--primary);
     filter: drop-shadow(0 0 0.35rem var(--primary));
     color: transparent;
-    background: radial-gradient(circle at center, #090e17 0.06rem, transparent 0);
+    background: radial-gradient(
+      circle at center,
+      #090e17 0.06rem,
+      transparent 0
+    );
     background-size: 0.15rem 0.15rem;
     filter: none;
     -webkit-background-clip: text;
@@ -109,7 +114,7 @@ const Logo = styled.div`
   position: absolute;
   left: 50vw;
   z-index: -1;
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
     & img {
       width: 200px;
     }
@@ -184,7 +189,7 @@ const ScrollAssist = styled.div`
     }
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
     bottom: 100px;
     animation: swipeUpAnime 1.5s infinite ease-in-out;
 

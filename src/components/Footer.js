@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import useWindowSize from '../brain/useWindowSize'
+import device from '../juice/mediaQueries'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -44,30 +45,48 @@ function Footer() {
         <img src="/icons/white_logo.svg" alt="footer white logo" />
       </Logo>
       <FooterLinks>
-        <a href="https://www.linkedin.com/in/kartikth40" target="_blank" rel="noreferrer">
+        <a
+          href="https://www.linkedin.com/in/kartikth40"
+          target="_blank"
+          rel="noreferrer"
+        >
           <img src="/icons/linkedin_icon.png" alt="linkedin logo" />
         </a>
-        <a href="https://github.com/kartikth40" target="_blank" rel="noreferrer">
+        <a
+          href="https://github.com/kartikth40"
+          target="_blank"
+          rel="noreferrer"
+        >
           <img src="/icons/github_icon.png" alt="github logo" />
         </a>
       </FooterLinks>
       {size > 500 ? (
         <SocialSidebar className="social-sidebar">
           <Circle>
-            <a href="https://www.linkedin.com/in/kartikth40" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.linkedin.com/in/kartikth40"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src="/icons/linkedin_logo.png" alt="linkedin logo" />
             </a>
           </Circle>
           <Line />
           <Circle>
-            <a href="https://github.com/kartikth40" target="_blank" rel="noreferrer">
+            <a
+              href="https://github.com/kartikth40"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img src="/icons/github_logo.png" alt="github logo" />
             </a>
           </Circle>
           <Line />
         </SocialSidebar>
       ) : null}
-      <Copyrights>© {currentYear} Kartik Thakur - IN 8178795167 - Contact</Copyrights>
+      <Copyrights>
+        © {currentYear} Kartik Thakur - IN 8178795167 - Contact
+      </Copyrights>
     </Container>
   )
 }
@@ -160,7 +179,7 @@ const Copyrights = styled.div`
   justify-content: center;
   align-items: center;
   color: rgba(255, 255, 255, 0.3);
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
     font-size: 10px;
   }
 `

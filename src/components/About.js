@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import device from '../juice/mediaQueries'
 
 function About() {
   return (
@@ -32,10 +33,10 @@ function About() {
 export default About
 
 const Container = styled.section`
-  scroll-margin-top: calc(100px);
+  scroll-margin-top: calc(50px);
 
   min-height: 100vh;
-  padding: 2rem 0;
+  padding: 4rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,7 +47,7 @@ const AboutSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
     flex-direction: column;
   }
 `
@@ -60,7 +61,7 @@ const Picture = styled.picture`
     height: 100%;
     object-fit: cover;
   }
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
     width: 200px;
     height: 200px;
     margin-bottom: 3rem;
@@ -87,7 +88,7 @@ const MainContect = styled.div`
     font-weight: 900;
     display: inline-block;
   }
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
     & h3 {
       font-size: 2rem;
     }

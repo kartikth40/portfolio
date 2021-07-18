@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import emailjs from 'emailjs-com'
+import device from '../juice/mediaQueries'
 
 import gsap from 'gsap'
 
@@ -43,14 +44,21 @@ function Contact({ showContacts, setShowContacts }) {
   function sendEmail(e) {
     e.preventDefault()
 
-    emailjs.sendForm('service_ft2rodg', 'template_3phfmmi', e.target, 'user_7cG9hmB2cMQJLiupWm3fD').then(
-      (result) => {
-        console.log(result.text)
-      },
-      (error) => {
-        console.log(error.text)
-      }
-    )
+    emailjs
+      .sendForm(
+        'service_ft2rodg',
+        'template_3phfmmi',
+        e.target,
+        'user_7cG9hmB2cMQJLiupWm3fD'
+      )
+      .then(
+        (result) => {
+          console.log(result.text)
+        },
+        (error) => {
+          console.log(error.text)
+        }
+      )
     e.target.reset()
   }
   return (
@@ -115,7 +123,7 @@ const Container = styled.div`
   height: 75vh;
   z-index: 1000;
   overflow: hidden;
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
     width: 100vw;
     height: 100vh;
     border-radius: none;
@@ -168,7 +176,7 @@ const Contactform = styled.form`
   & button:active {
     transform: scale(0.95);
   }
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
     & label {
       font-size: 1rem;
     }

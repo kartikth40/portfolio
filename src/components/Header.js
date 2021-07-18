@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Contact from './Contact'
+import device from '../juice/mediaQueries'
 
 function Header() {
   useEffect(() => {
@@ -21,7 +22,9 @@ function Header() {
           <img src="/icons/white_logo.svg" alt="header white logo" />
         </Logo>
 
-        <HamBurgerMenu onClick={hamClick}>{showNav ? <div>close</div> : <div>menu</div>}</HamBurgerMenu>
+        <HamBurgerMenu onClick={hamClick}>
+          {showNav ? <div>close</div> : <div>menu</div>}
+        </HamBurgerMenu>
 
         <Nav className={showNav ? 'nav active' : 'nav'}>
           <NavItems href="#about">about</NavItems>
@@ -50,7 +53,10 @@ const Container = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
+    background: black;
+  }
+  @media screen and ${device.tablet} {
     background: black;
   }
 `
@@ -68,7 +74,10 @@ const HamBurgerMenu = styled.div`
   display: none;
   height: 100%;
   cursor: pointer;
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
+    display: block;
+  }
+  @media screen and ${device.tablet} {
     display: block;
   }
 `
@@ -77,7 +86,20 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
 
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
+    background: black;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: -150%;
+    width: 100%;
+    flex-direction: column;
+    transition: 250ms all;
+    &.active {
+      top: 100px;
+    }
+  }
+  @media screen and ${device.tablet} {
     background: black;
     position: absolute;
     z-index: -1;
@@ -124,7 +146,21 @@ const NavItems = styled.a`
     transition: 250ms all;
     height: calc(100% + 10px);
   }
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
+    height: 50px;
+    padding: 10px 20px;
+    margin: 0;
+    z-index: -1;
+    align-items: center;
+    justify-content: center;
+    &::before {
+      display: none;
+    }
+    &:hover {
+      background: white;
+    }
+  }
+  @media screen and ${device.tablet} {
     height: 50px;
     padding: 10px 20px;
     margin: 0;

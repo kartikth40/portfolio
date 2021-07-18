@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Project from './Project'
 import projectInfo from '../juice/projectInfo'
 import useWindowSize from '../brain/useWindowSize'
+import device from '../juice/mediaQueries'
 
 function Work() {
   let size = useWindowSize()
@@ -12,7 +13,7 @@ function Work() {
         <h3>Projects</h3>
         <InnerTitle>projects</InnerTitle>
       </SidewaysTitle>
-      <SimpleHeading>{size <= 500 ? 'Projects' : null}</SimpleHeading>
+      {size <= 500 ? <SimpleHeading>Projects</SimpleHeading> : null}
       <ProjectsContainer>
         {projectInfo.map((project) => (
           <Project
@@ -36,7 +37,7 @@ const Container = styled.section`
   margin-top: 100px;
   scroll-margin-top: 200px;
   display: flex;
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
     flex-direction: column;
   }
 `
@@ -49,8 +50,18 @@ const SidewaysTitle = styled.div`
   font-size: 10rem;
   position: relative;
   pointer-events: none;
-  @media screen and (max-width: 500px) {
+  @media screen and ${device.mobile} {
     display: none;
+  }
+  @media screen and ${device.tablet} {
+    letter-spacing: 5px;
+    margin: 0 0 0 2rem;
+    font-size: 9rem;
+  }
+  @media screen and ${device.laptopS} {
+    letter-spacing: 5px;
+    margin: 0 0 0 1rem;
+    font-size: 9.5rem;
   }
 `
 const InnerTitle = styled.div`
