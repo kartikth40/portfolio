@@ -1,11 +1,33 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import Contact from './Contact'
-import device from '../juice/mediaQueries'
+import useWindowSize from '../brain/useWindowSize'
+
+import device, { size as devSize } from '../juice/mediaQueries'
 
 function Header() {
+  let windowSize = useWindowSize()
+
+  let hamRef = useRef()
+  let navRef = useRef()
   useEffect(() => {
-    import('../brain/headerLogic')
+    if (windowSize > devSize.tablet) {
+      import('../brain/headerLogic')
+    }
+    let hideMenu = (event) => {
+      if (
+        !hamRef.current.contains(event.target) &&
+        !navRef.current.contains(event.target)
+      ) {
+        setShowNav(false)
+      }
+    }
+
+    document.addEventListener('mousedown', hideMenu)
+
+    return () => {
+      document.removeEventListener('mousedown', hideMenu)
+    }
   }, [])
   const [showContacts, setShowContacts] = useState(false)
   const [showNav, setShowNav] = useState(false)
@@ -22,11 +44,11 @@ function Header() {
           <img src="/icons/white_logo.svg" alt="header white logo" />
         </Logo>
 
-        <HamBurgerMenu onClick={hamClick}>
+        <HamBurgerMenu ref={hamRef} onClick={hamClick}>
           {showNav ? <div>close</div> : <div>menu</div>}
         </HamBurgerMenu>
 
-        <Nav className={showNav ? 'nav active' : 'nav'}>
+        <Nav ref={navRef} className={showNav ? 'nav active' : 'nav'}>
           <NavItems href="#about">about</NavItems>
           <NavItems href="#work">projects</NavItems>
           <NavItems href="#home" onClick={openContacts}>
