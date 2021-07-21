@@ -128,6 +128,11 @@ const Container = styled.div`
     height: 100vh;
     border-radius: none;
   }
+  @media screen and ${device.tablet} {
+    width: 100vw;
+    height: 100vh;
+    border-radius: none;
+  }
 `
 const TopHeading = styled.div`
   & h1 {

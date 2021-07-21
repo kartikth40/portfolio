@@ -96,4 +96,12 @@ const MainContect = styled.div`
       font-size: 0.9rem;
     }
   }
+  @media screen and ${device.tablet} {
+    & h3 {
+      font-size: 4rem;
+    }
+    & p {
+      font-size: 0.7rem;
+    }
+  }
 `

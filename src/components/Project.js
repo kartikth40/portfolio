@@ -67,7 +67,7 @@ const ProjectContainer = styled.div`
     height: 300px;
   }
   @media screen and ${device.tablet} {
-    width: 450px;
+    width: 50vw;
     height: 250px;
   }
   @media screen and ${device.mobile} {
@@ -134,13 +134,17 @@ const ProjectNo = styled(AbsoluteContainer)`
     top: -20%;
     opacity: 1;
   }
-  @media screen and ${device.tablet} {
-    font-size: 100px;
-  }
   @media screen and ${device.laptopS} {
     ${ProjectContainer}:hover & {
       top: -30%;
       opacity: 1;
+    }
+  }
+  @media screen and ${device.tablet} {
+    font-size: 100px;
+    ${ProjectContainer}:hover & {
+      left: -80%;
+      opacity: 0.7;
     }
   }
 `
@@ -190,11 +194,11 @@ const ProjectInfo = styled(AbsoluteContainer)`
     padding: 0 0 0 2rem;
     h2 {
       pointer-events: none;
-      font-size: 30px;
+      font-size: 20px;
     }
     h5 {
       pointer-events: none;
-      font-size: 18px;
+      font-size: 15px;
       width: 80%;
     }
     a {

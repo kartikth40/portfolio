@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import useWindowSize from '../brain/useWindowSize'
-import device from '../juice/mediaQueries'
+import device, { size as devSize } from '../juice/mediaQueries'
 
 gsap.registerPlugin(ScrollTrigger)
 
 function Footer() {
-  let size = useWindowSize()
+  let windowSize = useWindowSize()
   const currentYear = new Date().getFullYear()
 
   const addFooterLinkGsap = () => {
@@ -37,8 +37,8 @@ function Footer() {
   }
 
   useEffect(() => {
-    if (size > 500) addFooterLinkGsap()
-  }, [size])
+    if (windowSize > devSize.tablet) addFooterLinkGsap()
+  }, [windowSize])
   return (
     <Container id="footer">
       <Logo href="#home">
@@ -60,7 +60,7 @@ function Footer() {
           <img src="/icons/github_icon.png" alt="github logo" />
         </a>
       </FooterLinks>
-      {size > 500 ? (
+      {windowSize > devSize.tablet ? (
         <SocialSidebar className="social-sidebar">
           <Circle>
             <a

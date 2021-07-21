@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import useWindowSize from '../brain/useWindowSize'
-import device from '../juice/mediaQueries'
+import device, { size as devSize } from '../juice/mediaQueries'
 
 function Home() {
-  let size = useWindowSize()
+  let windowSize = useWindowSize()
   useEffect(() => {
-    if (size > 500) {
+    if (windowSize > devSize.tablet) {
       import('../brain/homePageLogic')
     }
-  }, [size])
+  }, [windowSize])
   return (
     <Container id="home">
       <Hero className="hero">
@@ -43,12 +43,18 @@ const Container = styled.main`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  overflow: hidden;
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
   @media screen and ${device.mobile} {
-    overflow: hidden;
     font-size: 1.5rem;
     p {
       font-size: 1rem;
+    }
+  }
+  @media screen and ${device.tablet} {
+    font-size: 2rem;
+    p {
+      font-size: 1.5rem;
     }
   }
 `
@@ -112,9 +118,17 @@ const HeroSecondary = styled(Hero)`
 const Logo = styled.div`
   pointer-events: none;
   position: absolute;
-  left: 50vw;
+  left: 45vw;
   z-index: -1;
   @media screen and ${device.mobile} {
+    left: 58vw;
+    & img {
+      width: 200px;
+    }
+  }
+  @media screen and ${device.tablet} {
+    left: 50vw;
+
     & img {
       width: 200px;
     }
@@ -190,6 +204,15 @@ const ScrollAssist = styled.div`
   }
 
   @media screen and ${device.mobile} {
+    bottom: 100px;
+    animation: swipeUpAnime 1.5s infinite ease-in-out;
+
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    &::after {
+      display: none;
+    }
+  }
+  @media screen and ${device.tablet} {
     bottom: 100px;
     animation: swipeUpAnime 1.5s infinite ease-in-out;
 

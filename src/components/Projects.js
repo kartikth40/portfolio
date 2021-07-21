@@ -50,18 +50,18 @@ const SidewaysTitle = styled.div`
   font-size: 10rem;
   position: relative;
   pointer-events: none;
-  @media screen and ${device.mobile} {
-    display: none;
+  @media screen and ${device.laptopS} {
+    letter-spacing: 5px;
+    margin: 0 0 0 1rem;
+    font-size: 9.5rem;
   }
   @media screen and ${device.tablet} {
     letter-spacing: 5px;
     margin: 0 0 0 2rem;
     font-size: 9rem;
   }
-  @media screen and ${device.laptopS} {
-    letter-spacing: 5px;
-    margin: 0 0 0 1rem;
-    font-size: 9.5rem;
+  @media screen and ${device.mobile} {
+    display: none;
   }
 `
 const InnerTitle = styled.div`
