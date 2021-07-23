@@ -1,36 +1,5 @@
-import React from 'react'
 import styled from 'styled-components'
-import device from '../juice/mediaQueries'
-
-function About() {
-  return (
-    <Container id="about">
-      <AboutSection>
-        <Picture>
-          <source type="image/webp" srcSet="/img/kartik_black.webp" />
-          <img src="/img/kartik_black.jpg" alt="profile pic" />
-        </Picture>
-        <MainContect>
-          <h3>About</h3>
-          <p>
-            Hello! I'm Kartik,
-            <br /> a 20-years-old Front-end developer.
-            <br /> I enjoy creating things that live on the internet.
-            <br />
-            <br />I like to
-            <span>resolve design problems,</span>
-            <span>create smart user interfaces &</span>
-            <span>imagine useful interaction.</span>
-            <br />
-            Currently hunting for some <span>Opportunities</span>.
-          </p>
-        </MainContect>
-      </AboutSection>
-    </Container>
-  )
-}
-
-export default About
+import device from '../../juice/mediaQueries'
 
 const Container = styled.section`
   scroll-margin-top: calc(50px);
@@ -88,14 +57,6 @@ const MainContect = styled.div`
     font-weight: 900;
     display: inline-block;
   }
-  @media screen and ${device.mobile} {
-    & h3 {
-      font-size: 2rem;
-    }
-    & p {
-      font-size: 0.9rem;
-    }
-  }
   @media screen and ${device.tablet} {
     & h3 {
       font-size: 4rem;
@@ -104,4 +65,14 @@ const MainContect = styled.div`
       font-size: 0.7rem;
     }
   }
+  @media screen and ${device.mobile} {
+    & h3 {
+      font-size: 3rem;
+    }
+    & p {
+      font-size: 0.9rem;
+    }
+  }
 `
+
+export { Container, AboutSection, Picture, MainContect }

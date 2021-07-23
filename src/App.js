@@ -1,8 +1,8 @@
-import Header from './components/Header'
-import Home from './components/Home'
-import About from './components/About'
-import Projects from './components/Projects'
-import Footer from './components/Footer'
+import Header from './components/Header/index'
+import Home from './components/Home/index'
+import About from './components/About/index'
+import Projects from './components/Projects/index'
+import Footer from './components/Footer/index'
 
 function App() {
   return (

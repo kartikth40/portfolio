@@ -1,37 +1,5 @@
-import React from 'react'
 import styled from 'styled-components'
-import Project from './Project'
-import projectInfo from '../juice/projectInfo'
-import useWindowSize from '../brain/useWindowSize'
-import device from '../juice/mediaQueries'
-
-function Work() {
-  let size = useWindowSize()
-  return (
-    <Container id="work">
-      <SidewaysTitle>
-        <h3>Projects</h3>
-        <InnerTitle>projects</InnerTitle>
-      </SidewaysTitle>
-      {size <= 500 ? <SimpleHeading>Projects</SimpleHeading> : null}
-      <ProjectsContainer>
-        {projectInfo.map((project) => (
-          <Project
-            key={project.id}
-            projNo={project.projNo}
-            bgImgUrl={project.bgImgUrl}
-            title={project.title}
-            desc={project.desc}
-            visitLink={project.visitLink}
-            sourceLink={project.sourceLink}
-          />
-        ))}
-      </ProjectsContainer>
-    </Container>
-  )
-}
-
-export default Work
+import device from '../../juice/mediaQueries'
 
 const Container = styled.section`
   margin-top: 100px;
@@ -93,3 +61,10 @@ const ProjectsContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `
+export {
+  Container,
+  SidewaysTitle,
+  InnerTitle,
+  SimpleHeading,
+  ProjectsContainer,
+}

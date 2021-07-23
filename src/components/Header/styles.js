@@ -1,71 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import Contact from './Contact'
-import useWindowSize from '../brain/useWindowSize'
-
-import device, { size as devSize } from '../juice/mediaQueries'
-
-function Header() {
-  let isLarge = useWindowSize() > devSize.tablet
-  let hamRef = useRef()
-  let navRef = useRef()
-  const [showContacts, setShowContacts] = useState(false)
-  const [showNav, setShowNav] = useState(false)
-
-  useEffect(() => {
-    const hideMenu = (event) => {
-      if (
-        !hamRef.current.contains(event.target) &&
-        !navRef.current.contains(event.target)
-      ) {
-        hamClick()
-      } else if (navRef.current.contains(event.target)) {
-        setTimeout(() => {
-          hamClick()
-        }, 500)
-      }
-    }
-    if (isLarge) {
-      import('../brain/headerLogic')
-    } else if (showNav) {
-      document.addEventListener('click', hideMenu)
-    }
-    return () => document.removeEventListener('click', hideMenu)
-  }, [isLarge, showNav])
-
-  const openContacts = () => {
-    setShowContacts(true)
-  }
-  const hamClick = () => {
-    setShowNav((prev) => !prev)
-    const ham = document.querySelector('.hamburger-menu')
-    ham.classList.toggle('clicked')
-    ham.classList.toggle('unclicked')
-  }
-  return (
-    <>
-      <Container id="header">
-        <Logo href="#home">
-          <img src="/icons/white_logo.svg" alt="header white logo" />
-        </Logo>
-        <HamContainer onClick={hamClick}>
-          <HamBurgerMenu className="hamburger-menu unclicked" ref={hamRef} />
-        </HamContainer>
-
-        <Nav ref={navRef} className={showNav ? 'nav active' : 'nav'}>
-          <NavItems href="#about">about</NavItems>
-          <NavItems href="#work">projects</NavItems>
-          <NavItems href="#home" onClick={openContacts}>
-            contact
-          </NavItems>
-        </Nav>
-      </Container>
-      <Contact showContacts={showContacts} setShowContacts={setShowContacts} />
-    </>
-  )
-}
-
-export default Header
+import device from '../../juice/mediaQueries'
 
 const Container = styled.header`
   font-family: var(--secondary-font-family);
@@ -285,8 +219,9 @@ const NavItems = styled.a`
       display: none;
     }
     &:hover {
-      color: white;
-      background: black;
+      color: black;
+      background: white;
     }
   }
 `
+export { Container, Logo, HamContainer, HamBurgerMenu, Nav, NavItems }

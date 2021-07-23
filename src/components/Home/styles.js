@@ -1,37 +1,5 @@
-import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import useWindowSize from '../brain/useWindowSize'
-import device, { size as devSize } from '../juice/mediaQueries'
-
-function Home() {
-  let windowSize = useWindowSize()
-  useEffect(() => {
-    if (windowSize > devSize.tablet) {
-      import('../brain/homePageLogic')
-    }
-  }, [windowSize])
-  return (
-    <Container id="home">
-      <Hero className="hero">
-        <h1>Hi, I'm Kartik</h1>
-        <p>A Front-end Developer</p>
-      </Hero>
-      <HeroSecondary className="hero-secondary" aria-hidden="true">
-        <h1>Hi, I'm Kartik</h1>
-        <p>A Front-end Developer</p>
-        <Logo>
-          <img src="/icons/skeleton_logo.svg" alt="skeleton logo" />
-        </Logo>
-      </HeroSecondary>
-      <Logo>
-        <img src="/icons/blue_logo.svg" alt="main blue logo" />
-      </Logo>
-      <ScrollAssist></ScrollAssist>
-    </Container>
-  )
-}
-
-export default Home
+import device from '../../juice/mediaQueries'
 
 const Container = styled.main`
   cursor: default;
@@ -45,16 +13,16 @@ const Container = styled.main`
   align-items: center;
   overflow: hidden;
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
-  @media screen and ${device.mobile} {
-    font-size: 1.5rem;
-    p {
-      font-size: 1rem;
-    }
-  }
   @media screen and ${device.tablet} {
     font-size: 2rem;
     p {
       font-size: 1.5rem;
+    }
+  }
+  @media screen and ${device.mobile} {
+    font-size: 1.2rem;
+    p {
+      font-size: 0.7rem;
     }
   }
 `
@@ -222,3 +190,4 @@ const ScrollAssist = styled.div`
     }
   }
 `
+export { Container, Hero, HeroSecondary, Logo, ScrollAssist }
