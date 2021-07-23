@@ -6,36 +6,41 @@ import useWindowSize from '../brain/useWindowSize'
 import device, { size as devSize } from '../juice/mediaQueries'
 
 function Header() {
-  let windowSize = useWindowSize()
-
+  let isLarge = useWindowSize() > devSize.tablet
   let hamRef = useRef()
   let navRef = useRef()
+  const [showContacts, setShowContacts] = useState(false)
+  const [showNav, setShowNav] = useState(false)
+
   useEffect(() => {
-    if (windowSize > devSize.tablet) {
-      import('../brain/headerLogic')
-    }
-    let hideMenu = (event) => {
+    const hideMenu = (event) => {
       if (
         !hamRef.current.contains(event.target) &&
         !navRef.current.contains(event.target)
       ) {
-        setShowNav(false)
+        hamClick()
+      } else if (navRef.current.contains(event.target)) {
+        setTimeout(() => {
+          hamClick()
+        }, 500)
       }
     }
-
-    document.addEventListener('mousedown', hideMenu)
-
-    return () => {
-      document.removeEventListener('mousedown', hideMenu)
+    if (isLarge) {
+      import('../brain/headerLogic')
+    } else if (showNav) {
+      document.addEventListener('click', hideMenu)
     }
-  }, [])
-  const [showContacts, setShowContacts] = useState(false)
-  const [showNav, setShowNav] = useState(false)
+    return () => document.removeEventListener('click', hideMenu)
+  }, [isLarge, showNav])
+
   const openContacts = () => {
     setShowContacts(true)
   }
   const hamClick = () => {
     setShowNav((prev) => !prev)
+    const ham = document.querySelector('.hamburger-menu')
+    ham.classList.toggle('clicked')
+    ham.classList.toggle('unclicked')
   }
   return (
     <>
@@ -43,10 +48,9 @@ function Header() {
         <Logo href="#home">
           <img src="/icons/white_logo.svg" alt="header white logo" />
         </Logo>
-
-        <HamBurgerMenu ref={hamRef} onClick={hamClick}>
-          {showNav ? <div>close</div> : <div>menu</div>}
-        </HamBurgerMenu>
+        <HamContainer onClick={hamClick}>
+          <HamBurgerMenu className="hamburger-menu unclicked" ref={hamRef} />
+        </HamContainer>
 
         <Nav ref={navRef} className={showNav ? 'nav active' : 'nav'}>
           <NavItems href="#about">about</NavItems>
@@ -75,11 +79,11 @@ const Container = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media screen and ${device.mobile} {
-    background: black;
-  }
   @media screen and ${device.tablet} {
     background: black;
+  }
+  @media screen and ${device.mobile} {
+    padding: 20px 20px;
   }
 `
 const Logo = styled.a`
@@ -92,35 +96,137 @@ const Logo = styled.a`
     height: 100%;
   }
 `
-const HamBurgerMenu = styled.div`
-  display: none;
-  height: 100%;
+const HamContainer = styled.div`
+  width: 50px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  @media screen and ${device.mobile} {
-    display: block;
+
+  &:hover {
+    opacity: 0.7;
+  }
+`
+const HamBurgerMenu = styled.button`
+  display: none;
+  position: relative;
+  height: 4px;
+  width: 40px;
+  background: white;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  transition: 0.25s transform 0.25s;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    left: 0;
+    transition: 1s all;
+  }
+  &::before {
+    top: -10px;
+  }
+  &::after {
+    top: 10px;
+  }
+  &.clicked {
+    background: transparent;
+  }
+  &.clicked::before {
+    animation: upperLine 0.5s forwards cubic-bezier(0.17, 0.67, 0.38, 1.4);
+  }
+  &.clicked::after {
+    animation: lowerLine 0.5s forwards cubic-bezier(0.17, 0.67, 0.38, 1.4);
+  }
+
+  &.unclicked::before {
+    animation: upperLineReverse 0.5s forwards
+      cubic-bezier(0.17, 0.67, 0.38, 1.4);
+  }
+  &.unclicked::after {
+    animation: lowerLineReverse 0.5s forwards
+      cubic-bezier(0.17, 0.67, 0.38, 1.4);
   }
   @media screen and ${device.tablet} {
     display: block;
+  }
+
+  @keyframes upperLine {
+    0% {
+      top: -10px;
+    }
+    30% {
+      top: 0px;
+    }
+    50% {
+      transform: rotate(0);
+    }
+    100% {
+      top: 0px;
+      transform: rotate(45deg);
+    }
+  }
+
+  @keyframes lowerLine {
+    0% {
+      top: 10px;
+    }
+    50% {
+      top: 0px;
+    }
+    80% {
+      transform: rotate(0);
+    }
+    100% {
+      top: 0px;
+      transform: rotate(-45deg);
+    }
+  }
+
+  @keyframes upperLineReverse {
+    0% {
+      top: 0px;
+      transform: rotate(45deg);
+    }
+    50% {
+      transform: rotate(0);
+    }
+    80% {
+      top: 0px;
+    }
+    100% {
+      top: -10px;
+    }
+  }
+
+  @keyframes lowerLineReverse {
+    0% {
+      top: 0px;
+      transform: rotate(-45deg);
+    }
+    30% {
+      transform: rotate(0);
+    }
+    50% {
+      top: 0px;
+    }
+    100% {
+      top: 10px;
+    }
   }
 `
 
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
-
-  @media screen and ${device.mobile} {
-    background: black;
-    position: absolute;
-    z-index: -1;
-    left: 0;
-    top: -150%;
-    width: 100%;
-    flex-direction: column;
-    transition: 250ms all;
-    &.active {
-      top: 100px;
-    }
-  }
   @media screen and ${device.tablet} {
     background: black;
     position: absolute;
@@ -131,7 +237,7 @@ const Nav = styled.nav`
     flex-direction: column;
     transition: 250ms all;
     &.active {
-      top: 100px;
+      top: 80px;
     }
   }
 `
@@ -168,20 +274,6 @@ const NavItems = styled.a`
     transition: 250ms all;
     height: calc(100% + 10px);
   }
-  @media screen and ${device.mobile} {
-    height: 50px;
-    padding: 10px 20px;
-    margin: 0;
-    z-index: -1;
-    align-items: center;
-    justify-content: center;
-    &::before {
-      display: none;
-    }
-    &:hover {
-      background: white;
-    }
-  }
   @media screen and ${device.tablet} {
     height: 50px;
     padding: 10px 20px;
@@ -193,7 +285,8 @@ const NavItems = styled.a`
       display: none;
     }
     &:hover {
-      background: white;
+      color: white;
+      background: black;
     }
   }
 `
