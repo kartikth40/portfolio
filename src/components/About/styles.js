@@ -52,7 +52,7 @@ const MainContect = styled.div`
     margin-bottom: 0.3rem;
     font-family: var(--secondary-font-family);
   }
-  & span:last-child {
+  & span:nth-last-child(2) {
     font-family: var(--primary-font-family);
     font-weight: 900;
     display: inline-block;
@@ -74,5 +74,32 @@ const MainContect = styled.div`
     }
   }
 `
+const StyledLink = styled.a`
+  display: block;
+  text-decoration: none;
+  width: max-content;
+  margin-top: 10px;
+`
+const StyledText = styled.div`
+  width: max-content;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: var(--secondary-font-family);
+  color: #fff;
+  padding: 10px 20px;
+  border: 2px dashed #fff;
+  border-radius: 30px;
+  & img {
+    padding: 0 10px;
+    height: 30px;
+  }
 
-export { Container, AboutSection, Picture, MainContect }
+  @media screen and ${device.tablet} {
+    font-size: 0.7rem;
+  }
+  @media screen and ${device.mobile} {
+    font-size: 0.9rem;
+  }
+`
+
+export { Container, AboutSection, Picture, MainContect, StyledLink, StyledText }

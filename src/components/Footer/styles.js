@@ -91,4 +91,5 @@ const Copyrights = styled.div`
     font-size: 10px;
   }
 `
+
 export { Container, SocialSidebar, Line, Circle, Logo, FooterLinks, Copyrights }

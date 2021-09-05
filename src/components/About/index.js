@@ -1,5 +1,12 @@
 import React from 'react'
-import { Container, AboutSection, Picture, MainContect } from './styles'
+import {
+  Container,
+  AboutSection,
+  Picture,
+  MainContect,
+  StyledLink,
+  StyledText,
+} from './styles'
 function About() {
   return (
     <Container id="about">
@@ -21,6 +28,13 @@ function About() {
             <span>imagine useful interaction.</span>
             <br />
             Currently hunting for some <span>Opportunities</span>.
+            <StyledLink
+              href="/files/myResume.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <StyledText>my resume</StyledText>
+            </StyledLink>
           </p>
         </MainContect>
       </AboutSection>
