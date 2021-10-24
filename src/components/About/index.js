@@ -8,6 +8,11 @@ import {
   StyledText,
 } from './styles'
 function About() {
+  const getAge = () => {
+    let curYear = new Date().getFullYear()
+    let age = curYear - 2000
+    return age
+  }
   return (
     <Container id="about">
       <AboutSection>
@@ -19,7 +24,7 @@ function About() {
           <h3>About</h3>
           <p>
             Hello! I'm Kartik,
-            <br /> a 20-years-old Front-end developer.
+            <br /> a {getAge()}-years-old Front-end developer.
             <br /> I enjoy creating things that live on the internet.
             <br />
             <br />I like to
