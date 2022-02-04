@@ -14,7 +14,7 @@ const SocialSidebar = styled.div`
 
 const Line = styled.div`
   width: 2px;
-  height: 100px;
+  height: 70px;
   background: var(--primary);
 `
 const Circle = styled.div`
@@ -33,8 +33,8 @@ const Circle = styled.div`
     box-shadow: 0 0 10px rgb(149, 255, 244);
   }
   & a {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
   }
   & a img {
     border-radius: 50%;

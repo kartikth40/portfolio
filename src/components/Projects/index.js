@@ -5,6 +5,7 @@ import useWindowSize from '../../brain/useWindowSize'
 import {
   Container,
   SidewaysTitle,
+  UpperTitle,
   InnerTitle,
   SimpleHeading,
   ProjectsContainer,
@@ -15,6 +16,7 @@ function Work() {
     <Container id="work">
       <SidewaysTitle>
         <h3>Projects</h3>
+        <UpperTitle>Latest</UpperTitle>
         <InnerTitle>projects</InnerTitle>
       </SidewaysTitle>
       {size <= 500 ? <SimpleHeading>Projects</SimpleHeading> : null}

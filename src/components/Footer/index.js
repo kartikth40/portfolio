@@ -71,6 +71,16 @@ function Footer() {
         <SocialSidebar className="social-sidebar">
           <Circle>
             <a
+              href="https://www.havesmallbites.me"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src="/icons/blogs_logo.png" alt="blog site logo" />
+            </a>
+          </Circle>
+          <Line />
+          <Circle>
+            <a
               href="https://www.linkedin.com/in/kartikth40"
               target="_blank"
               rel="noreferrer"

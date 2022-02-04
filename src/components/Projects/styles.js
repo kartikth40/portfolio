@@ -32,6 +32,21 @@ const SidewaysTitle = styled.div`
     display: none;
   }
 `
+const UpperTitle = styled.div`
+  width: 6.1em;
+  height: 1.8em;
+  position: absolute;
+  font-family: var(--primary-font-family);
+  top: -0.4em;
+  left: 0.7em;
+  color: white;
+  writing-mode: horizontal-tb;
+  letter-spacing: 0;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 0.16em;
+  pointer-events: auto;
+`
 const InnerTitle = styled.div`
   width: 6.1em;
   height: 1.8em;
@@ -64,6 +79,7 @@ const ProjectsContainer = styled.div`
 export {
   Container,
   SidewaysTitle,
+  UpperTitle,
   InnerTitle,
   SimpleHeading,
   ProjectsContainer,
