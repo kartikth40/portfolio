@@ -53,10 +53,12 @@ function Project({ projNo, bgImgUrl, title, desc, visitLink, sourceLink }) {
         <h5>{desc}</h5>
         <CTAbuttons>
           <a href={visitLink} target="_blank" rel="noreferrer">
-            Visit Site
+            <span>Visit Site</span>
+            <span>&#8599;</span>
           </a>
           <a href={sourceLink} target="_blank" rel="noreferrer">
-            Source Code
+            <span>Source Code</span>
+            <span>&#8599;</span>
           </a>
         </CTAbuttons>
       </ProjectInfo>

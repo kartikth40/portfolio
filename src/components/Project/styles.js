@@ -177,7 +177,8 @@ const CTAbuttons = styled.div`
     width: 100%;
     a {
       width: 100%;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
     }
     height: max-content;
   }

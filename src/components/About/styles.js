@@ -81,6 +81,7 @@ const StyledLink = styled.a`
   margin-top: 10px;
 `
 const StyledText = styled.div`
+  position: relative;
   width: max-content;
   font-size: 20px;
   font-weight: bold;
@@ -89,9 +90,44 @@ const StyledText = styled.div`
   padding: 10px 20px;
   border: 2px dashed #fff;
   border-radius: 30px;
-  & img {
-    padding: 0 10px;
+  transition: 0.25s all;
+  &: hover {
+    border: 2px solid #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-bottom-color: #fff;
+    left: 50%;
+    bottom: -100px;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: 0.15s all ease-out;
+  }
+  &:after {
+    content: '';
+    width: 2px;
     height: 30px;
+    position: absolute;
+    left: 50%;
+    bottom: -130px;
+    transform: translateX(-50%);
+    opacity: 0;
+    background-color: #fff;
+    transition: 0.15s all ease-out;
+  }
+
+  &:hover:before {
+    bottom: -20px;
+    opacity: 1;
+  }
+  &:hover:after {
+    bottom: -50px;
+    opacity: 1;
   }
 
   @media screen and ${device.tablet} {
