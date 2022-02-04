@@ -34,6 +34,7 @@ const Hero = styled.div`
   text-transform: uppercase;
 
   & h1 {
+    font-family: var(--title-font-family);
     letter-spacing: 0.3rem;
     -webkit-text-stroke: 1px var(--primary);
     filter: drop-shadow(0 0 0.35rem var(--primary));

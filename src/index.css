@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Montserrat:wght@100;400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Montserrat:wght@100;400;900&family=Raleway:wght@900&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,6 +15,7 @@ html {
   --secondary-dark: #292f3a60;
   --secondary-dark2: #121720;
   --transparent-blue: #0059ff9a;
+  --title-font-family: 'Raleway', sans-serif;
   --primary-font-family: 'Montserrat', sans-serif;
   --secondary-font-family: 'Major Mono Display', monospace;
   font-family: var(--primary-font-family);
