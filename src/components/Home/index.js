@@ -5,6 +5,12 @@ import { Container, Hero, HeroSecondary, Logo, ScrollAssist } from './styles'
 function Home() {
   let windowSize = useWindowSize()
   useEffect(() => {
+    document.body.classList.add('no-scroll')
+    setTimeout(() => {
+      document.body.classList.remove('no-scroll')
+    }, 3500)
+  }, [])
+  useEffect(() => {
     if (windowSize > devSize.tablet) {
       import('../../brain/homePageLogic')
     }

@@ -1,6 +1,50 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import device from '../../juice/mediaQueries'
 
+const load = keyframes`
+0% {
+  opacity: 1;
+  left: 0;
+}
+80% {
+  opacity: 1;
+}
+100% {
+  opacity: 0;
+  left: 150%;
+}
+`
+const loader = keyframes`
+0% {
+  opacity: 0;
+  width: 100px;
+  height: 100px;
+}
+
+50% {
+  opacity: 1;
+  width: 200px;
+  height: 200px;
+}
+
+100% {
+  opacity: 0;
+  width: 100px;
+  height: 100px;
+}
+`
+const loadLogo = keyframes`
+0% {
+  opacity: 0;
+  transform: scale(0);
+}
+
+100% {
+  opacity: 1;
+  transform: scale(1);
+
+}
+`
 const Container = styled.main`
   cursor: default;
   position: relative;
@@ -13,6 +57,32 @@ const Container = styled.main`
   align-items: center;
   overflow: hidden;
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
+  &:before {
+    content: '';
+    z-index: 2000;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: var(--primary-blue);
+    animation: ${load} 1s ease-in-out 3s forwards;
+  }
+
+  &:after {
+    content: '';
+    z-index: 3000;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: #fff;
+    animation: ${loader} 0.5s ease-in-out 0s 7 forwards;
+  }
+
   @media screen and ${device.tablet} {
     font-size: 2rem;
     p {
@@ -26,6 +96,7 @@ const Container = styled.main`
     }
   }
 `
+
 const Hero = styled.div`
   display: flex;
   justify-content: center;
@@ -39,11 +110,41 @@ const Hero = styled.div`
     -webkit-text-stroke: 1px var(--primary);
     filter: drop-shadow(0 0 0.35rem var(--primary));
     color: transparent;
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background-color: white;
+      filter: drop-shadow(0 0 0 white);
+
+      animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 4s forwards;
+    }
   }
 
   & p {
+    margin-top: 10px;
+    width: max-content;
     font-weight: 400;
     color: white;
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background-color: white;
+      animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 4.1s forwards;
+    }
   }
 `
 
@@ -89,6 +190,9 @@ const Logo = styled.div`
   position: absolute;
   left: 45vw;
   z-index: -1;
+  transform: scale(0);
+  animation: ${loadLogo} 1s cubic-bezier(0.4, 0, 0.2, 1) 4.2s forwards;
+
   @media screen and ${device.mobile} {
     left: 58vw;
     & img {

@@ -4,6 +4,7 @@ import device from '../../juice/mediaQueries'
 const ProjectContainer = styled.div`
   margin: 1.5rem 0 10rem;
   width: 900px;
+  border-radius: 20px;
   aspect-ratio: 9 / 4;
   position: relative;
   @media screen and ${device.laptopS} {
@@ -70,6 +71,7 @@ const ProjectNo = styled(AbsoluteContainer)`
   font-size: 200px;
   font-weight: 900;
   padding: 0 1rem;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
 
   display: flex;
   justify-content: flex-end;

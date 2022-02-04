@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 const hero = document.querySelector('.hero-secondary')
-const tl = gsap.timeline({ delay: 1 })
+const tl = gsap.timeline({ delay: 5 })
 
 tl.to(hero, {
   '--maskSize1': '20%',
@@ -19,7 +19,7 @@ const home = document.querySelector('#home')
 
 const elementsNeedMouseOver = [header, home]
 elementsNeedMouseOver.forEach((ele) => {
-  ele.addEventListener('mousemove', e => {
+  ele.addEventListener('mousemove', (e) => {
     const { clientX, clientY } = e
     const x = Math.round(clientX)
     const y = Math.round(clientY)
@@ -38,7 +38,6 @@ home.addEventListener('mouseleave', () => {
 })
 header.addEventListener('mouseleave', () => {
   headerEnter = false
-
 })
 home.addEventListener('mouseenter', () => {
   homeEnter = true
@@ -48,10 +47,10 @@ header.addEventListener('mouseenter', () => {
 })
 
 setInterval(() => {
-  if(!homeEnter && !headerEnter) {
+  if (!homeEnter && !headerEnter) {
     hero.classList.remove('show')
     hero.classList.add('hide')
-  }else {
+  } else {
     hero.classList.remove('hide')
     hero.classList.add('show')
   }
