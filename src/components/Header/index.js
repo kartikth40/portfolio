@@ -51,7 +51,7 @@ function Header() {
   return (
     <>
       <Container id="header">
-        <Logo href="#home">
+        <Logo className="Logo" href="#home">
           <img src="/icons/white_logo.svg" alt="header white logo" />
         </Logo>
         <HamContainer ref={hamRef} onClick={hamClick}>

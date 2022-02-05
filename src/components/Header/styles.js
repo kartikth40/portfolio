@@ -1,6 +1,17 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import device from '../../juice/mediaQueries'
 
+const load = keyframes`
+0% {
+  opacity: 0;
+  top: -100px;
+}
+
+100% {
+  opacity: 1;
+  top:0;
+}
+`
 const Container = styled.header`
   font-family: var(--secondary-font-family);
   font-size: 0.7rem;
@@ -8,11 +19,15 @@ const Container = styled.header`
   width: 100%;
   color: white;
   position: fixed;
-  top: 0;
+  top: -100px;
   z-index: 1000;
   display: flex;
+  opacity: 0;
+
   justify-content: space-between;
   align-items: center;
+  animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 2s forwards;
+
   @media screen and ${device.tablet} {
     background: black;
   }

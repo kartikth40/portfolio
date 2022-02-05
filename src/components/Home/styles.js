@@ -16,11 +16,10 @@ const load = keyframes`
 `
 const loader = keyframes`
 0% {
-  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
 }
 100% {
-  background-color: var(--primary-dark);
-  left: 100vw;
+  transform: translate(-50%, -50%) scale(0);
 }
 `
 const loadLogo = keyframes`
@@ -28,7 +27,9 @@ const loadLogo = keyframes`
   opacity: 0;
   transform: scale(0);
 }
-
+40% {
+  opacity: 0;
+}
 100% {
   opacity: 1;
   transform: scale(1);
@@ -70,7 +71,7 @@ const Container = styled.main`
     transform: translate(-50%, -50%);
     border-radius: 50%;
     background-color: #fff;
-    animation: ${loader} 1s ease-in-out 1s forwards;
+    animation: ${loader} 0.5s ease-in-out 1s forwards;
   }
 
   @media screen and ${device.tablet} {
@@ -109,7 +110,7 @@ const Spinner = styled.div`
   transform: translate(-50%, -50%);
   background-color: var(--primary-dark);
   // background-color: yellow;
-  animation: ${loader} 1s ease-in-out 1s forwards;
+  animation: ${loader} 0.5s ease-in-out 1s forwards;
 
   &:before {
     content: '';

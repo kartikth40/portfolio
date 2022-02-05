@@ -11,17 +11,20 @@ import {
 } from './styles'
 function Home() {
   let windowSize = useWindowSize()
+
   useEffect(() => {
     document.body.classList.add('no-scroll')
     setTimeout(() => {
       document.body.classList.remove('no-scroll')
     }, 1000)
   }, [])
+
   useEffect(() => {
     if (windowSize > devSize.tablet) {
       import('../../brain/homePageLogic')
     }
   }, [windowSize])
+
   return (
     <Container id="home">
       <Spinner></Spinner>

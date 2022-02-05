@@ -25,7 +25,8 @@ const Container = styled.div`
   width: 50vw;
   height: 75vh;
   z-index: 1000;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   @media screen and ${device.mobile} {
     width: 100vw;
     height: 100vh;
