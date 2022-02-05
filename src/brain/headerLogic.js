@@ -5,7 +5,10 @@ const headerSectionOptions = {
   rootMargin: '-200px 0px 0px 0px',
 }
 
-const headerSectionObserver = new IntersectionObserver(function (entries, headerSectionObserver) {
+const headerSectionObserver = new IntersectionObserver(function (
+  entries,
+  headerSectionObserver
+) {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) {
       header.classList.add('nav-scrolled')
@@ -13,6 +16,7 @@ const headerSectionObserver = new IntersectionObserver(function (entries, header
       header.classList.remove('nav-scrolled')
     }
   })
-}, headerSectionOptions)
+},
+headerSectionOptions)
 
 headerSectionObserver.observe(home)

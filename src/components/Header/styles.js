@@ -6,34 +6,42 @@ const load = keyframes`
   opacity: 0;
   top: -100px;
 }
-
+80% {
+  opacity: 0;
+  top: -100px;
+}
 100% {
   opacity: 1;
   top:0;
 }
 `
 const Container = styled.header`
-  font-family: var(--secondary-font-family);
-  font-size: 0.7rem;
-  padding: 30px 70px;
   width: 100%;
+  height: 70px;
   color: white;
   position: fixed;
-  top: -100px;
+  top: 0;
   z-index: 1000;
-  display: flex;
-  opacity: 0;
-
-  justify-content: space-between;
-  align-items: center;
-  animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 2s forwards;
-
   @media screen and ${device.tablet} {
     background: black;
   }
   @media screen and ${device.mobile} {
     padding: 20px 20px;
   }
+`
+const HelperContainer = styled.div`
+  padding: 30px 70px;
+  font-family: var(--secondary-font-family);
+  font-size: 0.7rem;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  animation: ${load} 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 `
 const Logo = styled.a`
   text-decoration: none;
@@ -181,12 +189,13 @@ const Nav = styled.nav`
     position: absolute;
     z-index: -1;
     left: 0;
-    top: -150%;
+    top: -300%;
     width: 100%;
+    padding: 20px 0 0;
     flex-direction: column;
-    transition: 250ms all;
+    transition: 500ms all;
     &.active {
-      top: 80px;
+      top: 50px;
     }
   }
 `
@@ -200,6 +209,7 @@ const NavItems = styled.a`
   display: flex;
   height: 100%;
   position: relative;
+
   &:hover {
     transition: 250ms all;
     color: black;
@@ -239,4 +249,12 @@ const NavItems = styled.a`
     }
   }
 `
-export { Container, Logo, HamContainer, HamBurgerMenu, Nav, NavItems }
+export {
+  Container,
+  HelperContainer,
+  Logo,
+  HamContainer,
+  HamBurgerMenu,
+  Nav,
+  NavItems,
+}

@@ -5,6 +5,7 @@ import useWindowSize from '../../brain/useWindowSize'
 import { size as devSize } from '../../juice/mediaQueries'
 import {
   Container,
+  HelperContainer,
   Logo,
   HamContainer,
   HamBurgerMenu,
@@ -51,20 +52,22 @@ function Header() {
   return (
     <>
       <Container id="header">
-        <Logo className="Logo" href="#home">
-          <img src="/icons/white_logo.svg" alt="header white logo" />
-        </Logo>
-        <HamContainer ref={hamRef} onClick={hamClick}>
-          <HamBurgerMenu className="hamburger-menu unclicked" />
-        </HamContainer>
+        <HelperContainer>
+          <Logo href="#home">
+            <img src="/icons/white_logo.svg" alt="header white logo" />
+          </Logo>
+          <HamContainer ref={hamRef} onClick={hamClick}>
+            <HamBurgerMenu className="hamburger-menu unclicked" />
+          </HamContainer>
 
-        <Nav ref={navRef} className={showNav ? 'nav active' : 'nav'}>
-          <NavItems href="#about">about</NavItems>
-          <NavItems href="#work">projects</NavItems>
-          <NavItems href="#home" onClick={openContacts}>
-            contact
-          </NavItems>
-        </Nav>
+          <Nav ref={navRef} className={showNav ? 'nav active' : 'nav'}>
+            <NavItems href="#about">about</NavItems>
+            <NavItems href="#work">projects</NavItems>
+            <NavItems href="#home" onClick={openContacts}>
+              contact
+            </NavItems>
+          </Nav>
+        </HelperContainer>
       </Container>
       <Contact showContacts={showContacts} setShowContacts={setShowContacts} />
     </>

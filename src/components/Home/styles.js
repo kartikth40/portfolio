@@ -51,7 +51,7 @@ const Container = styled.main`
   &:before {
     content: '';
     z-index: 2000;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     left: 0;
@@ -63,7 +63,7 @@ const Container = styled.main`
   &:after {
     content: '';
     z-index: 3000;
-    position: absolute;
+    position: fixed;
     width: 100px;
     height: 100px;
     left: 50%;
@@ -101,7 +101,7 @@ const spinner = keyframes`
 `
 const Spinner = styled.div`
   z-index: 4000;
-  position: absolute;
+  position: fixed;
   width: 90px;
   height: 90px;
   border-radius: 50%;
