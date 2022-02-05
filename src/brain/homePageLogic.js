@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 const hero = document.querySelector('.hero-secondary')
-const tl = gsap.timeline({ delay: 5 })
+const tl = gsap.timeline({ delay: 2.3 })
 
 tl.to(hero, {
   '--maskSize1': '20%',

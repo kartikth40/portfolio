@@ -1,14 +1,21 @@
 import React, { useEffect } from 'react'
 import useWindowSize from '../../brain/useWindowSize'
 import { size as devSize } from '../../juice/mediaQueries'
-import { Container, Hero, HeroSecondary, Logo, ScrollAssist } from './styles'
+import {
+  Container,
+  Hero,
+  HeroSecondary,
+  Logo,
+  ScrollAssist,
+  Spinner,
+} from './styles'
 function Home() {
   let windowSize = useWindowSize()
   useEffect(() => {
     document.body.classList.add('no-scroll')
     setTimeout(() => {
       document.body.classList.remove('no-scroll')
-    }, 3500)
+    }, 1000)
   }, [])
   useEffect(() => {
     if (windowSize > devSize.tablet) {
@@ -17,8 +24,11 @@ function Home() {
   }, [windowSize])
   return (
     <Container id="home">
+      <Spinner></Spinner>
       <Hero className="hero">
-        <h1>Hi, I'm Kartik</h1>
+        <h1>
+          <span>Hi, I'm Kartik</span>
+        </h1>
         <p>A Front-end Developer</p>
       </Hero>
       <HeroSecondary className="hero-secondary" aria-hidden="true">

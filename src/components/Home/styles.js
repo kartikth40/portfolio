@@ -16,21 +16,11 @@ const load = keyframes`
 `
 const loader = keyframes`
 0% {
-  opacity: 0;
-  width: 100px;
-  height: 100px;
+  left: 50%;
 }
-
-50% {
-  opacity: 1;
-  width: 200px;
-  height: 200px;
-}
-
 100% {
-  opacity: 0;
-  width: 100px;
-  height: 100px;
+  background-color: var(--primary-dark);
+  left: 100vw;
 }
 `
 const loadLogo = keyframes`
@@ -65,8 +55,8 @@ const Container = styled.main`
     height: 100%;
     left: 0;
     top: 0;
-    background-color: var(--primary-blue);
-    animation: ${load} 1s ease-in-out 3s forwards;
+    background-color: var(--primary-dark);
+    animation: ${load} 1s ease-in-out 1s forwards;
   }
 
   &:after {
@@ -80,7 +70,7 @@ const Container = styled.main`
     transform: translate(-50%, -50%);
     border-radius: 50%;
     background-color: #fff;
-    animation: ${loader} 0.5s ease-in-out 0s 7 forwards;
+    animation: ${loader} 1s ease-in-out 1s forwards;
   }
 
   @media screen and ${device.tablet} {
@@ -96,6 +86,61 @@ const Container = styled.main`
     }
   }
 `
+const spinner = keyframes`
+0% {
+ 
+  transform: rotate(0deg);
+}
+
+100% {
+ 
+  transform: rotate(360deg);
+
+}
+`
+const Spinner = styled.div`
+  z-index: 4000;
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--primary-dark);
+  // background-color: yellow;
+  animation: ${loader} 1s ease-in-out 1s forwards;
+
+  &:before {
+    content: '';
+    z-index: 5000;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50% 0 0 0;
+    left: -5px;
+    top: -5px;
+    background-color: var(--primary-dark);
+    // background-color: blue;
+    transform-origin: bottom right;
+    animation: ${spinner} 0.75s linear 0s 4 forwards;
+  }
+
+  &:after {
+    content: '';
+    z-index: 5000;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 0 0 50% 0;
+    right: -5px;
+    bottom: -5px;
+    background-color: var(--primary-dark);
+    // background-color: red;
+    transform-origin: top left;
+    animation: ${spinner} 0.75s linear 0s 4 forwards;
+  }
+`
 
 const Hero = styled.div`
   display: flex;
@@ -108,12 +153,14 @@ const Hero = styled.div`
     font-family: var(--title-font-family);
     letter-spacing: 0.3rem;
     -webkit-text-stroke: 1px var(--primary);
-    filter: drop-shadow(0 0 0.35rem var(--primary));
     color: transparent;
     position: relative;
     overflow: hidden;
 
-    &:before {
+    & * {
+      filter: drop-shadow(0 0 0.35rem var(--primary));
+    }
+    &:after {
       content: '';
       position: absolute;
       width: 100%;
@@ -121,9 +168,8 @@ const Hero = styled.div`
       left: 0;
       top: 0;
       background-color: white;
-      filter: drop-shadow(0 0 0 white);
 
-      animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 4s forwards;
+      animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 1.5s forwards;
     }
   }
 
@@ -143,7 +189,7 @@ const Hero = styled.div`
       left: 0;
       top: 0;
       background-color: white;
-      animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 4.1s forwards;
+      animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 1.6s forwards;
     }
   }
 `
@@ -167,7 +213,7 @@ const HeroSecondary = styled(Hero)`
 
   & h1 {
     -webkit-text-stroke: 1px var(--primary);
-    filter: drop-shadow(0 0 0.35rem var(--primary));
+    // filter: drop-shadow(0 0 0.35rem var(--primary));
     color: transparent;
     background: radial-gradient(
       circle at center,
@@ -191,7 +237,7 @@ const Logo = styled.div`
   left: 45vw;
   z-index: -1;
   transform: scale(0);
-  animation: ${loadLogo} 1s cubic-bezier(0.4, 0, 0.2, 1) 4.2s forwards;
+  animation: ${loadLogo} 1s cubic-bezier(0.4, 0, 0.2, 1) 2.2s forwards;
 
   @media screen and ${device.mobile} {
     left: 58vw;
@@ -295,4 +341,4 @@ const ScrollAssist = styled.div`
     }
   }
 `
-export { Container, Hero, HeroSecondary, Logo, ScrollAssist }
+export { Container, Hero, HeroSecondary, Logo, ScrollAssist, Spinner }
