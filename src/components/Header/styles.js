@@ -22,12 +22,6 @@ const Container = styled.header`
   position: fixed;
   top: 0;
   z-index: 1000;
-  @media screen and ${device.tablet} {
-    background: black;
-  }
-  @media screen and ${device.mobile} {
-    padding: 20px 20px;
-  }
 `
 const HelperContainer = styled.div`
   padding: 30px 70px;
@@ -42,6 +36,13 @@ const HelperContainer = styled.div`
   left: 0;
   top: 0;
   animation: ${load} 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+  @media screen and ${device.tablet} {
+    background: black;
+  }
+  @media screen and ${device.mobile} {
+    padding: 20px 20px;
+  }
 `
 const Logo = styled.a`
   text-decoration: none;
