@@ -19,8 +19,8 @@ function About() {
     <Container id="about">
       <AboutSection>
         <Picture>
-          <source type="image/webp" srcSet="/img/kartik_black.webp" />
           <img src="/img/kartik_black.jpg" alt="profile pic" />
+          <span></span>
         </Picture>
         <MainContect>
           <h3>About</h3>

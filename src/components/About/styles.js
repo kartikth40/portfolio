@@ -24,6 +24,17 @@ const Picture = styled.picture`
   height: 400px;
   width: 200px;
   margin-right: 2.5rem;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+  & span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: -1;
+    left: 0;
+    top: 0;
+  }
 
   & img {
     width: 100%;
@@ -35,7 +46,12 @@ const Picture = styled.picture`
     height: 200px;
     margin-bottom: 3rem;
     margin-right: 0;
+    border-radius: 50%;
+
     & img {
+      border-radius: 50%;
+    }
+    & span {
       border-radius: 50%;
     }
   }
@@ -46,6 +62,7 @@ const MainContect = styled.div`
     font-size: 5rem;
     font-family: var(--secondary-font-family);
     margin-bottom: 30px;
+    text-align: left;
   }
   & span {
     display: block;
