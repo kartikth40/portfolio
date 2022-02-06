@@ -12,7 +12,7 @@ const Background = styled.div`
 `
 const Container = styled.div`
   opacity: 0;
-  padding: 3rem;
+  padding: 1rem 3rem;
   border-radius: 10px;
   position: absolute;
   left: 50%;
@@ -25,55 +25,112 @@ const Container = styled.div`
   width: 50vw;
   height: 75vh;
   z-index: 1000;
-  overflow-x: hidden;
   overflow-y: auto;
+  overflow-x: hidden;
+
+  &.sent:before {
+    content: 'Sent ✅';
+    color: white;
+    font-size: 50px;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: var(--secondary-dark2);
+    border-radius: 10px;
+    left: 0;
+    top: 0;
+    z-index: 1500;
+    animation: sent 1s ease forwards;
+    opacity: 0;
+
+    @keyframes sent {
+      0% {
+        opacity: 0;
+      }
+      50% {
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+
   @media screen and ${device.mobile} {
     width: 100vw;
-    height: 100vh;
+    height: 50vh;
     border-radius: none;
   }
   @media screen and ${device.tablet} {
     width: 100vw;
     height: 100vh;
     border-radius: none;
+    padding: 1rem 1rem;
   }
 `
 const TopHeading = styled.div`
   & h1 {
     font-weight: 400;
+    padding: 0 1rem;
   }
+`
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
 `
 const Contactform = styled.form`
   padding: 1rem;
   display: flex;
   flex-direction: column;
   & label {
-    font-size: 0.6rem;
-    font-weight: 400;
+    font-size: 0.7rem;
+    font-weight: 100;
+    margin-bottom: 10px;
   }
-  & input,
-  & textarea {
+  & input:-webkit-autofill,
+  & input:-webkit-autofill:hover,
+  & input:-webkit-autofill:focus,
+  & input:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    transition-delay: 9999s;
+  }
+  & input {
     color: white;
+    width: 100%;
     outline: none;
     border: none;
     border-bottom: 2px solid white;
     background: transparent;
     position: relative;
-    margin-top: 1rem;
-    font-size: 1rem;
-    resize: horizontal;
-    max-width: 50vw;
+    font-family: var(--primary-font-family);
+    font-size: 20px;
   }
   & textarea {
-    height: 50px;
+    color: white;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid white;
+    background: transparent;
+    position: relative;
+    font-family: var(--primary-font-family);
+    font-size: 20px;
+    resize: vertical;
+    min-height: 90px;
   }
   & button {
     font-weight: 900;
     font-size: 0.8em;
+    font-family: var(--primary-font-family);
+    text-transform: uppercase;
+    letter-spacing: 5px;
     margin-top: 1em;
-    margin-bottom: 3em;
+    margin-bottom: 1em;
     padding: 1em;
-    width: max-content;
+    width: 150px;
     color: white;
     border: none;
     outline: none;
@@ -87,10 +144,14 @@ const Contactform = styled.form`
   }
   @media screen and ${device.mobile} {
     & label {
-      font-size: 1rem;
+      font-size: 0.7rem;
     }
     & textarea {
-      height: 100px;
+      min-height: 100px;
+    }
+    & button {
+      font-weight: 400;
+      font-size: 0.8em;
     }
   }
 `
@@ -99,52 +160,20 @@ const Field = styled.div`
   flex-direction: column;
   margin: 0.5rem 0 0 0;
 `
-const CloseBtn = styled.div`
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  outline: none;
-  border: none;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 40px;
-    border-radius: 2px;
-    background: white;
-    left: 50%;
-    top: 50%;
-    transition: 500ms all;
-  }
-
-  &::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-  &::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
-  }
-
-  &:hover::before {
-    transform: translate(-50%, -50%) rotate(135deg);
-    background: red;
-  }
-  &:hover::after {
-    transform: translate(-50%, -50%) rotate(-135deg);
-    background: red;
-  }
-`
 const GigaText = styled.div`
   position: absolute;
-  bottom: 0;
+  top: 50%;
   left: 10%;
   font-size: 200px;
   font-weight: 900;
+  transform: translateY(-50%);
   z-index: -1;
   color: rgba(255, 255, 255, 0.03);
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `
 export {
   Background,
@@ -152,6 +181,6 @@ export {
   TopHeading,
   Contactform,
   Field,
-  CloseBtn,
+  ButtonContainer,
   GigaText,
 }

@@ -8,7 +8,7 @@ import {
   TopHeading,
   Contactform,
   Field,
-  CloseBtn,
+  ButtonContainer,
   GigaText,
 } from './styles'
 
@@ -36,20 +36,29 @@ function Contact({ showContacts, setShowContacts }) {
     }
   }, [showContacts])
 
-  function closeContacts() {
+  function closeContacts(delay) {
+    if (typeof delay != 'number') {
+      delay = 0
+    }
     gsap.to(contactsPopUp.current, {
+      delay: delay / 1000,
       duration: 0.5,
       y: -100,
-
       opacity: 0,
     })
     setTimeout(() => {
       setShowContacts(false)
-    }, 500)
+    }, delay + 500)
   }
 
   function sendEmail(e) {
     e.preventDefault()
+
+    let name = e.target.elements.name?.value
+    let email = e.target.elements.email?.value
+    let message = e.target.elements.message?.value
+
+    if (!name || !email || !message) alert('Please fill the form correctly!')
 
     emailjs
       .sendForm(
@@ -61,6 +70,8 @@ function Contact({ showContacts, setShowContacts }) {
       .then(
         (result) => {
           console.log(result.text)
+          document.querySelector('#contact').classList.add('sent')
+          closeContacts(1500)
         },
         (error) => {
           console.log(error.text)
@@ -68,6 +79,7 @@ function Contact({ showContacts, setShowContacts }) {
       )
     e.target.reset()
   }
+
   return (
     <>
       {showContacts ? (
@@ -78,23 +90,27 @@ function Contact({ showContacts, setShowContacts }) {
             </TopHeading>
 
             <Contactform className="contact-Contactform" onSubmit={sendEmail}>
-              <Field>
-                <label>Name</label>
-                <input type="text" name="name" />
+              <Field className="contact-name">
+                <label>Your Name</label>
+                <input type="text" name="name" required autoFocus />
               </Field>
-              <Field>
-                <label>E-mail</label>
-                <input type="email" name="email" />
+              <Field className="contact-email">
+                <label>Your E-mail</label>
+                <input type="email" name="email" required />
               </Field>
-              <Field>
-                <label>Message</label>
-                <textarea name="message" />
+              <Field className="contact-message">
+                <label>Your Message</label>
+                <textarea name="message" required />
               </Field>
-              <button type="submit" value="Send">
-                Send Message
-              </button>
+              <ButtonContainer>
+                <button type="submit" value="Send">
+                  Send
+                </button>
+                <button type="button" value="cancel" onClick={closeContacts}>
+                  Cancel
+                </button>
+              </ButtonContainer>
             </Contactform>
-            <CloseBtn onClick={closeContacts} />
             <GigaText>Contacts</GigaText>
           </Container>
         </Background>
