@@ -11,11 +11,11 @@ const projectInfo = [
   {
     id: 2,
     projNo: '02',
-    bgImgUrl: 'disney_plus_cover.jpg',
-    title: 'Disney Plus UI',
-    desc: 'A Disney Plus clone with google authentication and routing.',
-    visitLink: 'https://disney-plus-0.web.app',
-    sourceLink: 'https://github.com/kartikth40/disney-plus',
+    bgImgUrl: 'box_world.jpg',
+    title: 'Box World Game',
+    desc: 'A word building game.',
+    visitLink: 'https://box-world-game.web.app',
+    sourceLink: 'https://github.com/kartikth40/box_world',
   },
   {
     id: 3,
