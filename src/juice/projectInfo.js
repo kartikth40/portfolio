@@ -12,7 +12,7 @@ const projectInfo = [
     id: 2,
     projNo: '02',
     bgImgUrl: 'box_world.jpg',
-    title: 'Box World Game',
+    title: 'Box World',
     desc: 'A word building game.',
     visitLink: 'https://box-world-game.web.app',
     sourceLink: 'https://github.com/kartikth40/box_world',
