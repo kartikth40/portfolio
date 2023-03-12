@@ -69,7 +69,7 @@ function Footer() {
       </FooterLinks>
       {windowSize > devSize.tablet ? (
         <SocialSidebar className="social-sidebar">
-          <Circle>
+          {/* <Circle>
             <a
               href="https://www.havesmallbites.me"
               target="_blank"
@@ -77,8 +77,8 @@ function Footer() {
             >
               <img src="/icons/blogs_logo.png" alt="blog site logo" />
             </a>
-          </Circle>
-          <Line />
+          </Circle> */}
+          {/* <Line /> */}
           <Circle>
             <a
               href="https://www.linkedin.com/in/kartikth40"
