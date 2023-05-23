@@ -32,11 +32,11 @@ function Home() {
         <h1>
           <span>Hi, I'm Kartik</span>
         </h1>
-        <p>A Front-end Developer</p>
+        <p>A Front-end Web Developer</p>
       </Hero>
       <HeroSecondary className="hero-secondary" aria-hidden="true">
         <h1>Hi, I'm Kartik</h1>
-        <p>A Front-end Developer</p>
+        <p>A Front-end Web Developer</p>
         <Logo>
           <img src="/icons/skeleton_logo.svg" alt="skeleton logo" />
         </Logo>

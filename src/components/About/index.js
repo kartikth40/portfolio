@@ -35,7 +35,7 @@ function About() {
             <span>create smart user interfaces &</span>
             <span>imagine useful interaction.</span>
             <br />
-            Currently hunting for some <span>Opportunities</span>.
+            Currently open for some <span>Freelance Work</span>.
             <StyledLink
               href="/files/myResume.pdf"
               target="_blank"

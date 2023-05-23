@@ -69,16 +69,16 @@ function Footer() {
       </FooterLinks>
       {windowSize > devSize.tablet ? (
         <SocialSidebar className="social-sidebar">
-          {/* <Circle>
+          <Circle>
             <a
-              href="https://www.havesmallbites.me"
+              href="https://twitter.com/Kartikth40"
               target="_blank"
               rel="noreferrer"
             >
-              <img src="/icons/blogs_logo.png" alt="blog site logo" />
+              <img src="/icons/twitter_logo.png" alt="twitter logo" />
             </a>
-          </Circle> */}
-          {/* <Line /> */}
+          </Circle>
+          <Line />
           <Circle>
             <a
               href="https://www.linkedin.com/in/kartikth40"
@@ -101,9 +101,7 @@ function Footer() {
           <Line />
         </SocialSidebar>
       ) : null}
-      <Copyrights>
-        © {currentYear} Kartik Thakur - IN 8178795167 - Contact
-      </Copyrights>
+      <Copyrights>© {currentYear} Kartik Thakur</Copyrights>
     </Container>
   )
 }
