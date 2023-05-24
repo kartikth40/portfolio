@@ -65,14 +65,17 @@ body{
 
 @keyframes NavScrollAnimation {
   0% {
-    transform: translateY(0);
+    /* transform: translateY(0); */
   }
   50% {
-    transform: translateY(-100%);
+    /* transform: translateY(-100%); */
   }
   100% {
-    transform: translateY(0);
+    /* transform: translateY(0); */
     background-color: var(--primary-dark);
-    box-shadow:  0px 0px 20px black;
+    /* box-shadow:  0px 0px 20px black; */
+    /* background: transparent;
+  backdrop-filter: blur(10px); */
+
   }
 }
