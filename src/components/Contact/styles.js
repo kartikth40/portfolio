@@ -11,6 +11,7 @@ const SuperContainer = styled.div`
 
 const Container = styled.div`
   border-radius: 20px;
+  position: relative;
   background-color: var(--secondary-dark);
   padding-top: 50px;
   padding-bottom: 50px;
@@ -20,23 +21,42 @@ const Container = styled.div`
   width: 60vw;
   height: 500px;
 `
+
 const TopHeading = styled.div`
   & h1 {
+    /* font-family: var(--secondary-font-family); */
     font-weight: 400;
-    padding: 0 1rem;
+    font-size: 1.2rem;
+    padding: 0 5rem 1rem;
   }
 `
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  & button {
+    min-width: max-content;
+    cursor: pointer;
+  }
+
+  & button:disabled {
+    cursor: not-allowed;
+  }
+`
+
+const Block = styled.div`
+  display: flex;
+  width: 100%;
 `
 const Contactform = styled.form`
-  padding: 1rem;
+  padding: 0 5rem;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
   & label {
     font-size: 0.7rem;
-    font-weight: 100;
+    font-weight: 400;
     margin-bottom: 10px;
   }
   & input:-webkit-autofill,
@@ -51,7 +71,8 @@ const Contactform = styled.form`
     width: 100%;
     outline: none;
     border: none;
-    border-bottom: 2px solid white;
+    border: 1px solid var(--primary-blue);
+    padding: 10px 10px;
     background: transparent;
     position: relative;
     font-family: var(--primary-font-family);
@@ -62,13 +83,20 @@ const Contactform = styled.form`
     width: 100%;
     outline: none;
     border: none;
-    border-bottom: 2px solid white;
+    border: 1px solid var(--primary-blue);
+    padding: 10px 10px;
     background: transparent;
     position: relative;
     font-family: var(--primary-font-family);
-    font-size: 20px;
-    resize: vertical;
+    font-size: 15px;
+    font-weight: 100;
+    resize: none;
     min-height: 90px;
+
+    ::selection {
+      color: white;
+      background: var(--primary-blue);
+    }
   }
   & button {
     font-weight: 900;
@@ -91,6 +119,43 @@ const Contactform = styled.form`
   & button:active {
     transform: scale(0.95);
   }
+
+  &.sent:before {
+    content: 'Sent ✅';
+    color: white;
+    font-size: 50px;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: var(--secondary-dark);
+    border-radius: 10px;
+    left: 0;
+    top: 0;
+    z-index: 1500;
+    animation: sent 2s linear;
+
+    @keyframes sent {
+      0% {
+        transform: translateY(100%);
+      }
+      30% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(0);
+      }
+      70% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(100%);
+      }
+    }
+  }
   @media screen and ${device.mobile} {
     & label {
       font-size: 0.7rem;
@@ -108,6 +173,9 @@ const Field = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0.5rem 0 0 0;
+  &:first-child {
+    padding-right: 1rem;
+  }
 `
 
 export {
@@ -117,4 +185,5 @@ export {
   Field,
   ButtonContainer,
   SuperContainer,
+  Block,
 }
