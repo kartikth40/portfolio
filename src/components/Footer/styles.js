@@ -9,13 +9,13 @@ const SocialSidebar = styled.div`
   position: fixed;
   bottom: 0;
   right: 65px;
-  box-shadow: 0 0 1em var(--primary);
+  box-shadow: 0 0 1em var(--primary-blue);
 `
 
 const Line = styled.div`
   width: 2px;
   height: 70px;
-  background: var(--primary);
+  background: var(--primary-blue);
 `
 const Circle = styled.div`
   position: absolute;
@@ -26,11 +26,11 @@ const Circle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--primary);
+  background: var(--primary-blue);
   border-radius: 50%;
   &:hover {
-    background: rgb(149, 255, 244);
-    box-shadow: 0 0 10px rgb(149, 255, 244);
+    background: #865dfe;
+    box-shadow: 0 0 10px #865dfe;
   }
   & a {
     width: 30px;

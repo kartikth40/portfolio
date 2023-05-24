@@ -19,7 +19,7 @@ function About() {
     <Container id="about">
       <AboutSection>
         <Picture>
-          <img src="/img/kartik_black.jpg" alt="profile pic" />
+          <img src="/img/kartik_pink.jpg" alt="profile pic" />
           <span></span>
         </Picture>
         <MainContect>

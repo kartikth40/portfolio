@@ -26,6 +26,8 @@ const Picture = styled.picture`
   margin-right: 2.5rem;
   position: relative;
   box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+  border-radius: 5px;
+  overflow: hidden;
   & span {
     position: absolute;
     width: 100%;
@@ -40,6 +42,8 @@ const Picture = styled.picture`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: scale(1.5);
+    border-radius: 5px;
   }
   @media screen and ${device.mobile} {
     width: 200px;
@@ -50,6 +54,8 @@ const Picture = styled.picture`
 
     & img {
       border-radius: 50%;
+      object-position: 50% 10%;
+      transform: scale(1.8);
     }
     & span {
       border-radius: 50%;

@@ -10,30 +10,36 @@ html {
 
 :root {
   --primary: turquoise;
-  --primary-dark: #181a1b;
-  --primary-blue: #2776ff;
-  --secondary-dark: #292f3a60;
-  --secondary-dark2: #121720;
-  --transparent-blue: #0059ff9a;
+  --primary-dark: #191825;
+  --primary-blue: #865DFF;
+  --secondary-dark: #27253f;
+  --secondary-dark2: #191825;
+  --transparent-pink: #E384FF;
+  --semi-pink:#fdb1fc;
   --title-font-family: 'Raleway', sans-serif;
   --primary-font-family: 'Montserrat', sans-serif;
   --secondary-font-family: 'Major Mono Display', monospace;
   font-family: var(--primary-font-family);
-  background-color: var(--primary-dark);
   color: white;
   font-size: 20px;
 }
 
+body{
+  background-color: var(--primary-dark);
+
+}
+
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 10px;
   height: 15px;
-  background-color: black;
+  background-color: var(--primary-dark);
 }
 ::-webkit-scrollbar-thumb {
-  background: #252629;
+  background: var(--transparent-pink);
+  border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #40434b;
+  background: var(--semi-pink);
 }
 
 ::selection {
@@ -66,6 +72,7 @@ html {
   }
   100% {
     transform: translateY(0);
-    background-color: black;
+    background-color: var(--primary-dark);
+    box-shadow:  0px 0px 20px black;
   }
 }

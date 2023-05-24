@@ -54,7 +54,7 @@ const SliderMask = styled(AbsoluteContainer)`
   background: linear-gradient(
     to right,
     var(--primary-blue),
-    var(--transparent-blue)
+    var(--transparent-pink)
   );
   left: -100%;
   pointer-events: none;
@@ -175,8 +175,8 @@ const CTAbuttons = styled.div`
   @media screen and ${device.mobile} {
     position: absolute;
     top: 250px;
-    left: 0;
-    width: 100%;
+    left: 5%;
+    width: 90%;
     a {
       width: 100%;
       display: flex;

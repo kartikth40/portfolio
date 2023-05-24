@@ -38,7 +38,7 @@ const HelperContainer = styled.div`
   animation: ${load} 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 
   @media screen and ${device.tablet} {
-    background: black;
+    background: var(--primary-dark);
   }
   @media screen and ${device.mobile} {
     padding: 20px 20px;
@@ -186,7 +186,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   @media screen and ${device.tablet} {
-    background: black;
+    background: var(--primary-dark);
     position: absolute;
     z-index: -1;
     left: 0;
