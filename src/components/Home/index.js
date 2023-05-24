@@ -25,6 +25,14 @@ function Home() {
     }
   }, [windowSize])
 
+  function scroll() {
+    window.scroll({
+      top: 600,
+      left: 0,
+      behavior: 'smooth',
+    })
+  }
+
   return (
     <Container id="home">
       <Spinner></Spinner>
@@ -44,7 +52,7 @@ function Home() {
       <Logo>
         <img src="/icons/blue_logo.svg" alt="main blue logo" />
       </Logo>
-      <ScrollAssist></ScrollAssist>
+      <ScrollAssist onClick={scroll}></ScrollAssist>
     </Container>
   )
 }

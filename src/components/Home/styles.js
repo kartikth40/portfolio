@@ -255,27 +255,29 @@ const Logo = styled.div`
   }
 `
 const ScrollAssist = styled.div`
-  background: var(--primary-dark);
-  height: 50px;
-  width: 25px;
+  cursor: pointer;
+  background: linear-gradient(to bottom, var(--primary), var(--primary-blue));
+  height: 60px;
+  width: 30px;
   border-radius: 50px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+  /* border: 2px solid rgba(255, 255, 255, 0.2); */
   position: absolute;
   bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
-  pointer-events: none;
+
   &::after {
     content: '';
     height: 5px;
-    width: 3px;
+    width: 5px;
     border-radius: 5px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 1);
     position: absolute;
     left: 50%;
-    top: 10px;
+    top: 15px;
     transform: translate(-50%, -50%);
-    animation: scrolldownAnime 1.5s infinite ease-in;
+    animation: scrolldownAnime 2.5s infinite ease-in;
     opacity: 0;
   }
 
@@ -283,24 +285,29 @@ const ScrollAssist = styled.div`
     0% {
       opacity: 0;
       height: 5px;
-      top: 10px;
-    }
-    20% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 1;
-      height: 15px;
       top: 15px;
     }
-    80% {
+    10% {
       opacity: 1;
-      height: 5px;
-      top: 23px;
+    }
+    30% {
+      opacity: 1;
+      height: 15px;
+      top: 25px;
+    }
+    50% {
+      opacity: 0;
+      height: 0px;
+      top: 30px;
+    }
+    70% {
+      opacity: 0;
+      height: 0;
+      top: 30px;
     }
     100% {
       opacity: 0;
-      top: 23px;
+      top: 30px;
     }
   }
   @keyframes swipeUpAnime {
@@ -309,12 +316,17 @@ const ScrollAssist = styled.div`
       height: 50px;
       bottom: 10px;
     }
-    50% {
+    25% {
       opacity: 1;
       height: 80px;
     }
-    80% {
+    50% {
       opacity: 1;
+    }
+    70% {
+      opacity: 0;
+      height: 50px;
+      bottom: 100px;
     }
     100% {
       opacity: 0;
@@ -327,18 +339,33 @@ const ScrollAssist = styled.div`
     bottom: 100px;
     animation: swipeUpAnime 1.5s infinite ease-in-out;
 
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    /* border: 2px solid rgba(255, 255, 255, 0.5); */
     &::after {
       display: none;
     }
   }
   @media screen and ${device.tablet} {
-    bottom: 100px;
-    animation: swipeUpAnime 1.5s infinite ease-in-out;
+    pointer-events: none;
 
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    bottom: 100px;
+    animation: swipeUpAnime 2.5s infinite ease-in-out;
+    /* border: 2px solid rgba(255, 255, 255, 0.5); */
     &::after {
       display: none;
+    }
+
+    &::before {
+      content: '';
+      height: 25px;
+      width: 25px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      position: absolute;
+      left: 50%;
+      top: 15px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 1;
     }
   }
 `
