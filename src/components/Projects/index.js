@@ -13,7 +13,7 @@ import {
 function Work() {
   let size = useWindowSize()
   return (
-    <Container id="work">
+    <Container id="projects">
       <SidewaysTitle>
         <h3>Projects</h3>
         <UpperTitle>Latest</UpperTitle>

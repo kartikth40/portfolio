@@ -16,7 +16,6 @@ function Header() {
   let isLarge = useWindowSize() > devSize.tablet
   let hamRef = useRef()
   let navRef = useRef()
-  const [showContacts, setShowContacts] = useState(false)
   const [showNav, setShowNav] = useState(false)
 
   useEffect(() => {
@@ -40,9 +39,6 @@ function Header() {
     return () => document.removeEventListener('click', hideMenu)
   }, [isLarge, showNav])
 
-  const openContacts = () => {
-    setShowContacts(true)
-  }
   const hamClick = () => {
     setShowNav((prev) => !prev)
     const ham = document.querySelector('.hamburger-menu')
@@ -62,14 +58,11 @@ function Header() {
 
           <Nav ref={navRef} className={showNav ? 'nav active' : 'nav'}>
             <NavItems href="#about">about</NavItems>
-            <NavItems href="#work">projects</NavItems>
-            <NavItems href="#home" onClick={openContacts}>
-              contact
-            </NavItems>
+            <NavItems href="#projects">projects</NavItems>
+            <NavItems href="#contact">contact</NavItems>
           </Nav>
         </HelperContainer>
       </Container>
-      <Contact showContacts={showContacts} setShowContacts={setShowContacts} />
     </>
   )
 }

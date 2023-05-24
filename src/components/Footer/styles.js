@@ -5,45 +5,7 @@ const Container = styled.div`
   background: var(--secondary-dark);
   padding: 2rem 0 4rem 0;
 `
-const SocialSidebar = styled.div`
-  position: fixed;
-  bottom: 0;
-  right: 65px;
-  box-shadow: 0 0 1em var(--primary-blue);
-`
 
-const Line = styled.div`
-  width: 2px;
-  height: 70px;
-  background: var(--primary-blue);
-`
-const Circle = styled.div`
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 35px;
-  height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--primary-blue);
-  border-radius: 50%;
-  &:hover {
-    background: #865dfe;
-    box-shadow: 0 0 10px #865dfe;
-  }
-  & a {
-    width: 30px;
-    height: 30px;
-  }
-  & a img {
-    border-radius: 50%;
-    background: white;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-  }
-`
 const Logo = styled.a`
   cursor: pointer;
   padding: 1rem;
@@ -92,4 +54,4 @@ const Copyrights = styled.div`
   }
 `
 
-export { Container, SocialSidebar, Line, Circle, Logo, FooterLinks, Copyrights }
+export { Container, Logo, FooterLinks, Copyrights }

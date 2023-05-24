@@ -1,75 +1,24 @@
 import styled from 'styled-components'
 import device from '../../juice/mediaQueries'
 
-const Background = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10000;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-`
-const Container = styled.div`
-  opacity: 0;
-  padding: 1rem 3rem;
-  border-radius: 10px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+const SuperContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: var(--secondary-dark2);
-  width: 50vw;
-  height: 75vh;
-  z-index: 1000;
-  overflow-y: auto;
-  overflow-x: hidden;
+  justify-content: center;
+  padding-bottom: 50px;
+  padding-top: 100px;
+  margin-top: -100px;
+`
 
-  &.sent:before {
-    content: 'Sent ✅';
-    color: white;
-    font-size: 50px;
-    font-weight: 900;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: var(--secondary-dark2);
-    border-radius: 10px;
-    left: 0;
-    top: 0;
-    z-index: 1500;
-    animation: sent 1s ease forwards;
-    opacity: 0;
+const Container = styled.div`
+  border-radius: 20px;
+  background-color: var(--secondary-dark);
+  padding-top: 50px;
+  padding-bottom: 50px;
 
-    @keyframes sent {
-      0% {
-        opacity: 0;
-      }
-      50% {
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-  }
+  box-shadow: 0 0 20px var(--secondary-dark);
 
-  @media screen and ${device.mobile} {
-    width: 100vw;
-    height: 50vh;
-    border-radius: none;
-  }
-  @media screen and ${device.tablet} {
-    width: 100vw;
-    height: 100vh;
-    border-radius: none;
-    padding: 1rem 1rem;
-  }
+  width: 60vw;
+  height: 500px;
 `
 const TopHeading = styled.div`
   & h1 {
@@ -134,7 +83,7 @@ const Contactform = styled.form`
     color: white;
     border: none;
     outline: none;
-    background: linear-gradient(to right, #d835f8, #e358ff);
+    background: var(--primary-blue);
   }
   & button:hover {
     opacity: 0.7;
@@ -160,27 +109,12 @@ const Field = styled.div`
   flex-direction: column;
   margin: 0.5rem 0 0 0;
 `
-const GigaText = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  font-size: 200px;
-  font-weight: 900;
-  transform: translateY(-50%);
-  z-index: -1;
-  color: rgba(255, 255, 255, 0.03);
 
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-`
 export {
-  Background,
   Container,
   TopHeading,
   Contactform,
   Field,
   ButtonContainer,
-  GigaText,
+  SuperContainer,
 }

@@ -3,15 +3,10 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import useWindowSize from '../../brain/useWindowSize'
 import { size as devSize } from '../../juice/mediaQueries'
-import {
-  Container,
-  SocialSidebar,
-  Line,
-  Circle,
-  Logo,
-  FooterLinks,
-  Copyrights,
-} from './styles'
+import { Container, Logo, FooterLinks, Copyrights } from './styles'
+
+import Socials from '../Socials/index.js'
+
 gsap.registerPlugin(ScrollTrigger)
 
 function Footer() {
@@ -67,40 +62,7 @@ function Footer() {
           <img src="/icons/github_icon.png" alt="github logo" />
         </a>
       </FooterLinks>
-      {windowSize > devSize.tablet ? (
-        <SocialSidebar className="social-sidebar">
-          <Circle>
-            <a
-              href="https://twitter.com/Kartikth40"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src="/icons/twitter_logo.png" alt="twitter logo" />
-            </a>
-          </Circle>
-          <Line />
-          <Circle>
-            <a
-              href="https://www.linkedin.com/in/kartikth40"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src="/icons/linkedin_logo.png" alt="linkedin logo" />
-            </a>
-          </Circle>
-          <Line />
-          <Circle>
-            <a
-              href="https://github.com/kartikth40"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src="/icons/github_logo.png" alt="github logo" />
-            </a>
-          </Circle>
-          <Line />
-        </SocialSidebar>
-      ) : null}
+      {windowSize > devSize.tablet ? <Socials /> : null}
       <Copyrights>© {currentYear} Kartik Thakur</Copyrights>
     </Container>
   )
