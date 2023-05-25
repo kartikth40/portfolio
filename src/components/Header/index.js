@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import Contact from '../Contact/index'
 import useWindowSize from '../../brain/useWindowSize'
 
 import { size as devSize } from '../../juice/mediaQueries'
