@@ -41,7 +41,13 @@ function About() {
               target="_blank"
               rel="noreferrer"
             >
-              <StyledText>my resume</StyledText>
+              <StyledText>
+                my resume
+                <img
+                  src="https://media.giphy.com/media/Yi8MknjPjvh5Q0rtZz/giphy.gif"
+                  alt="pointer"
+                />
+              </StyledText>
             </StyledLink>
           </p>
         </MainContect>
