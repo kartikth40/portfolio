@@ -3,7 +3,7 @@ import device from '../../juice/mediaQueries'
 
 const Container = styled.div`
   background: var(--secondary-dark);
-  padding: 2rem 0 4rem 0;
+  padding: 1rem 0 1rem 0;
 `
 
 const Logo = styled.a`

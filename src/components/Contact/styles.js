@@ -7,6 +7,12 @@ const SuperContainer = styled.div`
   padding-bottom: 50px;
   padding-top: 100px;
   margin-top: -100px;
+
+  @media screen and ${device.mobile} {
+    padding-bottom: 0;
+    padding-top: 50px;
+    margin-top: -50px;
+  }
 `
 
 const Container = styled.div`
@@ -15,19 +21,28 @@ const Container = styled.div`
   background-color: var(--secondary-dark);
   padding-top: 50px;
   padding-bottom: 50px;
-
   box-shadow: 0 0 20px var(--secondary-dark);
-
   width: 60vw;
-  height: 500px;
+
+  @media screen and ${device.mobile} {
+    border-radius: 0;
+    box-shadow: none;
+    width: 100vw;
+  }
 `
 
 const TopHeading = styled.div`
   & h1 {
     /* font-family: var(--secondary-font-family); */
-    font-weight: 400;
+    font-weight: 500;
     font-size: 1.2rem;
     padding: 0 5rem 1rem;
+
+    @media screen and ${device.mobile} {
+      font-weight: 900;
+      font-size: 1rem;
+      padding: 0 2rem 1rem;
+    }
   }
 `
 const ButtonContainer = styled.div`
@@ -46,6 +61,10 @@ const ButtonContainer = styled.div`
 const Block = styled.div`
   display: flex;
   width: 100%;
+
+  @media screen and ${device.mobile} {
+    flex-direction: column;
+  }
 `
 const Contactform = styled.form`
   padding: 0 5rem;
@@ -58,6 +77,7 @@ const Contactform = styled.form`
     font-size: 0.7rem;
     font-weight: 400;
     margin-bottom: 10px;
+    color: var(--primary-light-blue);
   }
   & input:-webkit-autofill,
   & input:-webkit-autofill:hover,
@@ -89,7 +109,7 @@ const Contactform = styled.form`
     position: relative;
     font-family: var(--primary-font-family);
     font-size: 15px;
-    font-weight: 100;
+    font-weight: 400;
     resize: none;
     min-height: 90px;
 
@@ -157,15 +177,24 @@ const Contactform = styled.form`
     }
   }
   @media screen and ${device.mobile} {
+    padding: 0 2rem;
+
     & label {
-      font-size: 0.7rem;
+      font-size: 0.9rem;
+      font-weight: 900;
+    }
+    & input {
+      font-size: 15px;
     }
     & textarea {
-      min-height: 100px;
+      min-height: 200px;
+      font-weight: 400;
     }
     & button {
       font-weight: 400;
       font-size: 0.8em;
+      width: max-content;
+      padding: 0.5rem 1rem;
     }
   }
 `
@@ -175,6 +204,9 @@ const Field = styled.div`
   margin: 0.5rem 0 0 0;
   &:first-child {
     padding-right: 1rem;
+    @media screen and ${device.mobile} {
+      padding-right: 0;
+    }
   }
 `
 
