@@ -10,7 +10,7 @@ import Socials from '../Socials/index.js'
 gsap.registerPlugin(ScrollTrigger)
 
 function Footer() {
-  let windowSize = useWindowSize()
+  const windowSize = useWindowSize()
   const currentYear = new Date().getFullYear()
 
   const addFooterLinkGsap = () => {
@@ -62,7 +62,7 @@ function Footer() {
           <img src="/icons/github_icon.png" alt="github logo" />
         </a>
       </FooterLinks>
-      {windowSize > devSize.tablet ? <Socials /> : null}
+      {windowSize > devSize.tablet && <Socials />}
       <Copyrights>© {currentYear} Kartik Thakur</Copyrights>
     </Container>
   )

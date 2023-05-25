@@ -2,14 +2,19 @@ import { Container } from './styles'
 
 function Socials() {
   return (
-    <Container>
+    <Container id="socials-container">
       <span>
         <a
           href="https://twitter.com/Kartikth40"
           target="_blank"
           rel="noreferrer"
         >
-          <img src="/icons/twitter_logo.png" alt="twitter logo" />
+          <img
+            width="96"
+            height="96"
+            src="https://img.icons8.com/nolan/96/1A6DFF/C822FF/twitter-squared.png"
+            alt="twitter-squared"
+          />
         </a>
       </span>
       <span>
@@ -18,7 +23,12 @@ function Socials() {
           target="_blank"
           rel="noreferrer"
         >
-          <img src="/icons/linkedin_logo.png" alt="linkedin logo" />
+          <img
+            width="96"
+            height="96"
+            src="https://img.icons8.com/nolan/96/1A6DFF/C822FF/linkedin.png"
+            alt="linkedin"
+          />
         </a>
       </span>
       <span>
@@ -27,7 +37,12 @@ function Socials() {
           target="_blank"
           rel="noreferrer"
         >
-          <img src="/icons/github_logo.png" alt="github logo" />
+          <img
+            width="96"
+            height="96"
+            src="https://img.icons8.com/nolan/96/1A6DFF/C822FF/github.png"
+            alt="github"
+          />
         </a>
       </span>
       <span>
@@ -36,7 +51,12 @@ function Socials() {
           target="_blank"
           rel="noreferrer"
         >
-          <img src="/icons/mail_logo.png" alt="github logo" />
+          <img
+            width="96"
+            height="96"
+            src="https://img.icons8.com/nolan/96/1A6DFF/C822FF/gmail.png"
+            alt="gmail"
+          />
         </a>
       </span>
     </Container>

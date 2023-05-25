@@ -187,16 +187,18 @@ const Nav = styled.nav`
   justify-content: space-between;
   @media screen and ${device.tablet} {
     background: var(--primary-dark);
+    border-radius: 20px;
+    box-shadow: 0 0 5px var(--primary-blue);
     position: absolute;
     z-index: -1;
     left: 0;
-    top: -300%;
+    top: -600%;
     width: 100%;
-    padding: 20px 0 0;
+    padding: 200px 0 0;
     flex-direction: column;
     transition: 500ms all;
     &.active {
-      top: 50px;
+      top: -150px;
     }
   }
 `

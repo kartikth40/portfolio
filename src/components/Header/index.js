@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import useWindowSize from '../../brain/useWindowSize'
-
 import { size as devSize } from '../../juice/mediaQueries'
 import {
   Container,
@@ -11,11 +10,16 @@ import {
   Nav,
   NavItems,
 } from './styles'
+
+import Socials from '../Socials/index.js'
+
 function Header() {
-  let isLarge = useWindowSize() > devSize.tablet
-  let hamRef = useRef()
-  let navRef = useRef()
+  const windowSize = useWindowSize()
+  const isLarge = windowSize > devSize.tablet
+  const hamRef = useRef()
+  const navRef = useRef()
   const [showNav, setShowNav] = useState(false)
+  console.log(windowSize <= devSize.tablet)
 
   useEffect(() => {
     const hideMenu = (event) => {
@@ -41,8 +45,10 @@ function Header() {
   const hamClick = () => {
     setShowNav((prev) => !prev)
     const ham = document.querySelector('.hamburger-menu')
+    const socials = document.querySelector('#socials-container')
     ham.classList.toggle('clicked')
     ham.classList.toggle('unclicked')
+    socials.classList.toggle('show')
   }
   return (
     <>
@@ -59,6 +65,7 @@ function Header() {
             <NavItems href="#about">about</NavItems>
             <NavItems href="#projects">projects</NavItems>
             <NavItems href="#contact">contact</NavItems>
+            {windowSize <= devSize.tablet && <Socials />}
           </Nav>
         </HelperContainer>
       </Container>
