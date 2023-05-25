@@ -186,7 +186,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   @media screen and ${device.tablet} {
-    background: var(--primary-dark);
+    background: var(--secondary-dark);
     border-radius: 20px;
     box-shadow: 0 0 5px var(--primary-blue);
     position: absolute;

@@ -46,6 +46,8 @@ function Header() {
     setShowNav((prev) => !prev)
     const ham = document.querySelector('.hamburger-menu')
     const socials = document.querySelector('#socials-container')
+    const body = document.body
+    body.classList.toggle('unfocus')
     ham.classList.toggle('clicked')
     ham.classList.toggle('unclicked')
     socials.classList.toggle('show')
