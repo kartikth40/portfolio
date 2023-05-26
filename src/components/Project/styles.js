@@ -11,10 +11,13 @@ const ProjectContainer = styled.div`
   @media screen and ${device.laptopS} {
     width: 650px;
     height: 300px;
+    border-radius: 15px;
   }
   @media screen and ${device.tablet} {
     width: 50vw;
     height: 250px;
+    margin: 1.5rem 0 3rem;
+    border-radius: 10px;
   }
   @media screen and ${device.mobile} {
     width: 300px;
@@ -33,8 +36,10 @@ const BackgroundImg = styled.div`
   overflow: hidden;
   @media screen and ${device.laptopS} {
     background-size: cover;
+    border-radius: 15px;
   }
   @media screen and ${device.tablet} {
+    border-radius: 10px;
     background-size: cover;
   }
   @media screen and ${device.mobile} {
@@ -70,6 +75,7 @@ const SliderMask = styled(AbsoluteContainer)`
 `
 const ProjectNo = styled(AbsoluteContainer)`
   z-index: 3;
+  pointer-events: none;
   top: 0;
   opacity: 0;
   color: white;
@@ -87,15 +93,16 @@ const ProjectNo = styled(AbsoluteContainer)`
   }
   @media screen and ${device.laptopS} {
     ${ProjectContainer}:hover & {
-      top: -30%;
+      top: -50%;
+
       opacity: 1;
     }
   }
   @media screen and ${device.tablet} {
     font-size: 100px;
     ${ProjectContainer}:hover & {
-      /* left: -80%; */
       opacity: 1;
+      top: -25%;
     }
   }
 `
@@ -106,6 +113,11 @@ const ProjectInfo = styled(AbsoluteContainer)`
   flex-direction: column;
   justify-content: center;
   padding: 2rem 5rem;
+  pointer-events: none;
+  transition: 250ms all;
+  ${ProjectContainer}:hover & {
+    transform: scale(1.1) translateY(-10%);
+  }
   h2 {
     font-family: var(--primary-font-family);
     font-weight: 900;
@@ -117,7 +129,19 @@ const ProjectInfo = styled(AbsoluteContainer)`
     font-weight: 400;
     position: relative;
   }
+  p {
+    margin-top: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: 250ms all;
+
+    ${ProjectContainer}:hover & {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
   a {
+    pointer-events: all;
     display: inline-block;
     text-decoration: none;
     cursor: pointer;
@@ -142,8 +166,28 @@ const ProjectInfo = styled(AbsoluteContainer)`
       visibility: visible;
     }
   }
+  @media screen and ${device.laptopS} {
+    padding: 0 0 0 2rem;
+    transform: translateY(50%);
+
+    ${ProjectContainer}:hover & {
+      transform: translateY(0%);
+    }
+    p {
+      transform: translateY(-100%) scaleY(0);
+
+      ${ProjectContainer}:hover & {
+        transform: translateY(0%) scaleY(1);
+      }
+    }
+  }
   @media screen and ${device.tablet} {
     padding: 0 0 0 2rem;
+    transform: translateY(50%);
+
+    ${ProjectContainer}:hover & {
+      transform: translateY(0%);
+    }
     h2 {
       pointer-events: none;
       font-size: 20px;
@@ -155,10 +199,25 @@ const ProjectInfo = styled(AbsoluteContainer)`
     }
     a {
       margin-bottom: 1em;
+      font-size: 14px;
+    }
+    p {
+      margin-top: 0.2rem;
+      font-size: 0.6rem;
+      width: 90%;
+      transform: translateY(-100%) scaleY(0);
+
+      ${ProjectContainer}:hover & {
+        transform: translateY(0%) scaleY(1);
+      }
     }
   }
   @media screen and ${device.mobile} {
-    padding: 0 0 0 0;
+    padding: 0;
+    transform: scale(1) translateY(0);
+    ${ProjectContainer}:hover & {
+      transform: scale(1.1) translateY(-10%);
+    }
     h2 {
       text-align: center;
       pointer-events: none;
@@ -175,10 +234,6 @@ const ProjectInfo = styled(AbsoluteContainer)`
       margin-bottom: 1em;
       margin-right: 0;
     }
-  }
-  transition: 250ms all;
-  ${ProjectContainer}:hover & {
-    transform: scale(1.1) translateY(-10%);
   }
 `
 const CTAbuttons = styled.div`

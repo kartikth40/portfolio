@@ -28,6 +28,7 @@ function Work() {
             bgImgUrl={project.bgImgUrl}
             title={project.title}
             desc={project.desc}
+            summary={project.summary}
             visitLink={project.visitLink}
             sourceLink={project.sourceLink}
           />

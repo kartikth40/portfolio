@@ -198,7 +198,7 @@ const Nav = styled.nav`
     flex-direction: column;
     transition: 500ms all;
     &.active {
-      top: -150px;
+      top: -130px;
     }
   }
 `

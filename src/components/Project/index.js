@@ -16,7 +16,15 @@ import {
 
 gsap.registerPlugin(ScrollTrigger)
 
-function Project({ projNo, bgImgUrl, title, desc, visitLink, sourceLink }) {
+function Project({
+  projNo,
+  bgImgUrl,
+  title,
+  desc,
+  summary,
+  visitLink,
+  sourceLink,
+}) {
   let windowSize = useWindowSize()
   useEffect(() => {
     const projs = document.querySelectorAll('.Project-container')
@@ -61,6 +69,7 @@ function Project({ projNo, bgImgUrl, title, desc, visitLink, sourceLink }) {
             <span>&#8599;</span>
           </a>
         </CTAbuttons>
+        {windowSize > devSize.mobile && <p>{summary}</p>}
       </ProjectInfo>
     </ProjectContainer>
   )

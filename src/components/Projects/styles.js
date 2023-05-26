@@ -7,6 +7,7 @@ const Container = styled.section`
   display: flex;
   @media screen and ${device.mobile} {
     flex-direction: column;
+    margin-bottom: 100px;
   }
 `
 const SidewaysTitle = styled.div`
@@ -21,12 +22,12 @@ const SidewaysTitle = styled.div`
   @media screen and ${device.laptopS} {
     letter-spacing: 5px;
     margin: 0 0 0 1rem;
-    font-size: 9.5rem;
+    font-size: 10rem;
   }
   @media screen and ${device.tablet} {
     letter-spacing: 5px;
-    margin: 0 0 0 2rem;
-    font-size: 9rem;
+    margin: 0 0 4rem 2rem;
+    font-size: 7rem;
   }
   @media screen and ${device.mobile} {
     display: none;

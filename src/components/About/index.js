@@ -26,14 +26,14 @@ function About() {
           <h3>About</h3>
           <p>
             Hello! I'm Kartik Thakur,
-            <br /> a {getAge()}-years-old Front-end developer.
+            <br /> a {getAge()}-years-old skilled Front-end developer.
             <br /> Learning to make Full Stack Websites.
             <br /> I enjoy creating things that live on the internet.
             <br />
             <br />I like to
             <span>resolve design problems,</span>
             <span>create smart user interfaces &</span>
-            <span>imagine useful interaction.</span>
+            <span>imagine creative interactions.</span>
             <br />
             Currently open for some <span>Freelance Work</span>.
             <StyledLink
