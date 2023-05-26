@@ -19,7 +19,6 @@ function Header() {
   const hamRef = useRef()
   const navRef = useRef()
   const [showNav, setShowNav] = useState(false)
-  console.log(windowSize <= devSize.tablet)
 
   useEffect(() => {
     const hideMenu = (event) => {

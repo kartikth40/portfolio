@@ -7,6 +7,7 @@ const ProjectContainer = styled.div`
   border-radius: 20px;
   aspect-ratio: 9 / 4;
   position: relative;
+
   @media screen and ${device.laptopS} {
     width: 650px;
     height: 300px;
@@ -18,6 +19,8 @@ const ProjectContainer = styled.div`
   @media screen and ${device.mobile} {
     width: 300px;
     height: 200px;
+    margin: 1.5rem 0 2rem;
+    border-radius: 10px;
   }
 `
 const BackgroundImg = styled.div`
@@ -36,6 +39,7 @@ const BackgroundImg = styled.div`
   }
   @media screen and ${device.mobile} {
     background-size: cover;
+    border-radius: 10px;
   }
 `
 const AbsoluteContainer = styled.div`
@@ -48,6 +52,7 @@ const AbsoluteContainer = styled.div`
 const DullBackground = styled(AbsoluteContainer)`
   z-index: 1;
   background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
 `
 const SliderMask = styled(AbsoluteContainer)`
   z-index: 2;
@@ -71,7 +76,7 @@ const ProjectNo = styled(AbsoluteContainer)`
   font-size: 200px;
   font-weight: 900;
   padding: 0 1rem;
-  text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  text-shadow: -10px 10px 0 var(--primary-blue);
 
   display: flex;
   justify-content: flex-end;
@@ -89,8 +94,8 @@ const ProjectNo = styled(AbsoluteContainer)`
   @media screen and ${device.tablet} {
     font-size: 100px;
     ${ProjectContainer}:hover & {
-      left: -80%;
-      opacity: 0.7;
+      /* left: -80%; */
+      opacity: 1;
     }
   }
 `
@@ -99,7 +104,7 @@ const ProjectInfo = styled(AbsoluteContainer)`
   display: flex;
   width: 100%;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 2rem 5rem;
   h2 {
     font-family: var(--primary-font-family);
@@ -110,6 +115,7 @@ const ProjectInfo = styled(AbsoluteContainer)`
   h5 {
     margin-bottom: 1rem;
     font-weight: 400;
+    position: relative;
   }
   a {
     display: inline-block;
@@ -152,12 +158,16 @@ const ProjectInfo = styled(AbsoluteContainer)`
     }
   }
   @media screen and ${device.mobile} {
-    padding: 0 0 0 1rem;
+    padding: 0 0 0 0;
     h2 {
+      text-align: center;
       pointer-events: none;
       font-size: 20px;
     }
     h5 {
+      width: 90%;
+      margin: 0 auto;
+      text-align: center;
       pointer-events: none;
       font-size: 15px;
     }
@@ -174,13 +184,17 @@ const ProjectInfo = styled(AbsoluteContainer)`
 const CTAbuttons = styled.div`
   @media screen and ${device.mobile} {
     position: absolute;
-    top: 250px;
+    display: flex;
+    bottom: 0;
     left: 5%;
     width: 90%;
     a {
+      font-size: 14px;
+      margin: 0 5px;
       width: 100%;
       display: flex;
       justify-content: space-between;
+      border-radius: 5px;
     }
     height: max-content;
   }

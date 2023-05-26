@@ -17,6 +17,7 @@ const SuperContainer = styled.div`
 
 const Container = styled.div`
   border-radius: 20px;
+  border: 1px solid var(--primary-blue);
   position: relative;
   background-color: var(--secondary-dark);
   padding-top: 50px;
@@ -28,6 +29,8 @@ const Container = styled.div`
     border-radius: 0;
     box-shadow: none;
     width: 100vw;
+    border: none;
+    border-top: 1px solid var(--primary-blue);
   }
 `
 
@@ -87,6 +90,7 @@ const Contactform = styled.form`
     transition-delay: 9999s;
   }
   & input {
+    border-radius: 5px;
     color: white;
     width: 100%;
     outline: none;
@@ -99,6 +103,7 @@ const Contactform = styled.form`
     font-size: 20px;
   }
   & textarea {
+    border-radius: 5px;
     color: white;
     width: 100%;
     outline: none;
@@ -119,6 +124,7 @@ const Contactform = styled.form`
     }
   }
   & button {
+    border-radius: 5px;
     font-weight: 900;
     font-size: 0.8em;
     font-family: var(--primary-font-family);

@@ -22,7 +22,7 @@ const projectInfo = [
     projNo: '03',
     bgImgUrl: 'movie_town_cover.jpg',
     title: 'Movie Town',
-    desc: 'A Movies Description site made by the help of TheMoviesDB.',
+    desc: 'A Movies Description site made with the help of TheMoviesDB.',
     visitLink: 'https://movie-town.netlify.app',
     sourceLink: 'https://github.com/kartikth40/movie-town',
   },

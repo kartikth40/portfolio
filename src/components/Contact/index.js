@@ -22,7 +22,7 @@ function Contact() {
     if (sent) {
       const timer = setTimeout(() => {
         document.querySelector('.contactform').classList.remove('sent')
-        console.log('removed')
+
         setSent(false)
       }, 2000)
       return () => clearTimeout(timer)
@@ -58,16 +58,23 @@ function Contact() {
         },
         function (error) {
           console.log('FAILED...', error)
+          alert(
+            'Failed to send your message! Please contact from my email id directly.'
+          )
         }
       )
   }
-  function handleCancel(e) {}
+  function handleCancel(e) {
+    setEmail('')
+    setMessage('')
+    setName('')
+  }
 
   return (
     <SuperContainer id="contact">
       <Container>
         <TopHeading>
-          <h1>Let's connect and bring your vision to life! </h1>
+          <h1>Wanna Talk ? </h1>
         </TopHeading>
 
         <Contactform className="contactform" onSubmit={handleSend}>
@@ -107,8 +114,8 @@ function Contact() {
             <button type="submit" value="Send" disabled={loading}>
               {loading ? 'sending...' : 'send'}
             </button>
-            <button type="reset" value="cancel" onClick={handleCancel}>
-              Cancel
+            <button type="reset" value="clear" onClick={handleCancel}>
+              clear
             </button>
           </ButtonContainer>
         </Contactform>
