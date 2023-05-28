@@ -7,6 +7,7 @@ const SuperContainer = styled.div`
   padding-bottom: 50px;
   padding-top: 100px;
   margin-top: -100px;
+  overflow: hidden;
 
   @media screen and ${device.mobile} {
     padding-bottom: 0;
@@ -24,21 +25,42 @@ const rotate = keyframes`  0%{
 const show = keyframes`0%{opacity: 0;} 10%{opacity: 1} 80%{opacity: 1} 100%{opacity: 0;}`
 const successAnime = keyframes`  0%{
   transform: perspective(5000px) rotateX(0deg) rotateZ(0deg) ;
-  
 }
-
 20%{
   transform: perspective(5000px) rotateX(80deg) rotateZ(90deg) ;
-
 }
 80%{
   transform: perspective(5000px) rotateX(80deg) rotateZ(90deg) ;
-
 }
-
 100%{
   transform: perspective(5000px) rotateX(0deg) rotateZ(0deg) ;
-  
+}`
+const successAnimeMobile = keyframes`  0%{
+  transform: perspective(5000px) rotateX(0deg) rotateZ(0deg) scale3d(1,1,1);
+}
+20%{
+  transform: perspective(5000px) rotateX(80deg) rotateZ(90deg) scale3d(.5,.5,.5);
+}
+80%{
+  transform: perspective(5000px) rotateX(80deg) rotateZ(90deg) scale3d(.5,.5,.5);
+}
+100%{
+  transform: perspective(5000px) rotateX(0deg) rotateZ(0deg) scale3d(1,1,1);
+}`
+const mailOut = keyframes`  0%{
+  transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(0);
+}
+10%{
+  transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(-300px);
+}
+30%{
+  transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(-300px);
+}
+50%{
+  transform:  rotateX(0deg) rotateZ(0deg)  translateZ(-5px) translateY(-5400);
+}
+100%{
+  transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(-5400px);
 }`
 const Container = styled.div`
   --gradient-angle: 0deg;
@@ -57,33 +79,72 @@ const Container = styled.div`
 
   &.sent {
     animation: ${successAnime} 4s linear forwards;
+    @media screen and ${device.mobile} {
+      animation: ${successAnimeMobile} 4s linear forwards;
+    }
   }
 
+  &.sent .hidden,
   &.sent .hidden:after {
     animation: ${show} 4s linear forwards;
+  }
+
+  & .mail {
+    background: #eeeeee;
+    position: absolute;
+    inset: 0;
+    font-size: 30px;
+    color: black;
+    border-radius: inherit;
+    transform: rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(0);
+  }
+  & .mail:after,
+  & .mail:before {
+    content: '';
+    position: absolute;
+    border-top: 20px solid #5fcc9c;
+    border-radius: 10px;
+    width: 57%;
+    top: 5%;
+  }
+  & .mail:before {
+    left: 5%;
+    transform-origin: top left;
+    transform: rotate(35deg);
+  }
+  & .mail:after {
+    right: 5%;
+    transform-origin: top right;
+    transform: rotate(-35deg);
+  }
+  &.sent .mail {
+    animation: ${mailOut} 4s linear;
   }
 
   & .hidden {
     position: absolute;
     right: 0;
-    top: 50%;
     font-size: 30px;
     color: black;
-    transform-style: preserve-3d;
-    transform: perspective(5000px) rotateX(270deg) rotateY(90deg)
-      translateZ(180px) translateY(25px) translateX(20px);
+    transform: rotateX(270deg) rotateY(90deg) translateZ(15rem) translateY(0)
+      translateX(-7.5rem);
+    opacity: 0;
+    @media screen and ${device.tablet} {
+      font-size: 25px;
+    }
   }
   & .hidden:after {
     content: 'Sent ✅';
     position: absolute;
-    right: 0;
-    top: 50%;
+    left: 50%;
+    top: -150%;
     font-size: 30px;
     color: white;
     opacity: 0;
-    transform-style: preserve-3d;
-    transform: perspective(5000px) rotateX(180deg) rotateY(180deg)
-      rotateZ(180deg) translateZ(0px) translateY(-70px) translateX(-100px);
+    transform: translateX(-50%);
+    @media screen and ${device.tablet} {
+      font-size: 25px;
+    }
   }
 
   &:before,
@@ -91,7 +152,7 @@ const Container = styled.div`
     content: '';
     border-radius: inherit;
     position: absolute;
-    inset: -0.5rem;
+    inset: -0.7rem;
     background: conic-gradient(
       from var(--gradient-angle),
       #865dff,
@@ -106,7 +167,7 @@ const Container = styled.div`
     /* backface-visibility: hidden; */
   }
   &:after {
-    transform: translateZ(-50px);
+    transform: rotateX(0deg) rotateZ(0deg) translateZ(-50px) translateY(0);
   }
   &:before {
     transform: translateZ(-49px);

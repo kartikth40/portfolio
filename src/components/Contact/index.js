@@ -99,6 +99,7 @@ function Contact() {
   return (
     <SuperContainer id="contact">
       <Container className="contact">
+        <span className="mail"></span>
         <span className="hidden">Thank you very much. 😊</span>
         <TopHeading>
           <h1>Wanna Talk ? </h1>
