@@ -19,6 +19,27 @@ function Contact() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    const card = document.querySelector('.contact')
+
+    function threeD(e) {
+      const x = e.clientX
+      const y = e.clientY
+
+      const middleX = window.innerWidth / 2
+      const middleY = window.innerHeight / 2
+
+      const offsetX = ((x - middleX) / middleX) * 10
+      const offsetY = ((y - middleY) / middleY) * 10
+
+      card.style.setProperty('--rotateX', -1 * offsetY + 'deg')
+      card.style.setProperty('--rotateY', offsetX + 'deg')
+    }
+
+    document.addEventListener('mousemove', threeD)
+    return () => document.removeEventListener('mousemove', threeD)
+  })
+
+  useEffect(() => {
     if (sent) {
       const timer = setTimeout(() => {
         document.querySelector('.contactform').classList.remove('sent')
@@ -72,7 +93,7 @@ function Contact() {
 
   return (
     <SuperContainer id="contact">
-      <Container>
+      <Container className="contact">
         <TopHeading>
           <h1>Wanna Talk ? </h1>
         </TopHeading>

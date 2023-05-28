@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Montserrat:wght@100;400;900&family=Raleway:wght@900&display=swap');
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,6 +22,8 @@ html {
   --secondary-dark2: #191825;
   --transparent-pink: #E384FF;
   --semi-pink:#fdb1fc;
+  --home-light: #091877;
+  --home-dark: #200053;
   --title-font-family: 'Raleway', sans-serif;
   --primary-font-family: 'Montserrat', sans-serif;
   --secondary-font-family: 'Major Mono Display', monospace;

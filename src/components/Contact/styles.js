@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import device from '../../juice/mediaQueries'
 
 const SuperContainer = styled.div`
@@ -14,8 +14,14 @@ const SuperContainer = styled.div`
     margin-top: -50px;
   }
 `
-
+const rotate = keyframes`  0%{
+  --gradient-angle: 0deg;
+}
+100%{
+  --gradient-angle: 360deg;
+}`
 const Container = styled.div`
+  --gradient-angle: 0deg;
   border-radius: 20px;
   border: 1px solid var(--primary-blue);
   position: relative;
@@ -24,6 +30,35 @@ const Container = styled.div`
   padding-bottom: 50px;
   box-shadow: 0 0 20px var(--secondary-dark);
   width: 60vw;
+  transition: 0.15s all;
+  transform-style: preserve-3d;
+  transform: perspective(5000px) rotateX(var(--rotateX)) rotateY(var(--rotateY));
+
+  &:before,
+  &:after {
+    content: '';
+    border-radius: inherit;
+    position: absolute;
+    inset: -0.5rem;
+    background: conic-gradient(
+      from var(--gradient-angle),
+      #865dff,
+      #e384ff,
+      #fff,
+      #865dff,
+      #e384ff,
+      #fff,
+      #865dff
+    );
+    animation: ${rotate} 3s linear infinite;
+  }
+  &:after {
+    transform: translateZ(-50px);
+  }
+  &:before {
+    transform: translateZ(-51px);
+    filter: blur(15px);
+  }
 
   @media screen and ${device.mobile} {
     border-radius: 0;
@@ -31,6 +66,17 @@ const Container = styled.div`
     width: 100vw;
     border: none;
     border-top: 1px solid var(--primary-blue);
+    transform: none;
+
+    &:before,
+    &:after {
+      inset: 0;
+      top: -0.2rem;
+      bottom: -0.2rem;
+    }
+    &:before {
+      filter: blur(10px);
+    }
   }
 `
 
@@ -180,6 +226,14 @@ const Contactform = styled.form`
       100% {
         transform: translateY(100%);
       }
+    }
+  }
+  @media screen and ${device.tablet} {
+    & button {
+      font-weight: 400;
+      font-size: 0.8em;
+      width: max-content;
+      padding: 0.5rem 1rem;
     }
   }
   @media screen and ${device.mobile} {
