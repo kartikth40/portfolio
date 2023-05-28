@@ -7,14 +7,14 @@ const Container = styled.div`
   bottom: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-items: center;
   background-color: var(--secondary-dark);
   border-radius: 10px;
   width: 40px;
-  height: 200px;
+  height: 210px;
 
   span {
-    margin: 5px auto;
     a {
       img {
         width: 30px;
@@ -25,23 +25,24 @@ const Container = styled.div`
 
   @media screen and ${device.mobile} {
     width: 100vw;
-    height: 160px;
+    height: 145px;
     left: 50%;
     bottom: -50%;
     transform: translate(-50%, 0);
     flex-direction: row;
+    align-items: flex-start;
     border-radius: 20px;
     box-shadow: 0 0 5px var(--primary-blue);
 
     transition: 500ms all;
 
     span {
-      margin: 15px auto;
+      margin: 10px auto;
       opacity: 0.7;
       a {
         img {
-          width: 15vw;
-          height: 15vw;
+          width: 13vw;
+          height: 13vw;
         }
       }
     }

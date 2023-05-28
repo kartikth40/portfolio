@@ -12,8 +12,8 @@ function Socials() {
           <img
             width="96"
             height="96"
-            src="https://img.icons8.com/nolan/96/1A6DFF/C822FF/twitter-squared.png"
-            alt="twitter-squared"
+            src="https://img.icons8.com/glyph-neue/128/FFFFFF/twitter-squared.png"
+            alt="twitter"
           />
         </a>
       </span>
@@ -26,7 +26,7 @@ function Socials() {
           <img
             width="96"
             height="96"
-            src="https://img.icons8.com/nolan/96/1A6DFF/C822FF/linkedin.png"
+            src="https://img.icons8.com/glyph-neue/128/FFFFFF/linkedin.png"
             alt="linkedin"
           />
         </a>
@@ -40,8 +40,22 @@ function Socials() {
           <img
             width="96"
             height="96"
-            src="https://img.icons8.com/nolan/96/1A6DFF/C822FF/github.png"
+            src="https://img.icons8.com/glyph-neue/128/FFFFFF/github.png"
             alt="github"
+          />
+        </a>
+      </span>
+      <span>
+        <a
+          href="https://codepen.io/kartikth40"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            width="96"
+            height="96"
+            src="https://img.icons8.com/windows/128/FFFFFF/codepen.png"
+            alt="codepen"
           />
         </a>
       </span>
@@ -54,8 +68,8 @@ function Socials() {
           <img
             width="96"
             height="96"
-            src="https://img.icons8.com/nolan/96/1A6DFF/C822FF/gmail.png"
-            alt="gmail"
+            src="https://img.icons8.com/glyph-neue/128/FFFFFF/filled-message.png"
+            alt="mail"
           />
         </a>
       </span>
