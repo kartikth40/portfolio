@@ -140,6 +140,7 @@ const Container = styled.div`
     right: 0;
     font-size: 30px;
     color: black;
+    font-weight: bolder;
     white-space: nowrap;
     transform: rotateX(270deg) rotateY(90deg) translateZ(15rem) translateY(0)
       translateX(-7.5rem);

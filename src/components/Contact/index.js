@@ -59,11 +59,7 @@ function Contact() {
       email,
       message,
     }
-    document.querySelector('.contact').classList.add('sent')
-    document.querySelector('.contactform').classList.add('sent')
-    setSent(true)
-    setLoading(false)
-    return
+
     emailjs
       .send(
         'service_ft2rodg',
@@ -73,7 +69,8 @@ function Contact() {
       )
       .then(
         function (response) {
-          document.querySelector('.contactform').classList.add('sent')
+          document.querySelector('.contact').classList.add('sent')
+
           console.log('SUCCESS!', response.status, response.text)
           setEmail('')
           setMessage('')
@@ -85,7 +82,7 @@ function Contact() {
         function (error) {
           console.log('FAILED...', error)
           alert(
-            'Failed to send your message! Please contact from my email id directly.'
+            'Failed to send your message! 😓 Please contact me from my email id directly.'
           )
         }
       )
@@ -100,7 +97,7 @@ function Contact() {
     <SuperContainer id="contact">
       <Container className="contact">
         <span className="mail"></span>
-        <span className="hidden">Thank you very much. 😊</span>
+        <span className="hidden">Thank you so much! 😊</span>
         <TopHeading>
           <h1>Wanna Talk ? </h1>
         </TopHeading>
