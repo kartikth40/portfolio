@@ -39,10 +39,10 @@ const successAnimeMobile = keyframes`  0%{
   transform: perspective(5000px) rotateX(0deg) rotateZ(0deg) scale3d(1,1,1);
 }
 20%{
-  transform: perspective(5000px) rotateX(80deg) rotateZ(90deg) scale3d(.5,.5,.5);
+  transform: perspective(5000px) rotateX(80deg) rotateZ(00deg) scale3d(.8,.8,.8);
 }
 80%{
-  transform: perspective(5000px) rotateX(80deg) rotateZ(90deg) scale3d(.5,.5,.5);
+  transform: perspective(5000px) rotateX(80deg) rotateZ(00deg) scale3d(.8,.8,.8);
 }
 100%{
   transform: perspective(5000px) rotateX(0deg) rotateZ(0deg) scale3d(1,1,1);
@@ -50,17 +50,23 @@ const successAnimeMobile = keyframes`  0%{
 const mailOut = keyframes`  0%{
   transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(0);
 }
-10%{
+20%{
+  transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(0);
+
+}
+40%{
   transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(-300px);
 }
-30%{
-  transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(-300px);
+
+60%{
+  transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(-400px);
+
 }
-50%{
-  transform:  rotateX(0deg) rotateZ(0deg)  translateZ(-5px) translateY(-5400);
+80%{
+  transform:  rotateX(0deg) rotateZ(0deg)  translateZ(-5px) translateY(-10000px);
 }
 100%{
-  transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(-5400px);
+  transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(-10000px);
 }`
 const Container = styled.div`
   --gradient-angle: 0deg;
@@ -81,6 +87,7 @@ const Container = styled.div`
     animation: ${successAnime} 4s linear forwards;
     @media screen and ${device.mobile} {
       animation: ${successAnimeMobile} 4s linear forwards;
+      border-radius: 20px;
     }
   }
 
@@ -90,7 +97,11 @@ const Container = styled.div`
   }
 
   & .mail {
-    background: #eeeeee;
+    background: linear-gradient(
+      to bottom,
+      var(--primary-light-blue),
+      var(--primary-blue)
+    );
     position: absolute;
     inset: 0;
     font-size: 30px;
@@ -102,10 +113,13 @@ const Container = styled.div`
   & .mail:before {
     content: '';
     position: absolute;
-    border-top: 20px solid #5fcc9c;
+    border-top: 20px solid var(--primary-blue);
     border-radius: 10px;
     width: 57%;
     top: 5%;
+    @media screen and ${device.mobile} {
+      width: 59%;
+    }
   }
   & .mail:before {
     left: 5%;
@@ -126,11 +140,16 @@ const Container = styled.div`
     right: 0;
     font-size: 30px;
     color: black;
+    white-space: nowrap;
     transform: rotateX(270deg) rotateY(90deg) translateZ(15rem) translateY(0)
       translateX(-7.5rem);
     opacity: 0;
-    @media screen and ${device.tablet} {
+    @media screen and ${device.mobile} {
       font-size: 25px;
+      bottom: 0;
+      left: 50%;
+      right: unset;
+      transform: rotateX(-90deg) translateZ(5rem) translateY(0) translateX(-50%);
     }
   }
   & .hidden:after {
