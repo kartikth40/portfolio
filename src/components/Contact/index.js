@@ -42,10 +42,11 @@ function Contact() {
   useEffect(() => {
     if (sent) {
       const timer = setTimeout(() => {
+        document.querySelector('.contact').classList.remove('sent')
         document.querySelector('.contactform').classList.remove('sent')
 
         setSent(false)
-      }, 2000)
+      }, 4000)
       return () => clearTimeout(timer)
     }
   }, [sent])
@@ -58,7 +59,11 @@ function Contact() {
       email,
       message,
     }
-
+    document.querySelector('.contact').classList.add('sent')
+    document.querySelector('.contactform').classList.add('sent')
+    setSent(true)
+    setLoading(false)
+    return
     emailjs
       .send(
         'service_ft2rodg',
@@ -94,6 +99,7 @@ function Contact() {
   return (
     <SuperContainer id="contact">
       <Container className="contact">
+        <span className="hidden">Thank you very much. 😊</span>
         <TopHeading>
           <h1>Wanna Talk ? </h1>
         </TopHeading>
@@ -106,6 +112,7 @@ function Contact() {
                 type="text"
                 name="name"
                 value={name}
+                autoFocus
                 onChange={(e) => setName(e.target.value)}
                 required
               />

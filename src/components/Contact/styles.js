@@ -20,6 +20,26 @@ const rotate = keyframes`  0%{
 100%{
   --gradient-angle: 360deg;
 }`
+
+const show = keyframes`0%{opacity: 0;} 10%{opacity: 1} 80%{opacity: 1} 100%{opacity: 0;}`
+const successAnime = keyframes`  0%{
+  transform: perspective(5000px) rotateX(0deg) rotateZ(0deg) ;
+  
+}
+
+20%{
+  transform: perspective(5000px) rotateX(80deg) rotateZ(90deg) ;
+
+}
+80%{
+  transform: perspective(5000px) rotateX(80deg) rotateZ(90deg) ;
+
+}
+
+100%{
+  transform: perspective(5000px) rotateX(0deg) rotateZ(0deg) ;
+  
+}`
 const Container = styled.div`
   --gradient-angle: 0deg;
   border-radius: 20px;
@@ -32,7 +52,39 @@ const Container = styled.div`
   width: 60vw;
   transition: 0.15s all;
   transform-style: preserve-3d;
+
   transform: perspective(5000px) rotateX(var(--rotateX)) rotateY(var(--rotateY));
+
+  &.sent {
+    animation: ${successAnime} 4s linear forwards;
+  }
+
+  &.sent .hidden:after {
+    animation: ${show} 4s linear forwards;
+  }
+
+  & .hidden {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    font-size: 30px;
+    color: black;
+    transform-style: preserve-3d;
+    transform: perspective(5000px) rotateX(270deg) rotateY(90deg)
+      translateZ(180px) translateY(25px) translateX(20px);
+  }
+  & .hidden:after {
+    content: 'Sent ✅';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    font-size: 30px;
+    color: white;
+    opacity: 0;
+    transform-style: preserve-3d;
+    transform: perspective(5000px) rotateX(180deg) rotateY(180deg)
+      rotateZ(180deg) translateZ(0px) translateY(-70px) translateX(-100px);
+  }
 
   &:before,
   &:after {
@@ -51,12 +103,13 @@ const Container = styled.div`
       #865dff
     );
     animation: ${rotate} 3s linear infinite;
+    /* backface-visibility: hidden; */
   }
   &:after {
     transform: translateZ(-50px);
   }
   &:before {
-    transform: translateZ(-51px);
+    transform: translateZ(-49px);
     filter: blur(15px);
   }
 
@@ -192,42 +245,6 @@ const Contactform = styled.form`
     transform: scale(0.95);
   }
 
-  &.sent:before {
-    content: 'Sent ✅';
-    color: white;
-    font-size: 50px;
-    font-weight: 900;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: var(--secondary-dark);
-    border-radius: 10px;
-    left: 0;
-    top: 0;
-    z-index: 1500;
-    animation: sent 2s linear;
-
-    @keyframes sent {
-      0% {
-        transform: translateY(100%);
-      }
-      30% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(0);
-      }
-      70% {
-        transform: translateY(0);
-      }
-      100% {
-        transform: translateY(100%);
-      }
-    }
-  }
   @media screen and ${device.tablet} {
     & button {
       font-weight: 400;
