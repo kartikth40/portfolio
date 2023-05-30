@@ -9,6 +9,11 @@ import {
   ScrollAssist,
   Spinner,
 } from './styles'
+import {
+  handlePointerAnimations,
+  handleTouchAnimations,
+} from '../../brain/homePageLogic.js'
+
 function Home() {
   let windowSize = useWindowSize()
 
@@ -21,7 +26,9 @@ function Home() {
 
   useEffect(() => {
     if (windowSize > devSize.tablet) {
-      import('../../brain/homePageLogic')
+      handlePointerAnimations()
+    } else {
+      handleTouchAnimations()
     }
   }, [windowSize])
 
