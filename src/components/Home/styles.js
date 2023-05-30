@@ -5,6 +5,7 @@ const load = keyframes`
 0% {
   opacity: 1;
   left: 0;
+  right:0;
 }
 80% {
   opacity: 1;
@@ -12,6 +13,7 @@ const load = keyframes`
 100% {
   opacity: 0;
   left: 150%;
+  right:-100%;
 }
 `
 const loader = keyframes`
@@ -49,13 +51,17 @@ const Container = styled.main`
   overflow: hidden;
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
   &:before {
-    content: '';
+    content: 'Well Hello, Bonjour, Konnichiwa!';
+    font-size: 48px;
+    color: var(--primary-light-blue);
+    font-weight: normal;
+    font-family: var(--handwritten-font-family);
     z-index: 2000;
     position: fixed;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
+    inset: 0;
+    top: 20%;
+    display: flex;
+    justify-content: center;
     background-color: var(--primary-dark);
     animation: ${load} 1s ease-in-out 1s forwards;
   }

@@ -35,6 +35,7 @@ const HelperContainer = styled.div`
   height: 100%;
   left: 0;
   top: 0;
+  background: transparent;
   animation: ${load} 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 
   @media screen and ${device.tablet} {
