@@ -9,6 +9,16 @@ const projectInfo = [
       'An ecommerce store build in the process of enhancing my fullstack skills. It has all the necessary features an ecommerce store needs like home page with featured products, filtering products by many categories, payment gateways, admin dashboard and many more.',
     visitLink: 'https://ani-cart.web.app',
     sourceLink: 'https://github.com/kartikth40/ecommerceStore',
+    techUsed: [
+      'React',
+      'JavaScript',
+      'Firebase',
+      'Node',
+      'CSS',
+      'Redux',
+      'MongoDB',
+      'Stripe',
+    ],
   },
   {
     id: 2,
@@ -20,6 +30,7 @@ const projectInfo = [
       'A simple yet complex word building game build while getting inspired by recently famous wordle but with totally different idea and logic behind it. It is also equipped with a beginner friendly tutorial for helping new players to learn the game.',
     visitLink: 'https://box-world-game.web.app',
     sourceLink: 'https://github.com/kartikth40/box_world',
+    techUsed: ['React', 'Redux', 'JavaScript', 'CSS'],
   },
   {
     id: 3,
@@ -31,6 +42,7 @@ const projectInfo = [
       'A Movies scrapping site which fetches all the latest movies currently running and show their posters with their story plot in the homepage while also enabling users to search movies of their own choice on the go.',
     visitLink: 'https://movie-town.netlify.app',
     sourceLink: 'https://github.com/kartikth40/movie-town',
+    techUsed: ['React', 'JavaScript', 'CSS', 'TMDB API'],
   },
 ]
 

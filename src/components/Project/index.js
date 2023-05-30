@@ -12,6 +12,7 @@ import {
   ProjectNo,
   ProjectInfo,
   CTAbuttons,
+  Tech,
 } from './styles'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -24,6 +25,7 @@ function Project({
   summary,
   visitLink,
   sourceLink,
+  techUsed,
 }) {
   let windowSize = useWindowSize()
   useEffect(() => {
@@ -70,6 +72,11 @@ function Project({
           </a>
         </CTAbuttons>
         {windowSize > devSize.mobile && <p>{summary}</p>}
+        <Tech>
+          {techUsed.map((tech) => (
+            <span key={tech}>{tech}</span>
+          ))}
+        </Tech>
       </ProjectInfo>
     </ProjectContainer>
   )

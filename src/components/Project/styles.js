@@ -114,9 +114,10 @@ const ProjectInfo = styled(AbsoluteContainer)`
   justify-content: center;
   padding: 2rem 5rem;
   pointer-events: none;
+  transform: scale(1) translateY(10%);
   transition: 250ms all;
   ${ProjectContainer}:hover & {
-    transform: scale(1.1) translateY(-10%);
+    transform: scale(1.1) translateY(0%);
   }
   h2 {
     font-family: var(--primary-font-family);
@@ -167,13 +168,14 @@ const ProjectInfo = styled(AbsoluteContainer)`
     }
   }
   @media screen and ${device.laptopS} {
-    padding: 0 0 0 2rem;
+    padding: 0 2rem 0 2rem;
     transform: translateY(50%);
 
     ${ProjectContainer}:hover & {
       transform: translateY(0%);
     }
     p {
+      font-size: 0.7rem;
       transform: translateY(-100%) scaleY(0);
 
       ${ProjectContainer}:hover & {
@@ -194,12 +196,13 @@ const ProjectInfo = styled(AbsoluteContainer)`
     }
     h5 {
       pointer-events: none;
-      font-size: 15px;
+      font-size: 10px;
       width: 80%;
+      margin-bottom: 0.3rem;
     }
     a {
-      margin-bottom: 1em;
-      font-size: 14px;
+      margin-bottom: 0.2em;
+      font-size: 10px;
     }
     p {
       margin-top: 0.2rem;
@@ -214,6 +217,9 @@ const ProjectInfo = styled(AbsoluteContainer)`
   }
   @media screen and ${device.mobile} {
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transform: scale(1) translateY(0);
     ${ProjectContainer}:hover & {
       transform: scale(1.1) translateY(-10%);
@@ -231,8 +237,59 @@ const ProjectInfo = styled(AbsoluteContainer)`
       font-size: 15px;
     }
     a {
+      font-size: 14px;
       margin-bottom: 1em;
       margin-right: 0;
+    }
+  }
+`
+const Tech = styled.div`
+  width: 100%;
+  opacity: 0;
+  ${ProjectContainer}:hover & {
+    opacity: 1;
+    transition: 0.5s all;
+  }
+  & span {
+    font-weight: normal;
+    font-size: 0.6rem;
+    padding: 0.4rem 0.6rem;
+    word-wrap: normal;
+    display: inline-block;
+    margin: 0.4rem 0.4rem 0.4rem 0;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3);
+    border-radius: 1rem;
+  }
+  @media screen and ${device.laptopS} {
+    & span {
+      font-size: 0.5rem;
+    }
+    transform: scaleY(0);
+    ${ProjectContainer}:hover & {
+      transform: scaleY(1);
+    }
+  }
+  @media screen and ${device.tablet} {
+    width: 90%;
+    margin-top: 0.2rem;
+    & span {
+      font-size: 0.4rem;
+      margin: 0rem 0.1rem 0.1rem 0;
+    }
+  }
+
+  @media screen and ${device.mobile} {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    & span {
+      border-radius: 2px;
+      font-size: 0.3rem;
+      margin: 0rem 0.1rem 0.1rem 0;
     }
   }
 `
@@ -262,4 +319,5 @@ export {
   ProjectNo,
   ProjectInfo,
   CTAbuttons,
+  Tech,
 }

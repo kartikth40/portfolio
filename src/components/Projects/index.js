@@ -31,6 +31,7 @@ function Work() {
             summary={project.summary}
             visitLink={project.visitLink}
             sourceLink={project.sourceLink}
+            techUsed={project.techUsed}
           />
         ))}
       </ProjectsContainer>
