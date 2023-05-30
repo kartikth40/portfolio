@@ -110,7 +110,7 @@ function Contact() {
                 type="text"
                 name="name"
                 value={name}
-                autoFocus
+                
                 onChange={(e) => setName(e.target.value)}
                 required
               />
