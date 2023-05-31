@@ -13,7 +13,7 @@ const load = keyframes`
 100% {
   opacity: 0;
   left: 150%;
-  right:-100%;
+  right:-200%;
 }
 `
 const loader = keyframes`
@@ -51,7 +51,7 @@ const Container = styled.main`
   overflow: hidden;
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
   &:before {
-    content: 'Well Hello, Bonjour, Konnichiwa!';
+    content: 'welcome!';
     font-size: 48px;
     color: var(--primary-light-blue);
     font-weight: normal;
@@ -157,7 +157,7 @@ const Hero = styled.div`
   text-transform: uppercase;
 
   & h1 {
-    font-family: var(--title-font-family);
+    font-family: var(--handwritten-font-family);
     letter-spacing: 0.3rem;
     -webkit-text-stroke: 1px var(--primary);
     color: transparent;
@@ -171,9 +171,9 @@ const Hero = styled.div`
       content: '';
       position: absolute;
       width: 100%;
-      height: 100%;
+      height: 45%;
       left: 0;
-      top: 0;
+      top: 30%;
       background-color: white;
 
       animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 1.5s forwards;
@@ -182,6 +182,8 @@ const Hero = styled.div`
 
   & p {
     margin-top: 10px;
+    font-family: var(--handwritten-font-family);
+    margin-top: -2rem;
     width: max-content;
     font-weight: 400;
     color: white;
@@ -192,11 +194,11 @@ const Hero = styled.div`
       content: '';
       position: absolute;
       width: 100%;
-      height: 100%;
+      height: 45%;
       left: 0;
-      top: 0;
+      top: 30%;
       background-color: white;
-      animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 1.6s forwards;
+      animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 1.7s forwards;
     }
   }
 `
