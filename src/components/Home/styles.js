@@ -157,7 +157,7 @@ const Hero = styled.div`
   flex-direction: column;
   padding-left: 10%;
   text-transform: uppercase;
-
+  overflow: hidden;
   & h1 {
     font-family: var(--handwritten-font-family);
     letter-spacing: 0.3rem;
