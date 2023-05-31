@@ -162,7 +162,7 @@ const Hero = styled.div`
     font-family: var(--handwritten-font-family);
     letter-spacing: 0.3rem;
     /* -webkit-text-stroke: 0.4px var(--primary); */
-    color: #e6fffd;
+    color: var(--home-light);
     position: relative;
     overflow: hidden;
 
@@ -190,7 +190,7 @@ const Hero = styled.div`
     color: white;
     position: relative;
     overflow: hidden;
-    color: #e6fffd;
+    color: var(--home-light);
 
     &:before {
       content: '';

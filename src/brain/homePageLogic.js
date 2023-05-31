@@ -2,7 +2,7 @@ import gsap from 'gsap'
 
 export function handlePointerAnimations() {
   const hero = document.querySelector('.hero-secondary')
-  const tl = gsap.timeline({ delay: 4.3 })
+  const tl = gsap.timeline({ delay: 4.0 })
 
   tl.to(hero, {
     '--maskSize1': '20%',
@@ -60,7 +60,7 @@ export function handlePointerAnimations() {
 
 export function handleTouchAnimations() {
   const hero = document.querySelector('.hero-secondary')
-  const tl = gsap.timeline({ delay: 4.3 })
+  const tl = gsap.timeline({ delay: 4.0 })
 
   tl.to(hero, {
     '--maskSize1': '20%',
