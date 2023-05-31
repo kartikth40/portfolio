@@ -50,7 +50,7 @@ const Container = styled.main`
   align-items: center;
   overflow: hidden;
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
-  line-height: 1;
+  line-height: 1.1;
 
   &:before {
     content: 'welcome!';
@@ -161,13 +161,13 @@ const Hero = styled.div`
   & h1 {
     font-family: var(--handwritten-font-family);
     letter-spacing: 0.3rem;
-    -webkit-text-stroke: 1px var(--primary);
-    color: transparent;
+    /* -webkit-text-stroke: 0.4px var(--primary); */
+    color: #e6fffd;
     position: relative;
     overflow: hidden;
 
     & * {
-      filter: drop-shadow(0 0 0.35rem var(--primary));
+      /* filter: drop-shadow(0 0 0.15rem var(--primary)); */
     }
     &:after {
       content: '';
@@ -176,7 +176,7 @@ const Hero = styled.div`
       height: 100%;
       left: 0;
       top: 0;
-      background-color: white;
+      background-color: var(--primary-dark);
 
       animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 1.5s forwards;
     }
@@ -190,6 +190,7 @@ const Hero = styled.div`
     color: white;
     position: relative;
     overflow: hidden;
+    color: #e6fffd;
 
     &:before {
       content: '';
@@ -198,7 +199,8 @@ const Hero = styled.div`
       height: 100%;
       left: 0;
       top: 0;
-      background-color: white;
+      background-color: var(--primary-dark);
+
       animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 1.7s forwards;
     }
   }

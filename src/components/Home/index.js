@@ -41,7 +41,7 @@ function Home() {
             .join('')
 
           if (iterations > currentSentence.length) clearInterval(interval)
-          iterations += 1 / 5
+          iterations += 1 / 3
         }, 30)
       })
     }
@@ -51,7 +51,7 @@ function Home() {
 
     setTimeout(() => {
       randomEffect()
-    }, 1500)
+    }, 1600)
 
     return () => {
       clearTimeout(removeClass)
