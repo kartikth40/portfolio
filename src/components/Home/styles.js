@@ -50,6 +50,8 @@ const Container = styled.main`
   align-items: center;
   overflow: hidden;
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
+  line-height: 1;
+
   &:before {
     content: 'welcome!';
     font-size: 48px;
@@ -171,9 +173,9 @@ const Hero = styled.div`
       content: '';
       position: absolute;
       width: 100%;
-      height: 45%;
+      height: 100%;
       left: 0;
-      top: 30%;
+      top: 0;
       background-color: white;
 
       animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 1.5s forwards;
@@ -183,7 +185,6 @@ const Hero = styled.div`
   & p {
     margin-top: 10px;
     font-family: var(--handwritten-font-family);
-    margin-top: -2rem;
     width: max-content;
     font-weight: 400;
     color: white;
@@ -194,9 +195,9 @@ const Hero = styled.div`
       content: '';
       position: absolute;
       width: 100%;
-      height: 45%;
+      height: 100%;
       left: 0;
-      top: 30%;
+      top: 0;
       background-color: white;
       animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 1.7s forwards;
     }

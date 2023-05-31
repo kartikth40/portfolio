@@ -19,9 +19,38 @@ function Home() {
 
   useEffect(() => {
     document.body.classList.add('no-scroll')
-    setTimeout(() => {
+    function removeClass() {
       document.body.classList.remove('no-scroll')
+      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&_<>'
+      document.querySelectorAll('.randomize').forEach((el) => {
+        el.addEventListener('click', (event) => {
+          let iterations = 0
+          const currentSentence = event.target.dataset.value
+          const interval = setInterval(() => {
+            event.target.innerText = currentSentence
+              .split('')
+              .map((letter, index) => {
+                if (index < iterations) {
+                  return currentSentence[index]
+                } else {
+                  return letters[Math.floor(Math.random() * letters.length)]
+                }
+              })
+              .join('')
+
+            if (iterations > currentSentence.length) clearInterval(interval)
+            iterations += 1 / 5
+          }, 30)
+        })
+      })
+    }
+    setTimeout(() => {
+      removeClass()
     }, 3000)
+
+    return () => {
+      clearTimeout(removeClass)
+    }
   }, [])
 
   useEffect(() => {
@@ -45,12 +74,16 @@ function Home() {
       <Spinner></Spinner>
       <Hero className="hero">
         <h1>
-          <span>Hi, I'm Kartik</span>
+          <span className="randomize" data-value="Hi, I'm Kartik">
+            Hi, I'm Kartik
+          </span>
         </h1>
         <p>A Front-end Web Developer</p>
       </Hero>
       <HeroSecondary className="hero-secondary" aria-hidden="true">
-        <h1>Hi, I'm Kartik</h1>
+        <h1 className="randomize" data-value="Hi, I'm Kartik">
+          Hi, I'm Kartik
+        </h1>
         <p>A Front-end Web Developer</p>
         <Logo>
           <img src="/icons/skeleton_logo.svg" alt="skeleton logo" />
