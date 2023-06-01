@@ -52,6 +52,17 @@ const Container = styled.main`
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
   line-height: 1.1;
 
+&: before {
+    content: '';
+    z-index: 2000;
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    inset:0;
+    background-color: var(--primary-dark);
+    animation: ${loader} 0.5s ease-in-out 1s forwards;
+  }
+
   &:after {
     content: '';
     z-index: 3000;
