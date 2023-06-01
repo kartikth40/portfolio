@@ -52,22 +52,6 @@ const Container = styled.main`
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
   line-height: 1.1;
 
-  &:before {
-    content: 'welcome!';
-    font-size: 48px;
-    color: var(--primary-light-blue);
-    font-weight: normal;
-    font-family: var(--handwritten-font-family);
-    z-index: 2000;
-    position: fixed;
-    inset: 0;
-    top: 20%;
-    display: flex;
-    justify-content: center;
-    background-color: var(--primary-dark);
-    animation: ${load} 1s ease-in-out 1s forwards;
-  }
-
   &:after {
     content: '';
     z-index: 3000;
