@@ -56,8 +56,6 @@ const Container = styled.main`
     content: '';
     z-index: 2000;
     position: fixed;
-    width: 100px;
-    height: 100px;
     inset:0;
     background-color: var(--primary-dark);
     animation: ${loader} 0.5s ease-in-out 1s forwards;
