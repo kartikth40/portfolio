@@ -23,6 +23,22 @@ const Container = styled.div`
     }
   }
 
+  @media screen and ${device.laptopOnly} {
+    opacity: 0;
+    animation: show_up 0.5s ease-in-out forwards 2s;
+
+    @keyframes show_up {
+      0% {
+        opacity: 0;
+        transform: translateY(100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
   @media screen and ${device.mobile} {
     width: 100vw;
     height: 145px;

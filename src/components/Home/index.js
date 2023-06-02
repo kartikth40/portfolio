@@ -47,7 +47,7 @@ function Home() {
     }
     setTimeout(() => {
       removeClass()
-    }, 3000)
+    }, 2000)
 
     setTimeout(() => {
       randomEffect()

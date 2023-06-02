@@ -52,13 +52,13 @@ const Container = styled.main`
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
   line-height: 1.1;
 
-&: before {
+  &:before {
     content: '';
     z-index: 2000;
     position: fixed;
-    inset:0;
+    inset: 0;
     background-color: var(--primary-dark);
-    animation: ${loader} 0.5s ease-in-out 1s forwards;
+    animation: ${load} 0.5s ease-in-out 1s forwards;
   }
 
   &:after {
@@ -269,7 +269,20 @@ const ScrollAssist = styled.div`
   position: absolute;
   bottom: -20px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(0);
+  opacity: 0;
+  animation: show 1s ease-in-out forwards 2s;
+
+  @keyframes show {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%) translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
 
   &::after {
     content: '';
@@ -341,7 +354,7 @@ const ScrollAssist = styled.div`
 
   @media screen and ${device.mobile} {
     bottom: 100px;
-    animation: swipeUpAnime 1.5s infinite ease-in-out;
+    animation: swipeUpAnime 1.5s infinite ease-in-out 2s;
 
     /* border: 2px solid rgba(255, 255, 255, 0.5); */
     &::after {
@@ -352,7 +365,7 @@ const ScrollAssist = styled.div`
     pointer-events: none;
 
     bottom: 100px;
-    animation: swipeUpAnime 2.5s infinite ease-in-out;
+    animation: swipeUpAnime 2.5s infinite ease-in-out 2s;
     /* border: 2px solid rgba(255, 255, 255, 0.5); */
     &::after {
       display: none;
