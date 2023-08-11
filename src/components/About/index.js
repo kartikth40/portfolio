@@ -44,6 +44,7 @@ function About() {
               <StyledText>
                 my resume
                 <img
+                  id="giphy"
                   src="https://media.giphy.com/media/Yi8MknjPjvh5Q0rtZz/giphy.gif"
                   alt="pointer"
                 />

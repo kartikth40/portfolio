@@ -3,7 +3,6 @@ import device from '../../juice/mediaQueries'
 
 const Container = styled.section`
   scroll-margin-top: calc(50px);
-
   min-height: 100vh;
   padding: 4rem 0;
   display: flex;
@@ -79,6 +78,10 @@ const MainContect = styled.div`
     font-family: var(--primary-font-family);
     font-weight: 900;
     display: inline-block;
+  }
+  &:hover #giphy {
+    opacity: 1;
+    bottom: 0%;
   }
   @media screen and ${device.tablet} {
     & h3 {
