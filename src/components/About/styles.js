@@ -107,7 +107,7 @@ const StyledLink = styled.a`
   margin-top: 10px;
 `
 
-const StyledText = styled.div`
+const StyledText = styled.span`
   position: relative;
   width: 8.8rem;
   font-size: 1rem;

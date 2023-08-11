@@ -49,9 +49,25 @@ const AbsoluteContainer = styled.div`
   left: 0;
 `
 const DullBackground = styled(AbsoluteContainer)`
+  position: relative;
   z-index: 1;
   background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(2px);
+
+  &:after {
+    position: absolute;
+    content: '';
+    inset: 0;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: 0.25s all;
+    @media screen and ${device.mobile} {
+      backdrop-filter: blur(2px);
+    }
+    ${ProjectContainer}:hover & {
+      opacity: 1;
+    }
+  }
 `
 const SliderMask = styled(AbsoluteContainer)`
   z-index: 2;
@@ -62,6 +78,7 @@ const SliderMask = styled(AbsoluteContainer)`
   );
   left: -100%;
   pointer-events: none;
+  opacity: 0.5;
   transition: 250ms all cubic-bezier(1, 0.01, 0.2, 0.98);
   ${ProjectContainer}:hover & {
     left: 0;
@@ -110,8 +127,10 @@ const ProjectInfo = styled(AbsoluteContainer)`
   pointer-events: none;
   transform: scale(1) translateY(10%);
   transition: 250ms all;
+  opacity: 0;
   ${ProjectContainer}:hover & {
     transform: scale(1.1) translateY(0%);
+    opacity: 1;
   }
   h2 {
     font-family: var(--primary-font-family);
