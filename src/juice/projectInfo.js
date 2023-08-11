@@ -2,6 +2,18 @@ const projectInfo = [
   {
     id: 1,
     projNo: '01',
+    bgImgUrl: 'have_small_bytes.png',
+    title: 'Have Small Bytes',
+    desc: 'A tri-category-based personal blog website.',
+    summary:
+      'A personal blog website with three diff. categories made in the process of learning next.js and graphql for the first time. Implemented with a very simplistic but beautiful design containing Dark/Light modes, User Auth, SSR, User feedback systems and leveraged the beautfiful hygraph CMS for managing blogs.',
+    visitLink: 'https://havesmallbytes.vercel.app',
+    sourceLink: 'https://github.com/kartikth40/have-small-bytes',
+    techUsed: ['NextJs', 'React', 'JavaScript', 'CSS', 'GraphQL', 'CMS', 'SSR'],
+  },
+  {
+    id: 2,
+    projNo: '02',
     bgImgUrl: 'ani_cart_cover.png',
     title: 'Ani cart',
     desc: 'An ecommerce store website with full fledged functionalities.',
@@ -21,8 +33,8 @@ const projectInfo = [
     ],
   },
   {
-    id: 2,
-    projNo: '02',
+    id: 3,
+    projNo: '03',
     bgImgUrl: 'box_world.jpg',
     title: 'Box World',
     desc: 'A word building game.',
@@ -31,18 +43,6 @@ const projectInfo = [
     visitLink: 'https://box-world-game.web.app',
     sourceLink: 'https://github.com/kartikth40/box_world',
     techUsed: ['React', 'Redux', 'JavaScript', 'CSS'],
-  },
-  {
-    id: 3,
-    projNo: '03',
-    bgImgUrl: 'movie_town_cover.jpg',
-    title: 'Movie Town',
-    desc: 'A Movies Description site made with the help of TheMoviesDB.',
-    summary:
-      'A Movies scrapping site which fetches all the latest movies currently running and show their posters with their story plot in the homepage while also enabling users to search movies of their own choice on the go.',
-    visitLink: 'https://movie-town.netlify.app',
-    sourceLink: 'https://github.com/kartikth40/movie-town',
-    techUsed: ['React', 'JavaScript', 'CSS', 'TMDB API'],
   },
 ]
 

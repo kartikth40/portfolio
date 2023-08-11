@@ -4,26 +4,23 @@ import device from '../../juice/mediaQueries'
 const ProjectContainer = styled.div`
   margin: 1.5rem 0 10rem;
   width: 900px;
-  border-radius: 20px;
+  border-radius: 5px;
   aspect-ratio: 9 / 4;
   position: relative;
 
   @media screen and ${device.laptopS} {
     width: 650px;
     height: 300px;
-    border-radius: 15px;
   }
   @media screen and ${device.tablet} {
     width: 50vw;
     height: 250px;
     margin: 1.5rem 0 3rem;
-    border-radius: 10px;
   }
   @media screen and ${device.mobile} {
     width: 300px;
     height: 200px;
     margin: 1.5rem 0 2rem;
-    border-radius: 10px;
   }
 `
 const BackgroundImg = styled.div`
@@ -31,20 +28,17 @@ const BackgroundImg = styled.div`
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
-  border-radius: 20px;
+  border-radius: 5px;
   position: relative;
   overflow: hidden;
   @media screen and ${device.laptopS} {
     background-size: cover;
-    border-radius: 15px;
   }
   @media screen and ${device.tablet} {
-    border-radius: 10px;
     background-size: cover;
   }
   @media screen and ${device.mobile} {
     background-size: cover;
-    border-radius: 10px;
   }
 `
 const AbsoluteContainer = styled.div`
