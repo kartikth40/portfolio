@@ -79,10 +79,7 @@ const MainContect = styled.div`
     font-weight: 900;
     display: inline-block;
   }
-  &:hover #giphy {
-    opacity: 1;
-    bottom: 0%;
-  }
+
   @media screen and ${device.tablet} {
     & h3 {
       font-size: 4rem;
@@ -105,6 +102,10 @@ const StyledLink = styled.a`
   text-decoration: none;
   width: max-content;
   margin-top: 10px;
+  &:hover #giphy {
+    opacity: 1;
+    bottom: 0%;
+  }
 `
 
 const StyledText = styled.span`
