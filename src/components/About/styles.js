@@ -109,6 +109,7 @@ const StyledLink = styled.a`
 `
 
 const StyledText = styled.span`
+  white-space: nowrap;
   position: relative;
   width: 8.8rem;
   font-size: 1rem;
