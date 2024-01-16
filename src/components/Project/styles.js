@@ -3,7 +3,7 @@ import device from '../../juice/mediaQueries'
 
 const ProjectContainer = styled.div`
   margin: 1.5rem 0 10rem;
-  width: 900px;
+  width: 850px;
   border-radius: 5px;
   aspect-ratio: 9 / 4;
   position: relative;
