@@ -138,7 +138,7 @@ function Contact() {
           </Field>
           <ButtonContainer>
             <button type="submit" value="Send" disabled={loading}>
-              {loading ? 'sending...' : 'send'}
+              {loading ? 'wait...' : 'send'}
             </button>
             <button type="reset" value="clear" onClick={handleCancel}>
               clear

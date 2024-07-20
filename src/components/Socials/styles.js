@@ -13,6 +13,8 @@ const Container = styled.div`
   border-radius: 10px;
   width: 40px;
   height: 210px;
+  border: 1px solid var(--primary-blue);
+  box-shadow: 0 0 2px var(--primary-blue);
 
   span {
     a {

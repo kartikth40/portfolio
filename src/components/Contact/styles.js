@@ -4,13 +4,15 @@ import device from '../../juice/mediaQueries'
 const SuperContainer = styled.div`
   display: flex;
   justify-content: center;
-  padding-bottom: 50px;
+  padding-bottom: 70px;
   padding-top: 100px;
-  margin-top: -100px;
+  margin-top: -50px;
   overflow: hidden;
+  background-color: var(--secondary-dark);
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
 
   @media screen and ${device.mobile} {
-    padding-bottom: 0;
+    border: none;
     padding-top: 50px;
     margin-top: -50px;
   }

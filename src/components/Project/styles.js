@@ -134,6 +134,7 @@ const ProjectInfo = styled(AbsoluteContainer)`
   }
   h2 {
     font-family: var(--primary-font-family);
+    text-shadow: 0 0 5px var(--primary-dark);
     font-weight: 900;
     font-size: 40px;
     margin-bottom: 0;
@@ -171,6 +172,13 @@ const ProjectInfo = styled(AbsoluteContainer)`
     color: white;
     background: transparent;
     transition: 250ms all;
+    &.private {
+      background-color: rgba(0,0,0,.2);
+      color: rgba(255,255,255,.5);
+    }
+    &.private:hover {
+      background-color: rgba(0,0,0,.3);
+    }
     &:hover {
       background: white;
       color: black;
@@ -238,11 +246,16 @@ const ProjectInfo = styled(AbsoluteContainer)`
       transform: scale(1.1) translateY(-10%);
     }
     h2 {
+      position: absolute;
+      top: 0;
       text-align: center;
       pointer-events: none;
+      word-wrap: break-word;
       font-size: 20px;
+      text-decoration: underline;
     }
     h5 {
+      padding-inline: 10px;
       width: 90%;
       margin: 0 auto;
       text-align: center;

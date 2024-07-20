@@ -25,6 +25,7 @@ function Project({
   summary,
   visitLink,
   sourceLink,
+  privateSource,
   techUsed,
 }) {
   let windowSize = useWindowSize()
@@ -66,9 +67,9 @@ function Project({
             <span>{windowSize > devSize.mobile ? 'Visit Site' : 'live'}</span>
             <span>&#8599;</span>
           </a>
-          <a href={sourceLink} target="_blank" rel="noreferrer">
-            <span>{windowSize > devSize.mobile ? 'Source Code' : 'code'}</span>
-            <span>&#8599;</span>
+          <a href={sourceLink} target="_blank" rel="noreferrer" className={`${privateSource && "private"}`}>
+            <span>{windowSize > devSize.mobile ? (privateSource ? 'Private Source*' : 'Source Code') : (privateSource ? 'private*' : 'code')}</span>
+            {!privateSource && <span>&#8599;</span>}
           </a>
         </CTAbuttons>
         {windowSize > devSize.mobile && <p>{summary}</p>}

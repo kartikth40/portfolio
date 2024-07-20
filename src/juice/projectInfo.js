@@ -4,7 +4,7 @@ const projectInfo = [
     projNo: '01',
     bgImgUrl: 'have_small_bytes.png',
     title: 'Have Small Bytes',
-    desc: 'A tri-category-based personal blog website.',
+    desc: 'A Tri-Category-Based Personal Blog Website.',
     summary:
       'A personal blog website with three diff. categories made in the process of learning next.js and graphql for the first time. Implemented with a very simplistic but beautiful design containing Dark/Light modes, User Auth, SSR, User feedback systems and leveraged the beautfiful hygraph CMS for managing blogs.',
     visitLink: 'https://havesmallbytes.vercel.app',
@@ -14,22 +14,19 @@ const projectInfo = [
   {
     id: 2,
     projNo: '02',
-    bgImgUrl: 'ani_cart_cover.png',
-    title: 'Ani cart',
-    desc: 'An ecommerce store website with full fledged functionalities.',
+    bgImgUrl: 'purrfect_focus.png',
+    title: 'Purrfect Pomodoro Timer',
+    desc: 'A Chrome Extension for Time Management.',
     summary:
-      'An ecommerce store build in the process of enhancing my fullstack skills. It has all the necessary features an ecommerce store needs like home page with featured products, filtering products by many categories, payment gateways, admin dashboard and many more.',
-    visitLink: 'https://ani-cart.web.app',
-    sourceLink: 'https://github.com/kartikth40/ecommerceStore',
+      'A sleek, feline-inspired productivity tool. Manage work intervals with features like a 6-month Pomodoro Calendar, data export/import, auto-start timer, and a History tab.',
+    visitLink: 'https://chromewebstore.google.com/detail/aobapnhgpjlldncjopmbbfeoomombhel?hl=en-GB',
+    sourceLink: 'https://github.com/kartikth40/PurrfectFocus',
+    privateSource: true,
     techUsed: [
-      'React',
+      'Chrome Extension',
       'JavaScript',
-      'Firebase',
-      'Node',
-      'CSS',
-      'Redux',
-      'MongoDB',
-      'Stripe',
+      'HTML',
+      'CSS'
     ],
   },
   {
@@ -37,7 +34,7 @@ const projectInfo = [
     projNo: '03',
     bgImgUrl: 'box_world.jpg',
     title: 'Box World',
-    desc: 'A word building game.',
+    desc: 'A Word Building Game.',
     summary:
       'A simple yet complex word building game build while getting inspired by recently famous wordle but with totally different idea and logic behind it. It is also equipped with a beginner friendly tutorial for helping new players to learn the game.',
     visitLink: 'https://box-world-game.web.app',
