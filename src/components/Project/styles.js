@@ -175,6 +175,7 @@ const ProjectInfo = styled(AbsoluteContainer)`
     &.private {
       background-color: rgba(0,0,0,.2);
       color: rgba(255,255,255,.5);
+      border: rgba(0,0,0,.1) 2px solid;
     }
     &.private:hover {
       background-color: rgba(0,0,0,.3);
