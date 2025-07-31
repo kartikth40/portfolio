@@ -4,12 +4,15 @@ import device from '../../juice/mediaQueries'
 const Container = styled.section`
   scroll-margin-top: calc(50px);
   min-height: 100vh;
-  padding: 4rem 0;
+  padding: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
+  @media screen and ${device.mobile} {
+    padding: 4rem 0 ;
+  }
 `
 const AboutSection = styled.section`
   display: flex;
@@ -21,7 +24,7 @@ const AboutSection = styled.section`
 `
 const Picture = styled.picture`
   height: 400px;
-  width: 200px;
+  width: 300px;
   margin-right: 2.5rem;
   position: relative;
   box-shadow: 0 0 20px rgba(0, 0, 0, 1);
@@ -41,7 +44,7 @@ const Picture = styled.picture`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.5);
+    transform: scale(1);
     border-radius: 5px;
   }
   @media screen and ${device.mobile} {
@@ -54,7 +57,7 @@ const Picture = styled.picture`
     & img {
       border-radius: 50%;
       object-position: 50% 10%;
-      transform: scale(1.8);
+      transform: scale(1);
     }
     & span {
       border-radius: 50%;
@@ -72,15 +75,21 @@ const MainContect = styled.div`
   & span {
     display: block;
     margin-bottom: 0.3rem;
+    font-size: 0.8em;
+    font-weight: 900;
     font-family: var(--secondary-font-family);
   }
   & span:nth-last-child(2) {
     font-family: var(--primary-font-family);
-    font-weight: 900;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--primary-blue);
+    text-decoration-style: dotted;
     display: inline-block;
   }
 
-  @media screen and ${device.tablet} {
+  @media screen and ${device.mobile} {
+  width: 80%;
     & h3 {
       font-size: 4rem;
     }

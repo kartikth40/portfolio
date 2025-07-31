@@ -43,7 +43,7 @@ const UpperTitle = styled.div`
   color: white;
   writing-mode: horizontal-tb;
   letter-spacing: 0;
-  font-weight: 100;
+  font-weight: 500;
   text-transform: uppercase;
   font-size: 0.16em;
   pointer-events: auto;
@@ -60,7 +60,7 @@ const InnerTitle = styled.div`
   color: white;
   writing-mode: horizontal-tb;
   letter-spacing: 0;
-  font-weight: 100;
+  font-weight: 900;
   font-size: 0.14em;
   pointer-events: auto;
 `

@@ -185,6 +185,11 @@ const Hero = styled.div`
     overflow: hidden;
     color: var(--home-light);
 
+    &.tag-line {
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+
     &:before {
       content: '';
       position: absolute;

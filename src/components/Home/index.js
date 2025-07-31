@@ -84,16 +84,22 @@ function Home() {
             Hi, I'm Kartik
           </span>
         </h1>
-        <p className="randomize" data-value="A Front-end Web Developer">
-          A Front-end Web Developer
+        <p className="randomize" data-value="A Software Developer.">
+          A Software Developer.
+        </p>
+        <p className="randomize tag-line" data-value="Turning logic into experiences ✨">
+          Turning logic into experiences ✨
         </p>
       </Hero>
       <HeroSecondary className="hero-secondary" aria-hidden="true">
         <h1 className="randomize" data-value="Hi, I'm Kartik">
           Hi, I'm Kartik
         </h1>
-        <p className="randomize" data-value="A Front-end Web Developer">
-          A Front-end Web Developer
+        <p className="randomize" data-value="A Software Developer.">
+          A Software Developer.
+        </p>
+        <p className="randomize tag-line" data-value="Turning logic into experiences ✨">
+          Turning logic into experiences ✨
         </p>
         <Logo>
           <img src="/icons/skeleton_logo.svg" alt="skeleton logo" />

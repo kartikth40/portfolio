@@ -24,10 +24,15 @@ const FooterLinks = styled.div`
   align-items: center;
   & a {
     width: 100px;
-    height: 35px;
     margin: 1rem;
     color: white;
     text-decoration: none;
+    &:last-child {
+      & img {
+        max-height: 35px;
+        object-fit: contain;
+      }
+    }
 
     & img {
       width: 100%;

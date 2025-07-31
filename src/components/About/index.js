@@ -19,35 +19,29 @@ function About() {
     <Container id="about">
       <AboutSection>
         <Picture>
-          <img src="/img/kartik_pink.jpg" alt="profile pic" />
+          <img src="/img/kartik_pfp.jpg" alt="profile pic" />
           <span></span>
         </Picture>
         <MainContect>
           <h3>About</h3>
           <p>
             Hello! I'm Kartik Thakur,
-            <br /> a {getAge()}-years-old skilled Front-end developer.
-            <br /> Learning to make Full Stack Websites.
-            <br /> I enjoy creating things that live on the internet.
+            <br /> a skilled Software developer who enjoys turning ideas into robust, scalable web applications.
             <br />
-            <br />I like to
-            <span>resolve design problems,</span>
-            <span>create smart user interfaces &</span>
-            <span>imagine creative interactions.</span>
+            <br /> I love creating things that live on the internet, and I bring hands-on experience across the stack to
+            build clean, efficient solutions using modern technologies like JavaScript, React, and Java.
             <br />
-            {/* Currently open for some <span>Freelance Work</span>. */}
-            <StyledLink
-              href="/files/myResume.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <br />
+            I'm passionate about
+            <span>solving design problems,</span>
+            <span>crafting intuitive user interfaces &</span>
+            <span>imagining smart, creative interactions.</span>
+            <br />
+            I'm currently open to <span>new opportunities</span> - let’s build something great together.
+            <StyledLink href="/files/myResume.pdf" target="_blank" rel="noreferrer">
               <StyledText>
                 my resume
-                <img
-                  id="giphy"
-                  src="https://media.giphy.com/media/Yi8MknjPjvh5Q0rtZz/giphy.gif"
-                  alt="pointer"
-                />
+                <img id="giphy" src="https://media.giphy.com/media/Yi8MknjPjvh5Q0rtZz/giphy.gif" alt="pointer" />
               </StyledText>
             </StyledLink>
           </p>
