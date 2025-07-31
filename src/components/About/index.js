@@ -6,6 +6,7 @@ import {
   MainContect,
   StyledLink,
   StyledText,
+  AboutLinks,
 } from './styles'
 function About() {
   return (
@@ -31,12 +32,20 @@ function About() {
             <span>imagining smart, creative interactions.</span>
             <br />
             I'm currently open to <span>new opportunities</span> - let’s build something great together.
-            <StyledLink href="/files/myResume.pdf" target="_blank" rel="noreferrer">
-              <StyledText>
-                my resume
-                <img id="giphy" src="https://media.giphy.com/media/Yi8MknjPjvh5Q0rtZz/giphy.gif" alt="pointer" />
-              </StyledText>
-            </StyledLink>
+            <AboutLinks>
+              <StyledLink href="/files/myResume.pdf" target="_blank" rel="noreferrer">
+                <StyledText>
+                  my resume
+                  <img id="giphy" src="https://media.giphy.com/media/Yi8MknjPjvh5Q0rtZz/giphy.gif" alt="pointer" />
+                </StyledText>
+              </StyledLink>
+              <StyledLink href="https://www.linkedin.com/in/kartikth40/" target="_blank" rel="noreferrer">
+                <StyledText>
+                  linkedIn
+                  <img id="giphy" src="https://media.giphy.com/media/Yi8MknjPjvh5Q0rtZz/giphy.gif" alt="pointer" />
+                </StyledText>
+              </StyledLink>
+            </AboutLinks>
           </p>
         </MainContect>
       </AboutSection>

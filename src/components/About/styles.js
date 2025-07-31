@@ -80,9 +80,9 @@ const MainContect = styled.div`
     font-family: var(--secondary-font-family);
   }
   & span:nth-last-child(2) {
-    text-decoration: underline;
-    text-decoration-color: var(--primary-blue);
-    text-decoration-style: dotted;
+    font-family: var(--primary-font-family);
+    font-weight: 500;
+    font-size: 1em;
     display: inline-block;
   }
 
@@ -104,6 +104,11 @@ const MainContect = styled.div`
     }
   }
 `
+const AboutLinks = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  `
 const StyledLink = styled.a`
   display: block;
   text-decoration: none;
@@ -118,6 +123,7 @@ const StyledLink = styled.a`
 const StyledText = styled.span`
   white-space: nowrap;
   position: relative;
+  text-align: center;
   width: 8.8rem;
   font-size: 1rem;
   font-weight: bold;
@@ -184,4 +190,4 @@ const StyledText = styled.span`
   }
 `
 
-export { Container, AboutSection, Picture, MainContect, StyledLink, StyledText }
+export { Container, AboutSection, Picture, MainContect, StyledLink, StyledText, AboutLinks }
