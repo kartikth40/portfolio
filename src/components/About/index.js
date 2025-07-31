@@ -8,13 +8,6 @@ import {
   StyledText,
 } from './styles'
 function About() {
-  const getAge = () => {
-    let curYear = new Date().getFullYear()
-    let curMonth = new Date().getMonth()
-    let age = curYear - 2000
-    age = curMonth < 8 ? age - 1 : age
-    return age
-  }
   return (
     <Container id="about">
       <AboutSection>
