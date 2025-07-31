@@ -80,8 +80,6 @@ const MainContect = styled.div`
     font-family: var(--secondary-font-family);
   }
   & span:nth-last-child(2) {
-    font-family: var(--primary-font-family);
-    font-weight: 500;
     text-decoration: underline;
     text-decoration-color: var(--primary-blue);
     text-decoration-style: dotted;
