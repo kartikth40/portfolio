@@ -15,7 +15,7 @@ const SidewaysTitle = styled.div`
   margin: 0 2rem;
   color: rgba(255, 255, 255, 0.1);
   font-family: var(--secondary-font-family);
-  font-size: 8rem;
+  font-size: 7rem;
   position: relative;
   pointer-events: none;
   @media screen and ${device.laptopS} {

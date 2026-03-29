@@ -33,11 +33,11 @@ function About() {
         <MainContect>
           <h3>About</h3>
           <p>
-            I'm Kartik Thakur, a Software Engineer with 2.5+ years of experience building and scaling
+            I'm Kartik Thakur - a Software Engineer with 2.5+ years of experience building and scaling
             production systems in fintech.
             <br />
             <br />
-            At Sopra Banking Software, I'm part of the team building <span>PAYCE — a Payment Cloud Engine</span> for
+            At Sopra Banking Software, I'm part of the team building <span>PAYCE - a PAYment Cloud Engine</span> for
             the EU region, contributing to end-to-end payment flows across a Java + Angular stack that handles
             high-volume transaction processing at scale.
             <br />

@@ -342,11 +342,11 @@ const ExpandToggle = styled.button`
   display: block;
   margin: 0.6rem auto 3rem;
   background: transparent;
-  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border: 1px dashed rgba(255, 255, 255, 0.35);
   border-radius: 20px;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.6);
   font-family: var(--secondary-font-family);
-  font-size: 0.45rem;
+  font-size: 0.5rem;
   padding: 0.4rem 1.2rem;
   cursor: pointer;
   transition: 0.2s all;
@@ -397,7 +397,7 @@ const DetailTab = styled.button`
   border-bottom: 2px solid ${({ $active }) => ($active ? 'var(--primary-blue)' : 'transparent')};
   color: ${({ $active }) => ($active ? 'white' : 'rgba(255,255,255,0.4)')};
   font-family: var(--secondary-font-family);
-  font-size: 0.45rem;
+  font-size: 0.6rem;
   padding: 0.7rem 1.2rem;
   cursor: pointer;
   transition: 0.2s all;

@@ -71,8 +71,7 @@ const MainContect = styled.div`
     font-family: var(--secondary-font-family);
     margin-bottom: 30px;
     text-align: left;
-  }
-  & span {
+  }  & span {
     display: block;
     margin-bottom: 0.3rem;
     font-size: 0.8em;
@@ -97,7 +96,7 @@ const MainContect = styled.div`
   }
   @media screen and ${device.mobile} {
     & h3 {
-      font-size: 3rem;
+      font-size: 2rem;
     }
     & p {
       font-size: 0.9rem;
@@ -195,7 +194,7 @@ const Divider = styled.hr`
   width: 100%;
   max-width: 900px;
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
   margin: 3rem 0;
 `
 
@@ -208,7 +207,7 @@ const SubTitle = styled.h4`
   opacity: 0.85;
 
   @media screen and ${device.mobile} {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 `
 

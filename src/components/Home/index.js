@@ -87,8 +87,8 @@ function Home() {
         <p className="randomize" data-value="A Software Developer.">
           A Software Developer.
         </p>
-        <p className="randomize tag-line" data-value="Turning logic into experiences ✨">
-          Turning logic into experiences ✨
+        <p className="randomize tag-line" data-value="Building reliable systems at scale. 🚀">
+          Building reliable systems at scale. 🚀
         </p>
       </Hero>
       <HeroSecondary className="hero-secondary" aria-hidden="true">
@@ -98,8 +98,8 @@ function Home() {
         <p className="randomize" data-value="A Software Developer.">
           A Software Developer.
         </p>
-        <p className="randomize tag-line" data-value="Turning logic into experiences ✨">
-          Turning logic into experiences ✨
+        <p className="randomize tag-line" data-value="Building reliable systems at scale. 🚀">
+          Building reliable systems at scale. 🚀
         </p>
         <Logo>
           <img src="/icons/skeleton_logo.svg" alt="skeleton logo" />

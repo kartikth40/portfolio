@@ -6,6 +6,7 @@ import Experience from './components/Experience/index'
 import Projects from './components/Projects/index'
 import Footer from './components/Footer/index'
 import Contact from './components/Contact'
+import ScrollToTop from './components/ScrollToTop/index'
 
 function App() {
   useEffect(() => {
@@ -21,6 +22,7 @@ function App() {
       <Projects />
       <Contact />
       <Footer />
+      <ScrollToTop />
     </div>
   )
 }

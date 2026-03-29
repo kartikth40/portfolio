@@ -26,7 +26,7 @@ const SectionTitle = styled.h2`
     font-size: 3rem;
   }
   @media screen and ${device.mobile} {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 `
 

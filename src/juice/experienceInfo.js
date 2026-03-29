@@ -4,7 +4,7 @@ const experienceInfo = [
     company: 'Sopra Banking Software (SBS)',
     location: 'Noida, IN',
     type: 'Full Time',
-    techUsed: ['Java', 'Spring Boot', 'Angular', 'TypeScript', 'MongoDB', 'REST APIs'],
+    techUsed: ['Java', 'Spring Boot', 'Angular', 'TypeScript', 'MongoDB', 'Kafka', 'Kubernetes', 'REST APIs'],
     promoted: true,
     roles: [
       {
@@ -12,6 +12,8 @@ const experienceInfo = [
         duration: 'Jan 2026 – Present',
         bullets: [
           'Promoted to SDE-2 within the PAYCE (Payment Cloud Engine) team, taking on increased ownership of system design and cross-team delivery.',
+          'Leveraged Kafka for event-driven payment processing, improving decoupling between services and enabling reliable async transaction handling.',
+          'Contributed to Kubernetes-based deployment workflows, improving service reliability and supporting zero-downtime rollouts in production.',
           'Led frontend design decisions for payment journeys using Angular, improving usability and reducing friction across transaction flows.',
           'Built and integrated full-stack features across UI and backend, ensuring seamless data flow and consistent user experience in a rapidly scaling core financial platform.',
         ],
@@ -22,6 +24,7 @@ const experienceInfo = [
         bullets: [
           'Designed and implemented end-to-end payment flows for the EU region as part of PAYCE, supporting high-volume transaction processing with strong reliability guarantees.',
           'Developed and optimized Java-based backend APIs with robust error handling and retry mechanisms, reducing transaction failure scenarios in production.',
+          'Worked with Kafka-based event streams to ensure consistent message delivery across payment services in a distributed architecture.',
           'Resolved critical production issues in payment workflows, improving system reliability and reducing failure rates in live transaction processing.',
         ],
       },

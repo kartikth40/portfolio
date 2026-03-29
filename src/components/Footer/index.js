@@ -27,7 +27,7 @@ function Footer() {
       </FooterLinks>
       {windowSize > devSize.tablet && <Socials />}
       <a href="#home" style={{ textDecoration: 'none' }}>
-        <Copyrights>© {currentYear} Kartik Thakur</Copyrights>
+        <Copyrights>© {currentYear} Kartik Thakur · Open to SDE-2 opportunities</Copyrights>
       </a>
     </Container>
   )

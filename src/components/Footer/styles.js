@@ -53,9 +53,10 @@ const Copyrights = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.55);
   @media screen and ${device.mobile} {
     font-size: 10px;
+    text-align: center;
   }
 `
 
