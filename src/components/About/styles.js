@@ -11,7 +11,7 @@ const Container = styled.section`
   align-items: center;
   border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
   @media screen and ${device.mobile} {
-    padding: 4rem 0 ;
+    padding: 4rem 1.5rem 5rem;
   }
 `
 const AboutSection = styled.section`
@@ -190,4 +190,131 @@ const StyledText = styled.span`
   }
 `
 
-export { Container, AboutSection, Picture, MainContect, StyledLink, StyledText, AboutLinks }
+
+const Divider = styled.hr`
+  width: 100%;
+  max-width: 900px;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 3rem 0;
+`
+
+const SubTitle = styled.h4`
+  font-family: var(--secondary-font-family);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+  opacity: 0.85;
+
+  @media screen and ${device.mobile} {
+    font-size: 1.2rem;
+  }
+`
+
+const SkillsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 900px;
+
+  @media screen and ${device.mobile} {
+    grid-template-columns: 1fr;
+  }
+`
+
+const CategoryBlock = styled.div`
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+`
+
+const CategoryName = styled.h4`
+  font-family: var(--secondary-font-family);
+  font-size: 0.6rem;
+  color: var(--primary-light-blue);
+  margin-bottom: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+`
+
+const TagsRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+`
+
+const Tag = styled.span`
+  font-size: 0.5rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(134, 93, 255, 0.1);
+  border: 1px solid rgba(134, 93, 255, 0.25);
+  transition: 0.2s all;
+
+  &:hover {
+    background: rgba(134, 93, 255, 0.2);
+    border-color: var(--primary-blue);
+  }
+`
+
+const EduCard = styled.div`
+  width: 100%;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+`
+
+const EduDegree = styled.h3`
+  font-family: var(--primary-font-family);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+`
+
+const EduInstitution = styled.p`
+  font-size: 0.6rem;
+  color: var(--primary-light-blue);
+  font-family: var(--secondary-font-family);
+  margin-bottom: 0.5rem;
+  text-transform: lowercase;
+`
+
+const EduMeta = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+
+  span {
+    font-size: 0.45rem;
+    opacity: 0.5;
+    font-family: var(--secondary-font-family);
+  }
+`
+
+export {
+  Container,
+  AboutSection,
+  Picture,
+  MainContect,
+  StyledLink,
+  StyledText,
+  AboutLinks,
+  Divider,
+  SubTitle,
+  SkillsGrid,
+  CategoryBlock,
+  CategoryName,
+  TagsRow,
+  Tag,
+  EduCard,
+  EduDegree,
+  EduInstitution,
+  EduMeta,
+}

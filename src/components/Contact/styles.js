@@ -218,16 +218,58 @@ const Container = styled.div`
 
 const TopHeading = styled.div`
   & h1 {
-    /* font-family: var(--secondary-font-family); */
     font-weight: 500;
     font-size: 1.2rem;
-    padding: 0 5rem 1rem;
+    padding: 0 5rem 0.3rem;
 
     @media screen and ${device.mobile} {
       font-weight: 900;
       font-size: 1rem;
-      padding: 0 2rem 1rem;
+      padding: 0 2rem 0.3rem;
     }
+  }
+`
+
+const SubLine = styled.p`
+  font-size: 0.55rem;
+  opacity: 0.55;
+  padding: 0 5rem 1rem;
+  font-family: var(--secondary-font-family);
+  text-transform: lowercase;
+
+  @media screen and ${device.mobile} {
+    padding: 0 2rem 1rem;
+    font-size: 0.5rem;
+  }
+`
+
+const DirectLinks = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 5rem 1.5rem;
+  flex-wrap: wrap;
+
+  a {
+    font-size: 0.5rem;
+    color: var(--primary-light-blue);
+    text-decoration: none;
+    font-family: var(--secondary-font-family);
+    transition: 0.2s all;
+
+    &:hover {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+
+  span {
+    font-size: 0.5rem;
+    opacity: 0.3;
+  }
+
+  @media screen and ${device.mobile} {
+    padding: 0 2rem 1.5rem;
   }
 `
 const ButtonContainer = styled.div`
@@ -373,6 +415,8 @@ const Field = styled.div`
 export {
   Container,
   TopHeading,
+  SubLine,
+  DirectLinks,
   Contactform,
   Field,
   ButtonContainer,

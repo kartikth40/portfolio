@@ -4,11 +4,12 @@ function Socials() {
   return (
     <Container id="socials-container">
       <span>
-        <a
-          href="https://twitter.com/Kartikth40"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href="https://www.linkedin.com/in/kartikth40" target="_blank" rel="noreferrer">
+          <img width="96" height="96" src="https://img.icons8.com/glyph-neue/128/FFFFFF/linkedin.png" alt="linkedin" />
+        </a>
+      </span>
+      <span>
+        <a href="https://twitter.com/Kartikth40" target="_blank" rel="noreferrer">
           <img
             width="96"
             height="96"
@@ -18,53 +19,17 @@ function Socials() {
         </a>
       </span>
       <span>
-        <a
-          href="https://www.linkedin.com/in/kartikth40"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            width="96"
-            height="96"
-            src="https://img.icons8.com/glyph-neue/128/FFFFFF/linkedin.png"
-            alt="linkedin"
-          />
+        <a href="https://github.com/kartikth40" target="_blank" rel="noreferrer">
+          <img width="96" height="96" src="https://img.icons8.com/glyph-neue/128/FFFFFF/github.png" alt="github" />
         </a>
       </span>
       <span>
-        <a
-          href="https://github.com/kartikth40"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            width="96"
-            height="96"
-            src="https://img.icons8.com/glyph-neue/128/FFFFFF/github.png"
-            alt="github"
-          />
+        <a href="https://codepen.io/kartikth40" target="_blank" rel="noreferrer">
+          <img width="96" height="96" src="https://img.icons8.com/windows/128/FFFFFF/codepen.png" alt="codepen" />
         </a>
       </span>
       <span>
-        <a
-          href="https://codepen.io/kartikth40"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            width="96"
-            height="96"
-            src="https://img.icons8.com/windows/128/FFFFFF/codepen.png"
-            alt="codepen"
-          />
-        </a>
-      </span>
-      <span>
-        <a
-          href="mailto: kartikthakur.2409@gmail.com"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href="mailto: kartikthakur.2409@gmail.com" target="_blank" rel="noreferrer">
           <img
             width="96"
             height="96"

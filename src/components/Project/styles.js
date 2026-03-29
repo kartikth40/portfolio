@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import device from '../../juice/mediaQueries'
 
 const ProjectContainer = styled.div`
-  margin: 1.5rem 0 10rem;
+  margin: 1.5rem 0 0;
   width: 850px;
   border-radius: 5px;
   aspect-ratio: 9 / 4;
@@ -15,12 +15,12 @@ const ProjectContainer = styled.div`
   @media screen and ${device.tablet} {
     width: 50vw;
     height: 250px;
-    margin: 1.5rem 0 3rem;
+    margin: 1.5rem 0 0;
   }
   @media screen and ${device.mobile} {
     width: 300px;
     height: 200px;
-    margin: 1.5rem 0 2rem;
+    margin: 1.5rem 0 0;
   }
 `
 const BackgroundImg = styled.div`
@@ -338,6 +338,106 @@ const CTAbuttons = styled.div`
     height: max-content;
   }
 `
+const ExpandToggle = styled.button`
+  display: block;
+  margin: 0.6rem auto 3rem;
+  background: transparent;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: var(--secondary-font-family);
+  font-size: 0.45rem;
+  padding: 0.4rem 1.2rem;
+  cursor: pointer;
+  transition: 0.2s all;
+
+  &:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-light-blue);
+  }
+
+  @media screen and ${device.mobile} {
+    margin: 0.5rem auto 2rem;
+  }
+`
+
+const DetailPanel = styled.div`
+  width: 850px;
+  margin: 0 auto 6rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  animation: fadeIn 0.25s ease;
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media screen and ${device.laptopS} {
+    width: 650px;
+  }
+  @media screen and ${device.tablet} {
+    width: 50vw;
+  }
+  @media screen and ${device.mobile} {
+    width: 300px;
+  }
+`
+
+const DetailTabs = styled.div`
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+`
+
+const DetailTab = styled.button`
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid ${({ $active }) => ($active ? 'var(--primary-blue)' : 'transparent')};
+  color: ${({ $active }) => ($active ? 'white' : 'rgba(255,255,255,0.4)')};
+  font-family: var(--secondary-font-family);
+  font-size: 0.45rem;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  transition: 0.2s all;
+  text-transform: lowercase;
+
+  &:hover {
+    color: white;
+  }
+`
+
+const DetailContent = styled.div`
+  padding: 1.5rem 2rem;
+
+  @media screen and ${device.mobile} {
+    padding: 1rem;
+  }
+`
+
+const BulletList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    font-size: 0.65rem;
+    line-height: 1.8;
+    opacity: 0.85;
+    padding-left: 1.2rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+
+    &::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--primary-blue);
+    }
+  }
+`
+
 export {
   ProjectContainer,
   BackgroundImg,
@@ -347,4 +447,10 @@ export {
   ProjectInfo,
   CTAbuttons,
   Tech,
+  ExpandToggle,
+  DetailPanel,
+  DetailTabs,
+  DetailTab,
+  DetailContent,
+  BulletList,
 }

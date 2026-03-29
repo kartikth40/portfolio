@@ -7,27 +7,26 @@ const Container = styled.section`
   display: flex;
   @media screen and ${device.mobile} {
     flex-direction: column;
-    margin-bottom: 100px;
+    margin-bottom: 2rem;
   }
 `
 const SidewaysTitle = styled.div`
   writing-mode: vertical-lr;
-  letter-spacing: 50px;
   margin: 0 2rem;
   color: rgba(255, 255, 255, 0.1);
   font-family: var(--secondary-font-family);
-  font-size: 10rem;
+  font-size: 8rem;
   position: relative;
   pointer-events: none;
   @media screen and ${device.laptopS} {
     letter-spacing: 5px;
     margin: 0 0 0 1rem;
-    font-size: 10rem;
+    font-size: 5.5rem;
   }
   @media screen and ${device.tablet} {
     letter-spacing: 5px;
     margin: 0 0 4rem 2rem;
-    font-size: 7rem;
+    font-size: 5rem;
   }
   @media screen and ${device.mobile} {
     display: none;
@@ -76,6 +75,7 @@ const ProjectsContainer = styled.div`
   width: 100%;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2rem;
 `
 export {
   Container,

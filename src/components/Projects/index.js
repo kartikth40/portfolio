@@ -27,8 +27,10 @@ function Work() {
             projNo={project.projNo}
             bgImgUrl={project.bgImgUrl}
             title={project.title}
-            desc={project.desc}
-            summary={project.summary}
+            desc={project.tagline}
+            overview={project.overview}
+            impact={project.impact}
+            challenges={project.challenges}
             visitLink={project.visitLink}
             sourceLink={project.sourceLink}
             privateSource={project?.privateSource}

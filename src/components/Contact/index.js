@@ -5,6 +5,8 @@ import {
   Block,
   Container,
   TopHeading,
+  SubLine,
+  DirectLinks,
   Contactform,
   Field,
   ButtonContainer,
@@ -97,44 +99,44 @@ function Contact() {
     <SuperContainer id="contact">
       <Container className="contact">
         <span className="mail"></span>
-        <span className="hidden">Thank you so much! 😊</span>
+        <span className="hidden">Talk soon! 🚀</span>
         <TopHeading>
-          <h1>Wanna Talk ? </h1>
+          <h1>Let's Connect</h1>
         </TopHeading>
+        <SubLine>
+          open to SDE-2 roles, collaborations, or just a good tech conversation.
+          <br />
+          <br />
+          <span>Use the form below for the full experience ✨</span>
+        </SubLine>
+        <DirectLinks>
+          <span>or reach me directly:</span>
+          <a href="mailto:kartikthakur.2409@gmail.com">kartikthakur.2409@gmail.com</a>
+          <span>·</span>
+          <a href="https://www.linkedin.com/in/kartikth40" target="_blank" rel="noreferrer">
+            linkedin
+          </a>
+          <span>·</span>
+          <a href="https://github.com/kartikth40" target="_blank" rel="noreferrer">
+            github
+          </a>
+        </DirectLinks>
 
         <Contactform className="contactform" onSubmit={handleSend}>
           <Block>
             <Field className="contact-name">
               <label>Your Name</label>
-              <input
-                type="text"
-                name="name"
-                value={name}
-                
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
+              <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} required />
             </Field>
             <Field className="contact-email">
               <label>Your E-mail</label>
-              <input
-                type="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+              <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </Field>
           </Block>
 
           <Field className="contact-message">
             <label>Your Message</label>
-            <textarea
-              name="message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              required
-            />
+            <textarea name="message" value={message} onChange={(e) => setMessage(e.target.value)} required />
           </Field>
           <ButtonContainer>
             <button type="submit" value="Send" disabled={loading}>
