@@ -126,6 +126,11 @@ const RoleItem = styled.div`
   &:hover {
     background: rgba(134, 93, 255, 0.07);
   }
+
+  @media screen and (max-width: 500px) {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
 `
 
 const RoleDot = styled.div`
@@ -142,6 +147,8 @@ const RoleDot = styled.div`
 const RoleLabel = styled.div`
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  flex: 1;
 
   strong {
     font-size: 0.75rem;
@@ -154,6 +161,8 @@ const RoleLabel = styled.div`
     font-family: var(--secondary-font-family);
     margin-top: 5px;
     text-transform: lowercase;
+    white-space: normal;
+    word-break: break-word;
   }
 `
 
@@ -167,6 +176,12 @@ const PromotionBadge = styled.span`
   border-radius: 20px;
   padding: 0.2rem 0.6rem;
   white-space: nowrap;
+  flex-shrink: 0;
+
+  @media screen and (max-width: 500px) {
+    margin-left: 1.5rem;
+    margin-top: 0.2rem;
+  }
 `
 
 const Bullets = styled.ul`

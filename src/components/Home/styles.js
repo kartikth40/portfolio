@@ -201,6 +201,12 @@ const Hero = styled.div`
 
       animation: ${load} 1s cubic-bezier(0.4, 0, 0.2, 1) 1.7s forwards;
     }
+
+    @media screen and (max-width: 500px) {
+      width: 80vw;
+      white-space: normal;
+      word-break: break-word;
+    }
   }
 `
 

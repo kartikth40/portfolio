@@ -106,8 +106,10 @@ const MainContect = styled.div`
 const AboutLinks = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 1rem;
-  `
+  margin-top: 0.5rem;
+`
 const StyledLink = styled.a`
   display: block;
   text-decoration: none;
@@ -123,7 +125,7 @@ const StyledText = styled.span`
   white-space: nowrap;
   position: relative;
   text-align: center;
-  width: 8.8rem;
+  width: max-content;
   font-size: 1rem;
   font-weight: bold;
   font-family: var(--secondary-font-family);
@@ -133,7 +135,6 @@ const StyledText = styled.span`
   border-radius: 30px;
   transition: 0.25s all;
   &: hover {
-    width: 9.5rem;
     border: 1px solid #fff;
     background-color: rgba(255, 255, 255, 0.1);
   }
