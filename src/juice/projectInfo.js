@@ -19,7 +19,6 @@ const projectInfo = [
     ],
     visitLink: 'https://chromewebstore.google.com/detail/aobapnhgpjlldncjopmbbfeoomombhel?hl=en-GB',
     sourceLink: 'https://github.com/kartikth40/PurrfectFocus',
-    privateSource: true,
     techUsed: ['Chrome Extension API', 'JavaScript', 'HTML', 'CSS', 'Chrome Storage'],
   },
   {
