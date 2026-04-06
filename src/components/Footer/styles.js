@@ -4,6 +4,7 @@ import device from '../../juice/mediaQueries'
 const Container = styled.div`
   background: var(--secondary-dark);
   padding: 1rem 0 1rem 0;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
 `
 
 const Logo = styled.a`

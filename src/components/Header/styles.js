@@ -36,12 +36,15 @@ const HelperContainer = styled.div`
   left: 0;
   top: 0;
   background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   animation: ${load} 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 
   @media screen and ${device.tablet} {
-    background: var(--primary-dark);
-  }
-  @media screen and ${device.mobile} {
+    background: rgba(13, 13, 20, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }  @media screen and ${device.mobile} {
     padding: 20px 20px;
   }
 `

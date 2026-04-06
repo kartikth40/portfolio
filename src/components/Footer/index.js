@@ -1,12 +1,7 @@
 import React from 'react'
-import useWindowSize from '../../brain/useWindowSize'
-import { size as devSize } from '../../juice/mediaQueries'
 import { Container, Logo, FooterLinks, Copyrights } from './styles'
 
-import Socials from '../Socials/index.js'
-
 function Footer() {
-  const windowSize = useWindowSize()
   const currentYear = new Date().getFullYear()
 
   return (
@@ -25,7 +20,6 @@ function Footer() {
           <img src="/icons/linktree_icon.png" alt="linktree logo" />
         </a>
       </FooterLinks>
-      {windowSize > devSize.tablet && <Socials />}
       <a href="#home" style={{ textDecoration: 'none' }}>
         <Copyrights>© {currentYear} Kartik Thakur · 💖</Copyrights>
       </a>

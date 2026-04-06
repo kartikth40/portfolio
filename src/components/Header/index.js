@@ -11,8 +11,6 @@ import {
   NavItems,
 } from './styles'
 
-import Socials from '../Socials/index.js'
-
 function Header() {
   const windowSize = useWindowSize()
   const isLarge = windowSize > devSize.tablet
@@ -44,12 +42,10 @@ function Header() {
   const hamClick = () => {
     setShowNav((prev) => !prev)
     const ham = document.querySelector('.hamburger-menu')
-    const socials = document.querySelector('#socials-container')
     const body = document.body
     body.classList.toggle('unfocus')
     ham.classList.toggle('clicked')
     ham.classList.toggle('unclicked')
-    socials.classList.toggle('show')
   }
   return (
     <>
@@ -67,7 +63,6 @@ function Header() {
             <NavItems href="#experience">experience</NavItems>
             <NavItems href="#projects">projects</NavItems>
             <NavItems href="#contact">contact</NavItems>
-            {windowSize <= devSize.tablet && <Socials />}
           </Nav>
         </HelperContainer>
       </Container>

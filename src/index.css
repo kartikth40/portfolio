@@ -23,6 +23,8 @@ html {
   --transparent-pink: #E384FF;
   --semi-pink:#fdb1fc;
   --home-light: #d5d2fd;
+  --scroll-hue: 0deg;
+  --anim-play: running;
   --title-font-family: 'Raleway', sans-serif;
   --primary-font-family: 'Montserrat', sans-serif;
   --secondary-font-family: 'Major Mono Display', monospace;
@@ -34,8 +36,46 @@ html {
 
 body{
   background-color: var(--primary-dark);
-
+  background-image:
+    linear-gradient(rgba(134, 93, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(134, 93, 255, 0.15) 1px, transparent 1px),
+    radial-gradient(ellipse at 20% 50%, rgba(134, 93, 255, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(64, 224, 208, 0.08) 0%, transparent 50%);
+  background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
+  background-attachment: fixed;
 }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, transparent 40%, var(--primary-dark) 100%);
+  pointer-events: none;
+  z-index: 0;
+  filter: hue-rotate(var(--scroll-hue));
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.03) 3px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+
 .unfocus::after {
   content: "";
   position: fixed;
@@ -69,6 +109,10 @@ body{
   background: #9f7fff;
 }
 
+a, button, [role="button"], input[type="submit"], .cursor-pointer {
+  cursor: pointer;
+}
+
 ::selection {
   color: black;
   background: white;
@@ -99,8 +143,10 @@ body{
   }
   100% {
     transform: translateY(0);
-    background-color: var(--primary-dark);
-    box-shadow:  0px 0px 10px rgba(0,0,0,.3);
+    background-color: rgba(13, 13, 20, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0px 0px 10px rgba(0,0,0,.3);
 
 
   }

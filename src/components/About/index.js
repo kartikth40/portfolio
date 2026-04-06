@@ -47,7 +47,7 @@ function About() {
             <span>clean API design &amp;</span>
             <span>shipping things that scale.</span>
             <br />
-            I'm currently open to <span>SDE-2 opportunities</span> - let's build something impactful together.
+            I'm always looking to <span>build something impactful</span> - let's connect.
             <AboutLinks>
               <StyledLink href="/files/myResume.pdf" target="_blank" rel="noreferrer">
                 <StyledText>

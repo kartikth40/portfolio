@@ -1,21 +1,23 @@
 import React, { useEffect } from 'react'
-import useWindowSize from '../../brain/useWindowSize'
-import { size as devSize } from '../../juice/mediaQueries'
 import {
   Container,
   Hero,
-  HeroSecondary,
+  AsciiLogo,
+  PlayHint,
   Logo,
   ScrollAssist,
   Spinner,
 } from './styles'
-import {
-  handlePointerAnimations,
-  handleTouchAnimations,
-} from '../../brain/homePageLogic.js'
+
+const ASCII_LOGO = `
+██╗  ██╗
+██║ ██╔╝
+█████╔╝ 
+██╔═██╗ 
+██║  ██╗
+╚═╝  ╚═╝`.trim()
 
 function Home() {
-  let windowSize = useWindowSize()
 
   useEffect(() => {
     document.body.classList.add('no-scroll')
@@ -45,13 +47,8 @@ function Home() {
         }, 30)
       })
     }
-    setTimeout(() => {
-      removeClass()
-    }, 2000)
-
-    setTimeout(() => {
-      randomEffect()
-    }, 1600)
+    setTimeout(removeClass, 2000)
+    setTimeout(randomEffect, 1600)
 
     return () => {
       clearTimeout(removeClass)
@@ -59,56 +56,34 @@ function Home() {
     }
   }, [])
 
-  useEffect(() => {
-    if (windowSize > devSize.tablet) {
-      handlePointerAnimations()
-    } else {
-      handleTouchAnimations()
-    }
-  }, [windowSize])
-
   function scroll() {
-    window.scroll({
-      top: 600,
-      left: 0,
-      behavior: 'smooth',
-    })
+    window.scroll({ top: 600, left: 0, behavior: 'smooth' })
   }
 
   return (
     <Container id="home">
-      <Spinner></Spinner>
+      <Spinner />
       <Hero className="hero">
         <h1>
-          <span className="randomize" data-value="Hi, I'm Kartik">
+          <span className="randomize glitch" data-value="Hi, I'm Kartik">
             Hi, I'm Kartik
           </span>
         </h1>
-        <p className="randomize" data-value="A Software Developer.">
+        <p className="randomize glitch" data-value="A Software Developer.">
           A Software Developer.
         </p>
-        <p className="randomize tag-line" data-value="Building reliable systems at scale. 🚀">
+        <p className="randomize glitch tag-line" data-value="Building reliable systems at scale. 🚀">
           Building reliable systems at scale. 🚀
         </p>
       </Hero>
-      <HeroSecondary className="hero-secondary" aria-hidden="true">
-        <h1 className="randomize" data-value="Hi, I'm Kartik">
-          Hi, I'm Kartik
-        </h1>
-        <p className="randomize" data-value="A Software Developer.">
-          A Software Developer.
-        </p>
-        <p className="randomize tag-line" data-value="Building reliable systems at scale. 🚀">
-          Building reliable systems at scale. 🚀
-        </p>
-        <Logo>
-          <img src="/icons/skeleton_logo.svg" alt="skeleton logo" />
-        </Logo>
-      </HeroSecondary>
+      <AsciiLogo aria-hidden="true">
+        <pre>{ASCII_LOGO}</pre>
+      </AsciiLogo>
       <Logo>
         <img src="/icons/blue_logo.svg" alt="main blue logo" />
       </Logo>
-      <ScrollAssist onClick={scroll}></ScrollAssist>
+      <ScrollAssist onClick={scroll} />
+      <PlayHint>go on, move your cursor around ✦</PlayHint>
     </Container>
   )
 }

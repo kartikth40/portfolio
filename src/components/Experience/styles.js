@@ -8,7 +8,12 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
+  background: linear-gradient(180deg, rgba(13, 13, 20, 0.85) 0%, rgba(13, 11, 30, 0.92) 100%);
+  border-top: 1px solid rgba(134, 93, 255, 0.1);
+  border-bottom: none;
+  border-image: linear-gradient(90deg, transparent 5%, rgba(134, 93, 255, 0.25) 50%, transparent 95%) 1;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
 
   @media screen and ${device.mobile} {
     padding: 4rem 1.5rem;
@@ -79,6 +84,8 @@ const Card = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   padding: 2rem 2.5rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   @media screen and ${device.mobile} {
     padding: 1.5rem 1rem;

@@ -5,6 +5,7 @@ const Container = styled.div`
   position: fixed;
   right: 10px;
   bottom: 10px;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -43,19 +44,22 @@ const Container = styled.div`
 
   @media screen and ${device.mobile} {
     width: 100vw;
-    height: 145px;
-    left: 50%;
-    bottom: -50%;
-    transform: translate(-50%, 0);
+    height: auto;
+    padding: 10px 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    transform: translateY(100%);
     flex-direction: row;
-    align-items: flex-start;
-    border-radius: 20px;
-    box-shadow: 0 0 5px var(--primary-blue);
-
-    transition: 500ms all;
+    align-items: center;
+    border-radius: 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1100;
+    transition: transform 400ms ease-in-out;
 
     span {
-      margin: 10px auto;
+      margin: 0 auto;
       opacity: 0.7;
       a {
         img {
@@ -65,7 +69,7 @@ const Container = styled.div`
       }
     }
     &.show {
-      bottom: -75px;
+      transform: translateY(0);
     }
   }
 `

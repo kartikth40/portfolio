@@ -3,8 +3,8 @@ import device from '../../juice/mediaQueries'
 
 export const Button = styled.button`
   position: fixed;
-  bottom: .5rem;
-  right: 3.5rem;
+  bottom: 1rem;
+  right: 1.5rem;
   z-index: 999;
   width: 42px;
   height: 42px;

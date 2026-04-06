@@ -1,425 +1,310 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import device from '../../juice/mediaQueries'
 
-const SuperContainer = styled.div`
+const SuperContainer = styled.section`
   display: flex;
-  justify-content: center;
-  padding-bottom: 70px;
-  padding-top: 100px;
-  margin-top: -50px;
-  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 2rem 4rem;
   background-color: var(--secondary-dark);
   border-top: 2px solid rgba(255, 255, 255, 0.1);
 
   @media screen and ${device.mobile} {
-    border: none;
-    padding-top: 50px;
-    margin-top: -50px;
-  }
-`
-const rotate = keyframes`  0%{
-  --gradient-angle: 0deg;
-}
-100%{
-  --gradient-angle: 360deg;
-}`
-
-const show = keyframes`0%{opacity: 0;} 10%{opacity: 1} 80%{opacity: 1} 100%{opacity: 0;}`
-const successAnime = keyframes`  0%{
-  transform: perspective(5000px) rotateX(0deg) rotateZ(0deg) ;
-}
-20%{
-  transform: perspective(5000px) rotateX(80deg) rotateZ(90deg) ;
-}
-80%{
-  transform: perspective(5000px) rotateX(80deg) rotateZ(90deg) ;
-}
-100%{
-  transform: perspective(5000px) rotateX(0deg) rotateZ(0deg) ;
-}`
-const successAnimeMobile = keyframes`  0%{
-  transform: perspective(5000px) rotateX(0deg) rotateZ(0deg) scale3d(1,1,1);
-}
-20%{
-  transform: perspective(5000px) rotateX(80deg) rotateZ(00deg) scale3d(.8,.8,.8);
-}
-80%{
-  transform: perspective(5000px) rotateX(80deg) rotateZ(00deg) scale3d(.8,.8,.8);
-}
-100%{
-  transform: perspective(5000px) rotateX(0deg) rotateZ(0deg) scale3d(1,1,1);
-}`
-const mailOut = keyframes`  0%{
-  transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(0);
-}
-20%{
-  transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(0);
-
-}
-40%{
-  transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(-300px);
-}
-
-60%{
-  transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(-400px);
-
-}
-80%{
-  transform:  rotateX(0deg) rotateZ(0deg)  translateZ(-5px) translateY(-10000px);
-}
-100%{
-  transform:  rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(-10000px);
-}`
-const Container = styled.div`
-  --gradient-angle: 0deg;
-  border-radius: 20px;
-  border: 1px solid var(--primary-blue);
-  position: relative;
-  background-color: var(--secondary-dark);
-  padding-top: 50px;
-  padding-bottom: 50px;
-  box-shadow: 0 0 20px var(--secondary-dark);
-  width: 60vw;
-  transition: 0.15s all;
-  transform-style: preserve-3d;
-
-  transform: perspective(5000px) rotateX(var(--rotateX)) rotateY(var(--rotateY));
-
-  &.sent {
-    animation: ${successAnime} 4s linear forwards;
-    @media screen and ${device.mobile} {
-      animation: ${successAnimeMobile} 4s linear forwards;
-      border-radius: 20px;
-    }
-  }
-
-  &.sent .hidden,
-  &.sent .hidden:after {
-    animation: ${show} 4s linear forwards;
-  }
-
-  & .mail {
-    background: linear-gradient(
-      to bottom,
-      var(--primary-light-blue),
-      var(--primary-blue)
-    );
-    position: absolute;
-    inset: 0;
-    font-size: 30px;
-    color: black;
-    border-radius: inherit;
-    transform: rotateX(0deg) rotateZ(0deg) translateZ(-5px) translateY(0);
-  }
-  & .mail:after,
-  & .mail:before {
-    content: '';
-    position: absolute;
-    border-top: 20px solid var(--primary-blue);
-    border-radius: 10px;
-    width: 57%;
-    top: 5%;
-    @media screen and ${device.mobile} {
-      width: 59%;
-    }
-  }
-  & .mail:before {
-    left: 5%;
-    transform-origin: top left;
-    transform: rotate(35deg);
-  }
-  & .mail:after {
-    right: 5%;
-    transform-origin: top right;
-    transform: rotate(-35deg);
-  }
-  &.sent .mail {
-    animation: ${mailOut} 4s linear;
-  }
-
-  & .hidden {
-    position: absolute;
-    right: 0;
-    font-size: 30px;
-    color: black;
-    font-weight: bolder;
-    white-space: nowrap;
-    transform: rotateX(270deg) rotateY(90deg) translateZ(15rem) translateY(0)
-      translateX(-7.5rem);
-    opacity: 0;
-    @media screen and ${device.mobile} {
-      font-size: 25px;
-      bottom: 0;
-      left: 50%;
-      right: unset;
-      transform: rotateX(-90deg) translateZ(5rem) translateY(0) translateX(-50%);
-    }
-  }
-  & .hidden:after {
-    content: 'Sent ✅';
-    position: absolute;
-    left: 50%;
-    top: -150%;
-    font-size: 30px;
-    color: white;
-    opacity: 0;
-    transform: translateX(-50%);
-    @media screen and ${device.tablet} {
-      font-size: 25px;
-    }
-  }
-
-  &:before,
-  &:after {
-    content: '';
-    border-radius: inherit;
-    position: absolute;
-    inset: -0.7rem;
-    background: conic-gradient(
-      from var(--gradient-angle),
-      #865dff,
-      #e384ff,
-      #fff,
-      #865dff,
-      #e384ff,
-      #fff,
-      #865dff
-    );
-    animation: ${rotate} 3s linear infinite;
-    /* backface-visibility: hidden; */
-  }
-  &:after {
-    transform: rotateX(0deg) rotateZ(0deg) translateZ(-50px) translateY(0);
-  }
-  &:before {
-    transform: translateZ(-49px);
-    filter: blur(15px);
-  }
-
-  @media screen and ${device.mobile} {
-    border-radius: 0;
-    box-shadow: none;
-    width: 100vw;
-    border: none;
-    border-top: 1px solid var(--primary-blue);
-    transform: none;
-
-    &:before,
-    &:after {
-      inset: 0;
-      top: -0.2rem;
-      bottom: -0.2rem;
-    }
-    &:before {
-      filter: blur(10px);
-    }
+    padding: 3rem 1rem 3rem;
   }
 `
 
-const TopHeading = styled.div`
-  & h1 {
-    font-weight: 500;
-    font-size: 1.2rem;
-    padding: 0 5rem 0.3rem;
-
-    @media screen and ${device.mobile} {
-      font-weight: 900;
-      font-size: 1rem;
-      padding: 0 2rem 0.3rem;
-    }
-  }
-`
-
-const SubLine = styled.p`
-  font-size: 0.55rem;
-  opacity: 0.55;
-  padding: 0 5rem 1rem;
+const SectionTitle = styled.h2`
   font-family: var(--secondary-font-family);
-  text-transform: lowercase;
+  font-size: 4rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
 
+  @media screen and ${device.tablet} {
+    font-size: 3rem;
+  }
   @media screen and ${device.mobile} {
-    padding: 0 2rem 1rem;
-    font-size: 0.5rem;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
   }
 `
 
-const DirectLinks = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0 5rem 1.5rem;
-  flex-wrap: wrap;
-
-  a {
-    font-size: 0.5rem;
-    color: var(--primary-light-blue);
-    text-decoration: none;
-    font-family: var(--secondary-font-family);
-    transition: 0.2s all;
-
-    &:hover {
-      color: white;
-      text-decoration: underline;
-    }
-  }
-
-  span {
-    font-size: 0.5rem;
-    opacity: 0.3;
-  }
-
-  @media screen and ${device.mobile} {
-    padding: 0 2rem 1.5rem;
-  }
-`
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  & button {
-    min-width: max-content;
-    cursor: pointer;
-  }
-
-  & button:disabled {
-    cursor: not-allowed;
-  }
-`
-
-const Block = styled.div`
-  display: flex;
+const Card = styled.div`
   width: 100%;
+  max-width: 850px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(134, 93, 255, 0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  @media screen and ${device.mobile} {
+    border-radius: 12px;
+    border-color: rgba(134, 93, 255, 0.15);
+  }
+`
+
+const CardInner = styled.div`
+  display: flex;
 
   @media screen and ${device.mobile} {
     flex-direction: column;
   }
 `
-const Contactform = styled.form`
-  padding: 0 5rem;
+
+const InfoPanel = styled.div`
+  flex: 0 0 40%;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  & label {
-    font-size: 0.7rem;
-    font-weight: 400;
-    margin-bottom: 10px;
-    color: var(--primary-light-blue);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+
+  @media screen and ${device.mobile} {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 2rem 1.5rem;
   }
-  & input:-webkit-autofill,
-  & input:-webkit-autofill:hover,
-  & input:-webkit-autofill:focus,
-  & input:-webkit-autofill:active {
+`
+
+const Avatar = styled.div`
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(134, 93, 255, 0.3);
+  margin-bottom: 1.2rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 10%;
+  }
+
+  @media screen and ${device.mobile} {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 0.8rem;
+  }
+`
+
+const InfoSubLine = styled.p`  font-size: ${({ $small }) => $small ? '0.5rem' : '0.7rem'};
+  opacity: ${({ $small }) => $small ? '0.4' : '0.7'};
+  font-family: ${({ $small }) => $small ? 'var(--secondary-font-family)' : 'var(--primary-font-family)'};
+  line-height: 1.6;
+  margin-bottom: ${({ $small }) => $small ? '0.8rem' : '1.5rem'};
+  text-transform: ${({ $small }) => $small ? 'lowercase' : 'none'};
+`
+
+const LocationInfo = styled.p`
+  font-size: 0.5rem;
+  font-family: var(--secondary-font-family);
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: lowercase;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+
+  span {
+    font-size: 0.6rem;
+  }
+`
+
+const IconLinks = styled.div`
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+`
+
+const IconLink = styled.a`
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s all;
+  text-decoration: none;
+
+  img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.6;
+  }
+
+  &:hover {
+    border-color: rgba(134, 93, 255, 0.5);
+    background: rgba(134, 93, 255, 0.1);
+    img { opacity: 1; }
+  }
+`
+
+const FormPanel = styled.div`
+  flex: 1;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+
+  @media screen and ${device.mobile} {
+    padding: 2rem 1.5rem;
+  }
+`
+
+const Contactform = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+`
+
+const Field = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 0.55rem;
+    font-family: var(--secondary-font-family);
+    color: var(--primary-light-blue);
+    margin-bottom: 6px;
+    text-transform: lowercase;
+  }
+
+  input, textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    font-family: var(--primary-font-family);
+    font-size: 0.8rem;
+    padding: 8px 0;
+    outline: none;
+    transition: 0.2s border-color;
+    border-radius: 0;
+    -webkit-appearance: none;
+
+    &:focus {
+      border-bottom-color: var(--primary-blue);
+    }
+
+    @media screen and ${device.mobile} {
+      font-size: 16px;
+      padding: 10px 0;
+    }
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
     -webkit-transition-delay: 9999s;
     transition-delay: 9999s;
   }
-  & input {
-    border-radius: 5px;
-    color: white;
-    width: 100%;
-    outline: none;
-    border: none;
-    border: 1px solid var(--primary-blue);
-    padding: 10px 10px;
-    background: transparent;
-    position: relative;
-    font-family: var(--primary-font-family);
-    font-size: 20px;
-  }
-  & textarea {
-    border-radius: 5px;
-    color: white;
-    width: 100%;
-    outline: none;
-    border: none;
-    border: 1px solid var(--primary-blue);
-    padding: 10px 10px;
-    background: transparent;
-    position: relative;
-    font-family: var(--primary-font-family);
-    font-size: 15px;
-    font-weight: 400;
+
+  textarea {
     resize: none;
-    min-height: 90px;
+    min-height: 80px;
+    font-size: 0.75rem;
 
     ::selection {
       color: white;
       background: var(--primary-blue);
     }
   }
-  & button {
-    border-radius: 5px;
-    font-weight: 900;
-    font-size: 0.8em;
-    font-family: var(--primary-font-family);
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    padding: 1em;
-    width: 150px;
-    color: white;
-    border: none;
-    outline: none;
-    background: var(--primary-blue);
-  }
-  & button:hover {
-    opacity: 0.7;
-  }
-  & button:active {
-    transform: scale(0.95);
-  }
+`
 
-  @media screen and ${device.tablet} {
-    & button {
-      font-weight: 400;
-      font-size: 0.8em;
-      width: max-content;
-      padding: 0.5rem 1rem;
-    }
-  }
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+
   @media screen and ${device.mobile} {
-    padding: 0 2rem;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
 
-    & label {
-      font-size: 0.9rem;
-      font-weight: 900;
+  button {
+    font-family: var(--secondary-font-family);
+    font-size: 0.6rem;
+    text-transform: lowercase;
+    letter-spacing: 2px;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    border: 1px solid rgba(134, 93, 255, 0.4);
+    background: rgba(134, 93, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    transition: 0.2s all;
+
+    &:hover {
+      background: rgba(134, 93, 255, 0.25);
+      border-color: var(--primary-blue);
     }
-    & input {
-      font-size: 15px;
+
+    &:active {
+      transform: scale(0.97);
     }
-    & textarea {
-      min-height: 200px;
-      font-weight: 400;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
-    & button {
-      font-weight: 400;
-      font-size: 0.8em;
-      width: max-content;
-      padding: 0.5rem 1rem;
+
+    &[type="button"] {
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.15);
+      &:hover {
+        border-color: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.05);
+      }
+    }
+
+    @media screen and ${device.mobile} {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 0.55rem;
     }
   }
 `
-const Field = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0.5rem 0 0 0;
-  &:first-child {
-    padding-right: 1rem;
-    @media screen and ${device.mobile} {
-      padding-right: 0;
-    }
+
+const SuccessMessage = styled.div`
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: var(--handwritten-font-family);
+  color: var(--primary-light-blue);
+  padding: 3rem 0;
+  animation: fadeIn 0.5s ease;
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 `
 
 export {
-  Container,
-  TopHeading,
-  SubLine,
-  DirectLinks,
+  SuperContainer,
+  SectionTitle,
+  Card,
+  CardInner,
+  InfoPanel,
+  Avatar,
+  InfoSubLine,
+  LocationInfo,
+  IconLinks,
+  IconLink,
+  FormPanel,
   Contactform,
   Field,
   ButtonContainer,
-  SuperContainer,
-  Block,
+  SuccessMessage,
 }

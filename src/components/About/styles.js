@@ -9,7 +9,12 @@ const Container = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: rgba(255, 255, 255, 0.1) 2px solid;
+  background: linear-gradient(180deg, rgba(13, 13, 20, 0.85) 0%, rgba(13, 11, 30, 0.92) 100%);
+  border-top: 1px solid rgba(134, 93, 255, 0.1);
+  border-bottom: none;
+  border-image: linear-gradient(90deg, transparent 5%, rgba(134, 93, 255, 0.25) 50%, transparent 95%) 1;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
   @media screen and ${device.mobile} {
     padding: 4rem 1.5rem 5rem;
   }
@@ -229,6 +234,14 @@ const CategoryBlock = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   padding: 1rem 1.2rem;
+  transition: 0.3s all;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  &:hover {
+    border-color: rgba(134, 93, 255, 0.4);
+    box-shadow: 0 0 15px rgba(134, 93, 255, 0.1);
+  }
 `
 
 const CategoryName = styled.h4`
@@ -268,6 +281,14 @@ const EduCard = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   padding: 1.2rem 1.5rem;
+  transition: 0.3s all;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  &:hover {
+    border-color: rgba(134, 93, 255, 0.4);
+    box-shadow: 0 0 15px rgba(134, 93, 255, 0.1);
+  }
 `
 
 const EduDegree = styled.h3`

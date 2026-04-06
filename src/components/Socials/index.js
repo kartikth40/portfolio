@@ -24,11 +24,6 @@ function Socials() {
         </a>
       </span>
       <span>
-        <a href="https://codepen.io/kartikth40" target="_blank" rel="noreferrer">
-          <img width="96" height="96" src="https://img.icons8.com/windows/128/FFFFFF/codepen.png" alt="codepen" />
-        </a>
-      </span>
-      <span>
         <a href="mailto: kartikthakur.2409@gmail.com" target="_blank" rel="noreferrer">
           <img
             width="96"

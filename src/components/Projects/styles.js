@@ -2,12 +2,13 @@ import styled from 'styled-components'
 import device from '../../juice/mediaQueries'
 
 const Container = styled.section`
-  margin-top: 100px;
+  padding-top: 100px;
   scroll-margin-top: 200px;
   display: flex;
+  background: linear-gradient(180deg, rgba(13, 13, 20, 0.85) 0%, rgba(13, 11, 30, 0.92) 100%);
+  border-top: 1px solid rgba(134, 93, 255, 0.1);
   @media screen and ${device.mobile} {
     flex-direction: column;
-    margin-bottom: 2rem;
   }
 `
 const SidewaysTitle = styled.div`

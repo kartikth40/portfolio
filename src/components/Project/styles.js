@@ -18,13 +18,14 @@ const ProjectContainer = styled.div`
     margin: 1.5rem 0 0;
   }
   @media screen and ${device.mobile} {
-    width: 300px;
-    height: 200px;
+    width: 90vw;
+    height: auto;
+    aspect-ratio: 4 / 3;
     margin: 1.5rem 0 0;
   }
 `
 const BackgroundImg = styled.div`
-  box-shadow: 5px 5px 30px black;
+  box-shadow: 0 0 20px rgba(134, 93, 255, 0.15);
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
@@ -59,10 +60,13 @@ const DullBackground = styled(AbsoluteContainer)`
     inset: 0;
     z-index: 1;
     backdrop-filter: blur(10px);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.15' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
+    background-size: 300px 300px;
     opacity: 0;
     transition: 0.25s all;
     @media screen and ${device.mobile} {
-      backdrop-filter: blur(2px);
+      backdrop-filter: blur(4px);
+      opacity: 1;
     }
     ${ProjectContainer}:hover & {
       opacity: 1;
@@ -73,48 +77,53 @@ const SliderMask = styled(AbsoluteContainer)`
   z-index: 2;
   background: linear-gradient(
     to right,
-    var(--primary-blue),
-    var(--transparent-pink)
+    rgba(13, 11, 30, 0.8),
+    rgba(134, 93, 255, 0.3)
   );
   left: -100%;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.8;
   transition: 250ms all cubic-bezier(1, 0.01, 0.2, 0.98);
   ${ProjectContainer}:hover & {
+    left: 0;
+  }
+  @media screen and ${device.mobile} {
     left: 0;
   }
 `
 const ProjectNo = styled(AbsoluteContainer)`
   z-index: 3;
   pointer-events: none;
-  top: 0;
+  top: 12px;
+  left: 12px;
+  width: auto;
+  height: auto;
   opacity: 0;
-  color: white;
-  font-size: 200px;
+  font-size: 0.55rem;
+  font-family: var(--secondary-font-family);
   font-weight: 900;
-  padding: 0 1rem;
-  text-shadow: -10px 10px 0 var(--primary-blue);
-
-  display: flex;
-  justify-content: flex-end;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(13, 11, 30, 0.6);
+  border: 1px solid rgba(134, 93, 255, 0.3);
+  border-radius: 6px;
+  padding: 4px 10px;
+  display: inline-block;
   transition: 250ms all;
   ${ProjectContainer}:hover & {
-    top: -20%;
     opacity: 1;
   }
   @media screen and ${device.laptopS} {
     ${ProjectContainer}:hover & {
-      top: -50%;
-
       opacity: 1;
     }
   }
   @media screen and ${device.tablet} {
-    font-size: 100px;
     ${ProjectContainer}:hover & {
       opacity: 1;
-      top: -25%;
     }
+  }
+  @media screen and ${device.mobile} {
+    opacity: 1;
   }
 `
 const ProjectInfo = styled(AbsoluteContainer)`
@@ -134,7 +143,7 @@ const ProjectInfo = styled(AbsoluteContainer)`
   }
   h2 {
     font-family: var(--primary-font-family);
-    text-shadow: 0 0 5px var(--primary-dark);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     font-weight: 900;
     font-size: 40px;
     margin-bottom: 0;
@@ -143,6 +152,7 @@ const ProjectInfo = styled(AbsoluteContainer)`
     margin-bottom: 1rem;
     font-weight: 400;
     position: relative;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   }
   p {
     margin-top: 1rem;
@@ -167,22 +177,26 @@ const ProjectInfo = styled(AbsoluteContainer)`
     padding: 0.5em 0.8em;
     outline: 0;
     margin-right: 1em;
-    border: white 2px solid;
+    border: 1px solid rgba(134, 93, 255, 0.8);
     border-radius: 1rem;
     color: white;
-    background: transparent;
+    background: rgba(134, 93, 255, 0.3);
+    box-shadow: 0 0 10px rgba(134, 93, 255, 0.2);
     transition: 250ms all;
     &.private {
       background-color: rgba(0,0,0,.2);
       color: rgba(255,255,255,.5);
-      border: rgba(0,0,0,.1) 2px solid;
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: none;
     }
     &.private:hover {
       background-color: rgba(0,0,0,.3);
     }
     &:hover {
-      background: white;
-      color: black;
+      background: rgba(134, 93, 255, 0.3);
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 15px rgba(134, 93, 255, 0.3);
+      color: white;
     }
     ${ProjectContainer}:hover & {
       opacity: 1;
@@ -238,35 +252,52 @@ const ProjectInfo = styled(AbsoluteContainer)`
     }
   }
   @media screen and ${device.mobile} {
-    padding: 0;
+    padding: 1rem 1.2rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: scale(1) translateY(0);
+    flex-direction: column;
+    justify-content: flex-end;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+
     ${ProjectContainer}:hover & {
-      transform: scale(1.1) translateY(-10%);
+      transform: none;
+      opacity: 1;
     }
     h2 {
-      position: absolute;
-      top: 0;
-      text-align: center;
+      position: relative;
+      top: auto;
+      text-align: left;
       pointer-events: none;
-      word-wrap: break-word;
-      font-size: 20px;
-      text-decoration: underline;
+      font-size: 1.1rem;
+      text-decoration: none;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+      margin-bottom: 0.2rem;
     }
     h5 {
-      padding-inline: 10px;
-      width: 90%;
-      margin: 0 auto;
-      text-align: center;
+      padding: 0;
+      width: 100%;
+      margin: 0 0 0.6rem;
+      text-align: left;
       pointer-events: none;
-      font-size: 15px;
+      font-size: 0.6rem;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    p {
+      opacity: 1;
+      visibility: visible;
+      font-size: 0.55rem;
     }
     a {
-      font-size: 14px;
-      margin-bottom: 1em;
-      margin-right: 0;
+      font-size: 0.6rem;
+      margin-right: 0.5em;
+      margin-bottom: 0;
+      opacity: 1;
+      visibility: visible;
+      padding: 0.4em 0.7em;
+      background: rgba(134, 93, 255, 0.3);
+      border-color: rgba(134, 93, 255, 0.8);
     }
   }
 `
@@ -280,14 +311,14 @@ const Tech = styled.div`
   & span {
     font-weight: normal;
     font-size: 0.6rem;
-    padding: 0.4rem 0.6rem;
+    padding: 0.25rem 0.6rem;
     word-wrap: normal;
     display: inline-block;
-    margin: 0.4rem 0.4rem 0.4rem 0;
-    color: rgba(255, 255, 255, 0.7);
-    background-color: rgba(255, 255, 255, 0);
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3);
-    border-radius: 1rem;
+    margin: 0.3rem 0.3rem 0 0;
+    color: white;
+    background: rgba(134, 93, 255, 0.3);
+    border: 1px solid rgba(134, 93, 255, 0.6);
+    border-radius: 20px;
   }
   @media screen and ${device.laptopS} {
     & span {
@@ -308,34 +339,30 @@ const Tech = styled.div`
   }
 
   @media screen and ${device.mobile} {
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 0.4rem;
+    opacity: 1;
+    transform: none;
     & span {
-      border-radius: 2px;
-      font-size: 0.3rem;
-      margin: 0rem 0.1rem 0.1rem 0;
+      font-size: 0.45rem;
+      margin: 0.15rem 0.15rem 0 0;
+      padding: 0.2rem 0.5rem;
+      background: rgba(134, 93, 255, 0.3);
+      border-color: rgba(134, 93, 255, 0.6);
+      color: white;
     }
   }
 `
 const CTAbuttons = styled.div`
   @media screen and ${device.mobile} {
-    position: absolute;
     display: flex;
-    bottom: 0;
-    left: 5%;
-    width: 90%;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+
     a {
-      font-size: 14px;
-      margin: 0 5px;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      border-radius: 5px;
+      font-size: 0.6rem;
+      padding: 0.4em 0.7em;
     }
-    height: max-content;
   }
 `
 const ExpandToggle = styled.button`
@@ -368,6 +395,8 @@ const DetailPanel = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   animation: fadeIn 0.25s ease;
 
   @keyframes fadeIn {
@@ -382,13 +411,17 @@ const DetailPanel = styled.div`
     width: 50vw;
   }
   @media screen and ${device.mobile} {
-    width: 300px;
+    width: 90vw;
   }
 `
 
 const DetailTabs = styled.div`
   display: flex;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
 `
 
 const DetailTab = styled.button`
@@ -402,6 +435,8 @@ const DetailTab = styled.button`
   cursor: pointer;
   transition: 0.2s all;
   text-transform: lowercase;
+  white-space: nowrap;
+  flex-shrink: 0;
 
   &:hover {
     color: white;
