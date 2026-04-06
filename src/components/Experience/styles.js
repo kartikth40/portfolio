@@ -89,6 +89,9 @@ const Card = styled.div`
 
   @media screen and ${device.mobile} {
     padding: 1.5rem 1rem;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(13, 13, 20, 0.95);
   }
 `
 

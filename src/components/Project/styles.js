@@ -67,6 +67,8 @@ const DullBackground = styled(AbsoluteContainer)`
     @media screen and ${device.mobile} {
       backdrop-filter: blur(4px);
       opacity: 1;
+      background-image: none;
+      inset: -3px;
     }
     ${ProjectContainer}:hover & {
       opacity: 1;
@@ -412,6 +414,9 @@ const DetailPanel = styled.div`
   }
   @media screen and ${device.mobile} {
     width: 90vw;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(13, 13, 20, 0.95);
   }
 `
 

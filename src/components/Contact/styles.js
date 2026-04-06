@@ -42,6 +42,9 @@ const Card = styled.div`
   @media screen and ${device.mobile} {
     border-radius: 12px;
     border-color: rgba(134, 93, 255, 0.15);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(13, 13, 20, 0.95);
   }
 `
 

@@ -1,14 +1,21 @@
 import React from 'react'
-import { Container, Logo, FooterLinks, Copyrights } from './styles'
+import { Container, Logo, FooterLinks, Copyrights, ViewCount } from './styles'
+import useViewCount from '../../brain/useViewCount'
 
 function Footer() {
   const currentYear = new Date().getFullYear()
+  const viewCount = useViewCount()
 
   return (
     <Container id="footer">
       <Logo href="#home">
         <img src="/icons/white_logo.svg" alt="footer white logo" />
       </Logo>
+      {viewCount !== null && (
+        <ViewCount>
+          👀 {viewCount.toLocaleString()} {viewCount === 1 ? 'visit' : 'visits'}
+        </ViewCount>
+      )}
       <FooterLinks>
         <a href="https://www.linkedin.com/in/kartikth40" target="_blank" rel="noreferrer">
           <img src="/icons/linkedin_icon.png" alt="linkedin logo" />

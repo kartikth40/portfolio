@@ -242,6 +242,12 @@ const CategoryBlock = styled.div`
     border-color: rgba(134, 93, 255, 0.4);
     box-shadow: 0 0 15px rgba(134, 93, 255, 0.1);
   }
+
+  @media screen and (max-width: 768px) {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.05);
+  }
 `
 
 const CategoryName = styled.h4`
@@ -288,6 +294,12 @@ const EduCard = styled.div`
   &:hover {
     border-color: rgba(134, 93, 255, 0.4);
     box-shadow: 0 0 15px rgba(134, 93, 255, 0.1);
+  }
+
+  @media screen and (max-width: 768px) {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.05);
   }
 `
 

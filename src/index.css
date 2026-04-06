@@ -45,6 +45,18 @@ body{
   background-attachment: fixed;
 }
 
+@media screen and (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+  body::before {
+    display: none;
+  }
+  body::after {
+    display: none;
+  }
+}
+
 body::before {
   content: '';
   position: fixed;

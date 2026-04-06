@@ -39,6 +39,7 @@ const FooterLinks = styled.div`
       width: 100%;
       height: 100%;
       object-fit: cover;
+      filter: brightness(0) invert(1);
     }
     &:hover {
       opacity: 0.7;
@@ -61,4 +62,15 @@ const Copyrights = styled.div`
   }
 `
 
-export { Container, Logo, FooterLinks, Copyrights }
+const ViewCount = styled.div`
+  text-align: center;
+  padding: 0.5rem 0;
+  font-size: 14px;
+  color: rgba(134, 93, 255, 0.7);
+  letter-spacing: 0.5px;
+  @media screen and ${device.mobile} {
+    font-size: 11px;
+  }
+`
+
+export { Container, Logo, FooterLinks, Copyrights, ViewCount }

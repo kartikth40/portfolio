@@ -245,6 +245,10 @@ const AmbientBlobs = styled.div`
     background: linear-gradient(135deg, var(--primary), var(--primary-blue));
     animation: ${float2} 30s ease-in-out infinite, ${morph2} 15s ease-in-out infinite;
   }
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `
 
 const AsciiLogo = styled.div`

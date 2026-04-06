@@ -63,7 +63,7 @@ export function initParticles(canvas) {
   // Nebulae removed
 
   function createParticles() {
-    const count = Math.min(isMobile ? 80 : 200, Math.floor((width * height) / 6000))
+    const count = Math.min(isMobile ? 50 : 200, Math.floor((width * height) / 6000))
     const centerX = width / 2
     const centerY = height / 2
     const maxDist = Math.sqrt(centerX * centerX + centerY * centerY)
@@ -240,7 +240,7 @@ export function initParticles(canvas) {
     }
     if (cursorTrail.length > 25) cursorTrail.shift()
 
-    if (inHero) buildGrid()
+    if (inHero && !isMobile) buildGrid()
 
     // spawn line particles occasionally from close particle connections
     if (inHero && !isMobile && Math.random() < 0.02 && lineParticles.length < 8) {
@@ -361,8 +361,8 @@ export function initParticles(canvas) {
         ctx.fill()
       }
 
-      // connections — only in hero
-      if (inHero) {        const cx = (drawX / cellSize) | 0
+      // connections — only in hero, desktop only
+      if (inHero && !isMobile) {        const cx = (drawX / cellSize) | 0
         const cy = (drawY / cellSize) | 0
         for (let ox = -1; ox <= 1; ox++) {
           for (let oy = -1; oy <= 1; oy++) {
