@@ -9,7 +9,7 @@ import Footer from './components/Footer/index'
 import Contact from './components/Contact'
 import ScrollToTop from './components/ScrollToTop/index'
 import { ParticleCanvas, AmbientBlobs } from './components/Home/styles'
-import { initParticles, getAnimationsEnabled, setAnimationsEnabled } from './brain/homePageLogic'
+import { initParticles, getAnimationsEnabled, setAnimationsEnabled, isMobileDevice } from './brain/homePageLogic'
 
 const ToggleBtn = styled.button`
   position: fixed;
@@ -98,16 +98,20 @@ function App() {
 
   return (
     <div>
-      <ToggleBtn
-        $on={animOn}
-        onClick={toggleAnimations}
-        title={animOn ? 'Disable animations' : 'Enable animations'}
-        aria-label={animOn ? 'Disable animations' : 'Enable animations'}
-      >
-        ✦
-      </ToggleBtn>
-      <ParticleCanvas ref={canvasRef} />
-      <AmbientBlobs aria-hidden="true" style={{ display: animOn ? 'block' : 'none' }} />
+      {!isMobileDevice && (
+        <>
+          <ToggleBtn
+            $on={animOn}
+            onClick={toggleAnimations}
+            title={animOn ? 'Disable animations' : 'Enable animations'}
+            aria-label={animOn ? 'Disable animations' : 'Enable animations'}
+          >
+            ✦
+          </ToggleBtn>
+          <ParticleCanvas ref={canvasRef} />
+          <AmbientBlobs aria-hidden="true" style={{ display: animOn ? 'block' : 'none' }} />
+        </>
+      )}
       <Header />
       <Home />
       <About />

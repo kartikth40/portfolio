@@ -1,13 +1,22 @@
 // Particle constellation — performance optimized
 
-export let animationsEnabled = true
+export const isMobileDevice = window.innerWidth <= 768 || 'ontouchstart' in window
 
-// respect OS preference and localStorage
-const stored = localStorage.getItem('animations-enabled')
-if (stored !== null) {
-  animationsEnabled = stored === '1'
-} else if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+export let animationsEnabled = false
+
+if (isMobileDevice) {
+  // always off on mobile — no toggle, no localStorage check
   animationsEnabled = false
+} else {
+  // desktop: respect OS preference and localStorage
+  const stored = localStorage.getItem('animations-enabled')
+  if (stored !== null) {
+    animationsEnabled = stored === '1'
+  } else if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    animationsEnabled = false
+  } else {
+    animationsEnabled = true
+  }
 }
 
 export function getAnimationsEnabled() {
