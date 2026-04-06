@@ -16,22 +16,24 @@ const ToggleBtn = styled.button`
   bottom: 20px;
   left: 20px;
   z-index: 100;
-  background: rgba(13, 13, 20, 0.7);
-  border: 1px solid rgba(134, 93, 255, 0.3);
+  background: rgba(13, 13, 20, 0.85);
+  border: 1px solid rgba(134, 93, 255, 0.5);
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 16px;
-  color: ${({ $on }) => $on ? 'rgba(134,93,255,0.9)' : 'rgba(255,255,255,0.3)'};
+  font-size: 18px;
+  color: ${({ $on }) => $on ? 'rgba(134,93,255,1)' : 'rgba(255,255,255,0.5)'};
+  box-shadow: ${({ $on }) => $on ? '0 0 12px rgba(134,93,255,0.3)' : 'none'};
   transition: 0.2s all;
 
   &:hover {
-    border-color: rgba(134, 93, 255, 0.6);
-    color: ${({ $on }) => $on ? 'rgba(134,93,255,1)' : 'rgba(255,255,255,0.6)'};
+    border-color: rgba(134, 93, 255, 0.8);
+    color: ${({ $on }) => $on ? 'rgba(134,93,255,1)' : 'rgba(255,255,255,0.8)'};
+    box-shadow: 0 0 15px rgba(134, 93, 255, 0.3);
   }
 `
 

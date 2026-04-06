@@ -312,15 +312,17 @@ const Tech = styled.div`
   }
   & span {
     font-weight: normal;
-    font-size: 0.6rem;
-    padding: 0.25rem 0.6rem;
+    font-size: 0.55rem;
+    padding: 0.2rem 0.55rem;
     word-wrap: normal;
     display: inline-block;
     margin: 0.3rem 0.3rem 0 0;
-    color: white;
-    background: rgba(134, 93, 255, 0.3);
-    border: 1px solid rgba(134, 93, 255, 0.6);
-    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+    pointer-events: none;
   }
   @media screen and ${device.laptopS} {
     & span {
@@ -349,9 +351,9 @@ const Tech = styled.div`
       font-size: 0.45rem;
       margin: 0.15rem 0.15rem 0 0;
       padding: 0.2rem 0.5rem;
-      background: rgba(134, 93, 255, 0.3);
-      border-color: rgba(134, 93, 255, 0.6);
-      color: white;
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.6);
     }
   }
 `

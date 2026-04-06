@@ -5,6 +5,8 @@ const Container = styled.div`
   background: var(--secondary-dark);
   padding: 1rem 0 1rem 0;
   border-top: 2px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 101;
 `
 
 const Logo = styled.a`
@@ -28,9 +30,9 @@ const FooterLinks = styled.div`
     margin: 1rem;
     color: white;
     text-decoration: none;
-    &:last-child {
+    &:nth-child(2) {
       & img {
-        max-height: 35px;
+        max-height: 45px;
         object-fit: contain;
       }
     }
@@ -55,7 +57,8 @@ const Copyrights = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, .6);
+  font-family: var(--secondary-font-family);
   @media screen and ${device.mobile} {
     font-size: 10px;
     text-align: center;
@@ -63,13 +66,19 @@ const Copyrights = styled.div`
 `
 
 const ViewCount = styled.div`
-  text-align: center;
-  padding: 0.5rem 0;
-  font-size: 14px;
-  color: rgba(134, 93, 255, 0.7);
+  position: absolute;
+  bottom: 0.8rem;
+  left: 1.2rem;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
   letter-spacing: 0.5px;
+  font-family: var(--secondary-font-family);
+  font-weight: bold;
   @media screen and ${device.mobile} {
-    font-size: 11px;
+    position: static;
+    text-align: center;
+    font-size: 9px;
+    padding: 0.3rem 0 0.5rem;
   }
 `
 
