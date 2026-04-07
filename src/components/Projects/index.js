@@ -24,7 +24,6 @@ function Work() {
         {projectInfo.map((project) => (
           <Project
             key={project.id}
-            projNo={project.projNo}
             bgImgUrl={project.bgImgUrl}
             title={project.title}
             desc={project.tagline}

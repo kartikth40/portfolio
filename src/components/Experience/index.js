@@ -79,17 +79,17 @@ function Experience() {
           ))}
         </RolesTimeline>
 
-        <Bullets>
-          {role.bullets.map((b, i) => (
-            <li key={i}>{b}</li>
-          ))}
-        </Bullets>
-
         <TechTags>
           {exp.techUsed.map((t) => (
             <span key={t}>{t}</span>
           ))}
         </TechTags>
+
+        <Bullets>
+          {role.bullets.map((b, i) => (
+            <li key={i}>{b}</li>
+          ))}
+        </Bullets>
       </Card>
     </Container>
   )

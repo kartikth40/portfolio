@@ -8,7 +8,6 @@ import {
   BackgroundImg,
   DullBackground,
   SliderMask,
-  ProjectNo,
   ProjectInfo,
   CTAbuttons,
   Tech,
@@ -71,7 +70,6 @@ function Project({
           <DullBackground />
           <SliderMask />
         </BackgroundImg>
-        {windowSize > devSize.mobile && <ProjectNo>{projNo}</ProjectNo>}
         <ProjectInfo>
           <h2>{title}</h2>
           <h5>{desc}</h5>

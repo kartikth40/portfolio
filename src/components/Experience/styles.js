@@ -226,13 +226,21 @@ const TechTags = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+  margin-bottom: 1.5rem;
 
   span {
-    font-size: 0.55rem;
-    padding: 0.3rem 0.7rem;
-    border-radius: 1rem;
-    color: rgba(255, 255, 255, 0.7);
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3);
+    font-size: 0.5rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(134, 93, 255, 0.1);
+    border: 1px solid rgba(134, 93, 255, 0.25);
+    transition: 0.2s all;
+
+    &:hover {
+      background: rgba(134, 93, 255, 0.2);
+      border-color: var(--primary-blue);
+    }
   }
 `
 

@@ -111,7 +111,6 @@ const MainContect = styled.div`
 const AboutLinks = styled.div`
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   gap: 1rem;
   margin-top: 0.5rem;
 `
@@ -123,6 +122,12 @@ const StyledLink = styled.a`
   &:hover #giphy {
     opacity: 1;
     bottom: 0%;
+  }
+
+  @media screen and ${device.mobile} {
+    &  {
+      font-size: 1em;
+    }
   }
 `
 
@@ -136,11 +141,11 @@ const StyledText = styled.span`
   font-family: var(--secondary-font-family);
   color: #fff;
   padding: 10px 20px;
-  border: 1px dashed #fff;
+  border: 2px solid #fff;
   border-radius: 30px;
   transition: 0.25s all;
   &: hover {
-    border: 1px solid #fff;
+    border: 2px solid #fff;
     background-color: rgba(255, 255, 255, 0.1);
   }
 

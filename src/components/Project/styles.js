@@ -93,41 +93,7 @@ const SliderMask = styled(AbsoluteContainer)`
     left: 0;
   }
 `
-const ProjectNo = styled(AbsoluteContainer)`
-  z-index: 3;
-  pointer-events: none;
-  top: 12px;
-  left: 12px;
-  width: auto;
-  height: auto;
-  opacity: 0;
-  font-size: 0.55rem;
-  font-family: var(--secondary-font-family);
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.7);
-  background: rgba(13, 11, 30, 0.6);
-  border: 1px solid rgba(134, 93, 255, 0.3);
-  border-radius: 6px;
-  padding: 4px 10px;
-  display: inline-block;
-  transition: 250ms all;
-  ${ProjectContainer}:hover & {
-    opacity: 1;
-  }
-  @media screen and ${device.laptopS} {
-    ${ProjectContainer}:hover & {
-      opacity: 1;
-    }
-  }
-  @media screen and ${device.tablet} {
-    ${ProjectContainer}:hover & {
-      opacity: 1;
-    }
-  }
-  @media screen and ${device.mobile} {
-    opacity: 1;
-  }
-`
+
 const ProjectInfo = styled(AbsoluteContainer)`
   z-index: 20;
   display: flex;
@@ -485,7 +451,6 @@ export {
   BackgroundImg,
   DullBackground,
   SliderMask,
-  ProjectNo,
   ProjectInfo,
   CTAbuttons,
   Tech,
