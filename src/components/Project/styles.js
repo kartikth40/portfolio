@@ -3,13 +3,16 @@ import device from '../../juice/mediaQueries'
 
 const ProjectContainer = styled.div`
   margin: 1.5rem 0 0;
-  width: 850px;
+  width: 42.5rem;
   border-radius: 5px;
   aspect-ratio: 9 / 4;
   position: relative;
 
+  @media screen and ${device.desktop} {
+    aspect-ratio: 9 / 4.5;
+  }
   @media screen and ${device.laptopS} {
-    width: 650px;
+    width: 32.5rem;
     height: 300px;
   }
   @media screen and ${device.tablet} {
@@ -29,18 +32,11 @@ const BackgroundImg = styled.div`
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   border-radius: 5px;
   position: relative;
   overflow: hidden;
-  @media screen and ${device.laptopS} {
-    background-size: cover;
-  }
-  @media screen and ${device.tablet} {
-    background-size: cover;
-  }
-  @media screen and ${device.mobile} {
-    background-size: cover;
-  }
 `
 const AbsoluteContainer = styled.div`
   position: absolute;
@@ -73,6 +69,10 @@ const DullBackground = styled(AbsoluteContainer)`
     ${ProjectContainer}:hover & {
       opacity: 1;
     }
+    html[data-anim="off"] & {
+      opacity: 1;
+      backdrop-filter: blur(6px);
+    }
   }
 `
 const SliderMask = styled(AbsoluteContainer)`
@@ -92,6 +92,11 @@ const SliderMask = styled(AbsoluteContainer)`
   @media screen and ${device.mobile} {
     left: 0;
   }
+
+  html[data-anim="off"] & {
+    left: 0;
+    transition: none;
+  }
 `
 
 const ProjectInfo = styled(AbsoluteContainer)`
@@ -109,11 +114,28 @@ const ProjectInfo = styled(AbsoluteContainer)`
     transform: scale(1.1) translateY(0%);
     opacity: 1;
   }
+
+  html[data-anim="off"] & {
+    opacity: 1;
+    transform: scale(1) translateY(0%);
+    transition: none;
+  }
+  html[data-anim="off"] & a {
+    opacity: 1;
+    visibility: visible;
+  }
+  html[data-anim="off"] & p {
+    opacity: 1;
+    visibility: visible;
+  }
+  html[data-anim="off"] ${ProjectContainer}:hover & {
+    transform: scale(1) translateY(0%);
+  }
   h2 {
     font-family: var(--primary-font-family);
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     font-weight: 900;
-    font-size: 40px;
+    font-size: 2rem;
     margin-bottom: 0;
   }
   h5 {
@@ -138,7 +160,7 @@ const ProjectInfo = styled(AbsoluteContainer)`
     display: inline-block;
     text-decoration: none;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 0.75rem;
     opacity: 0;
     visibility: hidden;
     letter-spacing: 2px;
@@ -276,6 +298,11 @@ const Tech = styled.div`
     opacity: 1;
     transition: 0.5s all;
   }
+
+  html[data-anim="off"] & {
+    opacity: 1;
+    transform: none;
+  }
   & span {
     font-weight: normal;
     font-size: 0.55rem;
@@ -337,7 +364,7 @@ const CTAbuttons = styled.div`
 `
 const ExpandToggle = styled.button`
   display: block;
-  margin: 0.6rem auto 3rem;
+  margin: 1rem auto 3rem;
   background: transparent;
   border: 1px dashed rgba(255, 255, 255, 0.35);
   border-radius: 20px;
@@ -354,12 +381,12 @@ const ExpandToggle = styled.button`
   }
 
   @media screen and ${device.mobile} {
-    margin: 0.5rem auto 2rem;
+    margin: 1rem auto 2rem;
   }
 `
 
 const DetailPanel = styled.div`
-  width: 850px;
+  width: 42.5rem;
   margin: 0 auto 6rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -375,7 +402,7 @@ const DetailPanel = styled.div`
   }
 
   @media screen and ${device.laptopS} {
-    width: 650px;
+    width: 32.5rem;
   }
   @media screen and ${device.tablet} {
     width: 50vw;

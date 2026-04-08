@@ -6,7 +6,7 @@ import {
   PlayHint,
   Logo,
   ScrollAssist,
-  Spinner,
+  LoaderLogo,
 } from './styles'
 
 const ASCII_LOGO = `
@@ -21,14 +21,24 @@ function Home() {
 
   useEffect(() => {
     document.body.classList.add('no-scroll')
+
+    // Immediately hide real text so it doesn't flash before the scramble starts
+    const elements = document.querySelectorAll('.randomize')
+    elements.forEach((el) => {
+      const len = el.getAttribute('data-value').length
+      el.innerText = '\u00A0'.repeat(len)
+    })
+
     function removeClass() {
       document.body.classList.remove('no-scroll')
     }
     function randomEffect() {
       const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&_'
-      document.querySelectorAll('.randomize').forEach((el) => {
+      elements.forEach((el) => {
         let iterations = 0
         const currentSentence = el.getAttribute('data-value')
+        // Scale speed so longer strings resolve in roughly the same time
+        const step = Math.max(currentSentence.length / 45, 1 / 3)
         const interval = setInterval(() => {
           el.innerText = currentSentence
             .split('')
@@ -43,12 +53,12 @@ function Home() {
             .join('')
 
           if (iterations > currentSentence.length) clearInterval(interval)
-          iterations += 1 / 3
+          iterations += step
         }, 30)
       })
     }
-    setTimeout(removeClass, 2000)
-    setTimeout(randomEffect, 1600)
+    setTimeout(removeClass, 3000)
+    setTimeout(randomEffect, 2000)
 
     return () => {
       clearTimeout(removeClass)
@@ -62,18 +72,20 @@ function Home() {
 
   return (
     <Container id="home">
-      <Spinner />
+      <LoaderLogo>
+        <pre>{ASCII_LOGO}</pre>
+      </LoaderLogo>
       <Hero className="hero">
         <h1>
           <span className="randomize glitch" data-value="Hi, I'm Kartik">
             Hi, I'm Kartik
           </span>
         </h1>
-        <p className="randomize glitch" data-value="A Software Developer.">
-          A Software Developer.
+        <p className="randomize glitch" data-value="Software Engineer.">
+          Software Engineer.
         </p>
-        <p className="randomize glitch tag-line" data-value="Building reliable systems at scale. 🚀">
-          Building reliable systems at scale. 🚀
+        <p className="randomize glitch tag-line" data-value="I build systems that scale and ship code that lasts.">
+          I build systems that scale and ship code that lasts.
         </p>
       </Hero>
       <AsciiLogo aria-hidden="true">

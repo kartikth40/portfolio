@@ -27,7 +27,7 @@ function Footer() {
       </a>
       {viewCount !== null && (
         <ViewCount>
-          🟢 {viewCount.toLocaleString()} {(viewCount === 1 ? 'Visitors' : 'Visitors')}
+          🟢 {viewCount.toLocaleString()} {viewCount === 1 ? 'Visitor' : 'Visitors'}
         </ViewCount>
       )}
     </Container>

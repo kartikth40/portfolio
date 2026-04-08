@@ -9,6 +9,7 @@ import {
   InnerTitle,
   SimpleHeading,
   ProjectsContainer,
+  MoreProjects,
 } from './styles'
 function Work() {
   let size = useWindowSize()
@@ -21,7 +22,7 @@ function Work() {
       </SidewaysTitle>
       {size <= 500 ? <SimpleHeading>Projects</SimpleHeading> : null}
       <ProjectsContainer>
-        {projectInfo.map((project) => (
+        {projectInfo.map((project, index) => (
           <Project
             key={project.id}
             bgImgUrl={project.bgImgUrl}
@@ -34,8 +35,12 @@ function Work() {
             sourceLink={project.sourceLink}
             privateSource={project?.privateSource}
             techUsed={project.techUsed}
+            defaultExpanded={index === 0}
           />
         ))}
+        <MoreProjects href="https://github.com/kartikth40" target="_blank" rel="noreferrer">
+          more on github ↗
+        </MoreProjects>
       </ProjectsContainer>
     </Container>
   )

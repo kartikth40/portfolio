@@ -59,8 +59,8 @@ function Header() {
           </HamContainer>
 
           <Nav ref={navRef} className={showNav ? 'nav active' : 'nav'}>
-            <NavItems href="#about">about</NavItems>
             <NavItems href="#experience">experience</NavItems>
+            <NavItems href="#about">about</NavItems>
             <NavItems href="#projects">projects</NavItems>
             <NavItems href="#contact">contact</NavItems>
           </Nav>

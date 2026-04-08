@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import device from '../../juice/mediaQueries'
 
 const Container = styled.section`
-  padding-top: 100px;
-  scroll-margin-top: 200px;
+  padding-top: 5rem;
+  scroll-margin-top: 10rem;
   display: flex;
   background: linear-gradient(180deg, rgba(13, 13, 20, 0.85) 0%, rgba(13, 11, 30, 0.92) 100%);
   border-top: 1px solid rgba(134, 93, 255, 0.1);
@@ -16,18 +16,18 @@ const SidewaysTitle = styled.div`
   margin: 0 2rem;
   color: rgba(255, 255, 255, 0.1);
   font-family: var(--secondary-font-family);
-  font-size: 7rem;
+  font-size: 11rem;
   position: relative;
   pointer-events: none;
   @media screen and ${device.laptopS} {
     letter-spacing: 5px;
     margin: 0 0 0 1rem;
-    font-size: 5.5rem;
+    font-size: 8.5rem;
   }
   @media screen and ${device.tablet} {
     letter-spacing: 5px;
     margin: 0 0 4rem 2rem;
-    font-size: 5rem;
+    font-size: 7rem;
   }
   @media screen and ${device.mobile} {
     display: none;
@@ -78,6 +78,26 @@ const ProjectsContainer = styled.div`
   align-items: center;
   margin-bottom: 2rem;
 `
+
+const MoreProjects = styled.a`
+  display: inline-block;
+  font-family: var(--secondary-font-family);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  padding: 0.6rem 1.5rem;
+  text-decoration: none;
+  transition: 0.2s all;
+  margin-bottom: 3rem;
+
+  &:hover {
+    color: #fff;
+    border-color: var(--primary-blue);
+    background: rgba(134, 93, 255, 0.1);
+  }
+`
+
 export {
   Container,
   SidewaysTitle,
@@ -85,4 +105,5 @@ export {
   InnerTitle,
   SimpleHeading,
   ProjectsContainer,
+  MoreProjects,
 }

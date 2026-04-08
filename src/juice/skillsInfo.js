@@ -9,11 +9,11 @@ const skillsInfo = [
   },
   {
     category: 'Infra & Systems',
-    skills: ['Kafka', 'Kubernetes', 'MongoDB', 'REST APIs', 'CI/CD'],
+    skills: ['Kafka', 'Kubernetes', 'Docker', 'MongoDB', 'REST APIs', 'CI/CD'],
   },
   {
     category: 'Tools & Practices',
-    skills: ['Git', 'k6 (Load Testing)', 'Agile / Scrum', 'System Design'],
+    skills: ['Git', 'JUnit', 'k6 (Load Testing)', 'System Design', 'Agile / Scrum'],
   },
 ]
 

@@ -17,14 +17,14 @@ const load = keyframes`
 `
 const Container = styled.header`
   width: 100%;
-  height: 70px;
+  height: 3.5rem;
   color: white;
   position: fixed;
   top: 0;
   z-index: 1000;
 `
 const HelperContainer = styled.div`
-  padding: 30px 70px;
+  padding: 1.5rem 3.5rem;
   font-family: var(--secondary-font-family);
   font-size: 0.7rem;
   position: absolute;
@@ -45,13 +45,13 @@ const HelperContainer = styled.div`
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }  @media screen and ${device.mobile} {
-    padding: 20px 20px;
+    padding: 1rem 1rem;
   }
 `
 const Logo = styled.a`
   text-decoration: none;
-  width: 50px;
-  height: 50px;
+  width: 2.5rem;
+  height: 2.5rem;
   transition: 250ms;
   & img {
     width: 100%;
@@ -59,8 +59,8 @@ const Logo = styled.a`
   }
 `
 const HamContainer = styled.div`
-  width: 50px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -212,7 +212,7 @@ const NavItems = styled.a`
   color: white;
   text-decoration: none;
   cursor: pointer;
-  margin-left: 30px;
+  margin-left: 1.5rem;
   display: flex;
   height: 100%;
   position: relative;

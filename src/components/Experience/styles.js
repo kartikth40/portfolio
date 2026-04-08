@@ -25,13 +25,16 @@ const SectionTitle = styled.h2`
   font-size: 4rem;
   margin-bottom: 3rem;
   width: 100%;
-  max-width: 800px;
+  max-width: 40rem;
 
   @media screen and ${device.tablet} {
     font-size: 3rem;
   }
   @media screen and ${device.mobile} {
     font-size: 2rem;
+  }
+  @media screen and ${device.desktop} {
+    font-size: 5rem;
   }
 `
 
@@ -41,7 +44,7 @@ const TabsRow = styled.div`
   flex-wrap: wrap;
   margin-bottom: 2rem;
   width: 100%;
-  max-width: 800px;
+  max-width: 40rem;
 `
 
 const Tab = styled.button`
@@ -79,11 +82,11 @@ const Tab = styled.button`
 
 const Card = styled.div`
   width: 100%;
-  max-width: 800px;
+  max-width: 40rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  padding: 2rem 2.5rem;
+  padding: 2rem 2.5rem .1rem;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 
@@ -218,6 +221,11 @@ const Bullets = styled.ul`
   @media screen and ${device.mobile} {
     li {
       font-size: 0.65rem;
+    }
+  }
+  @media screen and ${device.desktop} {
+    li {
+      font-size: 0.8rem;
     }
   }
 `

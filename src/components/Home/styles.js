@@ -1,26 +1,48 @@
 import styled, { keyframes } from 'styled-components'
 import device from '../../juice/mediaQueries'
 
-const load = keyframes`
-  0% { opacity: 1; left: 0; right: 0; }
-  80% { opacity: 1; }
-  100% { opacity: 0; left: 150%; right: -200%; }
+const loadOverlayFade = keyframes`
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; pointer-events: none; }
 `
 
-const loader = keyframes`
-  0% { transform: translate(-50%, -50%) scale(1); }
-  100% { transform: translate(-50%, -50%) scale(0); }
+const logoGlowIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+    filter: blur(4px);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(0px) drop-shadow(0 0 8px rgba(134, 93, 255, 0.2));
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(0px) drop-shadow(0 0 4px rgba(134, 93, 255, 0.1));
+  }
+  65% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.03);
+    filter: blur(0px) drop-shadow(0 0 12px rgba(134, 93, 255, 0.25));
+  }
+  80% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(0px) drop-shadow(0 0 4px rgba(134, 93, 255, 0.1));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.97);
+    filter: blur(3px) drop-shadow(0 0 0px rgba(134, 93, 255, 0));
+  }
 `
 
 const loadLogo = keyframes`
   0% { opacity: 0; transform: scale(0); }
   40% { opacity: 0; }
   100% { opacity: 1; transform: scale(1); }
-`
-
-const spinner = keyframes`
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 `
 
 const textReveal = keyframes`
@@ -91,21 +113,12 @@ const Container = styled.main`
     position: fixed;
     inset: 0;
     background-color: var(--primary-dark);
-    animation: ${load} 0.5s ease-in-out 1s forwards;
+    pointer-events: none;
+    animation: ${loadOverlayFade} 0.8s ease-out 1.9s forwards;
   }
 
   &:after {
-    content: '';
-    z-index: 3000;
-    position: fixed;
-    width: 100px;
-    height: 100px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background-color: #fff;
-    animation: ${loader} 0.5s ease-in-out 1s forwards;
+    display: none;
   }
 
   @media screen and ${device.tablet} {
@@ -119,43 +132,26 @@ const Container = styled.main`
 `
 
 const Spinner = styled.div`
-  z-index: 4000;
+  display: none;
+`
+
+const LoaderLogo = styled.div`
   position: fixed;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  left: 50%;
+  z-index: 3000;
   top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  background-color: var(--primary-dark);
-  animation: ${loader} 0.5s ease-in-out 1s forwards;
+  pointer-events: none;
+  animation: ${logoGlowIn} 2s ease-in-out forwards;
 
-  &:before {
-    content: '';
-    z-index: 5000;
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border-radius: 50% 0 0 0;
-    left: -5px;
-    top: -5px;
-    background-color: var(--primary-dark);
-    transform-origin: bottom right;
-    animation: ${spinner} 0.75s linear 0s 4 forwards;
-  }
-
-  &:after {
-    content: '';
-    z-index: 5000;
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border-radius: 0 0 50% 0;
-    right: -5px;
-    bottom: -5px;
-    background-color: var(--primary-dark);
-    transform-origin: top left;
-    animation: ${spinner} 0.75s linear 0s 4 forwards;
+  pre {
+    font-family: 'Courier New', monospace;
+    font-size: 1.5rem;
+    line-height: 1.05;
+    color: rgba(134, 93, 255, 0.2);
+    text-shadow: 0 0 10px rgba(134, 93, 255, 0.08);
+    white-space: pre;
+    user-select: none;
   }
 `
 
@@ -185,7 +181,7 @@ const Hero = styled.div`
     position: relative;
     overflow: hidden;
     opacity: 0;
-    animation: ${textReveal} 0.8s ease-out 1.5s forwards, ${glitch} 6s ease-in-out 3.2s infinite;
+    animation: ${textReveal} 0.8s ease-out 1.9s forwards, ${glitch} 6s ease-in-out 3.5s infinite;
   }
 
   & p {
@@ -197,12 +193,12 @@ const Hero = styled.div`
     overflow: hidden;
     color: var(--home-light);
     opacity: 0;
-    animation: ${textReveal} 0.8s ease-out 1.8s forwards, ${glitch} 8s ease-in-out 3.5s infinite;
+    animation: ${textReveal} 0.8s ease-out 1.9s forwards, ${glitch} 8s ease-in-out 3.8s infinite;
 
     &.tag-line {
       font-weight: 500;
       font-size: 0.8rem;
-      animation: ${textReveal} 0.8s ease-out 2s forwards, ${glitch} 8s ease-in-out 3.8s infinite;
+      animation: ${textReveal} 0.8s ease-out 2.1s forwards, ${glitch} 8s ease-in-out 4.1s infinite;
     }
 
     @media screen and (max-width: 500px) {
@@ -260,6 +256,10 @@ const AsciiLogo = styled.div`
   z-index: -1;
   animation: ${asciiFloat} 15s ease-in-out infinite;
 
+  html[data-anim="off"] & {
+    animation-play-state: paused;
+  }
+
   & pre {
     font-family: 'Courier New', monospace;
     font-size: 3rem;
@@ -292,9 +292,13 @@ const Logo = styled.div`
   left: 45vw;
   z-index: -1;
   transform: scale(0);
-  animation: ${loadLogo} 1s cubic-bezier(0.4, 0, 0.2, 1) 2.2s forwards,
-             ${logoFloat} 10s ease-in-out 3.2s infinite;
+  animation: ${loadLogo} 1s cubic-bezier(0.4, 0, 0.2, 1) 3.2s forwards,
+             ${logoFloat} 10s ease-in-out 4.2s infinite;
   transition: filter 0.15s ease-out;
+
+  html[data-anim="off"] & {
+    animation: ${loadLogo} 1s cubic-bezier(0.4, 0, 0.2, 1) 3.2s forwards;
+  }
 
   @media screen and ${device.mobile} {
     left: 58vw;
@@ -309,8 +313,8 @@ const Logo = styled.div`
 const ScrollAssist = styled.div`
   cursor: pointer;
   background: linear-gradient(to bottom, var(--primary), var(--primary-blue));
-  height: 60px;
-  width: 30px;
+  height: 3rem;
+  width: 1.5rem;
   border-radius: 50px;
   box-sizing: border-box;
   position: absolute;
@@ -385,7 +389,7 @@ const ScrollAssist = styled.div`
 
 const PlayHint = styled.span`
   position: absolute;
-  bottom: 50%;
+  top: 7em;
   left: 12px;
   writing-mode: vertical-rl;
   text-orientation: mixed;
@@ -412,4 +416,4 @@ const PlayHint = styled.span`
   }
 `
 
-export { Container, Hero, AmbientBlobs, ParticleCanvas, AsciiLogo, PlayHint, Logo, ScrollAssist, Spinner }
+export { Container, Hero, AmbientBlobs, ParticleCanvas, AsciiLogo, PlayHint, Logo, ScrollAssist, Spinner, LoaderLogo }

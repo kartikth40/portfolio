@@ -19,6 +19,8 @@ import {
   BulletList,
 } from './styles'
 
+import { getAnimationsEnabled } from '../../brain/homePageLogic'
+
 gsap.registerPlugin(ScrollTrigger)
 
 const TABS = ['overview', 'impact', 'challenges']
@@ -35,12 +37,14 @@ function Project({
   sourceLink,
   privateSource,
   techUsed,
+  defaultExpanded,
 }) {
-  const [expanded, setExpanded] = useState(false)
+  const [expanded, setExpanded] = useState(defaultExpanded ?? false)
   const [activeTab, setActiveTab] = useState('overview')
   let windowSize = useWindowSize()
 
   useEffect(() => {
+    if (!getAnimationsEnabled()) return
     const projs = document.querySelectorAll('.Project-container')
     projs.forEach((proj) => {
       gsap.fromTo(

@@ -27,11 +27,14 @@ const SectionTitle = styled.h2`
     font-size: 2rem;
     margin-bottom: 1.5rem;
   }
+  @media screen and ${device.desktop} {
+    font-size: 5rem;
+  }
 `
 
 const Card = styled.div`
   width: 100%;
-  max-width: 850px;
+  max-width: 50rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(134, 93, 255, 0.2);
   border-radius: 16px;
@@ -75,8 +78,8 @@ const InfoPanel = styled.div`
 `
 
 const Avatar = styled.div`
-  width: 70px;
-  height: 70px;
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid rgba(134, 93, 255, 0.3);
@@ -90,8 +93,8 @@ const Avatar = styled.div`
   }
 
   @media screen and ${device.mobile} {
-    width: 56px;
-    height: 56px;
+    width: 2.8rem;
+    height: 2.8rem;
     margin-bottom: 0.8rem;
   }
 `
@@ -127,8 +130,8 @@ const IconLinks = styled.div`
 `
 
 const IconLink = styled.a`
-  width: 40px;
-  height: 40px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.03);
@@ -139,8 +142,8 @@ const IconLink = styled.a`
   text-decoration: none;
 
   img {
-    width: 28px;
-    height: 28px;
+    width: 1.4rem;
+    height: 1.4rem;
     object-fit: contain;
     filter: brightness(0) invert(1);
     opacity: 0.6;
@@ -215,7 +218,7 @@ const Field = styled.div`
 
   textarea {
     resize: none;
-    min-height: 80px;
+    min-height: 4rem;
     font-size: 0.75rem;
 
     ::selection {

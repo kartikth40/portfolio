@@ -33,21 +33,25 @@ function About() {
         <MainContect>
           <h3>About</h3>
           <p>
-            I'm Kartik Thakur - a Software Engineer with 2.5+ years of experience building and scaling
-            production systems in fintech.
+            I'm Kartik Thakur, a Software Engineer who enjoys working across the full stack,
+            from designing backend APIs to building clean, responsive frontends.
             <br />
             <br />
-            At Sopra Banking Software, I'm part of the team building <span>PAYCE - a PAYment Cloud Engine</span> for
-            the EU region, contributing to end-to-end payment flows across a Java + Angular stack that handles
-            high-volume transaction processing at scale.
+            I'm drawn to problems that sit at the intersection of
+            <span>system design &amp; user experience,</span> where
+            getting the architecture right directly shapes what people feel when they use the product.
+            <br />
+            <br />
+            Outside of work, I build side projects, tinker with new tools,
+            and occasionally ship things to the Chrome Web Store.
             <br />
             <br />
             I care about
-            <span>system correctness &amp; reliability,</span>
-            <span>clean API design &amp;</span>
-            <span>shipping things that scale.</span>
+            <span>writing code that's easy to reason about,</span>
+            <span>systems that fail gracefully &amp;</span>
+            <span>teams that ship with confidence.</span>
             <br />
-            I'm always looking to <span>build something impactful</span> - let's connect.
+            Always open to interesting problems, let's connect.
             <AboutLinks>
               <StyledLink href="/files/myResume.pdf" target="_blank" rel="noreferrer">
                 <StyledText>

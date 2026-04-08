@@ -76,7 +76,7 @@ function Contact() {
               <img src="/img/kartik_pfp.jpg" alt="Kartik Thakur" />
             </Avatar>
             <InfoSubLine>
-              always up for a good tech conversation.
+              open to opportunities and interesting problems.
             </InfoSubLine>
             <LocationInfo>
               <span>📍</span> based in india · utc+5:30

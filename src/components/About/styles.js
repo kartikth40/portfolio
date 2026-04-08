@@ -78,16 +78,11 @@ const MainContect = styled.div`
     text-align: left;
   }  & span {
     display: block;
-    margin-bottom: 0.3rem;
+    margin-block: 0.4rem;
+    margin-left: .5rem;
     font-size: 0.8em;
     font-weight: 900;
     font-family: var(--secondary-font-family);
-  }
-  & span:nth-last-child(2) {
-    font-family: var(--primary-font-family);
-    font-weight: 500;
-    font-size: 1em;
-    display: inline-block;
   }
 
   @media screen and ${device.mobile} {
@@ -105,6 +100,11 @@ const MainContect = styled.div`
     }
     & p {
       font-size: 0.9rem;
+    }
+  }
+  @media screen and ${device.desktop} {
+    & h3 {
+      font-size: 6rem;
     }
   }
 `
@@ -203,7 +203,7 @@ const StyledText = styled.span`
 
 const Divider = styled.hr`
   width: 100%;
-  max-width: 900px;
+  max-width: 45rem;
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   margin: 3rem 0;
@@ -214,11 +214,14 @@ const SubTitle = styled.h4`
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
   width: 100%;
-  max-width: 900px;
+  max-width: 45rem;
   opacity: 0.85;
 
   @media screen and ${device.mobile} {
     font-size: 1rem;
+  }
+  @media screen and ${device.desktop} {
+    font-size: 1.8rem;
   }
 `
 
@@ -227,7 +230,7 @@ const SkillsGrid = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 1.2rem;
   width: 100%;
-  max-width: 900px;
+  max-width: 45rem;
 
   @media screen and ${device.mobile} {
     grid-template-columns: 1fr;
@@ -262,6 +265,10 @@ const CategoryName = styled.h4`
   margin-bottom: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+
+  @media screen and ${device.desktop} {
+    font-size: 0.7rem;
+  }
 `
 
 const TagsRow = styled.div`
@@ -283,11 +290,15 @@ const Tag = styled.span`
     background: rgba(134, 93, 255, 0.2);
     border-color: var(--primary-blue);
   }
+
+  @media screen and ${device.desktop} {
+    font-size: 0.6rem;
+  }
 `
 
 const EduCard = styled.div`
   width: 100%;
-  max-width: 900px;
+  max-width: 45rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
@@ -313,6 +324,10 @@ const EduDegree = styled.h3`
   font-size: 0.8rem;
   font-weight: 500;
   margin-bottom: 0.2rem;
+
+  @media screen and ${device.desktop} {
+    font-size: 0.9rem;
+  }
 `
 
 const EduInstitution = styled.p`
@@ -321,6 +336,10 @@ const EduInstitution = styled.p`
   font-family: var(--secondary-font-family);
   margin-bottom: 0.5rem;
   text-transform: lowercase;
+
+  @media screen and ${device.desktop} {
+    font-size: 0.7rem;
+  }
 `
 
 const EduMeta = styled.div`
@@ -333,6 +352,12 @@ const EduMeta = styled.div`
     font-size: 0.45rem;
     opacity: 0.5;
     font-family: var(--secondary-font-family);
+  }
+
+  @media screen and ${device.desktop} {
+    span {
+      font-size: 0.55rem;
+    }
   }
 `
 

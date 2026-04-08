@@ -17,8 +17,8 @@ const Logo = styled.a`
   justify-content: center;
   align-items: center;
   & img {
-    width: 100px;
-    height: 100px;
+    width: 5rem;
+    height: 5rem;
   }
 `
 const FooterLinks = styled.div`
@@ -26,13 +26,13 @@ const FooterLinks = styled.div`
   justify-content: center;
   align-items: center;
   & a {
-    width: 100px;
+    width: 5rem;
     margin: 1rem;
     color: white;
     text-decoration: none;
     &:nth-child(2) {
       & img {
-        max-height: 45px;
+        max-height: 2.25rem;
         object-fit: contain;
       }
     }
@@ -53,14 +53,14 @@ const FooterLinks = styled.div`
 `
 const Copyrights = styled.div`
   padding: 1rem;
-  font-size: 15px;
+  font-size: 0.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
   color: rgba(255, 255, 255, .6);
   font-family: var(--secondary-font-family);
   @media screen and ${device.mobile} {
-    font-size: 10px;
+    font-size: 0.5rem;
     text-align: center;
   }
 `
@@ -69,7 +69,7 @@ const ViewCount = styled.div`
   position: absolute;
   bottom: 0.8rem;
   left: 1.2rem;
-  font-size: 11px;
+  font-size: 0.55rem;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 0.5px;
   font-family: var(--secondary-font-family);
@@ -77,7 +77,7 @@ const ViewCount = styled.div`
   @media screen and ${device.mobile} {
     position: static;
     text-align: center;
-    font-size: 9px;
+    font-size: 0.45rem;
     padding: 0.3rem 0 0.5rem;
   }
 `

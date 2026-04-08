@@ -1,6 +1,22 @@
-// Particle constellation — performance optimized
+// ── Config ──
+const MOBILE_BREAKPOINT = 768
+const BASE_SCALE_WIDTH = 1440
+const PARTICLE_COUNT_DESKTOP = 200
+const PARTICLE_COUNT_MOBILE = 50
+const PARTICLE_DENSITY = 6000
+const CONNECT_DISTANCE = 120
+const MOUSE_DISTANCE = 150
+const GRID_CELL_SIZE = 130
+const LAG_FPS_THRESHOLD = 25
+const LAG_SAMPLE_FRAMES = 45        // ~1.5 seconds
+const LAG_COOLDOWN_FRAMES = 600     // ~10 seconds
+const SHOOTING_STAR_MIN_INTERVAL = 1800   // ~30 seconds
+const SHOOTING_STAR_RANDOM_RANGE = 5400   // ~90 seconds
+const METEOR_CHANCE = 0.2
+const LIGHTNING_MIN_INTERVAL = 1800   // ~30 seconds
+const LIGHTNING_RANDOM_RANGE = 1800
 
-export const isMobileDevice = window.innerWidth <= 768 || 'ontouchstart' in window
+export const isMobileDevice = window.innerWidth <= MOBILE_BREAKPOINT || 'ontouchstart' in window
 
 export let animationsEnabled = false
 
@@ -28,7 +44,7 @@ export function setAnimationsEnabled(val) {
   localStorage.setItem('animations-enabled', val ? '1' : '0')
 }
 
-export function initParticles(canvas) {
+export function initParticles(canvas, onLagDetected) {
   const ctx = canvas.getContext('2d')
   let width, height, particles, mouse, animId
   let cachedScrollY = 0
@@ -42,11 +58,15 @@ export function initParticles(canvas) {
   let lineParticles = []
   let lightning = []
   let lightningTimer = 0
-  let nextLightningAt = 1800 + Math.random() * 1800
+  let nextLightningAt = LIGHTNING_MIN_INTERVAL + Math.random() * LIGHTNING_RANDOM_RANGE
+  let lastFrameTime = 0
+  let fpsHistory = []
+  let lagCooldown = 0
   mouse = { x: -1000, y: -1000 }
-  const isMobile = window.innerWidth <= 768 || 'ontouchstart' in window
+  const isMobile = window.innerWidth <= MOBILE_BREAKPOINT || 'ontouchstart' in window
+  let sizeScale = Math.max(1, window.innerWidth / BASE_SCALE_WIDTH)
 
-  const sectionIds = ['#home', '#about', '#projects', '#contact', '#footer']
+  const sectionIds = ['#home', '#experience', '#about', '#projects', '#contact', '#footer']
   let sectionOffsets = []
 
   function cacheSectionOffsets() {
@@ -66,13 +86,14 @@ export function initParticles(canvas) {
   function resize() {
     width = canvas.width = window.innerWidth
     height = canvas.height = window.innerHeight
+    sizeScale = Math.max(1, width / BASE_SCALE_WIDTH)
     cacheSectionOffsets()
   }
 
   // Nebulae removed
 
   function createParticles() {
-    const count = Math.min(isMobile ? 50 : 200, Math.floor((width * height) / 6000))
+    const count = Math.min(isMobile ? PARTICLE_COUNT_MOBILE : PARTICLE_COUNT_DESKTOP, Math.floor((width * height) / PARTICLE_DENSITY))
     const centerX = width / 2
     const centerY = height / 2
     const maxDist = Math.sqrt(centerX * centerX + centerY * centerY)
@@ -103,7 +124,7 @@ export function initParticles(canvas) {
 
   let shootingStars = []
   let shootingStarTimer = 0
-  let nextShootingStarAt = 1800 + Math.random() * 5400
+  let nextShootingStarAt = SHOOTING_STAR_MIN_INTERVAL + Math.random() * SHOOTING_STAR_RANDOM_RANGE
 
   function spawnShootingStar(isMeteor) {
     const baseSize = isMeteor ? 6 + Math.random() * 3 : 3.5 + Math.random() * 2.5
@@ -182,7 +203,7 @@ export function initParticles(canvas) {
   }
 
   let grid = {}
-  const cellSize = 130
+  const cellSize = GRID_CELL_SIZE
 
   function buildGrid() {
     grid = {}
@@ -202,6 +223,25 @@ export function initParticles(canvas) {
 
   function draw() {
     ctx.clearRect(0, 0, width, height)
+
+    // FPS tracking
+    const now2 = performance.now()
+    if (lastFrameTime > 0) {
+      const fps = 1000 / (now2 - lastFrameTime)
+      fpsHistory.push(fps)
+      if (fpsHistory.length > LAG_SAMPLE_FRAMES) fpsHistory.shift()
+      // report FPS for lag detection with cooldown
+      if (lagCooldown > 0) lagCooldown--
+      if (lagCooldown === 0 && fpsHistory.length >= LAG_SAMPLE_FRAMES) {
+        const avg = fpsHistory.reduce((a, b) => a + b, 0) / fpsHistory.length
+        if (avg < LAG_FPS_THRESHOLD && onLagDetected) {
+          lagCooldown = LAG_COOLDOWN_FRAMES
+          onLagDetected()
+        }
+      }
+    }
+    lastFrameTime = now2
+
     cachedScrollY = window.scrollY || 0
     scrollVelocity += (cachedScrollY - lastScrollY - scrollVelocity) * 0.1
     scrollVelocity *= 0.92
@@ -217,9 +257,9 @@ export function initParticles(canvas) {
     }
     ctx.globalAlpha = globalAlpha
 
-    const connectDist = 120 * breathe
+    const connectDist = CONNECT_DISTANCE * breathe * sizeScale
     const connectDistSq = connectDist * connectDist
-    const mouseDist = 150
+    const mouseDist = MOUSE_DISTANCE * sizeScale
     const mouseDistSq = mouseDist * mouseDist
     const inHero = cachedScrollY < height
     const heroTarget = inHero ? 1.5 : 1
@@ -320,7 +360,7 @@ export function initParticles(canvas) {
 
       const pAlpha = (0.15 + p.depth * 0.5) * p.spawnAlpha * twinkle
       const pulseScale = sectionPulseTimer > 0 ? 1 + (sectionPulseTimer / 30) * 0.5 : 1
-      const drawSize = p.size * breathe * heroScale * pulseScale
+      const drawSize = p.size * breathe * heroScale * pulseScale * sizeScale
 
       // soft glow
       ctx.beginPath()
@@ -334,7 +374,7 @@ export function initParticles(canvas) {
         ctx.beginPath()
         ctx.arc(drawX, drawY, drawSize * 1.2, 0, Math.PI * 2)
         ctx.strokeStyle = `rgba(${pR},${pG},${pB},${pAlpha * 0.6})`
-        ctx.lineWidth = 0.5
+        ctx.lineWidth = 0.5 * sizeScale
         ctx.stroke()
         // tiny center dot
         ctx.beginPath()
@@ -396,7 +436,7 @@ export function initParticles(canvas) {
                 ctx.moveTo(drawX, drawY)
                 ctx.lineTo(other.drawX, other.drawY)
                 ctx.strokeStyle = `rgba(${255 - blue},${255 - green},255,${opacity})`
-                ctx.lineWidth = 0.3 + avgDepth * 0.4
+                ctx.lineWidth = (0.3 + avgDepth * 0.4) * sizeScale
                 ctx.stroke()
               }
             }
@@ -410,7 +450,7 @@ export function initParticles(canvas) {
           ctx.moveTo(drawX, drawY)
           ctx.lineTo(mouse.x, mouse.y)
           ctx.strokeStyle = `rgba(255,255,255,${opacity})`
-          ctx.lineWidth = 0.6
+          ctx.lineWidth = 0.6 * sizeScale
           ctx.stroke()
         }
       }
@@ -464,9 +504,9 @@ export function initParticles(canvas) {
     // shooting stars
     shootingStarTimer++
     if (shootingStarTimer > nextShootingStarAt) {
-      spawnShootingStar(Math.random() < 0.05)
+      spawnShootingStar(Math.random() < METEOR_CHANCE)
       shootingStarTimer = 0
-      nextShootingStarAt = 1800 + Math.random() * 5400
+      nextShootingStarAt = SHOOTING_STAR_MIN_INTERVAL + Math.random() * SHOOTING_STAR_RANDOM_RANGE
     }
 
     for (let si = shootingStars.length - 1; si >= 0; si--) {
@@ -552,7 +592,7 @@ export function initParticles(canvas) {
     if (lightningTimer > nextLightningAt) {
       spawnLightning(Math.random() * width, Math.random() * height * 0.3)
       lightningTimer = 0
-      nextLightningAt = 1800 + Math.random() * 1800
+      nextLightningAt = LIGHTNING_MIN_INTERVAL + Math.random() * LIGHTNING_RANDOM_RANGE
     }
 
     // render lightning — bolts everywhere, flash only in hero
@@ -622,6 +662,7 @@ export function initParticles(canvas) {
   function onVisibilityChange() {
     if (document.hidden) {
       cancelAnimationFrame(animId)
+      animId = null
     } else {
       animId = requestAnimationFrame(draw)
     }
@@ -629,10 +670,17 @@ export function initParticles(canvas) {
 
   function onWindowBlur() {
     cancelAnimationFrame(animId)
+    animId = null
   }
 
   function onWindowFocus() {
     animId = requestAnimationFrame(draw)
+  }
+
+  function onScroll() {
+    if (!document.hidden && !animId) {
+      animId = requestAnimationFrame(draw)
+    }
   }
 
   window.addEventListener('resize', () => { resize(); createParticles() })
@@ -643,6 +691,7 @@ export function initParticles(canvas) {
   window.addEventListener('click', onClick)
   window.addEventListener('blur', onWindowBlur)
   window.addEventListener('focus', onWindowFocus)
+  window.addEventListener('scroll', onScroll, { passive: true })
   document.addEventListener('visibilitychange', onVisibilityChange)
 
   return () => {
@@ -655,6 +704,7 @@ export function initParticles(canvas) {
     window.removeEventListener('click', onClick)
     window.removeEventListener('blur', onWindowBlur)
     window.removeEventListener('focus', onWindowFocus)
+    window.removeEventListener('scroll', onScroll)
     document.removeEventListener('visibilitychange', onVisibilityChange)
   }
 }
