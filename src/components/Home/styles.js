@@ -182,6 +182,10 @@ const Hero = styled.div`
     overflow: hidden;
     opacity: 0;
     animation: ${textReveal} 0.8s ease-out 1.9s forwards, ${glitch} 6s ease-in-out 3.5s infinite;
+
+    html[data-anim="off"] & {
+      animation: ${textReveal} 0.8s ease-out 1.9s forwards;
+    }
   }
 
   & p {
@@ -195,10 +199,18 @@ const Hero = styled.div`
     opacity: 0;
     animation: ${textReveal} 0.8s ease-out 1.9s forwards, ${glitch} 8s ease-in-out 3.8s infinite;
 
+    html[data-anim="off"] & {
+      animation: ${textReveal} 0.8s ease-out 1.9s forwards;
+    }
+
     &.tag-line {
       font-weight: 500;
       font-size: 0.8rem;
       animation: ${textReveal} 0.8s ease-out 2.1s forwards, ${glitch} 8s ease-in-out 4.1s infinite;
+
+      html[data-anim="off"] & {
+        animation: ${textReveal} 0.8s ease-out 2.1s forwards;
+      }
     }
 
     @media screen and (max-width: 500px) {

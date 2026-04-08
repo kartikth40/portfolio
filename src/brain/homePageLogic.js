@@ -1,20 +1,20 @@
 // ── Config ──
-const MOBILE_BREAKPOINT = 768
-const BASE_SCALE_WIDTH = 1440
-const PARTICLE_COUNT_DESKTOP = 200
-const PARTICLE_COUNT_MOBILE = 50
-const PARTICLE_DENSITY = 6000
-const CONNECT_DISTANCE = 120
-const MOUSE_DISTANCE = 150
-const GRID_CELL_SIZE = 130
-const LAG_FPS_THRESHOLD = 25
-const LAG_SAMPLE_FRAMES = 45        // ~1.5 seconds
-const LAG_COOLDOWN_FRAMES = 600     // ~10 seconds
-const SHOOTING_STAR_MIN_INTERVAL = 1800   // ~30 seconds
-const SHOOTING_STAR_RANDOM_RANGE = 5400   // ~90 seconds
-const METEOR_CHANCE = 0.2
-const LIGHTNING_MIN_INTERVAL = 1800   // ~30 seconds
-const LIGHTNING_RANDOM_RANGE = 1800
+const MOBILE_BREAKPOINT = 768              // max width (px) to treat as mobile device
+const BASE_SCALE_WIDTH = 1440              // reference width for scaling particles/connections on larger screens
+const PARTICLE_COUNT_DESKTOP = 200         // max particles on desktop
+const PARTICLE_COUNT_MOBILE = 50           // max particles on mobile
+const PARTICLE_DENSITY = 6000              // lower = more particles per screen area
+const CONNECT_DISTANCE = 120               // base distance (px) for drawing lines between particles
+const MOUSE_DISTANCE = 150                 // radius (px) for mouse repulsion and connection to cursor
+const GRID_CELL_SIZE = 130                 // spatial grid cell size for efficient neighbor lookups
+const LAG_FPS_THRESHOLD = 25               // avg FPS below this triggers the lag hint
+const LAG_SAMPLE_FRAMES = 45               // frames to average before checking (~1.5s at 30fps)
+const LAG_COOLDOWN_FRAMES = 600            // frames to wait before re-checking lag (~10s at 60fps)
+const SHOOTING_STAR_MIN_INTERVAL = 1800    // min frames between shooting stars (~30s)
+const SHOOTING_STAR_RANDOM_RANGE = 5400    // random additional frames added to interval
+const METEOR_CHANCE = 0.2                  // probability (0-1) that a shooting star is a large meteor
+const LIGHTNING_MIN_INTERVAL = 1800        // min frames between random lightning strikes
+const LIGHTNING_RANDOM_RANGE = 1800        // random additional frames added to lightning interval
 
 export const isMobileDevice = window.innerWidth <= MOBILE_BREAKPOINT || 'ontouchstart' in window
 
