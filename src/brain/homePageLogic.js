@@ -31,7 +31,7 @@ if (isMobileDevice) {
   } else if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     animationsEnabled = false
   } else {
-    animationsEnabled = true
+    animationsEnabled = false
   }
 }
 
