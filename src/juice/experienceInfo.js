@@ -4,26 +4,26 @@ const experienceInfo = [
     company: 'Sopra Banking Software (SBS)',
     location: 'Noida, IN',
     type: 'Full Time',
-    techUsed: ['Java', 'Spring Boot', 'Angular', 'TypeScript', 'MongoDB', 'Kafka', 'Kubernetes', 'REST APIs'],
+    techUsed: ['Java', 'Angular', 'JavaScript/TypeScript', 'Spring Boot', 'MongoDB', 'Kafka', 'REST APIs'],
     promoted: true,
     roles: [
       {
         role: 'SDE-2',
         duration: 'Jan 2026 – Present',
         bullets: [
-          'Delivered new payment schemes and transaction flows across 7+ microservices in the PAYCE platform, owning features end-to-end from API design through production rollout.',
-          'Mentored junior engineers and interns, drove PR review culture, and led frontend technical decisions across the team\'s Angular codebase.',
-          'Improved Angular page load performance and UI reliability for payment journeys by optimizing bundle size, rendering, and resolving production bugs, directly impacting banking clients across the EU.',
-          'Designed and shipped client-facing and internal REST APIs for SEPA and instant payment schemes, collaborating across backend and frontend teams to ensure consistent data flow.',
+          'Delivered payment schemes and transaction flows across 3+ microservices in PAYCE, owning features end-to-end from API design through production rollout for 5+ live European banking clients.',
+          'Closed a security gap exposing sensitive IBAN data in GET query params - redesigned the API to unblock payment search without breaking existing client integrations.',
+          'Owned frontend design and delivery for originator and beneficiary payment journeys in Angular, shipping flows used daily by banking ops teams across multiple clients.',
+          'Diagnosed and resolved a critical spec violation causing UK Faster Payments clearing to reject all inbound messages, fully restoring client processing.',
         ],
       },
       {
         role: 'SDE-1',
         duration: 'Aug 2023 – Jan 2026',
         bullets: [
-          'Designed and implemented end-to-end payment flows as part of PAYCE (PAYment Cloud Engine) for the EU region, supporting high-volume transaction processing.',
+          'Engineered core payment flows for PAYCE (PAYment Cloud Engine), a cloud-native EU banking platform processing thousands of daily transactions across multiple banking clients with strict financial compliance requirements.',
+          'Built resilient Java backend APIs for payment processing - idempotent Kafka consumers, structured error handling and retry logic - reducing transaction failure scenarios in a high-throughput, multi-client environment.',
           'Ensured data consistency and accuracy in financial operations, maintaining correctness across payment workflows.',
-          'Developed and optimized Java-based backend APIs for payment processing, incorporating robust error handling and retry mechanisms to reduce transaction failure scenarios.',
           'Resolved critical production issues in payment workflows, improving system reliability and reducing failure scenarios in transaction processing.',
         ],
       },
@@ -38,11 +38,11 @@ const experienceInfo = [
     promoted: false,
     roles: [
       {
-        role: 'Full Stack Developer',
-        duration: 'Jun 2022 – Sep 2022',
+        role: 'Full Stack Developer (Intern)',
+        duration: 'Jun 2022 – Sept 2022',
         bullets: [
-          'Migrated a legacy ASP.NET marketplace ("wheatbazar") to React.js, improving performance by 3x and significantly simplifying maintainability.',
-          'Developed and optimized 40+ Spring Boot API endpoints, reducing average response latency by 2.2 seconds.',
+          'Led frontend migration of a legacy ASP.NET marketplace to React.js, reducing page load time by 3x and cutting future dev overhead through component-based architecture.',
+          'Developed & optimized 40+ API endpoints, reducing average response latency from ~3s to under 800ms.',
         ],
       },
     ],
