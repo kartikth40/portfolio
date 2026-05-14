@@ -65,7 +65,13 @@ function Experience() {
 
       <Card>
         <CompanyHeader>
-          <CompanyName>{exp.company}</CompanyName>
+          <CompanyName>
+            {exp.companyUrl ? (
+              <a href={exp.companyUrl} target="_blank" rel="noreferrer">{exp.company}</a>
+            ) : (
+              exp.company
+            )}
+          </CompanyName>
           <RoleLine>{exp.role}</RoleLine>
           <Meta>{exp.location} &nbsp;·&nbsp; {exp.type} &nbsp;·&nbsp; {exp.duration}</Meta>
         </CompanyHeader>

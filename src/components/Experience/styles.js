@@ -107,6 +107,16 @@ const CompanyName = styled.h3`
   font-size: 1.1rem;
   font-weight: 900;
   margin-bottom: 0.3rem;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--primary-light-blue);
+    }
+  }
 `
 
 const RoleLine = styled.p`

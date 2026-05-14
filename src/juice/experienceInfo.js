@@ -2,6 +2,7 @@ const experienceInfo = [
   {
     id: 1,
     company: 'Sopra Banking Software (SBS)',
+    companyUrl: 'https://sbs-software.com/',
     role: 'Software Engineer (SDE-2)',
     location: 'Noida, IN',
     type: 'Full Time',
@@ -24,7 +25,7 @@ const experienceInfo = [
           {
             type: 'text',
             value:
-              'Over time, I contributed across the full stack — from Kafka-driven backend workflows and state management systems to Angular-based operational dashboards used daily by banking operations teams.',
+              'Over time, I contributed across the full stack - from Kafka-driven backend workflows and state management systems to Angular-based operational dashboards used daily by banking operations teams.',
           },
         ],
       },
