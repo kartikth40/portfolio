@@ -186,6 +186,10 @@ const Hero = styled.div`
     html[data-anim="off"] & {
       animation: ${textReveal} 0.8s ease-out 1.9s forwards;
     }
+
+    & span {
+      display: inline;
+    }
   }
 
   & p {
@@ -198,6 +202,13 @@ const Hero = styled.div`
     color: var(--home-light);
     opacity: 0;
     animation: ${textReveal} 0.8s ease-out 1.9s forwards, ${glitch} 8s ease-in-out 3.8s infinite;
+    background: linear-gradient(135deg, rgba(13, 13, 20, 0.45), rgba(134, 93, 255, 0.05));
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    padding: 0.35rem 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
     html[data-anim="off"] & {
       animation: ${textReveal} 0.8s ease-out 1.9s forwards;
@@ -214,10 +225,15 @@ const Hero = styled.div`
     }
 
     @media screen and (max-width: 500px) {
-      width: 80vw;
+      width: max-content;
+      max-width: 80vw;
       white-space: normal;
       word-break: break-word;
     }
+  }
+
+  @media screen and ${device.mobile} {
+    padding-left: 1.5rem;
   }
 `
 

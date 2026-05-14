@@ -409,19 +409,27 @@
         }
         main {
           padding: 12px;
+          flex: 1;
+          min-height: 0;
         }
         .pdf-wrapper {
-          height: calc(100vh - 90px);
+          height: calc(100vh - 130px);
           border-radius: 8px;
         }
         .pdf-inner {
           border-radius: 6px;
+          padding: 8px 0;
         }
         .view-count {
-          position: static;
+          position: fixed;
+          bottom: 8px;
+          left: 50%;
+          transform: translateX(-50%);
           text-align: center;
           font-size: 10px;
-          padding: 8px 0;
+          padding: 4px 12px;
+          background: rgba(13, 13, 20, 0.8);
+          border-radius: 12px;
         }
       }
     </style>

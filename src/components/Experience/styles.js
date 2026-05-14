@@ -121,6 +121,7 @@ const Meta = styled.p`
   font-size: 0.6rem;
   opacity: 0.5;
   font-family: var(--secondary-font-family);
+  text-transform: lowercase;
 `
 
 const TechTags = styled.div`
