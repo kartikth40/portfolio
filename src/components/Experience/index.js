@@ -3,19 +3,20 @@ import experienceInfo from '../../juice/experienceInfo'
 import {
   Container,
   SectionTitle,
-  TabsRow,
-  Tab,
+  CompanyTabsRow,
+  CompanyTab,
   Card,
   CompanyHeader,
   CompanyName,
+  RoleLine,
   Meta,
-  RolesTimeline,
-  RoleItem,
-  RoleDot,
-  RoleLabel,
-  PromotionBadge,
-  Bullets,
   TechTags,
+  SubTabsRow,
+  SubTab,
+  ContentBlock,
+  ContentText,
+  ContentListHeading,
+  ContentList,
 } from './styles'
 
 function parseDuration(durationStr) {
@@ -38,46 +39,36 @@ function parseDuration(durationStr) {
 }
 
 function Experience() {
-  const [active, setActive] = useState(0)
-  const [activeRole, setActiveRole] = useState(0)
-  const exp = experienceInfo[active]
-  const role = exp.roles[activeRole]
+  const [activeCompany, setActiveCompany] = useState(0)
+  const [activeSection, setActiveSection] = useState(0)
 
-  function handleTabClick(i) {
-    setActive(i)
-    setActiveRole(0)
+  const exp = experienceInfo[activeCompany]
+  const section = exp.sections[activeSection]
+
+  function handleCompanyClick(i) {
+    setActiveCompany(i)
+    setActiveSection(0)
   }
 
   return (
     <Container id="experience">
       <SectionTitle>experience</SectionTitle>
-      <TabsRow>
+
+      <CompanyTabsRow>
         {experienceInfo.map((e, i) => (
-          <Tab key={e.id} $active={i === active} onClick={() => handleTabClick(i)}>
+          <CompanyTab key={e.id} $active={i === activeCompany} onClick={() => handleCompanyClick(i)}>
             <span>{e.company}</span>
-            <small>{e.roles[e.roles.length - 1].duration.split('–')[0].trim()} – {e.roles[0].duration.split('–')[1].trim()}</small>
-          </Tab>
+            <small>{e.duration} &nbsp;·&nbsp; {parseDuration(e.duration)}</small>
+          </CompanyTab>
         ))}
-      </TabsRow>
+      </CompanyTabsRow>
 
       <Card>
         <CompanyHeader>
           <CompanyName>{exp.company}</CompanyName>
-          <Meta>{exp.location} &nbsp;·&nbsp; {exp.type}</Meta>
+          <RoleLine>{exp.role}</RoleLine>
+          <Meta>{exp.location} &nbsp;·&nbsp; {exp.type} &nbsp;·&nbsp; {exp.duration}</Meta>
         </CompanyHeader>
-
-        <RolesTimeline>
-          {exp.roles.map((r, i) => (
-            <RoleItem key={i} $active={i === activeRole} onClick={() => setActiveRole(i)}>
-              <RoleDot $active={i === activeRole} />
-              <RoleLabel>
-                <strong>{r.role}</strong>
-                <span>{r.duration} &nbsp;·&nbsp; {parseDuration(r.duration)}</span>
-              </RoleLabel>
-              {i === 0 && exp.promoted && <PromotionBadge>↑ promoted</PromotionBadge>}
-            </RoleItem>
-          ))}
-        </RolesTimeline>
 
         <TechTags>
           {exp.techUsed.map((t) => (
@@ -85,11 +76,34 @@ function Experience() {
           ))}
         </TechTags>
 
-        <Bullets>
-          {role.bullets.map((b, i) => (
-            <li key={i}>{b}</li>
+        <SubTabsRow>
+          {exp.sections.map((s, i) => (
+            <SubTab key={i} $active={i === activeSection} onClick={() => setActiveSection(i)}>
+              {s.title}
+            </SubTab>
           ))}
-        </Bullets>
+        </SubTabsRow>
+
+        <ContentBlock>
+          {section.content.map((block, i) => {
+            if (block.type === 'text') {
+              return <ContentText key={i}>{block.value}</ContentText>
+            }
+            if (block.type === 'list') {
+              return (
+                <div key={i}>
+                  {block.heading && <ContentListHeading>{block.heading}</ContentListHeading>}
+                  <ContentList>
+                    {block.items.map((item, j) => (
+                      <li key={j}>{item}</li>
+                    ))}
+                  </ContentList>
+                </div>
+              )
+            }
+            return null
+          })}
+        </ContentBlock>
       </Card>
     </Container>
   )

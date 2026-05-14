@@ -22,7 +22,7 @@ export default function useViewCount() {
     get(visitorRef)
       .then((snapshot) => {
         if (!snapshot.exists()) {
-          // New visitor — increment total and record the ID
+          // New visitor - increment total and record the ID
           return runTransaction(totalRef, (current) => (current || 0) + 1).then(
             (result) => {
               // Write visitor ID after successful increment
@@ -31,7 +31,7 @@ export default function useViewCount() {
             }
           )
         } else {
-          // Returning visitor — just read the total
+          // Returning visitor - just read the total
           return get(totalRef).then((snap) => setCount(snap.val() || 0))
         }
       })

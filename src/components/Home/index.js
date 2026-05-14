@@ -84,8 +84,8 @@ function Home() {
         <p className="randomize glitch" data-value="Software Engineer.">
           Software Engineer.
         </p>
-        <p className="randomize glitch tag-line" data-value="I build systems that scale and ship code that lasts.">
-          I build systems that scale and ship code that lasts.
+        <p className="randomize glitch tag-line" data-value="Building distributed systems, reliable backends, and thoughtful product experiences.">
+          Building distributed systems, reliable backends, and thoughtful product experiences.
         </p>
       </Hero>
       <AsciiLogo aria-hidden="true">

@@ -21,7 +21,7 @@ export const isMobileDevice = window.innerWidth <= MOBILE_BREAKPOINT || 'ontouch
 export let animationsEnabled = false
 
 if (isMobileDevice) {
-  // always off on mobile — no toggle, no localStorage check
+  // always off on mobile - no toggle, no localStorage check
   animationsEnabled = false
 } else {
   // desktop: respect OS preference and localStorage
@@ -279,7 +279,7 @@ export function initParticles(canvas, onLagDetected) {
     const pG = Math.round(255 - scrollRatio * 50)
     const pB = 255
 
-    // cursor trail — desktop only
+    // cursor trail - desktop only
     if (!isMobile && mouse.x > 0 && mouse.y > 0) {
       if (cursorTrail.length === 0 ||
           Math.abs(cursorTrail[cursorTrail.length - 1].x - mouse.x) > 1 ||
@@ -410,7 +410,7 @@ export function initParticles(canvas, onLagDetected) {
         ctx.fill()
       }
 
-      // connections — only in hero, desktop only
+      // connections - only in hero, desktop only
       if (inHero && !isMobile) {        const cx = (drawX / cellSize) | 0
         const cy = (drawY / cellSize) | 0
         for (let ox = -1; ox <= 1; ox++) {
@@ -456,7 +456,7 @@ export function initParticles(canvas, onLagDetected) {
       }
     }
 
-    // line particles — dots traveling along connections
+    // line particles - dots traveling along connections
     for (let li = lineParticles.length - 1; li >= 0; li--) {
       const lp = lineParticles[li]
       lp.t += lp.speed
@@ -470,7 +470,7 @@ export function initParticles(canvas, onLagDetected) {
       ctx.fill()
     }
 
-    // cursor trail — dashed neon (desktop only)
+    // cursor trail - dashed neon (desktop only)
     if (!isMobile) {
     for (let ci = cursorTrail.length - 1; ci >= 0; ci--) {
       cursorTrail[ci].life -= 0.03
@@ -542,7 +542,7 @@ export function initParticles(canvas, onLagDetected) {
           ctx.strokeStyle = s.isMeteor ? `rgba(39,118,255,${alpha})` : `rgba(${tr},${tg},${tb},${alpha})`
           ctx.lineWidth = tw
           ctx.stroke()
-          // second trail — thinner, offset
+          // second trail - thinner, offset
           ctx.beginPath()
           ctx.moveTo(s.trail[t - 1].x + 2, s.trail[t - 1].y - 1)
           ctx.lineTo(s.trail[t].x + 2, s.trail[t].y - 1)
@@ -587,7 +587,7 @@ export function initParticles(canvas, onLagDetected) {
       ctx.fill()
     }
 
-    // lightning — random trigger
+    // lightning - random trigger
     lightningTimer++
     if (lightningTimer > nextLightningAt) {
       spawnLightning(Math.random() * width, Math.random() * height * 0.3)
@@ -595,7 +595,7 @@ export function initParticles(canvas, onLagDetected) {
       nextLightningAt = LIGHTNING_MIN_INTERVAL + Math.random() * LIGHTNING_RANDOM_RANGE
     }
 
-    // render lightning — bolts everywhere, flash only in hero
+    // render lightning - bolts everywhere, flash only in hero
     for (let li = lightning.length - 1; li >= 0; li--) {
       const l = lightning[li]
       if (l.flashAlpha > 0 && inHero) {

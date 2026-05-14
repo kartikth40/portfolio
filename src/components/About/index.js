@@ -33,27 +33,35 @@ function About() {
         <MainContect>
           <h3>About</h3>
           <p>
-            I'm Kartik Thakur, a Software Engineer who enjoys working across the full stack,
-            from designing backend APIs to building clean, responsive frontends.
+            I'm Kartik Thakur, a Software Engineer focused on building distributed, event-driven systems and thoughtful
+            product experiences.
             <br />
             <br />
-            I'm drawn to problems that sit at the intersection of
-            <span>system design &amp; user experience,</span> where
-            getting the architecture right directly shapes what people feel when they use the product.
+            Over the past 3 years, I've worked on high-reliability financial platforms spanning backend infrastructure,
+            asynchronous workflows, operational tooling, and frontend systems used by banking operations teams across
+            multiple clients.
+            <br />
+            <br />I enjoy working on problems where
+            <span>system design, reliability, and user experience intersect</span>whether that's designing resilient
+            backend services, debugging production-critical workflows, or building interfaces that simplify complex
+            operational processes.
             <br />
             <br />
-            Outside of work, I build side projects, tinker with new tools,
-            and occasionally ship things to the Chrome Web Store.
+            Outside of work, I build side projects, explore new technologies, and experiment with ideas across developer
+            tooling, productivity, and web platforms.
             <br />
             <br />
-            I care about
-            <span>writing code that's easy to reason about,</span>
-            <span>systems that fail gracefully &amp;</span>
-            <span>teams that ship with confidence.</span>
+            I care deeply about:
             <br />
-            Always open to interesting problems, let's connect.
+            <span>systems that fail gracefully</span>
+            <span>code that's easy to reason about</span>
+            <span>reliable developer workflows</span>
+            <span>products that feel fast, intuitive, and dependable</span>
+            <br />
+            Always open to interesting engineering problems and conversations around distributed systems, backend
+            architecture, and product engineering.
             <AboutLinks>
-              <StyledLink href="/files/myResume.pdf" target="_blank" rel="noreferrer">
+              <StyledLink href="/resume" target="_blank" rel="noreferrer">
                 <StyledText>
                   my resume
                   <img id="giphy" src="https://media.giphy.com/media/Yi8MknjPjvh5Q0rtZz/giphy.gif" alt="pointer" />

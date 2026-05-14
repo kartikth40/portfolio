@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import device from '../../juice/mediaQueries'
 
 const SuperContainer = styled.section`
+  scroll-margin-top: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;

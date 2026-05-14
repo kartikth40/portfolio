@@ -3,7 +3,7 @@ import device from '../../juice/mediaQueries'
 
 const Container = styled.section`
   padding-top: 5rem;
-  scroll-margin-top: 10rem;
+  scroll-margin-top: 4rem;
   display: flex;
   background: linear-gradient(180deg, rgba(13, 13, 20, 0.85) 0%, rgba(13, 11, 30, 0.92) 100%);
   border-top: 1px solid rgba(134, 93, 255, 0.1);

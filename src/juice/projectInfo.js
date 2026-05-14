@@ -6,7 +6,7 @@ const projectInfo = [
     title: 'Purrfect Pomodoro Timer',
     tagline: 'Chrome Extension · 1,500+ Weekly Active Users · 20+ Countries',
     overview:
-      'Built on Chrome Extension Manifest V3 with persistent session state, usage analytics and zero backend infrastructure. Features customizable focus/break timers, task labels, a daily journal, built-in site blocking during focus sessions, ambient music player, 6-month calendar history, and full data export/import.',
+      'Built a Chrome extension with persistent local state management, session analytics, and offline-first architecture, serving 1,500+ weekly active users across 20+ countries without dedicated backend infrastructure. Features customizable focus/break timers, task labels, a daily journal, built-in site blocking during focus sessions, ambient music player, 6-month calendar history, and full data export/import.',
     impact: [
       'Serves 1,500+ weekly active users across 20+ countries - grown organically with zero marketing spend.',
       'Consistently rated 4.9+ stars on the Chrome Web Store.',
@@ -29,7 +29,7 @@ const projectInfo = [
     title: 'Have Small Bytes',
     tagline: 'Full-Stack Blog · Next.js · TypeScript · GraphQL · NextAuth.js',
     overview:
-      'A full-stack blog platform built with Next.js and TypeScript. Features a resilient GraphQL data layer with 50+ service functions, React cache() deduplication, 5x retry on rate-limit errors, and ISR revalidation to minimize CMS API calls under throttling constraints.',
+      'Built a resilient content aggregation platform with GraphQL data orchestration, retry-aware caching, ISR revalidation, and rate-limit recovery mechanisms to minimize upstream API pressure. Features 50+ service functions, React cache() deduplication, and multi-flow authentication.',
     impact: [
       'GraphQL data layer with React cache() deduplication significantly reduces redundant CMS API calls under throttling.',
       'ISR revalidation ensures content stays fresh without full rebuilds, keeping page loads fast.',

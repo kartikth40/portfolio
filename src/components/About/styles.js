@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import device from '../../juice/mediaQueries'
 
 const Container = styled.section`
-  scroll-margin-top: calc(50px);
+  scroll-margin-top: 4rem;
   min-height: 100vh;
   padding: 4rem;
   display: flex;
