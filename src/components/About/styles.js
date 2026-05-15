@@ -16,7 +16,7 @@ const Container = styled.section`
   border-bottom-width: 1px;
   border-bottom-style: solid;
   @media screen and ${device.mobile} {
-    padding: 4rem 1.5rem 5rem;
+    padding: 4rem 0.75rem 5rem;
   }
 `
 const AboutSection = styled.section`
@@ -76,30 +76,35 @@ const MainContect = styled.div`
     font-family: var(--secondary-font-family);
     margin-bottom: 30px;
     text-align: left;
-  }  & span {
-    display: block;
-    margin-block: 0.4rem;
-    margin-left: .5rem;
-    font-size: 0.8em;
-    font-weight: 900;
-    font-family: var(--secondary-font-family);
+  }
+  & > p > span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-block: 0.25rem;
+    margin-left: 0.2rem;
+    margin-right: 0.4rem;
+    font-size: 0.88em;
+    font-weight: 600;
+    font-family: var(--primary-font-family);
+    color: var(--primary-light-blue);
+    background: rgba(134, 93, 255, 0.08);
+    border: 1px solid rgba(134, 93, 255, 0.2);
+    border-radius: 4px;
+    padding: 2px 8px;
+    white-space: normal;
   }
 
   @media screen and ${device.mobile} {
-  width: 80%;
-    & h3 {
-      font-size: 4rem;
-    }
-    & p {
-      font-size: 0.7rem;
-    }
-  }
-  @media screen and ${device.mobile} {
+    width: 100%;
     & h3 {
       font-size: 2rem;
     }
     & p {
-      font-size: 0.9rem;
+      font-size: 0.72rem;
+    }
+    & > p > span {
+      font-size: 0.9em;
+      padding: 1px 5px;
     }
   }
   @media screen and ${device.desktop} {
@@ -140,48 +145,34 @@ const StyledText = styled.span`
   font-weight: bold;
   font-family: var(--secondary-font-family);
   color: #fff;
-  padding: 10px 20px;
-  border: 2px solid #fff;
+  padding: 10px 36px 10px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
   border-radius: 30px;
   transition: 0.25s all;
-  &: hover {
-    border: 2px solid #fff;
-    background-color: rgba(255, 255, 255, 0.1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+
+  .link-arrow {
+    font-size: 0.85em;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+    font-family: monospace;
+    font-weight: 400;
   }
 
-  &:before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    border: 7px solid transparent;
-    border-bottom-color: #fff;
-    left: 50%;
-    bottom: -100px;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: 0.15s all ease-out;
-  }
-  &:after {
-    content: '';
-    width: 2px;
-    height: 30px;
-    position: absolute;
-    left: 50%;
-    bottom: -130px;
-    transform: translateX(-50%);
-    opacity: 0;
-    background-color: #fff;
-    transition: 0.15s all ease-out;
-  }
+  &:hover {
+    border-color: var(--primary-blue);
+    background-color: rgba(134, 93, 255, 0.1);
+    color: var(--primary-light-blue);
 
-  &:hover:before {
-    bottom: -20px;
-    opacity: 1;
-  }
-  &:hover:after {
-    bottom: -50px;
-    opacity: 1;
+    .link-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   img {
@@ -194,9 +185,19 @@ const StyledText = styled.span`
     opacity: 0;
     transition: 0.25s all;
   }
+
   &:hover img {
     opacity: 1;
     bottom: 0%;
+  }
+
+  @media screen and ${device.mobile} {
+    font-size: 0.7rem;
+    padding: 7px 30px 7px 14px;
+
+    img {
+      width: 36px;
+    }
   }
 `
 
@@ -352,6 +353,7 @@ const EduMeta = styled.div`
     font-size: 0.45rem;
     opacity: 0.5;
     font-family: var(--secondary-font-family);
+    text-transform: lowercase;
   }
 
   @media screen and ${device.desktop} {

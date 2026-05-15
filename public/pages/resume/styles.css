@@ -150,7 +150,7 @@ main {
 .pdf-wrapper {
   width: 100%;
   max-width: 860px;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 160px);
   border-radius: 12px;
   overflow: hidden;
   position: relative;
@@ -381,6 +381,12 @@ main {
   opacity: 0;
   transition: opacity 0.4s ease;
   white-space: nowrap;
+  padding: 5px 14px;
+  background: rgba(13, 13, 20, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(134, 93, 255, 0.12);
+  border-radius: 20px;
 }
 
 .view-count.visible {

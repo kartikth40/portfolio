@@ -16,7 +16,7 @@ const Container = styled.section`
   border-bottom-style: solid;
 
   @media screen and ${device.mobile} {
-    padding: 4rem 1.5rem;
+    padding: 4rem 0.75rem;
   }
 `
 
@@ -78,6 +78,10 @@ const CompanyTab = styled.button`
     border-color: var(--primary-blue);
     background: rgba(134, 93, 255, 0.08);
   }
+
+  @media screen and ${device.mobile} {
+    width: 100%;
+  }
 `
 
 const Card = styled.div`
@@ -91,7 +95,7 @@ const Card = styled.div`
   -webkit-backdrop-filter: blur(12px);
 
   @media screen and ${device.mobile} {
-    padding: 1.5rem 1rem;
+    padding: 1.2rem 0.85rem;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     background: rgba(13, 13, 20, 0.95);

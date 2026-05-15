@@ -41,8 +41,8 @@ function About() {
             asynchronous workflows, operational tooling, and frontend systems used by banking operations teams across
             multiple clients.
             <br />
-            <br />I enjoy working on problems where
-            <span>system design, reliability, and user experience intersect</span>whether that's designing resilient
+            <br />I enjoy working on problems where 
+             <span> system design, reliability, and user experience intersect </span> whether that's designing resilient
             backend services, debugging production-critical workflows, or building interfaces that simplify complex
             operational processes.
             <br />
@@ -58,17 +58,20 @@ function About() {
             <span>reliable developer workflows</span>
             <span>products that feel fast, intuitive, and dependable</span>
             <br />
+            <br />
             Always open to interesting engineering problems and conversations around distributed systems, backend
             architecture, and product engineering.
             <AboutLinks>
               <StyledLink href="/resume" target="_blank" rel="noreferrer">
                 <StyledText>
+                  <span className="link-arrow">→</span>
                   my resume
                   <img id="giphy" src="https://media.giphy.com/media/Yi8MknjPjvh5Q0rtZz/giphy.gif" alt="pointer" />
                 </StyledText>
               </StyledLink>
               <StyledLink href="https://www.linkedin.com/in/kartikth40/" target="_blank" rel="noreferrer">
                 <StyledText>
+                  <span className="link-arrow">↗</span>
                   linkedIn
                   <img id="giphy" src="https://media.giphy.com/media/Yi8MknjPjvh5Q0rtZz/giphy.gif" alt="pointer" />
                 </StyledText>

@@ -292,16 +292,22 @@ body::before {
   font-family: 'Major Mono Display', monospace;
   font-size: clamp(0.45rem, 0.8vw, 0.6rem);
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.5);
   letter-spacing: 0.5px;
-  margin-top: 0.5rem;
+  margin-top: 0.6rem;
   opacity: 0;
   transition: opacity 0.4s ease;
   white-space: nowrap;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(13, 13, 20, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(134, 93, 255, 0.12);
+  border-radius: 20px;
 }
 
 .view-count.visible {
