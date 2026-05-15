@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Links | Kartik Thakur</title>
-    <meta name="description" content="Kartik Thakur — Software Engineer. Resume, portfolio, projects, and contact." />
+    <meta name="description" content="Kartik Thakur - Software Engineer. Resume, portfolio, projects, and contact." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,7 +13,7 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Kartik Thakur | Links" />
-    <meta property="og:description" content="Software Engineer — Resume, portfolio, projects, and contact." />
+    <meta property="og:description" content="Software Engineer - Resume, portfolio, projects, and contact." />
     <meta property="og:image" content="https://kartikthakur.dev/icons/blue_logo.svg" />
     <meta property="og:url" content="https://kartikthakur.dev/links" />
     <meta property="og:type" content="website" />
@@ -22,24 +22,34 @@
     <div class="container">
       <!-- Header -->
       <div class="header">
-        <img src="/img/kartik_pfp.jpg" alt="Kartik Thakur" />
+        <div class="avatar-wrap">
+          <img src="/img/kartik_pfp.jpg" alt="Kartik Thakur" />
+        </div>
         <h1>kartik thakur</h1>
         <span class="role">Software Engineer</span>
+        <!-- Status pill - set data-active="true" to show, "false" to hide -->
+        <div class="status-pill" data-active="true">
+          <span class="status-dot"></span>
+          <span class="status-text">Open to opportunities</span>
+        </div>
         <p class="subtitle">Building distributed systems, resilient backends, and thoughtful product experiences.</p>
       </div>
 
       <!-- Primary Links -->
       <div class="links">
-        <a class="link-card" href="/resume" target="_blank" style="--accent: #865DFF;">
+        <a class="link-card" href="/resume" target="_blank" style="--accent: #865DFF;" data-link-id="resume">
           <div class="link-icon">📄</div>
           <div class="link-content">
             <div class="link-title">Resume / CV</div>
             <div class="link-desc">Backend & distributed systems focused resume</div>
           </div>
-          <span class="link-arrow">→</span>
+          <div class="link-meta">
+            <span class="link-arrow">→</span>
+            <span class="link-count" id="count-resume"></span>
+          </div>
         </a>
 
-        <a class="link-card" href="/" target="_blank" style="--accent: #c4b1ff;">
+        <a class="link-card" href="/" target="_blank" style="--accent: #c4b1ff;" data-link-id="portfolio">
           <div class="link-icon">
             <img src="/icons/white_logo.svg" alt="portfolio" />
           </div>
@@ -47,10 +57,13 @@
             <div class="link-title">Portfolio</div>
             <div class="link-desc">Projects, experience, and engineering work</div>
           </div>
-          <span class="link-arrow">→</span>
+          <div class="link-meta">
+            <span class="link-arrow">→</span>
+            <span class="link-count" id="count-portfolio"></span>
+          </div>
         </a>
 
-        <a class="link-card" href="https://github.com/kartikth40" target="_blank" rel="noreferrer" style="--accent: #e0e0e0;">
+        <a class="link-card" href="https://github.com/kartikth40" target="_blank" rel="noreferrer" style="--accent: #e0e0e0;" data-link-id="github">
           <div class="link-icon">
             <img src="/icons/github_logo.png" alt="github" />
           </div>
@@ -58,38 +71,50 @@
             <div class="link-title">GitHub</div>
             <div class="link-desc">Projects, experiments, and open-source work</div>
           </div>
-          <span class="link-arrow">→</span>
+          <div class="link-meta">
+            <span class="link-arrow">→</span>
+            <span class="link-count" id="count-github"></span>
+          </div>
         </a>
       </div>
 
       <!-- Projects -->
       <span class="section-label">projects</span>
       <div class="links">
-        <a class="link-card" href="https://chromewebstore.google.com/detail/purrfect-focus/dkbeapiaaeljpbhpjgaenbjmkhcnocnl" target="_blank" rel="noreferrer" style="--accent: #ff9f7f;">
+        <a class="link-card" href="https://chromewebstore.google.com/detail/purrfect-pomodoro-timer-p/aobapnhgpjlldncjopmbbfeoomombhel" target="_blank" rel="noreferrer" style="--accent: #ff9f7f;" data-link-id="purrfect-focus">
           <div class="link-icon">🐱</div>
           <div class="link-content">
             <div class="link-title">Purrfect Focus</div>
             <div class="link-desc">Productivity extension serving 1500+ WAU across 20+ countries</div>
           </div>
-          <span class="link-arrow">→</span>
+          <div class="link-meta">
+            <span class="link-arrow">→</span>
+            <span class="link-count" id="count-purrfect-focus"></span>
+          </div>
         </a>
 
-        <a class="link-card" href="https://havesmallbytes.vercel.app" target="_blank" rel="noreferrer" style="--accent: #40e0d0;">
+        <a class="link-card" href="https://havesmallbytes.vercel.app" target="_blank" rel="noreferrer" style="--accent: #40e0d0;" data-link-id="have-small-bytes">
           <div class="link-icon">⚡</div>
           <div class="link-content">
             <div class="link-title">Have Small Bytes</div>
             <div class="link-desc">Resilient content aggregation platform built with Next.js & GraphQL</div>
           </div>
-          <span class="link-arrow">→</span>
+          <div class="link-meta">
+            <span class="link-arrow">→</span>
+            <span class="link-count" id="count-have-small-bytes"></span>
+          </div>
         </a>
 
-        <a class="link-card" href="https://github.com/kartikth40/interview-master" target="_blank" rel="noreferrer" style="--accent: #E384FF;">
+        <a class="link-card" href="https://github.com/kartikth40/tech-interview-master" target="_blank" rel="noreferrer" style="--accent: #E384FF;" data-link-id="interview-master">
           <div class="link-icon">🧠</div>
           <div class="link-content">
             <div class="link-title">Tech Interview Master</div>
             <div class="link-desc">DSA, system design, and interview preparation repository</div>
           </div>
-          <span class="link-arrow">→</span>
+          <div class="link-meta">
+            <span class="link-arrow">→</span>
+            <span class="link-count" id="count-interview-master"></span>
+          </div>
         </a>
       </div>
 
@@ -106,10 +131,11 @@
           <span class="link-arrow">→</span>
         </a>
 
-        <a class="link-card" href="javascript:void(0)" onclick="copyEmail()" id="email-link" style="--accent: #865DFF;">
+        <a class="link-card email-card" href="javascript:void(0)" onclick="copyEmail()" id="email-link" style="--accent: #865DFF;">
           <div class="link-icon">@</div>
           <div class="link-content">
             <div class="link-title">Email</div>
+            <div class="link-email-reveal">kartikthakur.2409@gmail.com</div>
           </div>
           <span class="link-arrow">→</span>
         </a>
@@ -118,13 +144,14 @@
       <!-- Footer -->
       <div class="footer">
         <a href="https://kartikthakur.dev">kartikthakur.dev</a>
-        <div class="view-count" id="view-count"></div>
       </div>
+
+      <div class="view-count" id="view-count"></div>
     </div>
 
     <!-- Toast -->
     <div class="toast" id="toast">Email copied to clipboard</div>
 
-    <script src="/pages/links/script.js"></script>
+    <script src="/pages/links/script.js" type="module"></script>
   </body>
 </html>

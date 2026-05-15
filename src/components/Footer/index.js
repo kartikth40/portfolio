@@ -6,6 +6,12 @@ function Footer() {
   const currentYear = new Date().getFullYear()
   const viewCount = useViewCount()
 
+  const formatCount = (n) => {
+    if (n >= 1000000) return parseFloat((n / 1000000).toFixed(2)) + 'M'
+    if (n >= 1000) return parseFloat((n / 1000).toFixed(2)) + 'k'
+    return n.toString()
+  }
+
   return (
     <Container id="footer">
       <Logo href="#home">
@@ -31,7 +37,7 @@ function Footer() {
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
             <circle cx="12" cy="7" r="4"/>
           </svg>
-          {viewCount.toLocaleString()} {viewCount === 1 ? 'Visitor' : 'Visitors'}
+          {formatCount(viewCount)} {viewCount === 1 ? 'Visitor' : 'Visitors'}
         </ViewCount>
       )}
     </Container>

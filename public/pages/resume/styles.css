@@ -117,6 +117,10 @@ header a:last-child:hover {
   font-size: 14px;
   color: var(--text);
   letter-spacing: 1px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .kbd-hint {
@@ -150,7 +154,7 @@ main {
 .pdf-wrapper {
   width: 100%;
   max-width: 860px;
-  height: calc(100vh - 160px);
+  height: calc(100vh - 140px);
   border-radius: 12px;
   overflow: hidden;
   position: relative;
@@ -173,20 +177,14 @@ main {
     rgba(134, 93, 255, 0.7)
   );
   z-index: -1;
-  animation: rotateBorder 4s linear infinite;
   opacity: 1;
   transition: opacity 0.6s ease;
 }
 
 .pdf-wrapper.loaded::before {
-  animation: rotateBorder 8s linear infinite;
   opacity: 0.4;
 }
 
-@keyframes rotateBorder {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
 
 .pdf-inner {
   width: 100%;
@@ -366,30 +364,33 @@ main {
   display: none;
 }
 
-/* View count */
+/* View count - centered above PDF */
 .view-count {
-  position: fixed;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
   font-family: 'Major Mono Display', monospace;
   font-size: 11px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 0.5px;
-  z-index: 10;
+  visibility: hidden;
   opacity: 0;
   transition: opacity 0.4s ease;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 5px 14px;
+  min-height: 28px;
+  min-width: 100px;
   background: rgba(13, 13, 20, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(134, 93, 255, 0.12);
+  border: 1px solid rgba(134, 93, 255, 0.15);
   border-radius: 20px;
+  margin-bottom: 10px;
 }
 
 .view-count.visible {
+  visibility: visible;
   opacity: 1;
 }
 
@@ -416,12 +417,5 @@ main {
   .pdf-inner {
     border-radius: 6px;
     padding: 8px 0;
-  }
-  .view-count {
-    bottom: 8px;
-    font-size: 10px;
-    padding: 4px 12px;
-    background: rgba(13, 13, 20, 0.8);
-    border-radius: 12px;
   }
 }

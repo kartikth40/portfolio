@@ -21,6 +21,13 @@ var RESUME_CONFIG = {
   },
 };
 
+// ─── Shared number formatter ─────────────────────────────────
+function formatCount(n) {
+  if (n >= 1000000) return parseFloat((n / 1000000).toFixed(2)) + 'M';
+  if (n >= 1000) return parseFloat((n / 1000).toFixed(2)) + 'k';
+  return n.toString();
+}
+
 // ─── PDF Loader ─────────────────────────────────────────────
 (function () {
   var frame = document.getElementById('pdf-frame');
@@ -147,7 +154,7 @@ var RESUME_CONFIG = {
 })();
 
 // ─── View Counter ───────────────────────────────────────────
-(function () {
+function initResumeFirebase() {
   var badge = document.getElementById('view-count');
 
   function getVisitorId() {
@@ -161,7 +168,7 @@ var RESUME_CONFIG = {
 
   function showCount(count) {
     var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#c4b1ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin-right:5px;margin-bottom:1px"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
-    badge.innerHTML = svg + count.toLocaleString() + (count === 1 ? ' Visitor' : ' Visitors');
+    badge.innerHTML = svg + formatCount(count) + (count === 1 ? ' Visitor' : ' Visitors');
     badge.classList.add('visible');
   }
 
@@ -192,4 +199,11 @@ var RESUME_CONFIG = {
       });
     });
   });
-})();
+}
+
+// Defer Firebase until browser is idle - never blocks content render
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(initResumeFirebase, { timeout: 3000 });
+} else {
+  setTimeout(initResumeFirebase, 300);
+}

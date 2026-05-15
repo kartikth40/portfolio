@@ -49,7 +49,7 @@ body::before {
   pointer-events: none;
 }
 
-/* Fluid container — grows with viewport up to a max */
+/* Fluid container - grows with viewport up to a max */
 .container {
   position: relative;
   width: 100%;
@@ -69,19 +69,55 @@ body::before {
   gap: 0.6rem;
 }
 
-.header img {
-  width: clamp(56px, 5vw, 110px);
-  height: clamp(56px, 5vw, 110px);
-  border-radius: 50%;
-  border: 2px solid var(--border);
+/* Profile photo with rotating gradient ring */
+.header .avatar-wrap {
+  position: relative;
+  width: clamp(60px, 5.4vw, 118px);
+  height: clamp(60px, 5.4vw, 118px);
   margin-bottom: 0.4rem;
+  isolation: isolate;
 }
 
+.header .avatar-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(134, 93, 255, 0.8),
+    rgba(64, 224, 208, 0.5),
+    rgba(227, 132, 255, 0.6),
+    rgba(134, 93, 255, 0.8)
+  );
+  animation: rotateBorder 6s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotateBorder {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.header img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--primary-dark);
+  object-fit: cover;
+  display: block;
+}
+
+/* Name gradient */
 .header h1 {
   font-family: 'Major Mono Display', monospace;
   font-size: clamp(1rem, 1.8vw, 2rem);
   font-weight: 400;
   letter-spacing: 1px;
+  background: linear-gradient(135deg, #fff 40%, var(--primary-light-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .header .role {
@@ -107,22 +143,28 @@ body::before {
 }
 
 .link-card {
+  position: relative;
   display: flex;
   align-items: center;
   gap: clamp(0.8rem, 1.2vw, 1.6rem);
   padding: clamp(0.85rem, 1.5vh, 1.5rem) clamp(1rem, 1.8vw, 2.2rem);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-left: 3px solid transparent;
-  border-radius: 10px;
+  background: linear-gradient(
+    145deg,
+    rgba(30, 27, 50, 0.85) 0%,
+    rgba(20, 18, 38, 0.75) 100%
+  );
+  border: 1px solid rgba(134, 93, 255, 0.12);
+  border-radius: 12px;
   text-decoration: none;
   color: var(--text);
-  transition: all 0.25s ease;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 2px 8px rgba(0, 0, 0, 0.2);
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.2);
   opacity: 0;
   transform: translateY(12px);
   animation: cardIn 0.4s ease forwards;
@@ -147,31 +189,53 @@ body::before {
 }
 
 .link-card:hover {
-  border-left-color: var(--accent, var(--primary-blue));
-  border-color: rgba(134, 93, 255, 0.25);
-  border-left-color: var(--accent, var(--primary-blue));
-  background: rgba(25, 24, 37, 0.75);
-  transform: translateY(-2px);
+  border-color: rgba(134, 93, 255, 0.3);
+  background: linear-gradient(
+    145deg,
+    rgba(38, 34, 62, 0.9) 0%,
+    rgba(25, 22, 46, 0.85) 100%
+  );
+  transform: translateY(-3px) scale(1.005);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 6px 20px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(134, 93, 255, 0.1);
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 16px 40px rgba(134, 93, 255, 0.08),
+    0 1px 0 rgba(134, 93, 255, 0.15);
 }
 
 .link-card:active {
-  transform: translateY(0);
+  transform: translateY(-1px) scale(1.002);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .link-icon {
   width: clamp(34px, 3.2vw, 60px);
   height: clamp(34px, 3.2vw, 60px);
   border-radius: 8px;
-  background: rgba(134, 93, 255, 0.1);
+  background: linear-gradient(145deg, rgba(50, 40, 80, 0.9), rgba(25, 20, 50, 0.8));
+  border: 1px solid rgba(134, 93, 255, 0.15);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 2px 6px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   font-size: clamp(0.9rem, 1.4vw, 1.6rem);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.link-card:hover .link-icon {
+  border-color: rgba(134, 93, 255, 0.3);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+    0 4px 10px rgba(134, 93, 255, 0.15);
 }
 
 .link-icon img {
@@ -217,9 +281,131 @@ body::before {
   color: var(--text-muted);
   letter-spacing: 1.5px;
   text-transform: lowercase;
-  align-self: flex-start;
+  align-self: stretch;
   margin-top: 0.3rem;
   margin-bottom: -0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  opacity: 0;
+  animation: cardIn 0.4s ease 0.28s forwards;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(134, 93, 255, 0.35), transparent);
+  border-radius: 1px;
+}
+
+/* ─── Status pill ─── */
+.status-pill {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(64, 224, 208, 0.08);
+  border: 1px solid rgba(64, 224, 208, 0.25);
+  border-radius: 20px;
+  font-size: clamp(0.55rem, 0.8vw, 0.7rem);
+  color: rgba(64, 224, 208, 0.9);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.status-pill[data-active="true"] {
+  display: inline-flex;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #40e0d0;
+  flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* ─── Link meta (arrow) ─── */
+.link-meta {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  width: clamp(1rem, 1.5vw, 1.4rem);
+  height: 1.2em;
+}
+
+.link-arrow,
+.link-count {
+  position: absolute;
+  right: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.link-arrow {
+  font-size: clamp(0.7rem, 0.9vw, 1.1rem);
+  color: var(--text-muted);
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.link-count {
+  font-size: clamp(0.42rem, 0.6vw, 0.58rem);
+  font-family: 'Major Mono Display', monospace;
+  color: var(--primary-light-blue);
+  opacity: 0;
+  transform: translateX(4px);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.link-card:hover .link-arrow {
+  opacity: 0;
+  transform: translateX(-4px);
+  color: var(--primary-light-blue);
+}
+
+.link-card:hover .link-count.has-count {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─── Click count tooltip ─── */
+.click-tooltip {
+  display: none;
+}
+
+/* ─── Email reveal ─── */
+.link-email-reveal {
+  font-size: clamp(0.5rem, 0.75vw, 0.65rem);
+  color: var(--primary-light-blue);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.2s ease, max-height 0.2s ease;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+.link-email-reveal::after {
+  content: ' - click to copy';
+  font-size: 0.85em;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.email-card:hover .link-email-reveal {
+  opacity: 1;
+  max-height: 2rem;
 }
 
 /* ─── Contact row ─── */
@@ -232,11 +418,17 @@ body::before {
 .contact-row .link-card {
   flex: 1;
   justify-content: center;
-  padding: clamp(0.7rem, 1.5vh, 1rem) 1rem;
+  padding: clamp(0.9rem, 1.8vh, 1.4rem) 1rem;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 .contact-row .link-content {
   flex: unset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
 }
 
 .contact-row .link-title {
@@ -246,6 +438,11 @@ body::before {
 
 .contact-row .link-arrow {
   display: none;
+}
+
+.contact-row .link-icon {
+  width: clamp(32px, 3vw, 52px);
+  height: clamp(32px, 3vw, 52px);
 }
 
 /* ─── Footer ─── */
@@ -262,6 +459,27 @@ body::before {
   text-decoration: none;
   font-weight: 500;
   letter-spacing: 0.5px;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.footer a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--primary-light-blue);
+  transition: width 0.25s ease;
+}
+
+.footer a:hover {
+  color: #fff;
+}
+
+.footer a:hover::after {
+  width: 100%;
 }
 
 /* ─── Toast ─── */
