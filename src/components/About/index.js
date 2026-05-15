@@ -69,10 +69,10 @@ function About() {
                   <img id="giphy" src="https://media.giphy.com/media/Yi8MknjPjvh5Q0rtZz/giphy.gif" alt="pointer" />
                 </StyledText>
               </StyledLink>
-              <StyledLink href="https://www.linkedin.com/in/kartikth40/" target="_blank" rel="noreferrer">
+              <StyledLink href="/links" target="_blank" rel="noreferrer">
                 <StyledText>
                   <span className="link-arrow">↗</span>
-                  linkedIn
+                  find me
                   <img id="giphy" src="https://media.giphy.com/media/Yi8MknjPjvh5Q0rtZz/giphy.gif" alt="pointer" />
                 </StyledText>
               </StyledLink>
