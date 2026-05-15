@@ -68,14 +68,17 @@ const Copyrights = styled.div`
 const ViewCount = styled.div`
   position: absolute;
   bottom: 0.8rem;
-  left: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 0.55rem;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 0.5px;
   font-family: var(--secondary-font-family);
-  font-weight: bold;
+  font-weight: 400;
+  white-space: nowrap;
   @media screen and ${device.mobile} {
     position: static;
+    transform: none;
     text-align: center;
     font-size: 0.45rem;
     padding: 0.3rem 0 0.5rem;

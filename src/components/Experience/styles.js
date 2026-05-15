@@ -116,6 +116,12 @@ const CompanyName = styled.h3`
     &:hover {
       color: var(--primary-light-blue);
     }
+
+    &:visited,
+    &:active,
+    &:focus {
+      color: inherit;
+    }
   }
 `
 

@@ -160,7 +160,8 @@ var RESUME_CONFIG = {
   }
 
   function showCount(count) {
-    badge.textContent = '\uD83D\uDFE2 ' + count.toLocaleString() + (count === 1 ? ' Visitor' : ' Visitors');
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#c4b1ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin-right:5px;margin-bottom:1px"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+    badge.innerHTML = svg + count.toLocaleString() + (count === 1 ? ' Visitor' : ' Visitors');
     badge.classList.add('visible');
   }
 

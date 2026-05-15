@@ -23,11 +23,15 @@ function Footer() {
         </a>
       </FooterLinks>
       <a href="#home" style={{ textDecoration: 'none' }}>
-        <Copyrights>© {currentYear} - KARTIK THAKUR</Copyrights>
+        <Copyrights>© {currentYear} - kartik thakur</Copyrights>
       </a>
       {viewCount !== null && (
         <ViewCount>
-          🟢 {viewCount.toLocaleString()} {viewCount === 1 ? 'Visitor' : 'Visitors'}
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--primary-light-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{display:'inline-block', verticalAlign:'middle', marginRight:'5px', marginBottom:'1px'}}>
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          {viewCount.toLocaleString()} {viewCount === 1 ? 'Visitor' : 'Visitors'}
         </ViewCount>
       )}
     </Container>

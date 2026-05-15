@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume | Kartik Thakur</title>
+    <meta name="description" content="Kartik Thakur's resume - Software Engineer." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Major+Mono+Display&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/pages/resume/styles.css" />
+  </head>
+  <body>
+    <header>
+      <a class="back-link" href="/">
+        <img src="/icons/white_logo.svg" alt="logo" />
+        <span>portfolio</span>
+        <span class="kbd-hint"><kbd class="kbd">Esc</kbd></span>
+      </a>
+      <span class="logo">resume</span>
+      <span style="display:inline-flex;gap:16px;align-items:center;">
+        <a data-download-link href="#" title="Download PDF">
+          &#8595; download
+        </a>
+        <span style="color:rgba(134,93,255,0.3);">|</span>
+        <a data-drive-link href="#" target="_blank" rel="noreferrer">
+          open in drive &#8599;
+        </a>
+      </span>
+    </header>
+
+    <main>
+      <div class="pdf-wrapper" id="pdf-wrapper">
+        <div class="pdf-inner">
+          <div class="loader" id="loader">
+            <div class="spinner"></div>
+            <p>Loading resume...</p>
+            <p class="slow-hint" id="slow-hint">This is taking a moment - hang tight</p>
+          </div>
+
+          <div class="fallback" id="fallback">
+            <div class="fallback-icon">📄</div>
+            <h2>Couldn't load the preview</h2>
+            <p class="online-msg">The embedded viewer may be blocked by your browser or network. You can view the resume directly on Google Drive.</p>
+            <p class="offline-msg">You appear to be offline. Please check your connection and try again.</p>
+            <div class="fallback-actions">
+              <a class="fallback-btn" data-drive-link href="#" target="_blank" rel="noreferrer">
+                View on Google Drive
+              </a>
+              <button class="fallback-btn fallback-btn-secondary" onclick="retryLoad()">
+                ↻ Retry
+              </button>
+            </div>
+          </div>
+
+          <iframe
+            id="pdf-frame"
+            allow="autoplay"
+            title="Kartik Thakur Resume"
+            loading="eager"
+          ></iframe>
+        </div>
+      </div>
+    </main>
+
+    <div class="view-count" id="view-count"></div>
+
+    <script src="/pages/resume/script.js"></script>
+  </body>
+</html>
