@@ -2,7 +2,7 @@ TODO
 
 /links page:
 - [x] Make scrollbar match the theme (purple, styled like portfolio)
-- [x] Browser compatibility check — documented degradations (Firefox: no backdrop-filter, no animated border)
+- [x] Browser compatibility check - documented degradations (Firefox: no backdrop-filter, no animated border)
 - [x] Performance analysis + 3 optimizations (cached gradients, skip arch on no scroll, pre-computed spline points)
 - [x] Make portal arch animation + kafka queue + graph mobile friendly (portal kept, canvas animations hidden + JS skipped)
 - [x] Make portal arch animation + kafka queue + graph large screen friendly (breakpoints at 1800px and 2400px)

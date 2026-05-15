@@ -176,7 +176,7 @@ var LINKS_CONFIG = {
       vignette.style.opacity = 0;
     }
 
-    // Contact cards border glow — only purple, never amber
+    // Contact cards border glow - only purple, never amber
     if (contactCards.length) {
       var pulseIntensity = t > 0.75 ? (t - 0.75) / 0.25 : 0;
       contactCards.forEach(function (card) {
@@ -373,10 +373,10 @@ var LINKS_CONFIG = {
     // 4 lines total: 2 from left, 2 from right.
     // Left: lines start spread (top/bottom of canvas), S-curve inward to arrive
     //       just above/below center badge.
-    // Right: mirror — lines start spread, S-curve inward to same arrival points.
+    // Right: mirror - lines start spread, S-curve inward to same arrival points.
     // Lines never cross each other.
 
-    // 4 lines — each has a distinct personality, asymmetric, organic curves.
+    // 4 lines - each has a distinct personality, asymmetric, organic curves.
     // All converge near center but arrive at slightly different y offsets.
     // No symmetry between left/right or top/bottom.
 
@@ -411,7 +411,7 @@ var LINKS_CONFIG = {
         ],
         color: 'rgba(134,93,255,', speed: 0.00058
       },
-      // Right line 1: starts mid-high, double S — down then up to above center
+      // Right line 1: starts mid-high, double S - down then up to above center
       {
         pts: [
           {x: w,            y: h * 0.18},
@@ -497,7 +497,7 @@ var LINKS_CONFIG = {
     });
   }
 
-  // Pre-populate — 1 dot per branch at random position
+  // Pre-populate - 1 dot per branch at random position
   branches.forEach(function (b) {
     spawnDot(b);
     dots[dots.length-1].t = 0.15 + Math.random() * 0.55;
@@ -524,7 +524,7 @@ var LINKS_CONFIG = {
       var d = dots[i];
       d.t += d.speed * (dt/16) * (hovered ? 2.5 : 1);
       if (d.t >= 0.97) { dots.splice(i, 1); continue; }
-      // Use cached points for dot position — interpolate between cached steps
+      // Use cached points for dot position - interpolate between cached steps
       var cached = d.branch.cachedPts;
       var idx = d.t * (cached.length - 1);
       var lo = Math.floor(idx);
