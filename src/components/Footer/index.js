@@ -21,8 +21,8 @@ function Footer() {
         <a href="https://www.linkedin.com/in/kartikth40" target="_blank" rel="noreferrer">
           <img src="/icons/linkedin_icon.png" alt="linkedin logo" />
         </a>
-        <a href="https://linktr.ee/kartikth40" target="_blank" rel="noreferrer">
-          <img src="/icons/linktree_icon.png" alt="linktree logo" />
+        <a href="/links" target="_blank" rel="noreferrer">
+          <img src="/icons/linktree_icon.png" alt="links" />
         </a>
         <a href="https://github.com/kartikth40" target="_blank" rel="noreferrer">
           <img src="/icons/github_icon.png" alt="github logo" />
