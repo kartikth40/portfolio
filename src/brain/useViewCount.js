@@ -20,11 +20,6 @@ export default function useViewCount() {
     return { num, firstVisit: today, lastVisit: today, visits: 1, screens: scr ? [scr] : [] }
   }
 
-  function visitorUpdate() {
-    var today = new Date().toISOString().split('T')[0];
-    return { lastVisit: today };
-  }
-
   useEffect(() => {
     const visitorId = getVisitorId()
     const visitorRef = ref(database, `views/visitors/${visitorId}`)
