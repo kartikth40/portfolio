@@ -764,8 +764,9 @@ function initFirebase() {
           }).then(function (result) {
             var num = result.snapshot.val();
             var today = new Date().toISOString().split('T')[0];
-            var scr = window.screen ? window.screen.width + 'x' + window.screen.height : '';
-            db.set(visitorRef, { num: num, firstVisit: today, lastVisit: today, visits: 1, screen: scr });
+            var scr = window.screen ? window.screen.width + 'x' + window.screen.height : null;
+            db.set(visitorRef, { num: num, firstVisit: today, lastVisit: today, visits: 1, screens: scr ? [scr] : [] });
+            sessionStorage.setItem('visited_links_' + visitorId, '1');
             showVisitorCount(badge, num, num);
           });
         } else {
@@ -773,18 +774,29 @@ function initFirebase() {
           var visitorNum = typeof val === 'object' && val !== null && val.num
             ? val.num
             : typeof val === 'number' ? val : null;
+          // Calculate visits for display — only increment if new session
+          var sessionKey = 'visited_links_' + visitorId;
+          var alreadyCountedThisSession = sessionStorage.getItem(sessionKey);
+          var displayVisits = null;
           // Update lastVisit and visits for returning visitor
           if (val && typeof val === 'object') {
             var today = new Date().toISOString().split('T')[0];
-            var scr = window.screen ? window.screen.width + 'x' + window.screen.height : '';
+            var newVisits = alreadyCountedThisSession ? (val.visits || 1) : (val.visits || 1) + 1;
+            displayVisits = newVisits;
+            if (!alreadyCountedThisSession) sessionStorage.setItem(sessionKey, '1');
             db.set(visitorRef, Object.assign({}, val, {
               lastVisit: today,
-              visits: (val.visits || 1) + 1,
-              screen: val.screen || scr  // fill if empty/null
+              visits: newVisits,
+              screens: (function() {
+                var list = Array.isArray(val.screens) ? val.screens.slice() : (val.screen ? [val.screen] : []);
+                var cur = window.screen ? window.screen.width + 'x' + window.screen.height : null;
+                if (cur && list.indexOf(cur) === -1) list.push(cur);
+                return list;
+              })()
             }));
           }
           return db.get(totalRef).then(function (snap) {
-            showVisitorCount(badge, snap.val() || 0, visitorNum);
+            showVisitorCount(badge, snap.val() || 0, visitorNum, displayVisits);
           });
         }
       }).catch(function (err) { console.error('Links view count error:', err); });
@@ -837,7 +849,7 @@ function getVisitorId() {
   return id;
 }
 
-function showVisitorCount(badge, count, visitorNum) {
+function showVisitorCount(badge, count, visitorNum, visits) {
   var countText = document.getElementById('git-count-text');
   if (countText) {
     countText.innerHTML = formatCount(count);
@@ -856,10 +868,17 @@ function showVisitorCount(badge, count, visitorNum) {
     var text = document.getElementById('visitor-num-text');
     if (line && text) {
       text.textContent = 'you are visitor #' + visitorNum;
-      // Slight delay so count fades in first, then visitor line
-      setTimeout(function () {
-        line.classList.add('show');
-      }, 400);
+      setTimeout(function () { line.classList.add('show'); }, 400);
+    }
+  }
+
+  // Show returning visitor line only if visits > 1
+  if (visits && visits > 1) {
+    var retLine = document.getElementById('visitor-return-line');
+    var retText = document.getElementById('visitor-return-text');
+    if (retLine && retText) {
+      retText.textContent = 'returning · ' + visits + ' visits';
+      setTimeout(function () { retLine.classList.add('show'); }, 700);
     }
   }
 

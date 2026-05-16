@@ -187,8 +187,9 @@ function initResumeFirebase() {
             return (current || 0) + 1;
           }).then(function (result) {
             var today = new Date().toISOString().split('T')[0];
-            var scr = window.screen ? window.screen.width + 'x' + window.screen.height : '';
-            firebaseDb.set(visitorRef, { num: result.snapshot.val(), firstVisit: today, lastVisit: today, visits: 1, screen: scr });
+            var scr = window.screen ? window.screen.width + 'x' + window.screen.height : null;
+            firebaseDb.set(visitorRef, { num: result.snapshot.val(), firstVisit: today, lastVisit: today, visits: 1, screens: scr ? [scr] : [] });
+            sessionStorage.setItem('visited_resume_' + visitorId, '1');
             showCount(result.snapshot.val());
           });
         } else {
@@ -196,11 +197,19 @@ function initResumeFirebase() {
           var existing = snapshot.val();
           if (existing && typeof existing === 'object') {
             var today = new Date().toISOString().split('T')[0];
-            var scr = window.screen ? window.screen.width + 'x' + window.screen.height : '';
+            var sessionKey = 'visited_resume_' + visitorId;
+            var alreadyCounted = sessionStorage.getItem(sessionKey);
+            var newVisits = alreadyCounted ? (existing.visits || 1) : (existing.visits || 1) + 1;
+            if (!alreadyCounted) sessionStorage.setItem(sessionKey, '1');
             firebaseDb.set(visitorRef, Object.assign({}, existing, {
               lastVisit: today,
-              visits: (existing.visits || 1) + 1,
-              screen: existing.screen || scr
+              visits: newVisits,
+              screens: (function() {
+                var list = Array.isArray(existing.screens) ? existing.screens.slice() : (existing.screen ? [existing.screen] : []);
+                var cur = window.screen ? window.screen.width + 'x' + window.screen.height : null;
+                if (cur && list.indexOf(cur) === -1) list.push(cur);
+                return list;
+              })()
             }));
           }
           return firebaseDb.get(totalRef).then(function (snap) {

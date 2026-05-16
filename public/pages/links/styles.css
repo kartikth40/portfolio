@@ -933,14 +933,16 @@ body::before {
   white-space: nowrap;
 }
 
-#visitor-num-line {
+#visitor-num-line,
+#visitor-return-line {
   visibility: hidden;
   min-height: 1.4em;
   opacity: 0;
   transition: opacity 0.5s ease 0.3s, visibility 0s linear 0s;
 }
 
-#visitor-num-line.show {
+#visitor-num-line.show,
+#visitor-return-line.show {
   visibility: visible;
   opacity: 1;
 }

@@ -15,9 +15,9 @@ export default function useViewCount() {
   const [count, setCount] = useState(null)
 
   function visitorData(num) {
-    var today = new Date().toISOString().split('T')[0];
-    var screen = window.screen ? window.screen.width + 'x' + window.screen.height : '';
-    return { num: num, firstVisit: today, lastVisit: today, visits: 1, screen: screen };
+    const today = new Date().toISOString().split('T')[0]
+    const scr = window.screen ? `${window.screen.width}x${window.screen.height}` : null
+    return { num, firstVisit: today, lastVisit: today, visits: 1, screens: scr ? [scr] : [] }
   }
 
   function visitorUpdate() {
@@ -44,12 +44,20 @@ export default function useViewCount() {
           const existing = snapshot.val()
           if (existing && typeof existing === 'object') {
             const today = new Date().toISOString().split('T')[0]
-            const scr = window.screen ? `${window.screen.width}x${window.screen.height}` : ''
+            const sessionKey = `visited_portfolio_${visitorId}`
+            const alreadyCounted = sessionStorage.getItem(sessionKey)
+            const newVisits = alreadyCounted ? (existing.visits || 1) : (existing.visits || 1) + 1
+            if (!alreadyCounted) sessionStorage.setItem(sessionKey, '1')
             set(visitorRef, {
               ...existing,
               lastVisit: today,
-              visits: (existing.visits || 1) + 1,
-              screen: existing.screen || scr
+              visits: newVisits,
+              screens: (() => {
+                const list = Array.isArray(existing.screens) ? [...existing.screens] : (existing.screen ? [existing.screen] : [])
+                const cur = window.screen ? `${window.screen.width}x${window.screen.height}` : null
+                if (cur && !list.includes(cur)) list.push(cur)
+                return list
+              })()
             })
           }
           return get(totalRef).then((snap) => setCount(snap.val() || 0))
