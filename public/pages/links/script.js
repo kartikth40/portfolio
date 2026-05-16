@@ -833,11 +833,15 @@ function initFirebase() {
   });
 }
 
-if ('requestIdleCallback' in window) {
-  requestIdleCallback(initFirebase, { timeout: 3000 });
-} else {
-  setTimeout(initFirebase, 300);
-}
+// Defer Firebase until after the page load event so it never competes
+// with the critical rendering path on mobile.
+window.addEventListener('load', function () {
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(initFirebase, { timeout: 5000 });
+  } else {
+    setTimeout(initFirebase, 1000);
+  }
+});
 
 // ─── Helpers ─────────────────────────────────────────────────
 function getVisitorId() {

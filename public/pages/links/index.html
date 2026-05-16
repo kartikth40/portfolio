@@ -6,10 +6,17 @@
     <title>Links | Kartik Thakur</title>
     <meta name="description" content="Kartik Thakur - Software Engineer. Resume, portfolio, projects, and contact." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Preconnect to font origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Major+Mono+Display&display=swap" rel="stylesheet" />
+
+    <!-- font-display=swap prevents render-blocking on slow connections -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Major+Mono+Display&display=swap&font-display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/pages/links/styles.css" />
+
+    <!-- Preload the profile photo — it's the LCP element -->
+    <link rel="preload" as="image" href="/img/kartik_pfp.jpg" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="Kartik Thakur | Links" />
@@ -49,7 +56,7 @@
       <!-- Header -->
       <div class="header">
         <div class="avatar-wrap">
-          <img src="/img/kartik_pfp.jpg" alt="Kartik Thakur" />
+          <img src="/img/kartik_pfp.jpg" alt="Kartik Thakur" width="118" height="118" />
         </div>
         <h1>kartik thakur</h1>
         <span class="role">Software Engineer</span>
@@ -304,6 +311,6 @@
     <!-- Toast -->
     <div class="toast" id="toast">Email copied to clipboard</div>
 
-    <script src="/pages/links/script.js" type="module"></script>
+    <script src="/pages/links/script.js" defer></script>
   </body>
 </html>

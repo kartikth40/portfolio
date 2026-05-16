@@ -37,8 +37,8 @@ function formatCount(n) {
   var slowHint = document.getElementById('slow-hint');
   var timeout, slowTimeout;
 
-  // Set dynamic URLs in HTML
-  initLinks();
+  // iframe src is already set in HTML — no need to set it again here.
+  // Just wire up the dynamic links that aren't hardcoded.
 
   // Detect offline immediately
   if (!navigator.onLine) {
@@ -59,23 +59,6 @@ function formatCount(n) {
       window.retryLoad();
     }
   });
-
-  function initLinks() {
-    // Set iframe src
-    frame.src = RESUME_CONFIG.previewUrl;
-
-    // Set all drive links
-    var driveLinks = document.querySelectorAll('[data-drive-link]');
-    driveLinks.forEach(function (el) {
-      el.href = RESUME_CONFIG.viewUrl;
-    });
-
-    // Set download link
-    var downloadLink = document.querySelector('[data-download-link]');
-    if (downloadLink) {
-      downloadLink.href = RESUME_CONFIG.downloadUrl;
-    }
-  }
 
   function showFallback(isOffline) {
     clearTimeout(timeout);
@@ -223,9 +206,12 @@ function initResumeFirebase() {
   });
 }
 
-// Defer Firebase until browser is idle - never blocks content render
-if ('requestIdleCallback' in window) {
-  requestIdleCallback(initResumeFirebase, { timeout: 3000 });
-} else {
-  setTimeout(initResumeFirebase, 300);
-}
+// Defer Firebase until after the page load event so it never competes
+// with the iframe fetch or critical rendering path on mobile.
+window.addEventListener('load', function () {
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(initResumeFirebase, { timeout: 5000 });
+  } else {
+    setTimeout(initResumeFirebase, 1000);
+  }
+});

@@ -54,12 +54,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  opacity: 0;
-  animation: fadeInPage 0.5s ease forwards;
-}
-
-@keyframes fadeInPage {
-  to { opacity: 1; }
+  /* Removed opacity:0 fade-in — it was blocking FCP until CSS animation fired */
 }
 
 body::before {
