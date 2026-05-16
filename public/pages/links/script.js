@@ -25,6 +25,7 @@ var LINKS_CONFIG = {
 
 // ─── Arch: self-draw + scroll effects ────────────────────────
 (function () {
+  var isMobile = window.innerWidth <= 520;
   var arch = document.querySelector('.arch-decoration');
   var archPath = document.getElementById('arch-path');
   var archFill = document.getElementById('arch-fill');
@@ -139,14 +140,69 @@ var LINKS_CONFIG = {
 
   // Optimization 2: skip arch update when scroll hasn't changed
   var lastScrollY = -1;
+  var prevScrollY = 0;
+  var wasScrolled = false;
+  var archTabActive = true;
+  document.addEventListener('visibilitychange', function () {
+    archTabActive = !document.hidden;
+  });
+
+  function triggerSpring() {
+    var frame = 0;
+    var springCY = BASE.cy;
+    var springFrames = [
+      { cy: BASE.cy,      duration: 0   },
+      { cy: BASE.cy + 20, duration: 160 },
+      { cy: BASE.cy - 8,  duration: 140 },
+      { cy: BASE.cy + 3,  duration: 100 },
+      { cy: BASE.cy,      duration: 80  },
+    ];
+    function runSpring() {
+      if (frame >= springFrames.length - 1) return;
+      var from = springFrames[frame].cy;
+      var to = springFrames[frame + 1].cy;
+      var dur = springFrames[frame + 1].duration;
+      var start = performance.now();
+      function tick(now) {
+        var elapsed = now - start;
+        var progress = Math.min(1, elapsed / dur);
+        var ease = progress < 0.5 ? 2*progress*progress : 1 - Math.pow(-2*progress+2,2)/2;
+        springCY = from + (to - from) * ease;
+        if (window.scrollY < 10) {
+          var path = 'M ' + BASE.lx + ' 1000 L ' + BASE.lx + ' ' + BASE.ly +
+                     ' Q ' + BASE.lx + ' ' + springCY + ' ' + BASE.cx + ' ' + springCY +
+                     ' Q ' + BASE.rx + ' ' + springCY + ' ' + BASE.rx + ' ' + BASE.ly +
+                     ' L ' + BASE.rx + ' 1000';
+          archPath.setAttribute('d', path);
+          if (archFill) archFill.setAttribute('d', path);
+        }
+        if (progress < 1) requestAnimationFrame(tick);
+        else { frame++; runSpring(); }
+      }
+      requestAnimationFrame(tick);
+    }
+    runSpring();
+  }
 
   function animate() {
+    if (!archTabActive) { requestAnimationFrame(animate); return; }
     var scrollY = window.scrollY;
     if (scrollY === lastScrollY) {
       requestAnimationFrame(animate);
       return;
     }
+    // Detect scroll back to top - trigger bounce
+    if (scrollY < 10 && prevScrollY >= 10 && wasScrolled) {
+      wasScrolled = false;
+      setTimeout(triggerSpring, 50);
+    }
+    if (scrollY >= 10) wasScrolled = true;
+    prevScrollY = scrollY;
     lastScrollY = scrollY;
+
+    // On mobile: only handle scroll-to-top bounce, skip expensive updates
+    if (isMobile) { requestAnimationFrame(animate); return; }
+
     var t = Math.min(1, scrollY / 400);
 
     var lx = BASE.lx + (500 - BASE.lx) * t * 0.7;
@@ -262,6 +318,8 @@ var LINKS_CONFIG = {
   var lastTime = 0;
 
   function animate(now) {
+    requestAnimationFrame(animate);
+    if (!tabActive) return; // stop all work when tab hidden
     var dt = Math.min(now - lastTime, 50);
     lastTime = now;
     spawnTimer += dt;
@@ -274,8 +332,7 @@ var LINKS_CONFIG = {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    for (var i = dots.length - 1; i >= 0; i--) {
-      var d = dots[i];
+    for (var i = dots.length - 1; i >= 0; i--) {      var d = dots[i];
       d.x += d.speed * (dt / 16) * (tabActive ? 1 : 0.2);
       d.phase += 0.05;
 
@@ -305,28 +362,27 @@ var LINKS_CONFIG = {
       if (d.isHeart) {
         // Heart: soft glow behind + filled heart
         ctx.beginPath();
-        ctx.arc(0, 0, r * 3.5, 0, Math.PI * 2);
+        ctx.arc(0, 0, r * 2, 0, Math.PI * 2);
         ctx.fillStyle = d.grd;
         ctx.fill();
         drawHeart(ctx, r * 1.6);
-        ctx.fillStyle = 'rgba(255,180,200,0.95)';
+        ctx.fillStyle = 'rgba(255,180,200,0.85)';
         ctx.fill();
       } else {
         // Circle dot
         ctx.beginPath();
-        ctx.arc(0, 0, r * 3, 0, Math.PI * 2);
+        ctx.arc(0, 0, r * 2, 0, Math.PI * 2);
         ctx.fillStyle = d.grd;
         ctx.fill();
         ctx.beginPath();
         ctx.arc(0, 0, r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(220,210,255,1)';
+        ctx.fillStyle = 'rgba(220,210,255,0.9)';
         ctx.fill();
       }
       ctx.globalAlpha = 1;
       ctx.restore();
     }
 
-    requestAnimationFrame(animate);
   }
 
   // Pre-populate with some dots so it doesn't start empty
@@ -347,203 +403,314 @@ var LINKS_CONFIG = {
     });
   }
 })();
-// ─── Git graph convergence animation ─────────────────────────
+// ─── Wave planes converging to terminal ──────────────────────
 (function () {
-  if (window.innerWidth <= 520) return; // skip on mobile
-  var canvas = document.getElementById('git-graph-canvas');
+  if (window.innerWidth <= 520) return;
+  var svg = document.getElementById('wave-svg');
+  var wrap = document.querySelector('.git-graph-wrap');
   var center = document.getElementById('view-count');
-  if (!canvas || !center) return;
-  var ctx = canvas.getContext('2d');
-  var branches = [];
-  var dots = [];
-  var cx, cy;
-  var hovered = false;
+  if (!svg || !wrap || !center) return;
 
-  center.addEventListener('mouseenter', function () { hovered = true; });
-  center.addEventListener('mouseleave', function () { hovered = false; });
+  var W, H, cx, cy;
+  var waves = [];
+  var t = 0;
+  var waveTabActive = true;
+  // Throttle to 30fps on low-end devices (< 4 cores)
+  var isLowEnd = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4;
+  var frameSkip = isLowEnd ? 2 : 1;
+  var frameCount = 0;
 
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = canvas.offsetHeight || parseInt(getComputedStyle(canvas).height);
-    cx = window.innerWidth / 2;
-    cy = canvas.height / 2;
-    var w = canvas.width;
-    var h = canvas.height;
-
-    // 4 lines total: 2 from left, 2 from right.
-    // Left: lines start spread (top/bottom of canvas), S-curve inward to arrive
-    //       just above/below center badge.
-    // Right: mirror - lines start spread, S-curve inward to same arrival points.
-    // Lines never cross each other.
-
-    // 4 lines - each has a distinct personality, asymmetric, organic curves.
-    // All converge near center but arrive at slightly different y offsets.
-    // No symmetry between left/right or top/bottom.
-
-    var c = cy; // center y
-
-    branches = [
-      // Left line 1: starts high, dips mid, rises to just above center
-      // Feels like a branch that diverged early and is merging back
-      {
-        pts: [
-          {x: 0,          y: h * 0.08},
-          {x: cx * 0.10,  y: h * 0.08},
-          {x: cx * 0.25,  y: h * 0.35},   // dip down
-          {x: cx * 0.38,  y: h * 0.35},
-          {x: cx * 0.55,  y: h * 0.18},   // bounce back up
-          {x: cx * 0.72,  y: c - h*0.10},
-          {x: cx * 0.90,  y: c - h*0.06},
-          {x: cx,         y: c}
-        ],
-        color: 'rgba(196,177,255,', speed: 0.00072
-      },
-      // Left line 2: starts low, single long graceful arc up to just below center
-      {
-        pts: [
-          {x: 0,          y: h * 0.92},
-          {x: cx * 0.08,  y: h * 0.92},
-          {x: cx * 0.20,  y: h * 0.92},
-          {x: cx * 0.45,  y: h * 0.62},   // slow start, then curves
-          {x: cx * 0.62,  y: h * 0.62},
-          {x: cx * 0.80,  y: c + h*0.08},
-          {x: cx,         y: c + h*0.05}
-        ],
-        color: 'rgba(134,93,255,', speed: 0.00058
-      },
-      // Right line 1: starts mid-high, double S - down then up to above center
-      {
-        pts: [
-          {x: w,            y: h * 0.18},
-          {x: w - cx*0.10,  y: h * 0.18},
-          {x: w - cx*0.28,  y: h * 0.48},  // first S down
-          {x: w - cx*0.40,  y: h * 0.48},
-          {x: w - cx*0.56,  y: h * 0.22},  // second S back up
-          {x: w - cx*0.74,  y: c - h*0.10},
-          {x: w - cx*0.92,  y: c - h*0.07},
-          {x: cx,           y: c - h*0.07}
-        ],
-        color: 'rgba(180,150,255,', speed: 0.00068
-      },
-      // Right line 2: starts very low, sharp early rise, then flat run to center
-      {
-        pts: [
-          {x: w,            y: h * 0.96},
-          {x: w - cx*0.06,  y: h * 0.96},
-          {x: w - cx*0.18,  y: h * 0.70},  // sharp rise
-          {x: w - cx*0.30,  y: h * 0.65},
-          {x: w - cx*0.50,  y: h * 0.65},  // flat run
-          {x: w - cx*0.70,  y: c + h*0.10},
-          {x: w - cx*0.90,  y: c + h*0.05},
-          {x: cx,           y: c + h*0.01}
-        ],
-        color: 'rgba(134,93,255,', speed: 0.00052
-      }
-    ];
-
-    // Pre-compute spline points for all branches
-    branches.forEach(function (b) { precomputeBranch(b); });
-  }
-
-  resize();
-  window.addEventListener('resize', function () { resize(); dots = []; }, { passive: true });
-
-  // Catmull-Rom spline point at t
-  function splinePoint(pts, t) {
-    var n = pts.length - 1;
-    var seg = Math.min(Math.floor(t * n), n - 1);
-    var u = t * n - seg;
-    var p0 = pts[Math.max(seg-1, 0)];
-    var p1 = pts[seg];
-    var p2 = pts[Math.min(seg+1, n)];
-    var p3 = pts[Math.min(seg+2, n)];
-    var u2 = u*u, u3 = u2*u;
-    return {
-      x: 0.5*((2*p1.x)+(-p0.x+p2.x)*u+(2*p0.x-5*p1.x+4*p2.x-p3.x)*u2+(-p0.x+3*p1.x-3*p2.x+p3.x)*u3),
-      y: 0.5*((2*p1.y)+(-p0.y+p2.y)*u+(2*p0.y-5*p1.y+4*p2.y-p3.y)*u2+(-p0.y+3*p1.y-3*p2.y+p3.y)*u3)
-    };
-  }
-
-  // Optimization 3: pre-compute spline points on resize, cache as point arrays
-  function precomputeBranch(b) {
-    var steps = 120;
-    b.cachedPts = [];
-    for (var i = 0; i <= steps; i++) {
-      b.cachedPts.push(splinePoint(b.pts, i / steps));
-    }
-  }
-
-  function drawBranch(b) {
-    if (!b.cachedPts) return;
-    ctx.beginPath();
-    ctx.setLineDash([2, 5]);
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = b.color + '0.28)';
-    for (var i = 0; i < b.cachedPts.length; i++) {
-      var pt = b.cachedPts[i];
-      if (i === 0) ctx.moveTo(pt.x, pt.y); else ctx.lineTo(pt.x, pt.y);
-    }
-    ctx.stroke();
-    ctx.setLineDash([]);
-  }
-
-  function spawnDot(b) {
-    dots.push({
-      branch: b,
-      t: 0,
-      speed: b.speed * (0.6 + Math.random() * 0.8),
-      size: 1 + Math.random() * 0.8,
-      alpha: 0.55 + Math.random() * 0.45
-    });
-  }
-
-  // Pre-populate - 1 dot per branch at random position
-  branches.forEach(function (b) {
-    spawnDot(b);
-    dots[dots.length-1].t = 0.15 + Math.random() * 0.55;
+  document.addEventListener('visibilitychange', function () {
+    waveTabActive = !document.hidden;
   });
 
-  var spawnTimers = branches.map(function () { return 2000 + Math.random() * 3000; });
-  var lastTime = 0;
-
-  function animate(now) {
-    var dt = Math.min(now - lastTime, 50);
-    lastTime = now;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    branches.forEach(function (b, i) {
-      drawBranch(b);
-      spawnTimers[i] -= dt;
-      if (spawnTimers[i] <= 0) {
-        spawnDot(b);
-        spawnTimers[i] = 3000 + Math.random() * 4000; // very sparse
-      }
-    });
-
-    for (var i = dots.length-1; i >= 0; i--) {
-      var d = dots[i];
-      d.t += d.speed * (dt/16) * (hovered ? 2.5 : 1);
-      if (d.t >= 0.97) { dots.splice(i, 1); continue; }
-      // Use cached points for dot position - interpolate between cached steps
-      var cached = d.branch.cachedPts;
-      var idx = d.t * (cached.length - 1);
-      var lo = Math.floor(idx);
-      var hi = Math.min(lo + 1, cached.length - 1);
-      var frac = idx - lo;
-      var pos = {
-        x: cached[lo].x + (cached[hi].x - cached[lo].x) * frac,
-        y: cached[lo].y + (cached[hi].y - cached[lo].y) * frac
-      };
-      var fade = d.t < 0.04 ? d.t/0.04 : d.t > 0.92 ? (1-d.t)/0.08 : 1;
-      ctx.beginPath();
-      ctx.arc(pos.x, pos.y, d.size, 0, Math.PI*2);
-      ctx.fillStyle = 'rgba(210,195,255,' + (d.alpha * fade) + ')';
-      ctx.fill();
-    }
-
-    requestAnimationFrame(animate);
+  function resize() {
+    var rect = wrap.getBoundingClientRect();
+    W = rect.width;
+    H = rect.height;
+    cx = W / 2;
+    cy = H / 2;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.setAttribute('width', W);
+    svg.setAttribute('height', H);
+    buildWaves();
+    buildFeedLine();
   }
 
+  // Each wave: a filled path from edge to terminal, layered for depth
+  var waveConfigs = [
+    // Left waves - outer dim, inner bright
+    { side: 'left', yStart: 0.05, amp: 0.10, phase: 0,    opacity: 0.06,  strokeOp: 0.18,  color: '134,93,255' },
+    { side: 'left', yStart: 0.18, amp: 0.09, phase: 0.8,  opacity: 0.10,  strokeOp: 0.32,  color: '196,177,255' },
+    { side: 'left', yStart: 0.32, amp: 0.07, phase: 1.6,  opacity: 0.16,  strokeOp: 0.50,  color: '196,177,255' },
+    // Right waves - outer dim, inner bright
+    { side: 'right', yStart: 0.05, amp: 0.10, phase: 0.4,  opacity: 0.06,  strokeOp: 0.18,  color: '134,93,255' },
+    { side: 'right', yStart: 0.18, amp: 0.09, phase: 1.2,  opacity: 0.10,  strokeOp: 0.32,  color: '180,150,255' },
+    { side: 'right', yStart: 0.32, amp: 0.07, phase: 2.0,  opacity: 0.16,  strokeOp: 0.50,  color: '196,177,255' },
+  ];
+
+  function buildWaves() {
+    svg.innerHTML = '';
+    waves = [];
+    // Add blur filter defs
+    var defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    var filter1 = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
+    filter1.setAttribute('id', 'waveBlur1');
+    var blur1 = document.createElementNS('http://www.w3.org/2000/svg', 'feGaussianBlur');
+    blur1.setAttribute('stdDeviation', '3');
+    filter1.appendChild(blur1);
+    var filter2 = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
+    filter2.setAttribute('id', 'waveBlur2');
+    var blur2 = document.createElementNS('http://www.w3.org/2000/svg', 'feGaussianBlur');
+    blur2.setAttribute('stdDeviation', '1.2');
+    filter2.appendChild(blur2);
+    defs.appendChild(filter1);
+    defs.appendChild(filter2);
+    svg.appendChild(defs);
+
+    waveConfigs.forEach(function (cfg, i) {
+      var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('fill', 'rgba(' + cfg.color + ',' + cfg.opacity + ')');
+      path.setAttribute('stroke', 'rgba(' + cfg.color + ',' + cfg.strokeOp + ')');
+      path.setAttribute('stroke-width', '0.8');
+      // Outer waves (index 0,3) get most blur, middle (1,4) get slight blur, inner (2,5) sharp
+      var blurIdx = i % 3;
+      if (blurIdx === 0) path.setAttribute('filter', 'url(#waveBlur1)');
+      else if (blurIdx === 1) path.setAttribute('filter', 'url(#waveBlur2)');
+      svg.appendChild(path);
+      waves.push({ el: path, cfg: cfg });
+    });
+  }
+
+  var feedSvg = document.getElementById('feed-svg');
+  var feedLine = null;
+  var feedDot = null;
+
+  function buildFeedLine() {
+    if (!feedSvg) return;
+    feedSvg.innerHTML = '';
+    var svgH = feedSvg.offsetHeight || (H + 80);
+    feedSvg.setAttribute('viewBox', '0 0 ' + W + ' ' + svgH);
+    feedSvg.setAttribute('width', W);
+    feedSvg.setAttribute('height', svgH);
+
+    feedLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    feedLine.setAttribute('x1', cx);
+    feedLine.setAttribute('y1', 0);
+    feedLine.setAttribute('x2', cx);
+    feedLine.setAttribute('y2', svgH - H + cy);
+    feedLine.setAttribute('stroke', 'rgba(64,224,208,0.2)');
+    feedLine.setAttribute('stroke-width', '1');
+    feedLine.setAttribute('stroke-dasharray', '3,6');
+    feedSvg.appendChild(feedLine);
+
+    feedDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    feedDot.setAttribute('r', '2');
+    feedDot.setAttribute('fill', 'rgba(64,224,208,0.7)');
+    feedDot.setAttribute('cx', cx);
+    feedDot.setAttribute('cy', 0);
+    feedSvg.appendChild(feedDot);
+  }
+
+  // A - Breathing: amplitude multiplier oscillates slowly
+  var breathPhase = 0;
+  var surgeActive = false;
+  var surgeT = 0;
+
+  // E - Convergence pulse: waves slowly draw inward then relax back
+  window._waveConverge = function () {
+    surgeActive = true;
+    surgeT = 0;
+  };
+
+  function buildPath(cfg, time) {
+    var steps = 40;
+    var termX = cx;
+    var termY = cy;
+    var startX = cfg.side === 'left' ? 0 : W;
+
+    // E - convergence: yStart pulls toward cy during surge
+    // surge follows: ease in (0→0.4), hold (0.4→0.6), ease out (0.6→1)
+    var convergeFactor = 0;
+    if (surgeActive) {
+      if (surgeT < 0.4) {
+        convergeFactor = surgeT / 0.4;
+      } else if (surgeT < 0.6) {
+        convergeFactor = 1;
+      } else {
+        convergeFactor = 1 - (surgeT - 0.6) / 0.4;
+      }
+      convergeFactor = convergeFactor * convergeFactor; // ease
+    }
+
+    var baseY = cfg.yStart * H;
+    var startY = baseY + (cy - baseY) * convergeFactor * 0.5;
+
+    // A - breathing multiplier
+    var breathMult = 1 + Math.sin(breathPhase + cfg.phase * 0.3) * 0.4;
+    // During convergence, slightly reduce amplitude for cleaner look
+    var ampMult = breathMult * (1 - convergeFactor * 0.3);
+
+    // Build top edge of wave (from edge to terminal)
+    var pts = [];
+    for (var i = 0; i <= steps; i++) {
+      var progress = i / steps;
+      var x = startX + (termX - startX) * progress;
+      // Wave amplitude decreases as it approaches terminal
+      var waveAmp = cfg.amp * H * (1 - progress * 0.8) * ampMult;
+      var y = startY + (termY - startY) * progress
+              + Math.sin(progress * Math.PI * 2.5 + time + cfg.phase) * waveAmp;
+      pts.push([x, y]);
+    }
+
+    // Build bottom edge (slightly offset, reversed)
+    var bpts = [];
+    for (var i = steps; i >= 0; i--) {
+      var progress = i / steps;
+      var x = startX + (termX - startX) * progress;
+      var waveAmp = cfg.amp * H * (1 - progress * 0.8) * 0.6 * ampMult;
+      var y = startY + (termY - startY) * progress
+              + Math.sin(progress * Math.PI * 2.5 + time + cfg.phase + 0.5) * waveAmp
+              + H * 0.04;
+      bpts.push([x, y]);
+    }
+
+    var all = pts.concat(bpts);
+    var d = 'M ' + all[0][0] + ' ' + all[0][1];
+    for (var i = 1; i < all.length; i++) {
+      d += ' L ' + all[i][0] + ' ' + all[i][1];
+    }
+    d += ' Z';
+    return d;
+  }
+
+  buildWaves();
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  var lastTime = 0;
+  function animate(now) {
+    requestAnimationFrame(animate);
+    if (!waveTabActive) return;
+    // Throttle: skip frames on low-end devices
+    frameCount++;
+    if (frameCount % frameSkip !== 0) return;
+
+    var dt = Math.min(now - lastTime, 50);
+    lastTime = now;
+    t += dt * 0.0008;
+
+    // A - advance breath phase slowly (~5s cycle)
+    breathPhase += dt * 0.00025;
+
+    // E - advance surge and deactivate when done
+    if (surgeActive) {
+      surgeT += dt * 0.0004;
+      if (surgeT >= 1) { surgeActive = false; surgeT = 0; }
+    }
+
+    waves.forEach(function (w) {
+      w.el.setAttribute('d', buildPath(w.cfg, t));
+    });
+
+    // Animate feed dot down the line
+    var feedT = (t * 0.3) % 1;
+    var feedFade = feedT < 0.1 ? feedT / 0.1 : feedT > 0.85 ? (1 - feedT) / 0.15 : 1;
+    if (feedDot) {
+      var svgH = feedSvg ? (feedSvg.offsetHeight || H + 80) : H + 80;
+      var lineEnd = svgH - H + cy;
+      feedDot.setAttribute('cy', feedT * lineEnd);
+      feedDot.setAttribute('opacity', feedFade * 0.8);
+    }
+  }
+  requestAnimationFrame(animate);
+})();
+
+(function () {
+  var latencyEl = document.getElementById('sys-latency');
+  var uptimeEl = document.getElementById('sys-uptime');
+  if (!latencyEl || !uptimeEl) return;
+
+  // Latency: fluctuates realistically
+  var baseLatency = 28 + Math.floor(Math.random() * 20);
+  function updateLatency() {
+    var jitter = Math.floor((Math.random() - 0.5) * 8);
+    latencyEl.textContent = Math.max(12, baseLatency + jitter) + 'ms';
+  }
+
+  // Session timer: counts up from page load
+  var sessionStart = Date.now();
+  function updateSession() {
+    var elapsed = Math.floor((Date.now() - sessionStart) / 1000);
+    var h = Math.floor(elapsed / 3600);
+    var m = Math.floor((elapsed % 3600) / 60);
+    var s = elapsed % 60;
+    if (h > 0) {
+      uptimeEl.textContent = h + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+    } else {
+      uptimeEl.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+    }
+  }
+
+  updateLatency();
+  updateSession();
+  setInterval(updateLatency, 3000 + Math.random() * 2000);
+  setInterval(updateSession, 1000);
+})();
+
+// ─── Arch particles ───────────────────────────────────────────
+(function () {
+  var archPath = document.getElementById('arch-path');
+  if (!archPath) return;
+
+  var particles = [];
+  var MAX = 1;
+  // Cache path length — getTotalLength() is expensive, don't call every frame
+  var cachedLen = null;
+  var particleTabActive = true;
+  document.addEventListener('visibilitychange', function () {
+    particleTabActive = !document.hidden;
+  });
+
+  function spawnParticle() {
+    if (particles.length >= MAX) return;
+    particles.push({ t: 0, speed: 0.0005 + Math.random() * 0.0003 });
+  }
+
+  // First particle after arch draws, then very infrequently
+  setTimeout(spawnParticle, 3000);
+  setInterval(function () {
+    if (particles.length < MAX) spawnParticle();
+  }, 8000 + Math.random() * 6000);
+
+  var svgEl = document.getElementById('arch-svg');
+  var dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  dot.setAttribute('r', '2');
+  dot.setAttribute('fill', 'rgba(196,177,255,0.65)');
+  dot.setAttribute('opacity', '0');
+  svgEl.appendChild(dot);
+
+  var lastTime = 0;
+  function animate(now) {
+    if (!particleTabActive) { requestAnimationFrame(animate); return; }
+    var dt = Math.min(now - lastTime, 50);
+    lastTime = now;
+    for (var i = particles.length - 1; i >= 0; i--) {
+      var p = particles[i];
+      p.t += p.speed * (dt / 16);
+      if (p.t > 1) { particles.splice(i, 1); dot.setAttribute('opacity', '0'); continue; }
+      try {
+        // Use cached length — only recalculate if path changed (scroll)
+        if (!cachedLen) cachedLen = archPath.getTotalLength();
+        var pt = archPath.getPointAtLength(p.t * cachedLen);
+        var fade = p.t < 0.04 ? p.t / 0.04 : p.t > 0.96 ? (1 - p.t) / 0.04 : 1;
+        dot.setAttribute('cx', pt.x);
+        dot.setAttribute('cy', pt.y);
+        dot.setAttribute('opacity', fade * 0.7);
+      } catch(e) {}
+    }
+    requestAnimationFrame(animate);
+  }
   requestAnimationFrame(animate);
 })();
 
@@ -591,15 +758,33 @@ function initFirebase() {
 
       db.get(visitorRef).then(function (snapshot) {
         if (!snapshot.exists()) {
+          // New visitor - increment and store full record
           return db.runTransaction(totalRef, function (current) {
             return (current || 0) + 1;
           }).then(function (result) {
-            db.set(visitorRef, true);
-            showVisitorCount(badge, result.snapshot.val());
+            var num = result.snapshot.val();
+            var today = new Date().toISOString().split('T')[0];
+            var scr = window.screen ? window.screen.width + 'x' + window.screen.height : '';
+            db.set(visitorRef, { num: num, firstVisit: today, lastVisit: today, visits: 1, screen: scr });
+            showVisitorCount(badge, num, num);
           });
         } else {
+          var val = snapshot.val();
+          var visitorNum = typeof val === 'object' && val !== null && val.num
+            ? val.num
+            : typeof val === 'number' ? val : null;
+          // Update lastVisit and visits for returning visitor
+          if (val && typeof val === 'object') {
+            var today = new Date().toISOString().split('T')[0];
+            var scr = window.screen ? window.screen.width + 'x' + window.screen.height : '';
+            db.set(visitorRef, Object.assign({}, val, {
+              lastVisit: today,
+              visits: (val.visits || 1) + 1,
+              screen: val.screen || scr  // fill if empty/null
+            }));
+          }
           return db.get(totalRef).then(function (snap) {
-            showVisitorCount(badge, snap.val() || 0);
+            showVisitorCount(badge, snap.val() || 0, visitorNum);
           });
         }
       }).catch(function (err) { console.error('Links view count error:', err); });
@@ -652,16 +837,42 @@ function getVisitorId() {
   return id;
 }
 
-function showVisitorCount(badge, count) {
-  // Update git graph center
+function showVisitorCount(badge, count, visitorNum) {
   var countText = document.getElementById('git-count-text');
   if (countText) {
-    countText.textContent = formatCount(count);
+    countText.innerHTML = formatCount(count);
+    // Fade in the count
+    requestAnimationFrame(function () {
+      countText.classList.add('loaded');
+    });
     badge.classList.add('visible');
-    // Pulse the center node on load
-    badge.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,0.1), 0 0 40px rgba(134,93,255,0.5), 0 4px 20px rgba(0,0,0,0.5)';
-    setTimeout(function () {
-      badge.style.boxShadow = '';
-    }, 800);
+    badge.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,0.07), 0 0 36px rgba(134,93,255,0.25), 0 8px 40px rgba(0,0,0,0.7)';
+    setTimeout(function () { badge.style.boxShadow = ''; }, 800);
+    if (window._waveConverge) window._waveConverge();
+  }
+
+  if (visitorNum) {
+    var line = document.getElementById('visitor-num-line');
+    var text = document.getElementById('visitor-num-text');
+    if (line && text) {
+      text.textContent = 'you are visitor #' + visitorNum;
+      // Slight delay so count fades in first, then visitor line
+      setTimeout(function () {
+        line.classList.add('show');
+      }, 400);
+    }
+  }
+
+  // Mobile pill — show counts on small screens
+  var mobilePill = document.getElementById('mobile-counts');
+  var mobileCount = document.getElementById('mobile-count-text');
+  var mobileVisitor = document.getElementById('mobile-visitor-text');
+  if (mobilePill && mobileCount && window.innerWidth <= 520) {
+    mobileCount.textContent = formatCount(count) + ' visitors';
+    if (visitorNum && mobileVisitor) {
+      mobileVisitor.textContent = '#' + visitorNum;
+    }
+    mobilePill.style.display = 'flex';
+    mobilePill.classList.add('visible');
   }
 }

@@ -6,3 +6,8 @@ TODO
 - [x] Performance analysis + 3 optimizations (cached gradients, skip arch on no scroll, pre-computed spline points)
 - [x] Make portal arch animation + kafka queue + graph mobile friendly (portal kept, canvas animations hidden + JS skipped)
 - [x] Make portal arch animation + kafka queue + graph large screen friendly (breakpoints at 1800px and 2400px)
+- [x] Arch bounce on scroll back to top
+- [x] Mobile: minimal visitor count + visitor number pill shown at bottom
+- [x] New visitor stored as { num, firstVisit } in all three Firebase collections (links, resume, portfolio)
+- [x] Single visitor_id shared across all three pages via localStorage
+- [x] Existing true records need manual migration in Firebase console (or will auto-fix on next visit once deployed)

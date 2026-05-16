@@ -186,10 +186,23 @@ function initResumeFirebase() {
           return firebaseDb.runTransaction(totalRef, function (current) {
             return (current || 0) + 1;
           }).then(function (result) {
-            firebaseDb.set(visitorRef, true);
+            var today = new Date().toISOString().split('T')[0];
+            var scr = window.screen ? window.screen.width + 'x' + window.screen.height : '';
+            firebaseDb.set(visitorRef, { num: result.snapshot.val(), firstVisit: today, lastVisit: today, visits: 1, screen: scr });
             showCount(result.snapshot.val());
           });
         } else {
+          // Returning visitor — update lastVisit and visits
+          var existing = snapshot.val();
+          if (existing && typeof existing === 'object') {
+            var today = new Date().toISOString().split('T')[0];
+            var scr = window.screen ? window.screen.width + 'x' + window.screen.height : '';
+            firebaseDb.set(visitorRef, Object.assign({}, existing, {
+              lastVisit: today,
+              visits: (existing.visits || 1) + 1,
+              screen: existing.screen || scr
+            }));
+          }
           return firebaseDb.get(totalRef).then(function (snap) {
             showCount(snap.val() || 0);
           });

@@ -64,7 +64,15 @@
       <!-- Primary Links -->
       <div class="links">
         <a class="link-card" href="/resume" target="_blank" style="--accent: #865DFF;" data-link-id="resume">
-          <div class="link-icon">📄</div>
+          <div class="link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
           <div class="link-content">
             <div class="link-title">Resume / CV</div>
             <div class="link-desc">Backend & distributed systems focused resume</div>
@@ -105,7 +113,7 @@
       </div>
 
       <!-- Projects -->
-      <span class="section-label">projects</span>
+      <span class="section-label">/projects</span>
       <div class="links">
         <a class="link-card" href="https://chromewebstore.google.com/detail/purrfect-pomodoro-timer-p/aobapnhgpjlldncjopmbbfeoomombhel" target="_blank" rel="noreferrer" style="--accent: #ff9f7f;" data-link-id="purrfect-focus">
           <div class="link-icon">🐱</div>
@@ -145,7 +153,7 @@
       </div>
 
       <!-- Contact -->
-      <span class="section-label">connect</span>
+      <span class="section-label">/connect</span>
       <div class="contact-row">
         <a class="link-card" href="https://www.linkedin.com/in/kartikth40" target="_blank" rel="noreferrer" style="--accent: #0A66C2;">
           <div class="link-icon">
@@ -219,7 +227,7 @@
             <line x1="632" y1="40" x2="640" y2="40" stroke="rgba(134,93,255,0.4)" stroke-width="1" stroke-dasharray="3,3"/>
           </svg>
           <div class="stream-label">
-            <span>Event Stream</span>
+            <span>event stream</span>
           </div>
         </div>
 
@@ -235,23 +243,58 @@
       </div>
 
       <!-- Footer -->
-      <div class="footer">
+      <div class="footer" id="footer-link">
         <a href="https://kartikthakur.dev">kartikthakur.dev</a>
       </div>
 
-      <!-- Git graph convergence - visitor count -->
+      <!-- Mobile counts (shown only on mobile, inline) -->
+      <div class="mobile-counts" id="mobile-counts" style="display:none;">
+        <span id="mobile-count-text">--</span>
+        <span class="mobile-counts-sep">·</span>
+        <span id="mobile-visitor-text"></span>
+      </div>
+
+      <!-- Wave planes converging to terminal -->
       <div class="git-graph-wrap">
-        <canvas id="git-graph-canvas" class="git-graph-canvas"></canvas>
+        <svg id="wave-svg" class="wave-svg" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"></svg>
+        <svg id="feed-svg" class="feed-svg" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"></svg>
         <div class="git-graph-center" id="view-count">
-          <div class="git-graph-count" id="git-count-text"></div>
-          <div class="git-graph-label">visitors</div>
+          <div class="terminal-header">
+            <span class="terminal-dot td-red"></span>
+            <span class="terminal-dot td-yellow"></span>
+            <span class="terminal-dot td-green"></span>
+            <span class="terminal-title">sys.monitor</span>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-line">
+              <span class="t-prompt">$</span>
+              <span class="t-cmd">connections</span>
+            </div>
+            <div class="terminal-line t-output">
+              <span class="t-key">established</span>
+              <span class="t-val-big" id="git-count-text"><span class="t-loading">0</span></span>
+            </div>
+            <div class="terminal-line t-output" id="visitor-num-line">
+              <span class="t-prompt">&gt;</span>
+              <span class="t-visitor-text" id="visitor-num-text"></span>
+            </div>
+            <div class="terminal-divider"></div>
+            <div class="terminal-line t-output">
+              <span class="t-key">status</span>
+              <span class="t-val t-ok">operational</span>
+            </div>
+            <div class="terminal-line t-output">
+              <span class="t-key">latency</span>
+              <span class="t-val" id="sys-latency">--ms</span>
+            </div>
+            <div class="terminal-line t-output">
+              <span class="t-key">session</span>
+              <span class="t-val" id="sys-uptime">00:00</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Commit message sign-off -->
-      <div class="commit-msg" id="commit-msg">
-        <span class="commit-text">connection established</span>
-      </div>
     </div>
 
     <!-- Toast -->
