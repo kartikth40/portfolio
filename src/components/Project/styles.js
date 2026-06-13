@@ -70,7 +70,6 @@ const DullBackground = styled(AbsoluteContainer)`
       opacity: 1;
     }
     html[data-anim="off"] & {
-      opacity: 1;
       backdrop-filter: blur(6px);
     }
   }
@@ -116,9 +115,7 @@ const ProjectInfo = styled(AbsoluteContainer)`
   }
 
   html[data-anim="off"] & {
-    opacity: 1;
     transform: scale(1) translateY(0%);
-    transition: none;
   }
   html[data-anim="off"] & a {
     opacity: 1;

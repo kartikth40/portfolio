@@ -6,7 +6,7 @@ var LINKS_CONFIG = {
   statusText: 'Open to opportunities',
 
   // ── Project link IDs to track clicks ─────────────────────
-  trackedLinks: ['resume', 'portfolio', 'github', 'purrfect-focus', 'have-small-bytes', 'interview-master'],
+  trackedLinks: ['resume', 'portfolio', 'github', 'ship-me-this-job', 'purrfect-focus', 'have-small-bytes', 'interview-master'],
 
   // ── Email ─────────────────────────────────────────────────
   email: 'kartikthakur.2409@gmail.com',

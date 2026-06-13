@@ -1,5 +1,31 @@
 const projectInfo = [
   {
+    id: 0,
+    projNo: '00',
+    bgImgUrl: 'ship_me_this_job.png',
+    title: 'shipMeThisJob',
+    tagline: 'Full-Stack Platform · Next.js · TypeScript · PostgreSQL · 44 ATS Integrations',
+    overview:
+      'Built a production-grade, multi-user job discovery and application tracking platform that scrapes 58+ companies across 44 ATS integrations daily, processes hundreds of listings, and serves a real-time Kanban dashboard for managing application pipelines. Features layered caching (ISR + Redis + in-memory), property-based testing, and a pluggable source handler architecture.',
+    impact: [
+      'Monitors 58+ companies (Google, Microsoft, Meta, Amazon, Stripe, OpenAI, etc.) across 44 distinct ATS integrations - Greenhouse, Lever, Ashby, Workday, and more.',
+      'Processes hundreds of job listings per daily cron run with concurrent execution, per-source rate limiting, and cross-source deduplication.',
+      'Serves multiple authenticated users with fully isolated data, invite-based registration, and per-user personalized filtering across 5 dimensions.',
+      '26 database tables, 65+ API endpoints, 16+ dashboard routes — from Kanban pipeline tracking to hiring trend analytics with Sankey charts.',
+    ],
+    challenges: [
+      'Designing a pluggable source handler architecture (44 handlers across 3 tiers: structured APIs, HTML scraping with Cheerio, and Playwright browser automation) that allows adding new companies with zero pipeline code changes.',
+      'Building a resilient pipeline with Bottleneck rate limiting, exponential backoff retries, incremental checkpointing, and graceful shutdown - surviving 40-minute timeout budgets without data loss.',
+      'Implementing a three-tier caching strategy (ISR for shared routes, Upstash Redis per-user with 30s TTL, in-memory safety net) to minimize Neon serverless cold starts while keeping data fresh.',
+      'Achieving cross-source deduplication using deterministic job IDs to detect the same role posted on multiple boards without UUID collision risks.',
+      'Running real Postgres semantics in tests via PGlite (WASM-based in-memory Postgres) — zero Docker, zero network, sub-second setup with property-based testing via fast-check.',
+    ],
+    visitLink: 'https://shipmethisjob.dev',
+    sourceLink: 'https://github.com/kartikth40/shipMeThisJob',
+    privateSource: true,
+    techUsed: ['Next.js', 'TypeScript', 'PostgreSQL', 'Drizzle ORM', 'Playwright', 'Redis', 'Vitest'],
+  },
+  {
     id: 1,
     projNo: '01',
     bgImgUrl: 'purrfect_focus.png',
