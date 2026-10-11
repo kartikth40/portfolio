@@ -37,7 +37,7 @@ function formatCount(n) {
   var slowHint = document.getElementById('slow-hint');
   var timeout, slowTimeout;
 
-  // iframe src is already set in HTML — no need to set it again here.
+  // iframe src is already set in HTML - no need to set it again here.
   // Just wire up the dynamic links that aren't hardcoded.
 
   // Detect offline immediately
@@ -176,7 +176,7 @@ function initResumeFirebase() {
             showCount(result.snapshot.val());
           });
         } else {
-          // Returning visitor — update lastVisit and visits
+          // Returning visitor - update lastVisit and visits
           var existing = snapshot.val();
           if (existing && typeof existing === 'object') {
             var today = new Date().toISOString().split('T')[0];

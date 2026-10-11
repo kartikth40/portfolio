@@ -58,7 +58,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: clamp(2rem, 5vh, 4rem) clamp(1rem, 4vw, 3rem);
-  /* Removed opacity:0 fade-in — it was causing NO_LCP in Lighthouse */
+  /* Removed opacity:0 fade-in - it was causing NO_LCP in Lighthouse */
   perspective: 800px;
   perspective-origin: 50% 0%;
   overflow-x: hidden;

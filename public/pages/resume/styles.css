@@ -54,7 +54,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* Removed opacity:0 fade-in — it was blocking FCP until CSS animation fired */
+  /* Removed opacity:0 fade-in - it was blocking FCP until CSS animation fired */
 }
 
 body::before {

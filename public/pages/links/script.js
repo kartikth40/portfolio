@@ -665,7 +665,7 @@ var LINKS_CONFIG = {
 
   var particles = [];
   var MAX = 1;
-  // Cache path length — getTotalLength() is expensive, don't call every frame
+  // Cache path length - getTotalLength() is expensive, don't call every frame
   var cachedLen = null;
   var particleTabActive = true;
   document.addEventListener('visibilitychange', function () {
@@ -700,7 +700,7 @@ var LINKS_CONFIG = {
       p.t += p.speed * (dt / 16);
       if (p.t > 1) { particles.splice(i, 1); dot.setAttribute('opacity', '0'); continue; }
       try {
-        // Use cached length — only recalculate if path changed (scroll)
+        // Use cached length - only recalculate if path changed (scroll)
         if (!cachedLen) cachedLen = archPath.getTotalLength();
         var pt = archPath.getPointAtLength(p.t * cachedLen);
         var fade = p.t < 0.04 ? p.t / 0.04 : p.t > 0.96 ? (1 - p.t) / 0.04 : 1;
@@ -774,7 +774,7 @@ function initFirebase() {
           var visitorNum = typeof val === 'object' && val !== null && val.num
             ? val.num
             : typeof val === 'number' ? val : null;
-          // Calculate visits for display — only increment if new session
+          // Calculate visits for display - only increment if new session
           var sessionKey = 'visited_links_' + visitorId;
           var alreadyCountedThisSession = sessionStorage.getItem(sessionKey);
           var displayVisits = null;
@@ -886,7 +886,7 @@ function showVisitorCount(badge, count, visitorNum, visits) {
     }
   }
 
-  // Mobile pill — show counts on small screens
+  // Mobile pill - show counts on small screens
   var mobilePill = document.getElementById('mobile-counts');
   var mobileCount = document.getElementById('mobile-count-text');
   var mobileVisitor = document.getElementById('mobile-visitor-text');

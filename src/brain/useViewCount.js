@@ -35,7 +35,7 @@ export default function useViewCount() {
             }
           )
         } else {
-          // Returning visitor — update lastVisit
+          // Returning visitor - update lastVisit
           const existing = snapshot.val()
           if (existing && typeof existing === 'object') {
             const today = new Date().toISOString().split('T')[0]
