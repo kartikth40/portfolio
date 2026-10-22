@@ -1,7 +1,8 @@
 const experienceInfo = [
   {
     id: 1,
-    company: 'Sopra Banking Software (SBS)',
+    company: 'Sopra Banking Software',
+    logo: '/icons/sbs.svg',
     companyUrl: 'https://sbs-software.com/',
     role: 'Software Engineer (SDE-2)',
     location: 'Noida, IN',
@@ -189,6 +190,14 @@ const experienceInfo = [
   {
     id: 2,
     company: 'NIA Agrocommodity Marketplace',
+    logo: '/icons/nia.png',
+    companyUrl: 'https://www.niaagro.com/',
+    logoStyle: {
+      tabSize: '1.5rem',
+      cardSize: '2.4rem',
+      cardSizeMobile: '2rem',
+      radius: '0',
+    },
     role: 'Full Stack Developer Intern',
     location: 'Gurgaon, IN',
     type: 'Internship',

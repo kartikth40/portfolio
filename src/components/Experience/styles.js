@@ -47,10 +47,25 @@ const CompanyTabsRow = styled.div`
   max-width: 44rem;
 `
 
-const CompanyTab = styled.button`
+const TabLogo = styled.img`
+  width: ${({ $size }) => $size || '2rem'};
+  height: ${({ $size }) => $size || '2rem'};
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: ${({ $radius }) => ($radius !== undefined ? $radius : '8px')};
+`
+
+const TabText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+`
+
+const CompanyTab = styled.button`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
   background: ${({ $active }) => ($active ? 'rgba(134,93,255,0.15)' : 'transparent')};
   border: 1px solid ${({ $active }) => ($active ? 'var(--primary-blue)' : 'rgba(255,255,255,0.15)')};
   border-radius: 8px;
@@ -106,11 +121,30 @@ const CompanyHeader = styled.div`
   margin-bottom: 1.2rem;
 `
 
+const CompanyNameRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.3rem;
+`
+
+const CompanyLogo = styled.img`
+  width: ${({ $size }) => $size || '3.2rem'};
+  height: ${({ $size }) => $size || '3.2rem'};
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: ${({ $radius }) => ($radius !== undefined ? $radius : '12px')};
+
+  @media screen and ${device.mobile} {
+    width: ${({ $sizeMobile }) => $sizeMobile || '2.6rem'};
+    height: ${({ $sizeMobile }) => $sizeMobile || '2.6rem'};
+  }
+`
+
 const CompanyName = styled.h3`
   font-family: var(--primary-font-family);
   font-size: 1.1rem;
   font-weight: 900;
-  margin-bottom: 0.3rem;
 
   a {
     color: inherit;
@@ -274,8 +308,12 @@ export {
   SectionTitle,
   CompanyTabsRow,
   CompanyTab,
+  TabLogo,
+  TabText,
   Card,
   CompanyHeader,
+  CompanyNameRow,
+  CompanyLogo,
   CompanyName,
   RoleLine,
   Meta,

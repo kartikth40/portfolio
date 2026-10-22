@@ -5,8 +5,12 @@ import {
   SectionTitle,
   CompanyTabsRow,
   CompanyTab,
+  TabLogo,
+  TabText,
   Card,
   CompanyHeader,
+  CompanyNameRow,
+  CompanyLogo,
   CompanyName,
   RoleLine,
   Meta,
@@ -57,21 +61,42 @@ function Experience() {
       <CompanyTabsRow>
         {experienceInfo.map((e, i) => (
           <CompanyTab key={e.id} $active={i === activeCompany} onClick={() => handleCompanyClick(i)}>
-            <span>{e.company}</span>
-            <small>{e.duration} &nbsp;·&nbsp; {parseDuration(e.duration)}</small>
+            {e.logo && (
+              <TabLogo
+                src={e.logo}
+                alt={`${e.company} logo`}
+                $size={e.logoStyle?.tabSize}
+                $radius={e.logoStyle?.radius}
+              />
+            )}
+            <TabText>
+              <span>{e.company}</span>
+              <small>{e.duration} &nbsp;·&nbsp; {parseDuration(e.duration)}</small>
+            </TabText>
           </CompanyTab>
         ))}
       </CompanyTabsRow>
 
       <Card>
         <CompanyHeader>
-          <CompanyName>
-            {exp.companyUrl ? (
-              <a href={exp.companyUrl} target="_blank" rel="noreferrer">{exp.company}</a>
-            ) : (
-              exp.company
+          <CompanyNameRow>
+            {exp.logo && (
+              <CompanyLogo
+                src={exp.logo}
+                alt={`${exp.company} logo`}
+                $size={exp.logoStyle?.cardSize}
+                $sizeMobile={exp.logoStyle?.cardSizeMobile}
+                $radius={exp.logoStyle?.radius}
+              />
             )}
-          </CompanyName>
+            <CompanyName>
+              {exp.companyUrl ? (
+                <a href={exp.companyUrl} target="_blank" rel="noreferrer">{exp.company}</a>
+              ) : (
+                exp.company
+              )}
+            </CompanyName>
+          </CompanyNameRow>
           <RoleLine>{exp.role}</RoleLine>
           <Meta>{exp.location} &nbsp;·&nbsp; {exp.type} &nbsp;·&nbsp; {exp.duration}</Meta>
         </CompanyHeader>
