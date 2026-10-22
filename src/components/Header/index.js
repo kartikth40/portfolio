@@ -9,6 +9,7 @@ import {
   HamBurgerMenu,
   Nav,
   NavItems,
+  LearnNavItem,
 } from './styles'
 
 function Header() {
@@ -63,6 +64,9 @@ function Header() {
             <NavItems href="#about">about</NavItems>
             <NavItems href="#projects">projects</NavItems>
             <NavItems href="#contact">contact</NavItems>
+            <LearnNavItem href="https://learn.kartikthakur.dev" target="_blank">
+              learn
+            </LearnNavItem>
           </Nav>
         </HelperContainer>
       </Container>

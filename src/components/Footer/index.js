@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Logo, FooterLinks, Copyrights, ViewCount } from './styles'
+import { Container, Logo, FooterLinks, LearnLink, Copyrights, ViewCount } from './styles'
 import useViewCount from '../../brain/useViewCount'
 
 function Footer() {
@@ -28,6 +28,9 @@ function Footer() {
           <img src="/icons/github_icon.png" alt="github logo" />
         </a>
       </FooterLinks>
+      <LearnLink href="https://learn.kartikthakur.dev" target="_blank">
+        interview notes &amp; study guides →
+      </LearnLink>
       <a href="#home" style={{ textDecoration: 'none' }}>
         <Copyrights>© {currentYear} - kartik thakur</Copyrights>
       </a>

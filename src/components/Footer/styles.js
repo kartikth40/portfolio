@@ -51,6 +51,27 @@ const FooterLinks = styled.div`
     }
   }
 `
+const LearnLink = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem 1rem 0.5rem;
+  & a,
+  &:link,
+  &:visited {
+    color: white;
+  }
+  color: var(--primary-light-blue);
+  text-decoration: none;
+  font-family: var(--secondary-font-family);
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  transition: 250ms all;
+  &:hover {
+    opacity: 0.7;
+  }
+`
+
 const Copyrights = styled.div`
   padding: 1rem;
   font-size: 0.75rem;
@@ -85,4 +106,4 @@ const ViewCount = styled.div`
   }
 `
 
-export { Container, Logo, FooterLinks, Copyrights, ViewCount }
+export { Container, Logo, FooterLinks, LearnLink, Copyrights, ViewCount }

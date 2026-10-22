@@ -196,7 +196,7 @@ const Nav = styled.nav`
     position: absolute;
     z-index: -1;
     left: 0;
-    top: -600%;
+    top: -700%;
     width: 100%;
     padding: 200px 0 0;
     flex-direction: column;
@@ -256,6 +256,56 @@ const NavItems = styled.a`
     }
   }
 `
+const LearnNavItem = styled.a`
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 1.5rem;
+  display: flex;
+  height: 100%;
+  position: relative;
+
+  &::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transition: 250ms all;
+    background: var(--primary-blue);
+  }
+
+  &:hover {
+    transition: 250ms all;
+    color: black;
+  }
+  &:hover&::before {
+    transition: 250ms all;
+    height: calc(100% + 10px);
+    background: var(--primary-light-blue);
+    box-shadow: 0 0 14px rgba(134, 93, 255, 0.7);
+  }
+
+  @media screen and ${device.tablet} {
+    height: 50px;
+    padding: 10px 20px;
+    margin: 0;
+    z-index: -1;
+    align-items: center;
+    justify-content: center;
+    &::before {
+      display: none;
+    }
+    &:hover {
+      color: black;
+      background: var(--primary-light-blue);
+    }
+  }
+`
 export {
   Container,
   HelperContainer,
@@ -264,4 +314,5 @@ export {
   HamBurgerMenu,
   Nav,
   NavItems,
+  LearnNavItem,
 }
